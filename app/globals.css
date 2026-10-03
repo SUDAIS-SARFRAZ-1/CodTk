@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
+/* Brand palette: black, white, deep cobalt #2c3480 — plus shades of those three only. */
 :root {
   --background: #ffffff;
-  --foreground: #0b0f19;
-  --muted: #f5f7fb;
-  --muted-foreground: #5b6472;
-  --border: #e5e9f0;
-  --brand: #2f6feb;
-  --brand-dark: #1d3fae;
-  --brand-light: #22d3ee;
+  --foreground: #000000;
+  --muted: #f4f5fa;
+  --muted-foreground: #52525b;
+  --border: #e3e4ee;
+  --brand: #2c3480;
+  --brand-dark: #1f2560;
   --brand-foreground: #ffffff;
+  /* Light cobalt tint for accents on black sections — raw cobalt on black fails WCAG AA. */
+  --brand-tint: #aeb3e6;
+  /* Founder-approved exception to the 3-colour palette: official WhatsApp green on the chat button only. */
+  --whatsapp: #25d366;
 }
 
 @theme inline {
@@ -20,20 +24,10 @@
   --color-border: var(--border);
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
-  --color-brand-light: var(--brand-light);
   --color-brand-foreground: var(--brand-foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0e17;
-    --foreground: #edf1f7;
-    --muted: #121826;
-    --muted-foreground: #97a2b5;
-    --border: #212a3a;
-  }
+  --color-brand-tint: var(--brand-tint);
+  --color-whatsapp: var(--whatsapp);
+  --font-sans: var(--font-inter);
 }
 
 body {

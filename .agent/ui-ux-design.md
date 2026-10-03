@@ -23,8 +23,8 @@ If a visual choice fights any of these three, it loses — including anything th
 
 ## 2. Brand & Visual Direction
 
-- **Palette:** a restrained neutral base (near-white background, dark neutral text) with **one** brand accent color used deliberately for CTAs, links, and key highlights — not sprinkled everywhere.
-- **Typography:** one primary typeface for headings and body text (a clean, modern sans-serif). A strict type scale (e.g. 4–5 sizes) reused everywhere — no ad hoc font sizes per component.
+- **Palette:** three colors only — black, white, and deep cobalt blue `#2c3480` (plus shades/tints of those three for hover, grey text, borders, and light section backgrounds). Light site; black is used for contrast sections (e.g. hero, footer). Cobalt is the single accent for CTAs, links, and key highlights. Never use cobalt as text on black (≈1.9:1 contrast, fails WCAG AA) — on black sections use white text, and cobalt only as a button fill. No automatic dark mode.
+- **Typography:** Inter, for both headings and body text. A strict type scale (e.g. 4–5 sizes) reused everywhere — no ad hoc font sizes per component.
 - **Imagery:** real team photos, real portfolio screenshots/demos, and simple iconography for services and process steps. No stock "business handshake" photography — it undercuts the credibility goal this whole site exists for.
 - **Tone:** confident and plain-spoken copy. Technical credibility comes from specifics (named technologies, concrete process steps, real project outcomes), not buzzwords.
 
