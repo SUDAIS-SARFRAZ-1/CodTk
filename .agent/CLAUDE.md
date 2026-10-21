@@ -1,6 +1,6 @@
 # CLAUDE.md — Agent Operating Guide
 
-You are working on the **AptiScript Technologies corporate website** — a public marketing site (not an app with accounts, carts, or a database of business records). Its job is to generate leads and make a brand-new software house look credible to a first-time client. This file is your entry point. Read it fully at the start of every session, then load the documents it points to.
+You are working on the **CodTK corporate website** — a public marketing site (not an app with accounts, carts, or a database of business records). Its job is to generate leads and make a brand-new software house look credible to a first-time client. This file is your entry point. Read it fully at the start of every session, then load the documents it points to.
 
 @prd.md
 @rules.md
@@ -14,7 +14,7 @@ You are working on the **AptiScript Technologies corporate website** — a publi
 
 Every change should leave the site closer to three outcomes at once:
 
-1. **Credible.** A first-time visitor with no prior knowledge of AptiScript should come away believing this is a real, professional company — not a template site or a scam. See `prd.md` §6.7 (Trust & Credibility Elements) for the concrete requirements this drives.
+1. **Credible.** A first-time visitor with no prior knowledge of CodTK should come away believing this is a real, professional company — not a template site or a scam. See `prd.md` §6.7 (Trust & Credibility Elements) for the concrete requirements this drives.
 2. **Fast and findable.** The site's own performance and SEO are part of the sales pitch ("we build fast, professional software") — see `prd.md` §8.1 and §8.4.
 3. **Simple and correct.** This is a content + lead-capture site, not an application. Resist adding backend complexity (databases, auth, admin panels) that the PRD doesn't call for.
 

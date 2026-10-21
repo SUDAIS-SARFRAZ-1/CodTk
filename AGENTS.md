@@ -8,7 +8,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# AptiScript Website — Project Guidelines
+# CodTK Website — Project Guidelines
 
 Full project guidelines (PRD, hard rules, stack/architecture instructions, state-management patterns, UI/UX design spec) live in `.agent/`. Read `.agent/CLAUDE.md` first — it's the entry point and links to everything else.
 

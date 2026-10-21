@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
 import { IconBadge } from "@/components/ui/IconBadge";
 
 export type Service = {
@@ -25,28 +26,23 @@ const ICON_PATHS: Record<string, string> = {
     "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18",
 };
 
-export function ServiceCard({ service }: { service: Service }) {
+// `headingLevel` keeps the outline valid: h3 under a section h2 on Home, h2 directly under the Services page h1.
+export function ServiceCard({ service, headingLevel: Heading = "h3" }: { service: Service; headingLevel?: "h2" | "h3" }) {
   const iconPath = ICON_PATHS[service.slug];
 
   return (
-    <div
-      id={service.slug}
-      className="flex scroll-mt-24 flex-col rounded-xl border border-border bg-background p-6 transition-colors duration-150 hover:border-brand"
-    >
+    <Card id={service.slug} interactive className="flex scroll-mt-24 flex-col p-6 sm:p-7">
       {iconPath && <IconBadge path={iconPath} />}
-      <h3 className="mt-4 text-lg font-semibold text-foreground">{service.title}</h3>
-      <p className="mt-2 flex-1 text-sm text-muted-foreground">{service.description}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <Heading className="mt-5 text-xl font-semibold tracking-tight">{service.title}</Heading>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
         {service.tech.map((tech) => (
           <Badge key={tech}>{tech}</Badge>
         ))}
       </div>
-      <Link
-        href={`/contact?service=${encodeURIComponent(service.title)}`}
-        className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-brand-dark"
-      >
-        Request a Quote<span className="sr-only"> for {service.title}</span> →
-      </Link>
-    </div>
+      <ArrowLink href={`/contact?service=${encodeURIComponent(service.title)}`} className="mt-6 self-start">
+        Request a Quote<span className="sr-only"> for {service.title}</span>
+      </ArrowLink>
+    </Card>
   );
 }

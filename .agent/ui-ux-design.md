@@ -1,4 +1,4 @@
-# UI/UX Design Guidelines — AptiScript Corporate Website
+# UI/UX Design Guidelines — CodTK Corporate Website
 
 Version 1.0 — September 22, 2026 — Status: Active.
 
@@ -6,7 +6,7 @@ Version 1.0 — September 22, 2026 — Status: Active.
 
 ## Design North Star
 
-A visitor who has never heard of AptiScript should land on any page and instantly know three things:
+A visitor who has never heard of CodTK should land on any page and instantly know three things:
 
 - **What is this company?** A real, professional software house — not a template site or a single freelancer.
 - **What can I do right now?** One obvious next action per page (get a quote, book a call, message us).
@@ -23,8 +23,10 @@ If a visual choice fights any of these three, it loses — including anything th
 
 ## 2. Brand & Visual Direction
 
-- **Palette:** three colors only — black, white, and deep cobalt blue `#2c3480` (plus shades/tints of those three for hover, grey text, borders, and light section backgrounds). Light site; black is used for contrast sections (e.g. hero, footer). Cobalt is the single accent for CTAs, links, and key highlights. Never use cobalt as text on black (≈1.9:1 contrast, fails WCAG AA) — on black sections use white text, and cobalt only as a button fill. No automatic dark mode.
-- **Typography:** Inter, for both headings and body text. A strict type scale (e.g. 4–5 sizes) reused everywhere — no ad hoc font sizes per component.
+- **Palette:** white, black and the CodTK logo blue `#0067FC` (`blue-500`), plus shades of those three — tokens in `app/codtk.css`, copied from the design system (https://claude.ai/artifact/Ht29CAMG8XhsfyLWVHpcf5, adopted in full 2026-10-18). **White pages with black type.** Black is a *scope*, not a theme: `data-theme="dark"` on an element (navbar pill, cinematic stage, service cards, code windows, CTA, footer) resolves the same token names to black values. Small blue text on white uses `blue-400` (`#0052CC`); white on `blue-500` is 4.8:1.
+- **Depth:** on white, hairlines and the soft `shadow-lift`; glows only at full strength inside black scopes. No neon or multi-hue gradients.
+- **Logo:** the founder-supplied raster artwork in `public/brand/` (black background converted to transparency). Don't redraw it. It sits inside black scopes as drawn; on white (the navbar, since 2026-10-20) it uses the CSS `invert(1) hue-rotate(180deg)` filter so the white strokes turn near-black and the blue stays blue.
+- **Typography:** Instrument Sans (weight 500, tight tracking) for headlines and body, Instrument Serif italic in blue for the one emphasised phrase per headline, JetBrains Mono for eyebrows (`//` prefix), labels and code. Use the type classes in `app/codtk.css`; no ad hoc font sizes.
 - **Imagery:** real team photos, real portfolio screenshots/demos, and simple iconography for services and process steps. No stock "business handshake" photography — it undercuts the credibility goal this whole site exists for.
 - **Tone:** confident and plain-spoken copy. Technical credibility comes from specifics (named technologies, concrete process steps, real project outcomes), not buzzwords.
 
@@ -87,13 +89,11 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-This is a fast-loading content site, not a 3D/immersive product — motion is minimal and purposeful only:
+The founder adopted the CodTK design system motion spec in full (2026-10-18), including its background system (dot matrix, tone-following haze, circuit traces, parallax code fragments). That covers section reveals, the word blur-in hero, the keyword rotor, the pinned cinematic stage and mesh, scrubbed marquee and word fill, stacked service cards, the pinned process pipeline, the horizontal case showcase, the scroll-scaled CTA, magnetic CTAs, the custom cursor and page transitions. It is implemented without an animation library, in `components/codtk/Motion.tsx` and `app/codtk.css`.
 
-- Micro-interactions (button/link hover, focus states): ≤ 200ms, opacity/transform only.
-- Panel/menu transitions (mobile nav open, accordion): ≤ 300ms.
-- No parallax, no scroll-hijacking, no auto-playing looping animation near a CTA.
-- Respect `prefers-reduced-motion` — disable non-essential transitions when set.
-- Nothing here should cost the performance budget in `instructions.md` §5 — a hero fade-in is fine; a hero video background or heavy animation library is not, given the 2.5s load target (NFR 8.1).
+- Animate `transform` and `opacity` only (SVG stroke draws excepted).
+- `prefers-reduced-motion: reduce` turns everything static, and phones (under 1024px) skip pinning, magnetic pull and the custom cursor.
+- Nothing should cost the performance budget in `instructions.md` §5 (2.5s load target, NFR 8.1).
 
 ## 8. Accessibility
 

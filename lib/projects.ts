@@ -5,6 +5,8 @@ export type Project = {
   // Honest provenance — these are founder projects, not client engagements (rules.md §1, §3).
   label: string;
   labelNote: string;
+  // The founder's part in the build, shown in the case study's meta row.
+  role: string;
   summary: string;
   problem: string;
   solution: string;
@@ -14,19 +16,24 @@ export type Project = {
   demoUrl?: string;
   repoUrl?: string;
   images: { src: string; alt: string; width: number; height: number }[];
+  // Kept in the data but not rendered anywhere (prd.md §6.4).
+  hidden?: boolean;
 };
 
 // Source: founder's portfolio (Desktop/my_portfolio/src/data/projects.ts), confirmed 2026-10-03.
-export const PROJECTS: Project[] = [
+const ALL_PROJECTS: Project[] = [
   {
     slug: "mindmesh",
     title: "MindMesh",
-    subtitle: "AI-Assisted Project Planning & Intelligence System",
+    // SaaS describes what the platform is (accounts, roles, multi-project); it is not a live paid
+    // service, so the capstone label and repo link stay (founder confirmed 2026-10-21).
+    subtitle: "AI-powered SaaS platform for agile teams",
     label: "Founder's capstone project",
     labelNote:
       "Built by our founder as a BSSE capstone at the University of Central Punjab — led backend development and AI integration.",
+    role: "Backend and AI integration",
     summary:
-      "A project planning platform that turns raw requirements and recorded meetings into structured agile artifacts: epics, sprint tasks, and stakeholder updates.",
+      "A SaaS platform where teams sign in, run several projects, and let AI turn raw requirements and recorded meetings into epics, sprint tasks, and stakeholder updates.",
     problem:
       "Engineering teams lose critical time deciphering unstructured meeting notes, coordinating action items across disconnected tools, and manually drafting sprint backlogs.",
     solution:
@@ -62,10 +69,12 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "organic-store",
+    hidden: true,
     title: "Organic Store",
     subtitle: "Full-Stack Organic Grocery E-Commerce Platform",
     label: "Founder project",
     labelNote: "Designed and built end-to-end by our founder.",
+    role: "Full stack, end to end",
     summary:
       "A complete grocery shopping platform with a customer storefront, secure accounts, cart and checkout, and an admin dashboard for running the store.",
     problem:
@@ -88,3 +97,5 @@ export const PROJECTS: Project[] = [
     ],
   },
 ];
+
+export const PROJECTS = ALL_PROJECTS.filter((p) => !p.hidden);

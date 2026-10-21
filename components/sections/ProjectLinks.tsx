@@ -9,7 +9,7 @@ export function ProjectLinks({ project }: { project: Project }) {
           href={project.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-foreground underline underline-offset-4 hover:text-brand"
+          className="text-sm font-medium text-foreground underline underline-offset-4 hover:text-accent"
         >
           Live demo<span className="sr-only"> of {project.title} (opens in new tab)</span>
         </a>
@@ -19,7 +19,7 @@ export function ProjectLinks({ project }: { project: Project }) {
           href={project.repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-foreground underline underline-offset-4 hover:text-brand"
+          className="text-sm font-medium text-foreground underline underline-offset-4 hover:text-accent"
         >
           Source code<span className="sr-only"> of {project.title} on GitHub (opens in new tab)</span>
         </a>

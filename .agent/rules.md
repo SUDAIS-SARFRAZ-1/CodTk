@@ -4,12 +4,12 @@ trigger: always_on
 
 # Project Rules
 
-> Version 3.0 — September 22, 2026. Replaces the previous e-commerce/3D rule set, which described an unrelated project. This version is scoped to the AptiScript Technologies corporate marketing website defined in `prd.md`. Rules are renumbered — cite by number from this version.
+> Version 3.0 — September 22, 2026. Replaces the previous e-commerce/3D rule set, which described an unrelated project. This version is scoped to the CodTK corporate marketing website defined in `prd.md`. Rules are renumbered — cite by number from this version.
 
 Hard constraints. These override convenience, speed of writing code, or a "simpler" alternative. If a suggestion conflicts with a rule below, the rule wins.
 
 ## Content Integrity
-1. **No fabricated content ships, ever.** No lorem ipsum, no invented testimonials, no stock "trusted by" client logos, no made-up team members, no fake phone numbers, no invented statistics. If real content isn't available yet, the section doesn't render (or is clearly marked as coming soon) — it doesn't get faked to fill space. This is the single most important rule on this project: the site's entire purpose is to prove AptiScript is a real, credible company (`prd.md` §6.7).
+1. **No fabricated content ships, ever.** No lorem ipsum, no invented testimonials, no stock "trusted by" client logos, no made-up team members, no fake phone numbers, no invented statistics. If real content isn't available yet, the section doesn't render (or is clearly marked as coming soon) — it doesn't get faked to fill space. This is the single most important rule on this project: the site's entire purpose is to prove CodTK is a real, credible company (`prd.md` §6.7).
 2. Team photos are real, non-stock, non-AI-generated, and (per `prd.md` FR-12) link to a real, verifiable LinkedIn profile where the person has agreed to be listed.
 3. Portfolio/case-study entries link to a live demo or public repository wherever one exists (`prd.md` §6.4, FR-4). An unverifiable claim is worse than no claim.
 4. Numbers, credentials, and claims about team size, experience, or delivered projects must be accurate as of the date they're published — don't round up or leave stale numbers in place after they change.

@@ -4,10 +4,10 @@ trigger: always_on
 
 # Project Instructions
 
-> Version 3.0 — September 22, 2026. Replaces the previous e-commerce/3D instructions, which described an unrelated project. This version reflects the actual AptiScript Technologies corporate website scope in `prd.md`.
+> Version 3.0 — September 22, 2026. Replaces the previous e-commerce/3D instructions, which described an unrelated project. This version reflects the actual CodTK corporate website scope in `prd.md`.
 
 ## 1. What This Project Is
-A public marketing website for AptiScript Technologies — a brand-new software house that has no live web presence yet. Pages: Home, Services, Tech Stack, Portfolio, About/Team, Process, Contact (`prd.md` §6). There is no client login, no cart, no payment processing, and no CMS in v1 (`prd.md` §5.2).
+A public marketing website for CodTK — a brand-new software house that has no live web presence yet. Pages: Home, Services, Tech Stack, Portfolio, About/Team, Process, Contact (`prd.md` §6). There is no client login, no cart, no payment processing, and no CMS in v1 (`prd.md` §5.2).
 
 The experience goal in one sentence: **it should read as a credible, established-feeling business from the first page load, and load fast enough to prove the team's own delivery quality.**
 

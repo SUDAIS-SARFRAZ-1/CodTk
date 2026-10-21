@@ -1,13 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/projects";
+import { ArrowLink } from "@/components/ui/ArrowLink";
+import { Card } from "@/components/ui/Card";
 import { ProjectLinks } from "@/components/sections/ProjectLinks";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, headingLevel: Heading = "h3" }: { project: Project; headingLevel?: "h2" | "h3" }) {
   const cover = project.images[0];
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-colors duration-150 hover:border-brand">
+    <Card as="article" interactive className="flex flex-col overflow-hidden">
       <Link href={`/portfolio/${project.slug}`} tabIndex={-1} aria-hidden="true">
         <Image
           src={cover.src}
@@ -18,25 +20,22 @@ export function ProjectCard({ project }: { project: Project }) {
           className="aspect-video w-full border-b border-border object-cover object-top"
         />
       </Link>
-      <div className="flex flex-1 flex-col p-6">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand">{project.label}</p>
-        <h3 className="mt-2 text-lg font-semibold text-foreground">
-          <Link href={`/portfolio/${project.slug}`} className="hover:text-brand">
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <p className="text-xs font-semibold uppercase tracking-wider text-accent">{project.label}</p>
+        <Heading className="mt-2 text-xl font-semibold tracking-tight">
+          <Link href={`/portfolio/${project.slug}`} className="hover:text-accent">
             {project.title}
           </Link>
-        </h3>
-        <p className="text-sm font-medium text-muted-foreground">{project.subtitle}</p>
-        <p className="mt-3 flex-1 text-sm text-muted-foreground">{project.summary}</p>
-        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-          <Link
-            href={`/portfolio/${project.slug}`}
-            className="text-sm font-semibold text-brand hover:text-brand-dark"
-          >
-            Read case study<span className="sr-only"> for {project.title}</span> →
-          </Link>
+        </Heading>
+        <p className="mt-1 text-sm font-medium text-muted-foreground">{project.subtitle}</p>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <ArrowLink href={`/portfolio/${project.slug}`}>
+            Read case study<span className="sr-only"> for {project.title}</span>
+          </ArrowLink>
           <ProjectLinks project={project} />
         </div>
       </div>
-    </article>
+    </Card>
   );
 }

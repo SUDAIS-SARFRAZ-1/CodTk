@@ -1,19 +1,24 @@
 @import "tailwindcss";
 
-/* Brand palette: black, white, deep cobalt #2c3480 — plus shades of those three only. */
+/* Legacy Tailwind tokens for pages not yet rebuilt on the CodTK design system (app/codtk.css).
+   Mapped onto the system's white palette so those pages match until they are rebuilt. */
 :root {
   --background: #ffffff;
-  --foreground: #000000;
-  --muted: #f4f5fa;
-  --muted-foreground: #52525b;
-  --border: #e3e4ee;
-  --brand: #2c3480;
-  --brand-dark: #1f2560;
+  --foreground: #0a0a0b;
+  --muted: #f6f7f9;
+  --muted-foreground: #626772;
+  --border: #dcdfe4;
+  --brand: #0067fc;
+  --brand-dark: #0052cc;
   --brand-foreground: #ffffff;
-  /* Light cobalt tint for accents on black sections — raw cobalt on black fails WCAG AA. */
-  --brand-tint: #aeb3e6;
+  --brand-tint: #0052cc;
+  --error: #c2321f;
+  --success: #0e7a4f;
   /* Founder-approved exception to the 3-colour palette: official WhatsApp green on the chat button only. */
   --whatsapp: #25d366;
+  --accent-text: var(--brand-tint);
+  --subtle-text: #3b3f47;
+  --focus-ring: #0067fc;
 }
 
 @theme inline {
@@ -26,11 +31,39 @@
   --color-brand-dark: var(--brand-dark);
   --color-brand-foreground: var(--brand-foreground);
   --color-brand-tint: var(--brand-tint);
+  --color-error: var(--error);
+  --color-success: var(--success);
   --color-whatsapp: var(--whatsapp);
-  --font-sans: var(--font-inter);
+  --color-accent: var(--accent-text);
+  --color-subtle: var(--subtle-text);
+  --font-sans: var(--font-body);
+}
+
+@theme {
+  --radius-control: 6px;
+  --radius-card: 14px;
+  --shadow-card: 0 1px 2px 0 rgb(10 10 11 / 0.04);
+  --shadow-card-hover: 0 30px 80px -32px rgb(10 10 11 / 0.28);
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Raised surface (was glassmorphism on the old dark site). */
+@utility glass {
+  background-color: #f6f7f9;
+  border: 1px solid #eceef1;
+}
+
+@utility glass-bar {
+  background-color: rgb(255 255 255 / 0.9);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
 }

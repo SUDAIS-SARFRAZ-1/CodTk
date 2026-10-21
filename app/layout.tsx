@@ -1,53 +1,58 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Navbar } from "@/components/codtk/Navbar";
+import { Footer } from "@/components/codtk/Footer";
+import { Motion } from "@/components/codtk/Motion";
+import { Background } from "@/components/codtk/Background";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
-import { Providers } from "./providers";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
+import "./codtk.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// CodTK design system type: Instrument Sans (headlines and body), Instrument Serif italic (the one
+// emphasised phrase per headline), JetBrains Mono (labels, code).
+const serif = Instrument_Serif({
+  variable: "--font-serif",
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const body = Instrument_Sans({ variable: "--font-body", subsets: ["latin"] });
+const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "AptiScript Technologies — Building Next Generation Software",
-    template: "%s — AptiScript Technologies",
+    default: "CodTK — Software Company in Lahore | Building Next Generation Software",
+    template: "%s — CodTK",
   },
   description:
-    "AptiScript Technologies is a full-service software house delivering custom web, mobile, backend, and cloud solutions. Get a quote or book a call with our team.",
-  icons: {
-    icon: "/logo-mark.png",
-  },
+    "CodTK is a software company in Lahore building custom web, mobile, backend and cloud software. Work directly with the engineers who build your product. Get a quote.",
+  twitter: { card: "summary_large_image" },
   openGraph: {
     type: "website",
-    siteName: "AptiScript Technologies",
-    title: "AptiScript Technologies — Building Next Generation Software",
+    siteName: "CodTK",
+    url: "/",
+    title: "CodTK — Building Next Generation Software",
     description:
-      "A full-service software house delivering custom web, mobile, backend, and cloud solutions.",
-    images: ["/logo-full.png"],
+      "Custom web, mobile, backend and cloud software from a Lahore team that answers fast.",
   },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Providers>
-          <Header />
-          <main className="flex-1">{children}</main>
+    <html lang="en" data-theme="light" className={`${serif.variable} ${body.variable} ${mono.variable}`}>
+      <body>
+        <div className="ctk">
+          <Background />
+          <Navbar />
+          <main className="ctk-main">{children}</main>
           <Footer />
           <WhatsAppButton />
-        </Providers>
+          <div className="ctk-cursor" aria-hidden="true" />
+        </div>
+        <Motion />
       </body>
     </html>
   );

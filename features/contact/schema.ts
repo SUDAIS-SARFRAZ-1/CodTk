@@ -2,6 +2,8 @@ import { z } from "zod";
 import { SERVICES } from "@/lib/services";
 
 const PROJECT_TYPES = [...SERVICES.map((s) => s.title), "Something else"] as const;
+// Optional budget range (prd.md FR-20); the last is the default when the visitor doesn't pick one.
+const BUDGETS = ["Under $5k", "$5k – 15k", "$15k – 40k", "$40k +", "Not sure yet"] as const;
 
 // contactFormSchema is what the client sends and validates for instant
 // feedback. The server (app/contact/api/route.ts) re-validates the same
@@ -10,6 +12,7 @@ export const contactFormSchema = z.object({
   name: z.string().trim().min(2, "Enter your name"),
   email: z.string().trim().email("Enter a valid email address"),
   projectType: z.enum(PROJECT_TYPES),
+  budget: z.enum(BUDGETS).default("Not sure yet"),
   message: z.string().trim().min(10, "Tell us a bit more about your project"),
   // Honeypot: real visitors never see or fill this field. Must accept any
   // string (including bot-filled garbage) — the route checks non-emptiness,
@@ -19,8 +22,10 @@ export const contactFormSchema = z.object({
   // Time-trap: timestamp (ms) of when the form was rendered, set client-side.
   // A submission arriving implausibly fast is almost certainly scripted.
   renderedAt: z.number(),
+  // Cloudflare Turnstile token; the server verifies it with Cloudflare (prd.md FR-14).
+  turnstileToken: z.string().max(2048).optional().default(""),
 });
 
 export type ContactFormInput = z.infer<typeof contactFormSchema>;
 
-export { PROJECT_TYPES };
+export { BUDGETS, PROJECT_TYPES };
