@@ -130,7 +130,7 @@ export function CaseShowcase() {
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Selected work</p>
-          <h2 id="work-t" className="ctk-d2 rv" data-d={1}>
+          <h2 id="work-t" className="ctk-h2 rv" data-d={1}>
             Working software, <span className="ctk-em">open to inspect</span>.
           </h2>
           {!several && (

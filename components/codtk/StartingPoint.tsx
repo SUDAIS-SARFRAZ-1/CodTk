@@ -60,7 +60,7 @@ export function StartingPoint() {
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Where you&apos;re starting from</p>
-          <h2 id="start-t" className="ctk-d2 rv" data-d={1}>
+          <h2 id="start-t" className="ctk-h2 rv" data-d={1}>
             Every project starts somewhere. <span className="ctk-em">Tell us where.</span>
           </h2>
           <p className="ctk-p rv" data-d={2}>

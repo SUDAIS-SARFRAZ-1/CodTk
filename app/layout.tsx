@@ -8,6 +8,7 @@ import { Footer } from "@/components/codtk/Footer";
 import { Motion } from "@/components/codtk/Motion";
 import { Background } from "@/components/codtk/Background";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 import "./codtk.css";
@@ -59,6 +60,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             processors in the Privacy Policy. */}
         <Analytics />
         <SpeedInsights />
+        {/* GA4 — loaded only after cookie consent (CookieBanner handles the gtag script injection) */}
+        <CookieBanner />
       </body>
     </html>
   );

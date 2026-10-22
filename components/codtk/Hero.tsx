@@ -2,7 +2,9 @@ import type { CSSProperties } from "react";
 import { Btn } from "@/components/codtk/primitives";
 import { BOOK_CALL_LINK as BOOK_CALL } from "@/lib/contact";
 
-// Headline words; `em` ones take the blue serif.
+// Pass 3 — hero rewritten so new visitors can answer in 5 seconds:
+// What? Custom software. Who? Founders/teams who want to work with the engineers directly.
+// Why? Clear scope, honest timelines, modern code. What next? Start a Project.
 const HEADLINE: [string, boolean][] = [
   ["Building", false],
   ["next", true],
@@ -23,14 +25,19 @@ export function Hero() {
       </div>
       <i className="ctk-hero__core" aria-hidden="true" />
       <div className="ctk-wrap ctk-hero__fg">
-        <p className="ctk-hero__badge rv">
+        {/* Pass 3: plain trust line replaces the decorative pill badge */}
+        <p className="ctk-hero__trust rv">
           <i aria-hidden="true" />
-          Software company in Lahore, Pakistan
+          Fixed quotes · Source code yours · Lahore, Pakistan
         </p>
-        <h1 id="hero-t" className="ctk-blurin rv" aria-label="Building next generation software">
+        <h1
+          id="hero-t"
+          className="ctk-blurin rv"
+          aria-label="Building next generation software"
+        >
           <span aria-hidden="true">
             {HEADLINE.map(([w, em], i) => (
-              <span key={w}>
+              <span key={`${w}-${i}`}>
                 <span className={em ? "w ctk-em" : "w"} style={{ "--i": i } as CSSProperties}>
                   {w}
                 </span>{" "}
@@ -43,7 +50,7 @@ export function Hero() {
         </p>
         <div className="ctk-actions rv" data-d={4}>
           <Btn href="/contact" magnetic>
-            Get a Quote
+            Start a Project
           </Btn>
           <Btn href={BOOK_CALL} external variant="secondary" icon={false}>
             Book a Call

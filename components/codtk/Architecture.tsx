@@ -15,7 +15,7 @@ export function Architecture() {
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">How we build</p>
-          <h2 id="arch-t" className="ctk-d2 rv" data-d={1}>
+          <h2 id="arch-t" className="ctk-h2 rv" data-d={1}>
             Every layer of your product, <span className="ctk-em">one team.</span>
           </h2>
           <p className="ctk-p rv" data-d={2}>

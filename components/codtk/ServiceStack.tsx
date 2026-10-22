@@ -13,7 +13,7 @@ export function ServiceStack() {
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Services</p>
-          <h2 id="svc-t" className="ctk-d2 rv" data-d={1}>
+          <h2 id="svc-t" className="ctk-h2 rv" data-d={1}>
             Seven services, shown the way <span className="ctk-em">you would use them</span>.
           </h2>
           <div className="rv" data-d={2}>

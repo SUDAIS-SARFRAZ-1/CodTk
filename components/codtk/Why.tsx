@@ -19,7 +19,7 @@ export function Why() {
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Why CodTK</p>
-          <h2 id="why-t" className="ctk-d2 rv" data-d={1}>
+          <h2 id="why-t" className="ctk-h2 rv" data-d={1}>
             The rigour of a consultancy. The pace of a <span className="ctk-em">studio</span>.
           </h2>
           <p className="ctk-p rv" data-d={2}>

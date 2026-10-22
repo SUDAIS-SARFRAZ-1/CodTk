@@ -17,7 +17,7 @@ export function DeliveryStage() {
         <div className="ctk-tour__grid rv">
           <div className="ctk-tour__intro">
             <p className="ctk-kicker">From architecture to production</p>
-            <h2 id="tour-t" className="ctk-d2">
+            <h2 id="tour-t" className="ctk-h2">
               One team, from the first diagram to the <span className="ctk-em">last deploy</span>.
             </h2>
             <p className="ctk-p">

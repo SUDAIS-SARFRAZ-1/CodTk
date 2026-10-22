@@ -18,6 +18,7 @@ const PROCESSORS = [
   { name: "Slack", purpose: "Notifies our team that a new enquiry has arrived.", active: false },
   { name: "Vercel Analytics", purpose: "Counts page visits without cookies or personal profiles.", active: true },
   { name: "Vercel Speed Insights", purpose: "Measures how fast pages load for visitors, without cookies or personal profiles.", active: true },
+  { name: "Google Analytics 4", purpose: "Measures site traffic and visitor behaviour using cookies. Only activated after you accept cookies via the consent banner.", active: true },
   { name: "Calendly", purpose: "Books a call with us, if you choose to use the booking link.", active: false },
 ].filter((p) => p.active);
 

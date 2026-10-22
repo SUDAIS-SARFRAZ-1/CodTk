@@ -141,7 +141,7 @@ export function SectionHead({
   extra,
   kicker,
   id,
-  titleClassName = "ctk-d2",
+  titleClassName = "ctk-h2",
 }: {
   eyebrow: string;
   title: ReactNode;
