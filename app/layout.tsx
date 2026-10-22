@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navbar } from "@/components/codtk/Navbar";
 import { Footer } from "@/components/codtk/Footer";
 import { Motion } from "@/components/codtk/Motion";
@@ -53,6 +55,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="ctk-cursor" aria-hidden="true" />
         </div>
         <Motion />
+        {/* Cookieless page views and real-visitor Core Web Vitals (prd.md FR-8, G4); both named as
+            processors in the Privacy Policy. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

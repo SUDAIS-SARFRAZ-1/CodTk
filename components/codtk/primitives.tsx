@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { TECH_LOGOS } from "@/lib/tech-stack";
+import { SERVICE_LOGOS, TECH_LOGOS } from "@/lib/tech-stack";
+
+const LOGOS = [...TECH_LOGOS, ...SERVICE_LOGOS];
 
 // CodTK design-system primitives (Button, ArrowLink, eyebrow, section header, chips, icons, circuit net).
 
@@ -30,9 +32,10 @@ export function Icon({ name }: { name: keyof typeof ICONS }) {
   );
 }
 
-// Single-colour tech logo mask from public/tech/ (Simple Icons). Unknown names render nothing.
+// Single-colour tech logo mask from public/tech/ (Simple Icons); `--c` carries the brand colour.
+// Unknown names render nothing.
 export function TechIcon({ name }: { name: string }) {
-  const logo = TECH_LOGOS.find((t) => t.name === name);
+  const logo = LOGOS.find((t) => t.name === name);
   if (!logo) return null;
   return (
     <i
@@ -102,6 +105,27 @@ export function ArrowLink({ href, children }: { href: string; children: ReactNod
   );
 }
 
+// Window chrome: three dots and an optional title, e.g. a file name or URL.
+export function WindowBar({ className, title }: { className: string; title?: ReactNode }) {
+  return (
+    <div className={className}>
+      <i />
+      <i />
+      <i />
+      {title && <span>{title}</span>}
+    </div>
+  );
+}
+
+// Rounded tile holding a 24×24 line icon; the tile's look comes from `className`.
+export function IconTile({ className, children }: { className: string; children: ReactNode }) {
+  return (
+    <span className={className} aria-hidden="true">
+      <svg viewBox="0 0 24 24">{children}</svg>
+    </span>
+  );
+}
+
 export function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="ctk-eyebrow">{children}</p>;
 }
@@ -109,23 +133,28 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 // Reveal wrapper delay index: 80ms per step (MotionSpec `stagger`).
 export const rv = (d = 0) => ({ className: "rv", "data-d": d });
 
+// `kicker` swaps the `//` mono eyebrow for the blue-rule kicker; `titleClassName` swaps the heading style.
 export function SectionHead({
   eyebrow,
   title,
   intro,
   extra,
+  kicker,
+  id,
+  titleClassName = "ctk-d2",
 }: {
   eyebrow: string;
   title: ReactNode;
   intro?: string;
   extra?: ReactNode;
+  kicker?: boolean;
+  id?: string;
+  titleClassName?: string;
 }) {
   return (
     <div className={`ctk-head${intro ? " ctk-head--split" : ""}`}>
-      <div {...rv(0)}>
-        <Eyebrow>{eyebrow}</Eyebrow>
-      </div>
-      <h2 className="ctk-d2 rv" data-d={1}>
+      <div {...rv(0)}>{kicker ? <p className="ctk-kicker">{eyebrow}</p> : <Eyebrow>{eyebrow}</Eyebrow>}</div>
+      <h2 id={id} className={`${titleClassName} rv`} data-d={1}>
         {title}
       </h2>
       {intro && (
@@ -140,13 +169,13 @@ export function SectionHead({
 
 // Circuit traces drawn in behind a section (design system net()): `n` seeded polylines that draw on
 // reveal, each ending in a node. Same seeded sequence as the system, so layouts match its previews.
-export function Net({ seed, n = 4 }: { seed: number; n?: number }) {
+function netTraces(seed: number, n: number) {
   let s = seed;
   const rnd = () => {
     s = (s * 9301 + 49297) % 233280;
     return s / 233280;
   };
-  const traces = Array.from({ length: n }, () => {
+  return Array.from({ length: n }, () => {
     let x = Math.round(rnd() * 100);
     let y = Math.round(rnd() * 100);
     let d = `M${x} ${y}`;
@@ -157,6 +186,10 @@ export function Net({ seed, n = 4 }: { seed: number; n?: number }) {
     }
     return { d, end: `M${x} ${y}h0` };
   });
+}
+
+export function Net({ seed, n = 4 }: { seed: number; n?: number }) {
+  const traces = netTraces(seed, n);
   return (
     <svg className="ctk-net rv" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       {traces.map((t) => (
@@ -170,46 +203,77 @@ export function Net({ seed, n = 4 }: { seed: number; n?: number }) {
 }
 
 // Inner-page hero (design system pageHero): ~/codtk/<crumb> breadcrumb, the page's one h1, intro.
+// Options: `plainCrumb` shows "Home / Crumb"; `titleClassName` and `titleLabel` (for word-split,
+// aria-hidden titles) restyle the h1; `actions` sits under the intro. With `aside`, the intro and
+// actions move under the title and `aside` takes the right-hand column.
 export function PageHero({
   crumb,
   title,
   intro,
   tone = "hero",
   seed = 3,
+  plainCrumb,
+  titleClassName = "ctk-d1 ctk-d1--page",
+  titleLabel,
+  actions,
+  aside,
 }: {
   crumb: string;
   title: ReactNode;
   intro: ReactNode;
   tone?: string;
   seed?: number;
+  plainCrumb?: boolean;
+  titleClassName?: string;
+  titleLabel?: string;
+  actions?: ReactNode;
+  aside?: ReactNode;
 }) {
+  const introBlock = (
+    <>
+      <p className="ctk-lead">{intro}</p>
+      {actions && <div className="ctk-actions ctk-phero__actions">{actions}</div>}
+    </>
+  );
   return (
     <section className="ctk-phero" data-tone={tone} data-section={crumb.toLowerCase()}>
       <Net seed={seed} n={5} />
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
-            <p className="ctk-crumb rv">
-              <Link href="/">~/codtk</Link>
+            <nav className={`ctk-crumb${plainCrumb ? " ctk-crumb--plain" : ""} rv`} aria-label="Breadcrumb">
+              <Link href="/">{plainCrumb ? "Home" : "~/codtk"}</Link>
               <span aria-hidden="true">/</span>
-              <span>{crumb.toLowerCase()}</span>
-            </p>
-            <h1 className="ctk-d1 ctk-d1--page rv" data-d={1}>
+              <span aria-current="page">{plainCrumb ? crumb : crumb.toLowerCase()}</span>
+            </nav>
+            <h1 className={`${titleClassName} rv`} data-d={1} aria-label={titleLabel}>
               {title}
             </h1>
+            {aside && (
+              <div className="ctk-phero__intro ctk-phero__intro--under rv" data-d={2}>
+                {introBlock}
+              </div>
+            )}
           </div>
-          <div className="l-s8 ctk-phero__intro rv" data-d={2}>
-            <p className="ctk-lead">{intro}</p>
-          </div>
+          {aside ? (
+            <div className="l-s8 ctk-phero__aside rv" data-d={3}>
+              {aside}
+            </div>
+          ) : (
+            <div className="l-s8 ctk-phero__intro rv" data-d={2}>
+              {introBlock}
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 }
 
-export function Chips({ items }: { items: string[] }) {
+// `brand` shows each logo in its brand colour instead of grey.
+export function Chips({ items, brand }: { items: string[]; brand?: boolean }) {
   return (
-    <ul className="ctk-chips">
+    <ul className={`ctk-chips${brand ? " ctk-chips--brand" : ""}`}>
       {items.map((t) => (
         <li key={t} className="ctk-chip">
           <TechIcon name={t} />

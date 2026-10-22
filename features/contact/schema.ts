@@ -1,7 +1,12 @@
 import { z } from "zod";
-import { SERVICES } from "@/lib/services";
+import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
 
-const PROJECT_TYPES = [...SERVICES.map((s) => s.title), "Something else"] as const;
+const PROJECT_TYPES = [...SERVICE_OFFERINGS.map((s) => s.title), "Something else"] as const;
+
+// Older links (home service cards) carry the previous service titles; map them to the current ones.
+const PROJECT_TYPE_ALIASES: Record<string, string> = Object.fromEntries(
+  SERVICE_OFFERINGS.filter((s) => s.legacyTitle).map((s) => [s.legacyTitle, s.title]),
+);
 // Optional budget range (prd.md FR-20); the last is the default when the visitor doesn't pick one.
 const BUDGETS = ["Under $5k", "$5k – 15k", "$15k – 40k", "$40k +", "Not sure yet"] as const;
 
@@ -28,4 +33,4 @@ export const contactFormSchema = z.object({
 
 export type ContactFormInput = z.infer<typeof contactFormSchema>;
 
-export { BUDGETS, PROJECT_TYPES };
+export { BUDGETS, PROJECT_TYPE_ALIASES, PROJECT_TYPES };

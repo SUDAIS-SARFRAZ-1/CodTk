@@ -80,9 +80,6 @@ export function Motion() {
     const scrubs = q("[data-scrub]");
     const pxs = q("[data-px]");
     const hs = c.querySelector<HTMLElement>("[data-hscroll]");
-    const scrolly = c.querySelector<HTMLElement>("[data-scrolly]");
-    const stageCount = scrolly ? scrolly.querySelectorAll("[data-stage]").length : 0;
-    let stage = 0;
     const motion = !reduce;
     let ticking = false;
 
@@ -124,27 +121,6 @@ export function Motion() {
           const sh = card.querySelector<HTMLElement>("[data-shade]");
           if (sh) sh.style.opacity = (p * 0.5).toFixed(3);
         });
-
-      /* process scrolly: progress through the pinned section picks the stage */
-      if (scrolly && stageCount) {
-        const len = scrolly.offsetHeight - h;
-        const pr = wide ? Math.min(Math.max(-scrolly.getBoundingClientRect().top / Math.max(len, 1), 0), 0.9999) : 0;
-        const idx = Math.floor(pr * stageCount);
-        if (idx !== stage) {
-          stage = idx;
-          ["[data-stage]", "[data-panel]", "[data-idx]"].forEach((s) =>
-            scrolly.querySelectorAll(s).forEach((el, i) => el.classList.toggle("on", i === idx)),
-          );
-          scrolly.querySelectorAll("[data-node]").forEach((el, i) => {
-            el.classList.toggle("on", i === idx);
-            el.classList.toggle("done", i < idx);
-          });
-          const st = scrolly.querySelector("[data-pipe-status]");
-          if (st) st.textContent = idx === stageCount - 1 ? "ongoing ● support" : `running ● stage ${idx + 1}/${stageCount}`;
-        }
-        const fill = scrolly.querySelector<HTMLElement>("[data-pipe-fill]");
-        if (fill) fill.style.transform = `scaleX(${(wide ? Math.min(pr * 1.25, 1) : 1).toFixed(4)})`;
-      }
 
       /* horizontal showcase */
       if (hs) {

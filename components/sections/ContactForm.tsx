@@ -4,7 +4,13 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { useSearchParams } from "next/navigation";
-import { BUDGETS, contactFormSchema, PROJECT_TYPES, type ContactFormInput } from "@/features/contact/schema";
+import {
+  BUDGETS,
+  contactFormSchema,
+  PROJECT_TYPE_ALIASES,
+  PROJECT_TYPES,
+  type ContactFormInput,
+} from "@/features/contact/schema";
 import { useSubmitContactForm } from "@/features/contact/useSubmitContactForm";
 import { Icon } from "@/components/codtk/primitives";
 
@@ -22,8 +28,7 @@ declare global {
 
 type Errors = Partial<Record<keyof ContactFormInput, string>>;
 
-// Design system FormField: mono label, input, and an error line that CSS reveals next to an
-// aria-invalid control.
+// Form field: label, input, and an error line that CSS reveals next to an aria-invalid control.
 function Field({
   id,
   label,
@@ -59,7 +64,8 @@ function Field({
 // for instant feedback; the server re-validates everything (rules.md §5).
 export function ContactForm() {
   const searchParams = useSearchParams();
-  const prefilledService = searchParams.get("service");
+  const service = searchParams.get("service") ?? "";
+  const prefilledService = PROJECT_TYPE_ALIASES[service] ?? service;
   const defaultProjectType = useMemo(
     () =>
       PROJECT_TYPES.find((type) => type === prefilledService) ?? PROJECT_TYPES[PROJECT_TYPES.length - 1],
@@ -90,22 +96,33 @@ export function ContactForm() {
   const invalid = (k: keyof ContactFormInput, id: string) =>
     fieldErrors[k] ? { "aria-invalid": true, "aria-describedby": `${id}-e` } : {};
 
+  // Check one field against the shared schema when the visitor leaves it, and clear its error as
+  // soon as it is fixed. Submit still validates everything (and the server re-validates).
+  const checkField = (k: "name" | "email" | "message", value: string, onBlur: boolean) => {
+    if (onBlur && !value) return;
+    if (!onBlur && !fieldErrors[k]) return;
+    const r = contactFormSchema.shape[k].safeParse(value);
+    setFieldErrors((prev) => ({ ...prev, [k]: r.success ? undefined : r.error.issues[0].message }));
+  };
+  const live = (k: "name" | "email" | "message") => ({
+    onBlur: (e: { currentTarget: { value: string } }) => checkField(k, e.currentTarget.value, true),
+    onInput: (e: { currentTarget: { value: string } }) => checkField(k, e.currentTarget.value, false),
+  });
+
   return (
     <div className={`ctk-panel ctk-glow${isSuccess ? " is-sent" : ""}`}>
-      <p className="ctk-eyebrow">project enquiry</p>
-      <h2 className="ctk-h3" style={{ margin: "16px 0 32px" }}>
-        Get a quote
-      </h2>
+      <p className="ctk-kicker">Project enquiry</p>
+      <h2 className="ctk-panel__h">Get a quote</h2>
 
       {/* Always mounted, so the success message is announced when it appears (rules.md §34). */}
       <div aria-live="polite">
         {isSuccess && (
           <div className="ctk-done">
             <svg viewBox="0 0 72 72" aria-hidden="true">
-              <circle cx="36" cy="36" r="34" />
+              <circle cx="36" cy="36" r="34" pathLength={214} />
               <path d="M23 37l9 9 18-20" />
             </svg>
-            <h3 className="ctk-h3">Message received.</h3>
+            <h3 className="ctk-panel__h">Message received.</h3>
             <p className="ctk-p" style={{ marginTop: 12 }}>
               Thank you. We will reply within 24 hours, Monday to Saturday.
             </p>
@@ -155,7 +172,7 @@ export function ContactForm() {
           <input type="text" id="company" name="company" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <Field id="name" label="full_name" required error={fieldErrors.name}>
+        <Field id="name" label="Full name" required error={fieldErrors.name}>
           <input
             className="ctk-input"
             id="name"
@@ -164,9 +181,10 @@ export function ContactForm() {
             required
             placeholder="Your name"
             {...invalid("name", "name")}
+            {...live("name")}
           />
         </Field>
-        <Field id="email" label="email" required error={fieldErrors.email}>
+        <Field id="email" label="Email" required error={fieldErrors.email}>
           <input
             className="ctk-input"
             id="email"
@@ -176,9 +194,10 @@ export function ContactForm() {
             required
             placeholder="name@company.com"
             {...invalid("email", "email")}
+            {...live("email")}
           />
         </Field>
-        <Field id="projectType" label="project_type" full>
+        <Field id="projectType" label="Project type" full>
           <div className="ctk-select">
             <select className="ctk-input" id="projectType" name="projectType" defaultValue={defaultProjectType}>
               {PROJECT_TYPES.map((type) => (
@@ -191,7 +210,7 @@ export function ContactForm() {
         </Field>
 
         <fieldset className="ctk-field ctk-full">
-          <legend>budget_usd</legend>
+          <legend>Budget (USD)</legend>
           <div className="ctk-opts" style={{ marginTop: 8 }}>
             {BUDGETS.map((b) => (
               <label key={b} className="ctk-opt">
@@ -203,7 +222,7 @@ export function ContactForm() {
           <p className="ctk-hint">Optional. Prefer to talk in PKR? Mention it in your message.</p>
         </fieldset>
 
-        <Field id="message" label="project_details" required error={fieldErrors.message} full>
+        <Field id="message" label="Project details" required error={fieldErrors.message} full>
           <textarea
             className="ctk-input"
             id="message"
@@ -211,6 +230,7 @@ export function ContactForm() {
             required
             placeholder="What do you want to build? Links to examples or designs are welcome."
             {...invalid("message", "message")}
+            {...live("message")}
           />
         </Field>
 
@@ -239,7 +259,7 @@ export function ContactForm() {
           <span className="ctk-mag" data-magnetic>
             <button className="ctk-btn ctk-btn--primary" type="submit" disabled={isPending}>
               {isPending ? "Sending…" : "Send Message"}
-              <Icon name="arrow" />
+              {isPending ? <i className="ctk-spin" aria-hidden="true" /> : <Icon name="arrow" />}
             </button>
           </span>
         </div>

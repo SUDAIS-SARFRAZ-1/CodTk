@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/projects";
-import { Btn, Chips, Icon, PageHero } from "@/components/codtk/primitives";
+import { Btn, Chips, Icon, PageHero, WindowBar } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
 export const metadata: Metadata = pageMetadata("/portfolio", "Work", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
@@ -34,11 +34,7 @@ export default function PortfolioPage() {
                 <Link key={p.slug} className={`ctk-pcard${i === 0 ? " ctk-pcard--wide" : ""} rv`} href={`/portfolio/${p.slug}`}>
                   <div className="ctk-viz" data-theme="dark">
                     <div className="ctk-viz__win">
-                      <div className="ctk-viz__bar">
-                        <i />
-                        <i />
-                        <i />
-                      </div>
+                      <WindowBar className="ctk-viz__bar" />
                       <Image
                         className="ctk-viz__img"
                         src={img.src}

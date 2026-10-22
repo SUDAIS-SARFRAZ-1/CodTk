@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Btn, Icon } from "@/components/codtk/primitives";
+import { Btn, Icon, IconTile } from "@/components/codtk/primitives";
 
 // Where the client is starting from: all four confirmed by the founder (2026-10-20). Says what to
 // bring to a first call and what it gives them; kept clear of the delivery timeline, Why and the
@@ -78,11 +78,9 @@ export function StartingPoint() {
               aria-controls="start-panel"
               onClick={() => setActive(i)}
             >
-              <span className="ctk-start__ico">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d={x.icon} />
-                </svg>
-              </span>
+              <IconTile className="ctk-start__ico">
+                <path d={x.icon} />
+              </IconTile>
               <b>{x.t}</b>
               <span className="ctk-start__line">{x.line}</span>
               <span className="ctk-start__meter">

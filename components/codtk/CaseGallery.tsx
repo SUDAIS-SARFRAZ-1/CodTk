@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { WindowBar } from "@/components/codtk/primitives";
 import type { Project } from "@/lib/projects";
 
 // Screenshot viewer for the featured case study: one large frame, thumbnails to switch screens.
@@ -12,11 +13,7 @@ export function CaseGallery({ images }: { images: Project["images"] }) {
   return (
     <div className="ctk-feat__gallery">
       <div className="ctk-feat__frame" data-theme="dark">
-        <div className="ctk-viz__bar">
-          <i />
-          <i />
-          <i />
-        </div>
+        <WindowBar className="ctk-viz__bar" />
         <Image
           key={img.src}
           className="ctk-feat__shot"

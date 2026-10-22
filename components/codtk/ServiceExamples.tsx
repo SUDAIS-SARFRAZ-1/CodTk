@@ -1,4 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
+import { WindowBar } from "@/components/codtk/primitives";
+import type { ServiceTone } from "@/lib/service-offerings";
 
 // Everyday examples drawn beside each home service card. Illustrations only: the names, times and
 // screens are generic examples of the kind of thing we build, not client work (rules.md §1).
@@ -24,12 +26,7 @@ function Booking() {
   return (
     <>
       <div className="ctk-sx-win">
-        <div className="ctk-sx-bar">
-          <i />
-          <i />
-          <i />
-          <span>yourclinic.com/book</span>
-        </div>
+        <WindowBar className="ctk-sx-bar" title="yourclinic.com/book" />
         <div className="ctk-sx-body">
           <div className="ctk-sx-row">
             <b className="ctk-sx-h">Book an appointment</b>
@@ -180,6 +177,42 @@ function SaleDay() {
   );
 }
 
+// SaaS: one product sold to many salons, each with its own workspace and plan.
+const TENANTS = [
+  { n: "Northside Salon", s: "Pro plan · 6 staff", a: "N" },
+  { n: "Glow Studio", s: "Starter plan · 2 staff", a: "G" },
+  { n: "Urban Cuts", s: "Pro plan · 4 staff", a: "U" },
+];
+
+function Workspaces() {
+  return (
+    <>
+      <div className="ctk-sx-win ctk-sx-pad">
+        <div className="ctk-sx-row">
+          <b className="ctk-sx-cap">Salons on your platform</b>
+          <span className="ctk-sx-badge">
+            <i className="ctk-sx-ping" />
+            Billing live
+          </span>
+        </div>
+        {TENANTS.map((t) => (
+          <div key={t.n} className="ctk-sx-item">
+            <span className="ctk-sx-ico ctk-sx-ico--round">{t.a}</span>
+            <div>
+              <b>{t.n}</b>
+              <small>{t.s}</small>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="ctk-sx-toast">
+        <Check />
+        New salon joined, first invoice sent
+      </div>
+    </>
+  );
+}
+
 const FLOW = [
   { t: "A customer places an order", s: "On your website", tone: "solid", icon: <><path d="M6 6h15l-2 9H8z" /><path d="M6 6L5 3H2" /><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /></> },
   { t: "An invoice PDF is created", s: "With your logo and prices", tone: "blue", icon: <><path d="M7 3h7l4 4v14H7z" /><path d="M10 12h5M10 16h5" /></> },
@@ -242,17 +275,18 @@ function Plan() {
   );
 }
 
-const EXAMPLES: Record<string, () => ReactNode> = {
-  "web-application-development": Booking,
-  "mobile-application-development": Tracking,
-  "backend-api-development": FeePortal,
-  "cloud-devops-solutions": SaleDay,
-  "business-process-automation": OrderFlow,
-  "custom-software-consulting": Plan,
+const EXAMPLES: Record<ServiceTone, () => ReactNode> = {
+  web: Booking,
+  mobile: Tracking,
+  saas: Workspaces,
+  api: FeePortal,
+  cloud: SaleDay,
+  ai: OrderFlow,
+  consulting: Plan,
 };
 
-export function ServiceExample({ slug, label }: { slug: string; label: string }) {
-  const Example = EXAMPLES[slug];
+export function ServiceExample({ id, label }: { id: ServiceTone; label: string }) {
+  const Example = EXAMPLES[id];
   return (
     <figure className="ctk-sx" aria-label={`Example: ${label}`}>
       <figcaption className="ctk-sx-tag">

@@ -76,9 +76,12 @@ Hero (logo monolith, the "Why CodTK" line, primary CTA "Get a Quote", secondary 
 Hidden until real: "Trusted by" logo strip, testimonials, stats.
 
 ### 6.2 Services
-Featured six: Web, Mobile (Android and iOS via cross-platform, **assumed**), Backend & API, Cloud & DevOps, Automation, Consulting. UI/UX is part of every project, not a separate service (**assumed**).
-- Each card: description, representative tech, deliverables, CTA that opens the quote form with that service pre-filled (FR-3).
-- A seventh card, "Something else? Tell us", opens the form with "Other" selected. CodTK takes any kind of development.
+Seven services (founder's Services brief, Oct 22, 2026, merged with the earlier six so no existing content was dropped): Web Applications, Mobile Applications, SaaS Products, AI and Automation, Backend Systems and APIs, DevOps and Cloud, Software Consulting. `lib/service-offerings.ts` is the one service list: the Services page, home service cards (short copy in `lib/services.ts`), footer and contact form all read it. UI/UX is part of every project, not a separate service (**assumed**).
+- Each block: number and tag, all-caps title, description, typed CLI line, key deliverables, brand-coloured tech chips, "Discuss This Service" CTA that opens the quote form with that service pre-filled (FR-3). The contact form's project types follow this list; older service titles still pre-fill via aliases.
+- A final card, "Not on the list? Tell us", opens the form with "Something else" selected. CodTK takes any kind of development.
+- Engagement models on this page: Fixed-scope project, Dedicated team (featured), Support and retainer, plus Technical consulting.
+- Delivery standard: Lighthouse targets (Performance 95, Accessibility 100, Best practices 100, SEO 100, shown as targets), a build checklist (tests in CI, peer code review, monitoring and runbooks, documentation and handover, security audits, WCAG 2.1 AA) and the handover repository structure.
+- No process strip and no FAQ on this page; navbar, footer and the closing "Start a project" card stay as site-wide.
 - No prices. Every service ends in "Get a Quote".
 - No fixed timelines or minimum size: "Timeline and cost depend on scope; we confirm both before work starts."
 - Post-launch support and maintenance is offered and mentioned on this page and in Process.
@@ -109,7 +112,7 @@ Engagement model (FR-13):
 - WhatsApp link and tap-to-call for +92 301 9492010, email, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan", reply promise, Privacy/Terms links.
 
 ### 6.8 Privacy Policy and Terms of Use
-Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics (cookieless), Calendly (booking).
+Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics and Speed Insights (cookieless), Calendly (booking).
 
 ### 6.9 Footer
 Navigation, email, WhatsApp, phone, "Lahore, Pakistan", social icons (hidden until URLs), Privacy/Terms links, © CodTK. No registration number.
@@ -139,7 +142,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-5 | Responsive from 360 to 1920px | Must | Home done; other pages pending redesign |
 | FR-6 | Meta, OG image (site-wide + per case study), sitemap, robots, canonical codtk.com | Must | Built: per-page title/description/canonical/OG, generated OG image, sitemap.xml, robots.txt |
 | FR-7 | Social links, hidden until URLs exist | Could | Pending URLs |
-| FR-8 | Vercel Analytics, plus Search Console and Google Business Profile | Should | Not set up |
+| FR-8 | Vercel Analytics, plus Search Console and Google Business Profile | Should | Vercel Analytics and Speed Insights added Oct 21 (enable both in the Vercel dashboard); Search Console and Business Profile not set up |
 | FR-9 | Privacy and Terms pages with final content | Must | Drafted Oct 20; founder review pending |
 | FR-10 | Calendly link on Home and Contact | Should | Pending URL |
 | FR-11 | SECP/NTN in footer | Won't (v2) | Not registered |
@@ -214,3 +217,4 @@ Remaining page redesigns in this order: Services → Portfolio → About → Pro
 | 1.0–1.2 | Sep 2026 | AptiScript PRD |
 | 2.0-draft | Oct 18, 2026 | Rebrand to CodTK, design system, build status, open questions |
 | 2.0 | Oct 18, 2026 | All 55 questions answered; positioning, lead flow, phased launch for Oct 20 |
+| 2.1 | Oct 22, 2026 | Services page redesigned from the founder's brief: seven services, Dedicated team model, delivery standard, tech marquee (§6.2) |

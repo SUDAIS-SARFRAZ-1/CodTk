@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLink, Btn, Chips, Icon } from "@/components/codtk/primitives";
+import { ArrowLink, Btn, Chips, Icon, WindowBar } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { PROJECTS, type Project } from "@/lib/projects";
 
@@ -10,11 +10,7 @@ function Visual({ p }: { p: Project }) {
   return (
     <div className="ctk-viz ctk-clip" data-theme="dark">
       <div className="ctk-viz__win">
-        <div className="ctk-viz__bar">
-          <i />
-          <i />
-          <i />
-        </div>
+        <WindowBar className="ctk-viz__bar" />
         <Image
           className="ctk-viz__img"
           src={img.src}

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/projects";
-import { Btn, Chips, Icon, Net } from "@/components/codtk/primitives";
+import { Btn, Chips, Icon, Net, WindowBar } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
@@ -89,11 +89,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           <div className="rv">
             <div className="ctk-viz" data-theme="dark" style={{ aspectRatio: "21 / 9" }}>
               <div className="ctk-viz__win">
-                <div className="ctk-viz__bar">
-                  <i />
-                  <i />
-                  <i />
-                </div>
+                <WindowBar className="ctk-viz__bar" />
                 <Image
                   className="ctk-viz__img"
                   src={cover.src}

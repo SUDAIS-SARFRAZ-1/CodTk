@@ -69,3 +69,18 @@ export const TECH_LOGOS: { name: string; file: string; color: string }[] = [
   { name: "Vercel", file: "vercel", color: "#000000" },
   { name: "Render", file: "render", color: "#000000" },
 ];
+
+// Extra logos used only on the Services page, kept out of TECH_LOGOS so the home logo strip doesn't change.
+export const SERVICE_LOGOS: { name: string; file: string; color: string }[] = [
+  { name: "React Native", file: "react", color: "#149ECA" },
+  { name: "Flutter", file: "flutter", color: "#02569B" },
+  { name: "Kubernetes", file: "kubernetes", color: "#326CE5" },
+  { name: "Terraform", file: "terraform", color: "#844FBA" },
+  { name: "Google Cloud", file: "googlecloud", color: "#4285F4" },
+  { name: "Azure", file: "microsoftazure", color: "#0078D4" },
+  { name: "OpenAI", file: "openai", color: "#000000" },
+  { name: "Stripe", file: "stripe", color: "#635BFF" },
+  { name: "NestJS", file: "nestjs", color: "#E0234E" },
+  { name: "GraphQL", file: "graphql", color: "#E10098" },
+  { name: "FastAPI", file: "fastapi", color: "#009688" },
+];
