@@ -7,7 +7,7 @@ import { LahoreCard } from "@/components/about/LahoreCard";
 import { TeamDiagram } from "@/components/about/TeamDiagram";
 import { TECH_STACK } from "@/lib/tech-stack";
 
-export const metadata: Metadata = pageMetadata("/about", "About", "About CodTK, a new software company in Lahore. Work directly with the engineers who build your product: frontend, backend and DevOps under one roof.");
+export const metadata: Metadata = pageMetadata("/about", "About", "About CodTK, a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. Founded in 2026; a remote team across web, mobile, AI and DevOps.");
 
 // `tone` picks a colour from the sv-tone set; `icon` is a 24×24 line icon.
 type Tile = { tone: string; icon: ReactNode };
@@ -31,6 +31,22 @@ const FUNCTIONS: (Tile & { name: string; text: string; tech: string[] })[] = [
 const STORY = [
   "So we keep it direct. You work with the engineers who build your product, scope and cost are agreed in writing before work starts, and we take on any kind of software, from a first website to a full platform with its own app.",
   "We are built for startup founders and small businesses in Pakistan first, and for clients abroad who want a direct line to the people writing their code.",
+];
+
+// Same copy as the LinkedIn page (founder's brief, 2026-11-19), so every channel tells one story.
+const HOW_WE_WORK: [string, string][] = [
+  ["Discovery", "we understand your goals and requirements."],
+  ["Design", "user-centred UI/UX and system architecture."],
+  ["Development", "clean, maintainable, well-tested code."],
+  ["Testing & Deployment", "testing, deployment, monitoring and optimisation."],
+  ["Support", "ongoing maintenance and improvements."],
+];
+const WHY: [string, string][] = [
+  ["One team", "to build and grow your product."],
+  ["Transparent communication", "and milestone-based delivery."],
+  ["Strict confidentiality:", "we never share client data or project details without permission."],
+  ["Built to scale", "as your business grows."],
+  ["Direct and fixed:", "you work with the engineers, get fixed quotes and own your source code."],
 ];
 
 const MISSION_VISION = [
@@ -67,7 +83,7 @@ export default function AboutPage() {
         titleClassName="sv-h1 ctk-blurin"
         titleLabel="A focused team, engineering with discipline."
         title={<Words text="A focused team, engineering with discipline." blueFrom={5} />}
-        intro="CodTK is a new software company in Lahore. We design, build and run software for startups and businesses in Pakistan and abroad."
+        intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We design and build scalable, secure software, and help businesses take their operations online and grow. Founded in 2026, we are a remote team of engineers across web, mobile, AI and DevOps."
         actions={
           <>
             <Btn href="/contact" magnetic>
@@ -114,6 +130,47 @@ export default function AboutPage() {
               </p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="ctk-sec sv-sec cf-where" data-tone="quiet" data-section="how we work" aria-labelledby="ab-how-h">
+        <div className="ctk-wrap">
+          <SectionHead
+            kicker
+            eyebrow="How we work"
+            id="ab-how-h"
+            titleClassName="sv-h2"
+            title={
+              <>
+                Five steps, and <span className="sv-b">one team</span> through all of them.
+              </>
+            }
+          />
+          <div className="cf-where__g">
+            <article className="cf-card rv">
+              <h3>How we work</h3>
+              <ol className="cf-list">
+                {HOW_WE_WORK.map(([b, t]) => (
+                  <li key={b}>
+                    <b>{b}:</b>
+                    {t}
+                  </li>
+                ))}
+              </ol>
+              <ArrowLink href="/process">The process in detail</ArrowLink>
+            </article>
+            <article className="cf-card rv" data-d={1}>
+              <h3>Why CodTK</h3>
+              <ul className="cf-list">
+                {WHY.map(([b, t]) => (
+                  <li key={b}>
+                    <b>{b}</b>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
         </div>
       </section>
 

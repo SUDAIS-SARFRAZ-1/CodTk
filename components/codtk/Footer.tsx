@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FooterSpotlight } from "@/components/codtk/FooterSpotlight";
+import { SocialIcons } from "@/components/codtk/SocialIcons";
 import {
   BUSINESS_EMAIL,
   LOCATION,
-  SOCIAL_LINKS,
-  WHATSAPP_LINK,
+  ONE_LINER,
+  REACH,
+  SIGN_OFF,
   WHATSAPP_NUMBER_DISPLAY,
   WHATSAPP_NUMBER_E164,
 } from "@/lib/contact";
@@ -43,16 +45,13 @@ function Col({ title, items }: { title: string; items: FootLink[] }) {
   );
 }
 
-// Site footer (prd.md §6.9): navigation, every contact route once, social links once their URLs
-// exist, legal links. Behind it, the CodTK logo sits faint and a spotlight follows the pointer
+// Site footer (prd.md §6.9): navigation, every contact route once, social and WhatsApp icons,
+// legal links. Behind it, the CodTK logo sits faint and a spotlight follows the pointer
 // (FooterSpotlight, the only client part).
 export function Footer() {
-  // Social accounts stay hidden until their real URLs are added in lib/contact.ts.
   const contact: FootLink[] = [
     { label: BUSINESS_EMAIL, href: `mailto:${BUSINESS_EMAIL}` },
-    { label: "WhatsApp", href: WHATSAPP_LINK, external: true },
     { label: WHATSAPP_NUMBER_DISPLAY, href: `tel:+${WHATSAPP_NUMBER_E164}` },
-    ...SOCIAL_LINKS.filter((s) => s.url).map((s) => ({ label: s.name, href: s.url, external: true })),
   ];
 
   return (
@@ -63,8 +62,9 @@ export function Footer() {
           <div>
             <Image className="ctk-foot__mark" src="/brand/mark.png" alt="CodTK" width={720} height={379} sizes="120px" />
             <p className="ctk-sm" style={{ marginTop: 20, maxWidth: "24em" }}>
-              Web, mobile, backend and cloud software, built in Lahore for clients in Pakistan and abroad.
+              {ONE_LINER}
             </p>
+            <SocialIcons />
           </div>
           <div className="ctk-foot__cols">
             <Col title="Company" items={COMPANY} />
@@ -74,12 +74,18 @@ export function Footer() {
             />
             <div>
               <Col title="Contact" items={contact} />
-              <p className="ctk-foot__where">{LOCATION} · PKT (UTC+5)</p>
+              <p className="ctk-foot__where">
+                {LOCATION} · PKT (UTC+5)
+                <br />
+                {REACH}
+              </p>
             </div>
           </div>
         </div>
         <div className="ctk-foot__legal">
-          <p>© {new Date().getFullYear()} CodTK. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} CodTK · {SIGN_OFF} · {BUSINESS_EMAIL} · {WHATSAPP_NUMBER_DISPLAY}
+          </p>
           <nav aria-label="Legal">
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Use</Link>

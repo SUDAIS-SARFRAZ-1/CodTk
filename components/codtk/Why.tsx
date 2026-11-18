@@ -7,7 +7,7 @@ import { Icon } from "@/components/codtk/primitives";
 const ROWS = [
   ["Who you talk to", "The engineers who are building your product", "One person, who may be juggling other clients", "An account manager who passes messages on"],
   ["Skills covered", "Design, frontend, backend and DevOps, working together", "Usually one or two of these", "All of them, split across separate departments"],
-  ["Contract and NDA", "Signed before any work begins, so your idea stays confidential", "Often an informal agreement", "Yes, usually after a longer sales process"],
+  ["Contract and NDA", "Signed before any work begins. We never share client data or project details without permission", "Often an informal agreement", "Yes, usually after a longer sales process"],
   ["Who owns the code", "You do: full source code and IP after payment", "Depends on what was agreed", "Sometimes licensed to you rather than handed over"],
   ["How pricing works", "A fixed quote for clearly scoped work, so no surprise bills", "Often hourly, so totals can drift", "Fixed quotes, often with high minimum budgets"],
   ["After launch", "One month of free bug fixes, then optional maintenance", "Depends on their availability", "A separate paid support contract"],

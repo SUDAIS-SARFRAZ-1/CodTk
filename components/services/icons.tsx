@@ -31,6 +31,33 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" />
     </>
   ),
+  erp: (
+    <>
+      <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" />
+      <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" />
+    </>
+  ),
+  wordpress: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m6.5 8 3.5 10 2-6 2 6 3.5-10M5 8h3.5M11 8h3M15.5 8H19" />
+    </>
+  ),
+  seo: (
+    <>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m15.5 15.5 5 5M8 12l2-2 1.5 1.5L14 9" />
+    </>
+  ),
+  marketing: <path d="M3 10v4h3l7 5V5L6 10H3ZM17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11" />,
+  transform: (
+    <>
+      <path d="M3 10.5 7.5 6 12 10.5V19H3z" />
+      <path d="M14 7h7v12h-7M17.5 15.5h.01M9 13.5h3" />
+    </>
+  ),
   fixed: (
     <>
       <circle cx="12" cy="12" r="9" />

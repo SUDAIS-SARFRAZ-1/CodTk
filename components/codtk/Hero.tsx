@@ -46,7 +46,8 @@ export function Hero() {
           </span>
         </h1>
         <p className="ctk-lead rv" data-d={3}>
-          Work directly with the engineers who build your product: clear scope, honest timelines and modern code.
+          Web, mobile, ERP, AI, cloud &amp; digital growth. Work directly with the engineers who build your product:
+          clear scope, honest timelines and modern code.
         </p>
         <div className="ctk-actions rv" data-d={4}>
           <Btn href="/contact" magnetic>

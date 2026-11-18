@@ -14,11 +14,11 @@ export function ServiceStack() {
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Services</p>
           <h2 id="svc-t" className="ctk-h2 rv" data-d={1}>
-            Seven services, shown the way <span className="ctk-em">you would use them</span>.
+            Twelve services, shown the way <span className="ctk-em">you would use them</span>.
           </h2>
           <div className="rv" data-d={2}>
             <p className="ctk-p">
-              Each card shows an everyday example of what we build. Start with one service or combine several.
+              Development, growth, and strategy and infrastructure: each card shows an everyday example of what we do. Start with one service or combine several.
             </p>
             <div style={{ marginTop: 20 }}>
               <ArrowLink href="/services">All services</ArrowLink>
@@ -40,7 +40,7 @@ export function ServiceStack() {
                 <span className="ctk-scard__low" aria-hidden="true" />
                 <div className="ctk-scard__copy">
                   <p className="ctk-scard__num">
-                    {String(i + 1).padStart(2, "0")} <i /> {total}
+                    {String(i + 1).padStart(2, "0")} <i /> {total} · {s.group}
                   </p>
                   <h3>{s.title}</h3>
                   <p className="ctk-p">{d.blurb}</p>

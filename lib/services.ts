@@ -43,6 +43,36 @@ export const SERVICE_DETAILS: Record<ServiceTone, { blurb: string; example: stri
     built: "Built with Docker, GitHub Actions, Vercel and AWS",
     cta: "Get a quote for cloud setup",
   },
+  erp: {
+    blurb: "One system for inventory, sales, HR and accounts, built around the way your business already works.",
+    example: "Stock and sales for a wholesaler",
+    built: "Built with Next.js, Node.js and PostgreSQL",
+    cta: "Get a quote for an ERP",
+  },
+  wordpress: {
+    blurb: "Fast, easy-to-manage WordPress sites your team can update from the familiar editor.",
+    example: "A bakery's menu, updated in minutes",
+    built: "Built with WordPress, a custom theme and PHP",
+    cta: "Get a quote for a WordPress site",
+  },
+  seo: {
+    blurb: "Get found on Google by the clients you want, with a site search engines can read and pages people search for.",
+    example: "A Lahore clinic on page one",
+    built: "Measured in Search Console and Google Analytics",
+    cta: "Get a quote for SEO",
+  },
+  marketing: {
+    blurb: "Paid campaigns on the platforms that fit your business, judged by the enquiries they bring, not the clicks.",
+    example: "A month of ads for a furniture store",
+    built: "Run on Google Ads and Meta Ads, tracked end to end",
+    cta: "Get a quote for campaigns",
+  },
+  transform: {
+    blurb: "Take your physical business online, one step at a time, so orders, stock and payments stop living on paper.",
+    example: "A pharmacy moving off the paper register",
+    built: "Built with web, mobile and the tools you already use",
+    cta: "Get a quote to go digital",
+  },
   consulting: {
     blurb: "An outside engineer's view before you commit: what to build first, how to build it, and what could go wrong.",
     example: "Planning a marketplace before building it",

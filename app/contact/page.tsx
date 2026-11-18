@@ -7,12 +7,13 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { CopyButton } from "@/components/contact/CopyButton";
 import { WorldClocks } from "@/components/contact/WorldClocks";
 import { Providers } from "@/app/providers";
-import { ArrowLink, Btn, IconTile, SectionHead } from "@/components/codtk/primitives";
+import { Btn, IconTile, SectionHead } from "@/components/codtk/primitives";
+import { SocialIcons } from "@/components/codtk/SocialIcons";
 import {
   BOOK_CALL_LINK,
   BUSINESS_EMAIL,
   LOCATION,
-  SOCIAL_LINKS,
+  REACH,
   WHATSAPP_LINK,
   WHATSAPP_NUMBER_DISPLAY,
   WHATSAPP_NUMBER_E164,
@@ -57,9 +58,8 @@ function Way({ tone, icon, label, children, action }: { tone: string; icon: Reac
 }
 
 // Contact page: contact routes and the enquiry form, where we work (Pakistan and abroad, with live
-// clocks), and a call card. Social links render only once their URLs exist (prd.md FR-7).
+// clocks), and a call card.
 export default function ContactPage() {
-  const social = SOCIAL_LINKS.filter((s) => s.url);
   return (
     <div className="sv-page cf-page">
       <section className="cf-hero" data-tone="contact" data-section="contact" aria-labelledby="cf-h1">
@@ -132,15 +132,7 @@ export default function ContactPage() {
                 <p className="cf-way__v">Within 24 hours, Monday to Saturday (PKT)</p>
               </Way>
             </ul>
-            {social.length > 0 && (
-              <div className="cf-social rv">
-                {social.map((s) => (
-                  <ArrowLink key={s.name} href={s.url}>
-                    {s.name}
-                  </ArrowLink>
-                ))}
-              </div>
-            )}
+            <SocialIcons className="cf-social rv" />
           </div>
 
           <div className="rv" data-d={2}>
@@ -186,7 +178,9 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-              <p className="cf-card__base">Based in {LOCATION}.</p>
+              <p className="cf-card__base">
+                Based in {LOCATION}. {REACH}.
+              </p>
             </article>
             <article className="cf-card cf-card--intl rv" data-d={1} data-theme="dark">
               <div className="cf-card__top">

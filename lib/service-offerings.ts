@@ -1,25 +1,41 @@
-// The one service list (founder's Services brief, 2026-10-22, merged with the earlier six so nothing
-// was lost). The Services page, home service cards, footer and contact form all read it; the home
-// cards' short copy lives in lib/services.ts, keyed by `id`.
+// The one service list (founder's briefs of 2026-10-22 and 2026-11-19: 12 services in three groups;
+// Shopify is not offered). The Services page, home service cards, footer and contact form all read
+// it; the home cards' short copy lives in lib/services.ts, keyed by `id`.
 // Add a service here and the page, anchor chips and contact form pick it up; no layout code changes.
 
-export type ServiceTone = "web" | "mobile" | "saas" | "ai" | "api" | "cloud" | "consulting";
+export type ServiceTone =
+  | "web"
+  | "mobile"
+  | "saas"
+  | "erp"
+  | "api"
+  | "wordpress"
+  | "seo"
+  | "marketing"
+  | "transform"
+  | "ai"
+  | "cloud"
+  | "consulting";
+
+export const SERVICE_GROUPS = ["Development", "Growth", "Strategy & Infrastructure"] as const;
 
 export type ServiceOffering = {
   id: ServiceTone;
+  group: (typeof SERVICE_GROUPS)[number];
   title: string;
   tag: string;
   cmd: string;
   description: string;
   deliverables: string[];
   tech: string[];
-  // Previous title, so older shared links (`/contact?service=<old title>`) still pre-fill the form.
-  legacyTitle?: string;
+  // Previous titles, so older shared links (`/contact?service=<old title>`) still pre-fill the form.
+  legacyTitles?: string[];
 };
 
 export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "web",
+    group: "Development",
     title: "Web Applications",
     tag: "web · next.js",
     cmd: "codtk init web --stack next --ssr",
@@ -34,11 +50,12 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Source code and every account handed to you",
     ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    legacyTitle: "Web Application Development",
+    legacyTitles: ["Web Application Development"],
   },
   {
     id: "mobile",
-    title: "Mobile Applications",
+    group: "Development",
+    title: "Mobile Apps (Android & iOS)",
     tag: "android · ios",
     cmd: "codtk init mobile --targets android,ios",
     description:
@@ -52,10 +69,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Source code and store listings in your name",
     ],
     tech: ["React Native", "Flutter", "Expo", "Kotlin", "Firebase", "PWA", "TypeScript"],
-    legacyTitle: "Mobile Application Development",
+    legacyTitles: ["Mobile Application Development", "Mobile Applications"],
   },
   {
     id: "saas",
+    group: "Development",
     title: "SaaS Products",
     tag: "saas · multi-tenant",
     cmd: "codtk init saas --tenants multi --billing stripe",
@@ -72,26 +90,27 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
     tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Redis", "AWS"],
   },
   {
-    id: "ai",
-    title: "AI and Automation",
-    tag: "ai · workflows",
-    cmd: "codtk automate --from orders --to invoices",
+    id: "erp",
+    group: "Development",
+    title: "Custom ERP Systems",
+    tag: "erp · operations",
+    cmd: "codtk init erp --modules inventory,sales,hr,accounts",
     description:
-      "Custom automation that connects your existing tools and APIs, cutting out repetitive manual work across your business. Where it helps, we add AI assistants that answer from your own documents and extract data from files, always with a human review step.",
+      "An ERP built from scratch around the way your business already works, instead of bending your workflow to fit off-the-shelf software. Inventory, sales, HR and accounts share one database, so every team works from the same numbers.",
     deliverables: [
-      "A review of the manual work worth automating",
-      "AI assistants and document extraction from your own files",
-      "Connections between the tools you already use",
-      "Scheduled jobs, webhooks, reports and notifications",
-      "Alerts when something fails, with human review where it matters",
-      "A written guide to how it all works",
+      "A map of your current workflow and the modules you need",
+      "Inventory, sales, purchasing, HR and accounts modules",
+      "Roles and permissions for each department",
+      "Reports and dashboards for managers",
+      "Import of your existing records from sheets or old software",
+      "Training for your team and source code handed to you",
     ],
-    tech: ["Python", "OpenAI", "FastAPI", "pgvector", "Node.js", "Webhooks", "REST APIs"],
-    legacyTitle: "Business Process Automation",
+    tech: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Redis", "Docker"],
   },
   {
     id: "api",
-    title: "Backend Systems and APIs",
+    group: "Development",
+    title: "Backend Systems & APIs",
     tag: "rest · realtime",
     cmd: "codtk init api --auth rbac --realtime",
     description:
@@ -105,11 +124,103 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Automated and load tests for the core logic",
     ],
     tech: ["Node.js", "Express", "NestJS", "GraphQL", "PostgreSQL", "MongoDB", "Redis", "WebSockets"],
-    legacyTitle: "Backend & API Development",
+    legacyTitles: ["Backend & API Development", "Backend Systems and APIs"],
+  },
+  {
+    id: "wordpress",
+    group: "Development",
+    title: "WordPress Websites",
+    tag: "wordpress · cms",
+    cmd: "codtk init wordpress --theme custom --cache on",
+    description:
+      "Fast WordPress websites your team can update without a developer: pages, posts, menus and forms from the familiar WordPress editor. Built on a lean custom theme with only the plugins you need, so the site stays quick and secure.",
+    deliverables: [
+      "A custom theme designed around your brand",
+      "Editable pages, posts, menus and contact forms",
+      "Speed set-up: caching, compressed images and a light theme",
+      "Security hardening, backups and updates",
+      "Search basics: titles, sitemap and page speed",
+      "A short guide so your team can edit the site",
+    ],
+    tech: ["WordPress", "PHP", "MySQL", "JavaScript"],
+  },
+  {
+    id: "seo",
+    group: "Growth",
+    title: "SEO",
+    tag: "search · google",
+    cmd: "codtk audit seo --site yourbusiness.com",
+    description:
+      "Get found on Google by the clients you want. We fix the technical problems that hold a site back, improve pages for the searches your customers make, and set up your Google Business Profile for local search.",
+    deliverables: [
+      "A technical audit: speed, indexing, structure and errors",
+      "Keyword research for the searches your clients make",
+      "Page titles, descriptions and content improvements",
+      "Google Business Profile set-up for local search",
+      "Search Console and analytics set up",
+      "A monthly report of rankings, traffic and next steps",
+    ],
+    tech: ["Google Search Console", "Google Analytics", "Google Business Profile", "Schema.org"],
+  },
+  {
+    id: "marketing",
+    group: "Growth",
+    title: "Performance Marketing",
+    tag: "ads · campaigns",
+    cmd: "codtk launch campaign --goal leads --budget monthly",
+    description:
+      "Paid campaigns on the platforms that fit your business, measured by the leads and sales they bring rather than clicks. Tracking is set up first, so every rupee or dollar spent can be traced to a result.",
+    deliverables: [
+      "A plan: which platforms, which audience, what budget",
+      "Conversion tracking on your website before any spend",
+      "Ad campaigns on Google, Meta (Facebook and Instagram) or TikTok",
+      "Landing pages built to turn clicks into enquiries",
+      "Ongoing testing of ads, audiences and budgets",
+      "A monthly report of spend, leads and cost per lead",
+    ],
+    tech: ["Google Ads", "Meta Ads", "TikTok Ads", "Google Analytics", "Google Tag Manager"],
+  },
+  {
+    id: "transform",
+    group: "Strategy & Infrastructure",
+    title: "Digital Transformation",
+    tag: "offline → online",
+    cmd: "codtk migrate --from paper --to online",
+    description:
+      "Take your physical business online: orders, bookings, stock and payments move from phone calls, registers and spreadsheets into simple software your staff and customers can use. We change one part at a time, so the business keeps running throughout.",
+    deliverables: [
+      "A review of how the business runs today",
+      "A step-by-step plan, starting where it saves the most time",
+      "A website, online ordering or booking where it fits",
+      "Digital records for stock, customers and payments",
+      "Online payments through local and international providers",
+      "Staff training and support while the change settles in",
+    ],
+    tech: ["Next.js", "React Native", "Node.js", "PostgreSQL", "WordPress"],
+  },
+  {
+    id: "ai",
+    group: "Strategy & Infrastructure",
+    title: "AI & Business Automation",
+    tag: "ai · workflows",
+    cmd: "codtk automate --from orders --to invoices",
+    description:
+      "Custom automation that connects your existing tools and APIs, cutting out repetitive manual work across your business. Where it helps, we add AI assistants that answer from your own documents and extract data from files, always with a human review step.",
+    deliverables: [
+      "A review of the manual work worth automating",
+      "AI assistants and document extraction from your own files",
+      "Connections between the tools you already use",
+      "Scheduled jobs, webhooks, reports and notifications",
+      "Alerts when something fails, with human review where it matters",
+      "A written guide to how it all works",
+    ],
+    tech: ["Python", "OpenAI", "FastAPI", "pgvector", "Node.js", "Webhooks", "REST APIs"],
+    legacyTitles: ["Business Process Automation", "AI and Automation"],
   },
   {
     id: "cloud",
-    title: "DevOps and Cloud",
+    group: "Strategy & Infrastructure",
+    title: "Cloud & DevOps",
     tag: "ci/cd · cloud",
     cmd: "codtk deploy --ci github-actions --env production",
     description:
@@ -124,10 +235,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Handover notes so your team can run it",
     ],
     tech: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Vercel", "Render"],
-    legacyTitle: "Cloud & DevOps Solutions",
+    legacyTitles: ["Cloud & DevOps Solutions", "DevOps and Cloud"],
   },
   {
     id: "consulting",
+    group: "Strategy & Infrastructure",
     title: "Software Consulting",
     tag: "architecture",
     cmd: "codtk plan --scope v1 --risks",
@@ -142,7 +254,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "The option to have us build it afterwards",
     ],
     tech: ["System Design"],
-    legacyTitle: "Custom Software Consulting",
+    legacyTitles: ["Custom Software Consulting"],
   },
 ];
 

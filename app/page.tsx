@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BUSINESS_EMAIL, SOCIAL_LINKS } from "@/lib/contact";
+import { SITE_DESCRIPTION } from "@/lib/seo";
 import { Hero } from "@/components/codtk/Hero";
 import { Architecture } from "@/components/codtk/Architecture";
 import { DeliveryStage } from "@/components/codtk/DeliveryStage";
@@ -15,22 +17,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const localBusinessSchema = {
+// Organization entity (founder's brief, 2026-11-19; prd.md FR-16).
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Organization",
   name: "CodTK",
   url: "https://codtk.com",
-  email: "codtk.official@gmail.com",
-  description:
-    "CodTK is a software company in Lahore building custom web, mobile, backend and cloud software. Work directly with the engineers who build your product.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Lahore",
-    addressRegion: "Punjab",
-    addressCountry: "PK",
-  },
-  areaServed: ["PK", "GB", "US", "AE"],
-  knowsAbout: ["Web Development", "Mobile App Development", "React", "Next.js", "Node.js"],
+  email: BUSINESS_EMAIL,
+  telephone: "+92-314-6397321",
+  foundingDate: "2026",
+  description: SITE_DESCRIPTION,
+  address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+  sameAs: SOCIAL_LINKS.filter((s) => s.url).map((s) => s.url),
 };
 
 const webSiteSchema = {
@@ -45,10 +43,10 @@ const webSiteSchema = {
 export default function Home() {
   return (
     <>
-      {/* Structured data — LocalBusiness and WebSite entity */}
+      {/* Structured data — Organization and WebSite entity */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <script
         type="application/ld+json"

@@ -279,7 +279,7 @@ export function ProcessTunnel() {
               <li key={s.title} className={i ? undefined : "on"}>
                 <button type="button" data-i={i} aria-label={`Go to stage ${i + 1}: ${s.title}`}>
                   <span>{pad(i)}</span>
-                  {s.short}
+                  {s.title}
                 </button>
               </li>
             ))}

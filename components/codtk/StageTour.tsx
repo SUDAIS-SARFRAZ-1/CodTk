@@ -68,7 +68,7 @@ export function StageTour() {
               >
                 {String(i + 1).padStart(2, "0")}
               </button>
-              <span>{s.short}</span>
+              <span>{s.title}</span>
             </li>
           ))}
         </ol>

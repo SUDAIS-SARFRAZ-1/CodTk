@@ -42,13 +42,14 @@ It also serves as a live demo of the team's work, so it must be fast, accessible
 |---|---|
 | Name | CodTK (plain "CodTK" everywhere; no "AptiScript" anywhere) |
 | Domain | codtk.com, bought from Hostinger; to be connected to Vercel |
-| Email | codtk.official@gmail.com (no domain mailbox for now) |
-| Phone / WhatsApp | +92 301 9492010 (same number; tap-to-call and WhatsApp link) |
-| Location | "Lahore, Pakistan" only. No street address |
+| Email | Public: contact@codtk.com (also info@, support@, hr@; admin@ is internal, never shown). All forward to codtk.official@gmail.com via Cloudflare Email Routing; form leads are sent to contact@codtk.com |
+| Phone / WhatsApp | +92 314 6397321 (same number; tap-to-call and wa.me/923146397321). Replaced +92 301 9492010 on Nov 19, 2026 |
+| Location | "Lahore, Pakistan · Remote team, serving clients worldwide". No street address |
 | Registration | Not registered. No SECP/NTN shown |
 | Founder | Sudais Sarfraz, Software Engineering graduate, University of Central Punjab (UCP), 2026. No photo. Links to portfolio, LinkedIn, GitHub **(pending input: URLs)** |
 | Team | Presented as "the CodTK team", grouped by function (frontend, backend, DevOps). No headcount, no individual profiles, no photos |
-| Social | LinkedIn, Instagram, Facebook, X **(pending input: URLs)**. Icons hidden until provided |
+| Social | LinkedIn linkedin.com/company/codtk, Instagram @codtk_official, Facebook codtk.official (live since Nov 19, 2026). X: no account, icon hidden |
+| Taglines | Main: "Building Next Generation Software". Extended: "Building Next Generation Software: web, mobile, ERP, AI, cloud & digital growth." Sign-off: "Code. Design. Deliver." |
 | Certifications, awards, past employers | None to show |
 
 ## 4. Goals and KPIs
@@ -76,7 +77,7 @@ Hero (logo monolith, the "Why CodTK" line, primary CTA "Get a Quote", secondary 
 Hidden until real: "Trusted by" logo strip, testimonials, stats.
 
 ### 6.2 Services
-Seven services (founder's Services brief, Oct 22, 2026, merged with the earlier six so no existing content was dropped): Web Applications, Mobile Applications, SaaS Products, AI and Automation, Backend Systems and APIs, DevOps and Cloud, Software Consulting. `lib/service-offerings.ts` is the one service list: the Services page, home service cards (short copy in `lib/services.ts`), footer and contact form all read it. UI/UX is part of every project, not a separate service (**assumed**).
+Twelve services in three groups (founder's briefs of Oct 22 and Nov 19, 2026). **Development:** Web Applications, Mobile Apps (Android & iOS), SaaS Products, Custom ERP Systems, Backend Systems & APIs, WordPress Websites. **Growth:** SEO, Performance Marketing. **Strategy & Infrastructure:** Digital Transformation, AI & Business Automation, Cloud & DevOps, Software Consulting. Shopify is not offered and must not be listed. `lib/service-offerings.ts` is the one service list: the Services page, home service cards (short copy in `lib/services.ts`), footer and contact form all read it. UI/UX is part of every project, not a separate service (**assumed**).
 - Each block: number and tag, all-caps title, description, typed CLI line, key deliverables, brand-coloured tech chips, "Discuss This Service" CTA that opens the quote form with that service pre-filled (FR-3). The contact form's project types follow this list; older service titles still pre-fill via aliases.
 - A final card, "Not on the list? Tell us", opens the form with "Something else" selected. CodTK takes any kind of development.
 - Engagement models on this page: Fixed-scope project, Dedicated team (featured), Support and retainer, plus Technical consulting.
@@ -109,13 +110,13 @@ Engagement model (FR-13):
 
 ### 6.7 Contact
 - Form fields: name, email, project type (services + Other), optional budget range, message. No file upload; visitors can paste links.
-- WhatsApp link and tap-to-call for +92 301 9492010, email, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan", reply promise, Privacy/Terms links.
+- WhatsApp link and tap-to-call for +92 314 6397321, contact@codtk.com, LinkedIn/Instagram/Facebook/WhatsApp icons, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan · Remote team, serving clients worldwide", reply promise, Privacy/Terms links.
 
 ### 6.8 Privacy Policy and Terms of Use
 Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics and Speed Insights (cookieless), Calendly (booking).
 
 ### 6.9 Footer
-Navigation, email, WhatsApp, phone, "Lahore, Pakistan", social icons (hidden until URLs), Privacy/Terms links, © CodTK. No registration number.
+Navigation, the one-line description, LinkedIn/Instagram/Facebook/WhatsApp icons (new tab), contact@codtk.com, phone, "Lahore, Pakistan · Remote team, serving clients worldwide", Privacy/Terms links, "© 2026 CodTK · Code. Design. Deliver. · contact@codtk.com · +92 314 6397321". No registration number.
 
 ### 6.10 404
 Branded page with a short message and "Get a Quote" and "Go home" CTAs.
@@ -124,7 +125,7 @@ Branded page with a short message and "Get a Quote" and "Go home" CTAs.
 
 1. Visitor submits the form. Cloudflare Turnstile token is verified server-side.
 2. Zod validates and sanitises input; honeypot and time-trap stay.
-3. Resend sends the lead to codtk.official@gmail.com from an @codtk.com sender.
+3. Resend sends the lead to contact@codtk.com from an @codtk.com sender.
 4. Resend sends the visitor an auto-reply ("we got your message; we reply within 24 hours, Mon–Sat").
 5. The lead is appended to a Google Sheet (name, email, type, budget, message, timestamp).
 6. Optional: a Slack message to a CodTK channel for each new lead (**assumed** meaning of "Slack"; Could priority).
@@ -135,13 +136,13 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 
 | ID | Requirement | Priority | Status |
 |---|---|---|---|
-| FR-1 | Contact form → codtk.official@gmail.com from a verified @codtk.com sender | Must | Sender read from `RESEND_FROM`; needs codtk.com verified in Resend, then set the env var |
+| FR-1 | Contact form → contact@codtk.com from a verified @codtk.com sender | Must | Sender read from `RESEND_FROM`; needs codtk.com verified in Resend, then set the env var |
 | FR-2 | WhatsApp CTA on all pages | Must | Built |
 | FR-3 | Service card → pre-filled quote form (incl. "Other") | Should | Verify |
 | FR-4 | Case-study detail pages | Should | Built; MindMesh only (Organic Store hidden via `hidden` flag) |
 | FR-5 | Responsive from 360 to 1920px | Must | Home done; other pages pending redesign |
 | FR-6 | Meta, OG image (site-wide + per case study), sitemap, robots, canonical codtk.com | Must | Built: per-page title/description/canonical/OG, generated OG image, sitemap.xml, robots.txt |
-| FR-7 | Social links, hidden until URLs exist | Could | Pending URLs |
+| FR-7 | Social links, hidden until URLs exist | Could | Built Nov 19: LinkedIn, Instagram, Facebook and WhatsApp icons in footer and on Contact |
 | FR-8 | Vercel Analytics, plus Search Console and Google Business Profile | Should | Vercel Analytics and Speed Insights added Oct 21 (enable both in the Vercel dashboard); Search Console and Business Profile not set up |
 | FR-9 | Privacy and Terms pages with final content | Must | Drafted Oct 20; founder review pending |
 | FR-10 | Calendly link on Home and Contact | Should | Pending URL |
@@ -150,7 +151,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-13 | Engagement model stated on Process | Must | Built (§6.6 wording) |
 | FR-14 | Cloudflare Turnstile on the form | Must | Built; needs Turnstile keys in Vercel env |
 | FR-15 | Auto-reply email to the visitor | Should | Not built; needs FR-1 domain |
-| FR-16 | Organization/LocalBusiness JSON-LD | Should | Not built |
+| FR-16 | Organization/LocalBusiness JSON-LD | Should | Built Nov 19: Organization with sameAs links on Home |
 | FR-17 | Custom 404 with CTAs | Should | Not built |
 | FR-18 | Lead saved to Google Sheet | Should | Not built |
 | FR-19 | Slack notification per lead | Could | Not built; confirm |
@@ -218,3 +219,4 @@ Remaining page redesigns in this order: Services → Portfolio → About → Pro
 | 2.0-draft | Oct 18, 2026 | Rebrand to CodTK, design system, build status, open questions |
 | 2.0 | Oct 18, 2026 | All 55 questions answered; positioning, lead flow, phased launch for Oct 20 |
 | 2.1 | Oct 22, 2026 | Services page redesigned from the founder's brief: seven services, Dedicated team model, delivery standard, tech marquee (§6.2) |
+| 2.2 | Nov 19, 2026 | Website update brief: new phone, contact@codtk.com, social links, 12 services in three groups (no Shopify), About copy, title/description, Organization JSON-LD |

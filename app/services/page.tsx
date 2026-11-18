@@ -9,7 +9,7 @@ import { ServiceAnchors } from "@/components/services/ServiceAnchors";
 import { ServiceBlock } from "@/components/services/ServiceBlock";
 import { EngagementModels } from "@/components/services/EngagementModels";
 import { DeliveryStandard } from "@/components/services/DeliveryStandard";
-import { MARQUEE_TECH, quoteHref, SERVICE_OFFERINGS } from "@/lib/service-offerings";
+import { MARQUEE_TECH, quoteHref, SERVICE_GROUPS, SERVICE_OFFERINGS } from "@/lib/service-offerings";
 import { PROJECT_TYPES } from "@/features/contact/schema";
 
 const OTHER = PROJECT_TYPES[PROJECT_TYPES.length - 1];
@@ -17,7 +17,7 @@ const OTHER = PROJECT_TYPES[PROJECT_TYPES.length - 1];
 export const metadata: Metadata = pageMetadata(
   "/services",
   "Services",
-  "Custom software development in Pakistan: web and mobile apps, SaaS products, AI and automation, backend systems and APIs, DevOps and cloud, and consulting from CodTK in Lahore.",
+  "Custom software development and digital growth from CodTK in Lahore: web and mobile apps, SaaS, custom ERP, backend APIs, WordPress, SEO, performance marketing, digital transformation, AI automation, cloud and consulting.",
 );
 
 const WORDS: [string, boolean][] = [
@@ -51,7 +51,7 @@ export default function ServicesPage() {
             ))}
           </span>
         }
-        intro="Seven disciplines, each scoped to your objectives, documented in writing and delivered against agreed milestones. Timeline and cost depend on scope; we confirm both before work starts."
+        intro="Twelve services in three groups: development, growth, and strategy and infrastructure. Each is scoped to your objectives, documented in writing and delivered against agreed milestones. Timeline and cost depend on scope; we confirm both before work starts."
         actions={
           <>
             <Btn href={BOOK_CALL_LINK} external magnetic>
@@ -67,8 +67,15 @@ export default function ServicesPage() {
       <section className="sv-services" id="services" data-tone="services" data-section="disciplines" aria-label="Services">
         <ServiceAnchors services={SERVICE_OFFERINGS.map(({ id, title }) => ({ id, title }))} />
         <div className="ctk-wrap">
-          {SERVICE_OFFERINGS.map((s, i) => (
-            <ServiceBlock key={s.id} service={s} index={i} total={SERVICE_OFFERINGS.length} />
+          {SERVICE_GROUPS.map((g) => (
+            <div key={g} className="sv-group" role="group" aria-label={g}>
+              <p className="ctk-kicker rv">{g}</p>
+              {SERVICE_OFFERINGS.map((s, i) =>
+                s.group === g ? (
+                  <ServiceBlock key={s.id} service={s} index={i} total={SERVICE_OFFERINGS.length} />
+                ) : null,
+              )}
+            </div>
           ))}
           <div className="sv-other rv">
             <div>

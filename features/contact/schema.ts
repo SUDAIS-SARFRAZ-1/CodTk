@@ -5,7 +5,7 @@ const PROJECT_TYPES = [...SERVICE_OFFERINGS.map((s) => s.title), "Something else
 
 // Older links (home service cards) carry the previous service titles; map them to the current ones.
 const PROJECT_TYPE_ALIASES: Record<string, string> = Object.fromEntries(
-  SERVICE_OFFERINGS.filter((s) => s.legacyTitle).map((s) => [s.legacyTitle, s.title]),
+  SERVICE_OFFERINGS.flatMap((s) => (s.legacyTitles ?? []).map((old) => [old, s.title])),
 );
 // Optional budget range (prd.md FR-20); the last is the default when the visitor doesn't pick one.
 const BUDGETS = ["Under $5k", "$5k – 15k", "$15k – 40k", "$40k +", "Not sure yet"] as const;

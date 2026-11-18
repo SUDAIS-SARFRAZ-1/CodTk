@@ -275,11 +275,186 @@ function Plan() {
   );
 }
 
+// ERP: one sale updates stock, invoices and accounts together.
+function Wholesale() {
+  return (
+    <div className="ctk-sx-pair">
+      <div className="ctk-sx-win ctk-sx-pad">
+        <b className="ctk-sx-cap">One system, every team</b>
+        <dl className="ctk-sx-roles">
+          <div>
+            <dt>Inventory</dt>
+            <dd>Live stock</dd>
+          </div>
+          <div>
+            <dt>Sales</dt>
+            <dd>Orders, invoices</dd>
+          </div>
+          <div>
+            <dt>HR</dt>
+            <dd>Staff, payroll</dd>
+          </div>
+          <div>
+            <dt>Accounts</dt>
+            <dd>Ledger, reports</dd>
+          </div>
+        </dl>
+      </div>
+      <div className="ctk-sx-win ctk-sx-pad">
+        <b className="ctk-sx-cap">What one sale updates</b>
+        <ol className="ctk-sx-feed">
+          <li style={d(0)}>40 cartons sold to a retailer</li>
+          <li style={d(0.9)}>Stock drops in the warehouse count</li>
+          <li style={d(1.8)}>The invoice is created and sent</li>
+          <li style={d(2.7)} className="ok">
+            Accounts show it the same minute
+          </li>
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+const PAGES = [
+  { n: "Today's menu", s: "Edited 2 minutes ago", a: "M" },
+  { n: "Custom cakes", s: "Published", a: "C" },
+  { n: "Order on WhatsApp", s: "Published", a: "W" },
+];
+
+// WordPress: the owner edits pages from the familiar editor.
+function Bakery() {
+  return (
+    <>
+      <div className="ctk-sx-win">
+        <WindowBar className="ctk-sx-bar" title="yourbakery.com/wp-admin" />
+        <div className="ctk-sx-body">
+          <b className="ctk-sx-h">Pages</b>
+          {PAGES.map((p) => (
+            <div key={p.n} className="ctk-sx-item">
+              <span className="ctk-sx-ico">{p.a}</span>
+              <div>
+                <b>{p.n}</b>
+                <small>{p.s}</small>
+              </div>
+            </div>
+          ))}
+          <span className="ctk-sx-btn">Update</span>
+        </div>
+      </div>
+      <div className="ctk-sx-toast">
+        <Check />
+        Menu updated, live on the site
+      </div>
+    </>
+  );
+}
+
+// SEO: a local business showing up for the search its patients make.
+function Search() {
+  return (
+    <div className="ctk-sx-win">
+      <WindowBar className="ctk-sx-bar" title="google.com/search?q=dentist+in+lahore" />
+      <div className="ctk-sx-body">
+        <div className="ctk-sx-row">
+          <b className="ctk-sx-h">dentist in lahore</b>
+          <span className="ctk-sx-badge">
+            <i className="ctk-sx-ping" />
+            Page one
+          </span>
+        </div>
+        <div className="ctk-sx-item">
+          <span className="ctk-sx-ico ctk-sx-ico--solid">1</span>
+          <div>
+            <b>Your Clinic · Dentist in Lahore</b>
+            <small>Open today · Book online · Map and directions</small>
+          </div>
+        </div>
+        <ol className="ctk-sx-steps">
+          <li className="done">Site speed and indexing fixed</li>
+          <li className="done">Pages written for real searches</li>
+          <li className="on">Google Business Profile complete</li>
+          <li>Monthly ranking report</li>
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+// Performance marketing: spend judged by the enquiries it brings.
+function Campaigns() {
+  return (
+    <div className="ctk-sx-pair">
+      <div className="ctk-sx-win ctk-sx-pad">
+        <b className="ctk-sx-cap">This month</b>
+        <dl className="ctk-sx-roles">
+          <div>
+            <dt>Instagram</dt>
+            <dd>Sofa sale</dd>
+          </div>
+          <div>
+            <dt>Google</dt>
+            <dd>&ldquo;furniture lahore&rdquo;</dd>
+          </div>
+          <div>
+            <dt>Facebook</dt>
+            <dd>Past visitors</dd>
+          </div>
+        </dl>
+      </div>
+      <div className="ctk-sx-win ctk-sx-pad">
+        <b className="ctk-sx-cap">How each enquiry is traced</b>
+        <ol className="ctk-sx-feed">
+          <li style={d(0)}>Someone taps the ad</li>
+          <li style={d(0.9)}>They land on the offer page</li>
+          <li style={d(1.8)}>They send a WhatsApp enquiry</li>
+          <li style={d(2.7)} className="ok">
+            The report credits the right ad
+          </li>
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+const MOVES = [
+  { t: "Stock register", s: "Now live counts with low-stock alerts", tone: "solid", icon: <><path d="M5 4h14v16H5z" /><path d="M9 8h6M9 12h6M9 16h3" /></> },
+  { t: "Phone orders", s: "Now online orders with delivery updates", tone: "blue", icon: <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /> },
+  { t: "Cash only", s: "Now card and wallet payments too", tone: "cyan", icon: <><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10h18" /></> },
+  { t: "Customers on paper", s: "Now one list, with refill reminders", tone: "ok", icon: <><circle cx="9" cy="8" r="3.2" /><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5" /></> },
+];
+
+// Digital transformation: one part of the shop moves online at a time.
+function GoDigital() {
+  return (
+    <div className="ctk-sx-flow">
+      <span className="ctk-sx-rail" aria-hidden="true">
+        <i />
+      </span>
+      {MOVES.map((m, i) => (
+        <div key={m.t} className="ctk-sx-node" style={d(i * 2)}>
+          <span className={`ctk-sx-ico ctk-sx-ico--${m.tone}`}>
+            <Svg>{m.icon}</Svg>
+          </span>
+          <div>
+            <b>{m.t}</b>
+            <small>{m.s}</small>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const EXAMPLES: Record<ServiceTone, () => ReactNode> = {
   web: Booking,
   mobile: Tracking,
   saas: Workspaces,
+  erp: Wholesale,
   api: FeePortal,
+  wordpress: Bakery,
+  seo: Search,
+  marketing: Campaigns,
+  transform: GoDigital,
   cloud: SaleDay,
   ai: OrderFlow,
   consulting: Plan,

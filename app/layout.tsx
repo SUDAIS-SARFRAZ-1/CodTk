@@ -9,7 +9,7 @@ import { Motion } from "@/components/codtk/Motion";
 import { Background } from "@/components/codtk/Background";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
-import { SITE_URL } from "@/lib/seo";
+import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 import "./codtk.css";
 
@@ -26,20 +26,20 @@ const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: "CodTK — Software Company in Lahore | Building Next Generation Software",
-    template: "%s — CodTK",
+  title: { default: SITE_TITLE, template: "%s — CodTK" },
+  description: SITE_DESCRIPTION,
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: EXTENDED_TAGLINE,
+    images: "/opengraph-image",
   },
-  description:
-    "CodTK is a software company in Lahore building custom web, mobile, backend and cloud software. Work directly with the engineers who build your product. Get a quote.",
-  twitter: { card: "summary_large_image" },
   openGraph: {
     type: "website",
     siteName: "CodTK",
     url: "/",
-    title: "CodTK — Building Next Generation Software",
-    description:
-      "Custom web, mobile, backend and cloud software from a Lahore team that answers fast.",
+    title: SITE_TITLE,
+    description: EXTENDED_TAGLINE,
   },
 };
 
