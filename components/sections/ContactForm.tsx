@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
 import {
   BUDGETS,
@@ -64,14 +64,14 @@ function Field({
 // The quote form inside the design system's enquiry panel. Validates with the shared Zod schema
 // for instant feedback; the server re-validates everything (rules.md §5).
 export function ContactForm() {
-  const searchParams = useSearchParams();
-  const service = searchParams.get("service") ?? "";
-  const prefilledService = PROJECT_TYPE_ALIASES[service] ?? service;
-  const defaultProjectType = useMemo(
-    () =>
-      PROJECT_TYPES.find((type) => type === prefilledService) ?? PROJECT_TYPES[PROJECT_TYPES.length - 1],
-    [prefilledService],
-  );
+  // Pre-select the service from `?service=` (FR-3) after load instead of via useSearchParams, so the
+  // form is server-rendered (no Suspense fallback) and nothing below it shifts when it appears.
+  const projectTypeRef = useRef<HTMLSelectElement>(null);
+  useEffect(() => {
+    const service = new URLSearchParams(window.location.search).get("service") ?? "";
+    const match = PROJECT_TYPES.find((type) => type === (PROJECT_TYPE_ALIASES[service] ?? service));
+    if (match && projectTypeRef.current) projectTypeRef.current.value = match;
+  }, []);
 
   const renderedAtRef = useRef(0);
   const turnstileRef = useRef<HTMLDivElement>(null);
@@ -205,7 +205,7 @@ export function ContactForm() {
         </Field>
         <Field id="projectType" label="Project type" full>
           <div className="ctk-select">
-            <select className="ctk-input" id="projectType" name="projectType" defaultValue={defaultProjectType}>
+            <select ref={projectTypeRef} className="ctk-input" id="projectType" name="projectType" defaultValue={PROJECT_TYPES[PROJECT_TYPES.length - 1]}>
               {PROJECT_TYPES.map((type) => (
                 <option key={type} value={type}>
                   {type}

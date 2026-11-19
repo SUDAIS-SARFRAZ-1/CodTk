@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Btn, Icon } from "@/components/codtk/primitives";
 
 const NAV = [
@@ -27,6 +27,7 @@ export function Logo() {
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -38,7 +39,12 @@ export function Navbar() {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    // Escape closes the menu and returns focus to its button, so keyboard users keep their place.
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      menuButton.current?.focus();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -65,6 +71,7 @@ export function Navbar() {
           Get a Quote
         </Btn>
         <button
+          ref={menuButton}
           className="ctk-nav__menu"
           type="button"
           aria-expanded={open}

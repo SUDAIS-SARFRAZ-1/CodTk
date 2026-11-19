@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/codtk/JsonLd";
 import { ContactForm } from "@/components/sections/ContactForm";
@@ -125,9 +124,7 @@ export default function ContactPage() {
           <div className="rv" data-d={2}>
             {/* React Query is only used by this form, so its provider lives here, not in the root layout. */}
             <Providers>
-              <Suspense fallback={null}>
-                <ContactForm />
-              </Suspense>
+              <ContactForm />
             </Providers>
           </div>
         </div>
