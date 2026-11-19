@@ -7,10 +7,11 @@ export const metadata: Metadata = pageMetadata("/privacy", "Privacy Policy", "Ho
 
 // Drafted for founder review (prd.md §6.8); not legal advice. Flip `active` when a service goes live
 // so the policy only ever names processors actually in use.
-const LAST_UPDATED = "October 20, 2026";
+const LAST_UPDATED = "November 19, 2026";
 
 const PROCESSORS = [
   { name: "Vercel", purpose: "Hosts this website; processes your IP address and browser details to serve pages.", active: true },
+  { name: "Cloudflare", purpose: "Routes and protects traffic to this website, counts page visits without cookies (Cloudflare Web Analytics), and forwards email sent to our @codtk.com addresses to our inbox.", active: true },
   { name: "Cloudflare Turnstile", purpose: "Checks that a form submission comes from a person, not a bot.", active: true },
   { name: "Resend", purpose: "Delivers your contact-form message to our inbox by email.", active: true },
   { name: "Google (Gmail)", purpose: "Our business inbox, where your message and our replies are stored.", active: true },

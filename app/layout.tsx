@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     description: EXTENDED_TAGLINE,
   },
 };
+
+export const viewport: Viewport = { themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

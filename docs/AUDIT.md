@@ -31,7 +31,7 @@ Legend: **PASS** · **FAIL** · **PARTIAL** · **N/A**. "Owner" marks items only
 5. **Structured data only on Home (FAIL).** No BreadcrumbList, Service, or ProfessionalService/logo/areaServed anywhere.
 6. **No per-service pages, no /faq, no /thank-you, no llms.txt (FAIL vs brief).** All 12 services live on one URL (`/services#id`), so no page can rank for "custom ERP development" etc.
 7. **Cookie consent not equally prominent; no Consent Mode v2; GA4 ID hard-coded (PARTIAL).**
-8. **Privacy policy out of date (PARTIAL).** Names Google Sheets, Slack and Calendly (not built) and omits Cloudflare Web Analytics.
+8. **Privacy policy incomplete (PARTIAL).** Omits Cloudflare (proxy, Web Analytics, Email Routing). (Google Sheets, Slack and Calendly are listed in code but correctly filtered out as inactive.)
 9. **Thin pages (PARTIAL).** Tech Stack 93 words; Portfolio 233; Contact 232.
 10. **E-E-A-T: founder named, team anonymous (PARTIAL).** No named builders, roles or bios beyond the founder line.
 
@@ -63,7 +63,7 @@ Lab data (simulated mid-range phone). INP is a field metric; TBT is its lab prox
 | Favicon set | **PARTIAL** | `app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`. No SVG favicon, no 192/512 PNG, no web manifest, no `theme-color`. | Phase 4. |
 | Custom 404 | **PASS** | `/no-such-page-xyz` returns real **404**, branded page with Home/Contact + page links. | Optional: inline styles → design tokens. |
 | Thank-you page after submit | **FAIL** (vs brief) | Success is shown in place (`aria-live`), no `/thank-you` URL — so no clean conversion URL. | Phase 4: `/thank-you` (noindex). |
-| Privacy policy | **PARTIAL** | `/privacy` exists; lists Google Sheets, Slack, Calendly (not built) and omits Cloudflare Web Analytics. | Phase 4 + **TODO(owner): legal review**. |
+| Privacy policy | **PARTIAL** | `/privacy` exists; inactive processors (Sheets, Slack, Calendly) are correctly filtered out, but Cloudflare (proxy, Web Analytics, Email Routing) is missing. | Phase 4 + **TODO(owner): legal review**. |
 | Terms page | **PASS** (content) / owner review | `/terms` exists; description only 47 chars. | **TODO(owner): legal review.** |
 | Cookie consent | **PARTIAL** | GA4 is genuinely blocked until "Accept" (script injected only after consent). Reject = outlined, Accept = filled blue → not equally prominent. No Consent Mode v2. | Phase 4. |
 | FAQ | **PARTIAL** | 5 questions on Home with FAQPage JSON-LD. No `/faq`, none on service pages. | Phase 7. |

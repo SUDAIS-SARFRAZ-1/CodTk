@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { track } from "@/lib/analytics";
 import {
   BUDGETS,
   contactFormSchema,
@@ -90,6 +91,7 @@ export function ContactForm() {
       widgetIdRef.current = undefined;
     };
   }, []);
+  const router = useRouter();
   const { mutate, isPending, isSuccess, error } = useSubmitContactForm();
   const [fieldErrors, setFieldErrors] = useState<Errors>({});
 
@@ -159,6 +161,10 @@ export function ContactForm() {
           }
           setFieldErrors({});
           mutate(parsed.data, {
+            onSuccess: () => {
+              track("generate_lead", { project_type: parsed.data.projectType });
+              router.push("/thank-you");
+            },
             // Each token is single-use, so a failed attempt needs a fresh one.
             onError: () => {
               if (widgetIdRef.current) window.turnstile?.reset(widgetIdRef.current);
