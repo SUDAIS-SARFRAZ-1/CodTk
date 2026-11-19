@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PROJECTS } from "@/lib/projects";
+import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
+import { serviceHref } from "@/lib/service-seo";
 import { SITE_URL } from "@/lib/seo";
 
 // Last real content change per page — update the date when a page changes, so lastmod stays truthful
@@ -16,6 +18,7 @@ const PAGES: Record<string, string> = {
   "/terms": "2026-11-19",
 };
 const PROJECTS_UPDATED = "2026-11-19";
+const SERVICES_UPDATED = "2026-11-19";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = Object.entries(PAGES).map(([path, updated]) => ({
@@ -32,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...projectEntries];
+  const serviceEntries = SERVICE_OFFERINGS.map((s) => ({
+    url: `${SITE_URL}${serviceHref(s.id)}`,
+    lastModified: SERVICES_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...projectEntries];
 }

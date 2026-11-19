@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PortfolioDetailPageProps): Pr
       type: "article",
       siteName: "CodTK",
       url: `/portfolio/${project.slug}`,
-      title: project.title,
+      title: `${project.title} — ${project.subtitle}`,
       description: project.summary,
       images: [project.images[0].src],
     },

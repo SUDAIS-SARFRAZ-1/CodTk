@@ -1,13 +1,11 @@
-import Link from "next/link";
-import { ArrowLink, Icon } from "@/components/codtk/primitives";
-import { SvIcon } from "@/components/services/icons";
+import { ArrowLink } from "@/components/codtk/primitives";
+import { ServiceCard } from "@/components/codtk/ServiceCard";
 import { SERVICE_GROUPS, SERVICE_OFFERINGS } from "@/lib/service-offerings";
-import { SERVICE_LINES } from "@/lib/services";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-// Home services: the twelve services in their three groups, one plain line each, linking to the
-// matching block on /services. Each group has a label column (number, name, count) beside its
+// Home services: the twelve services in their three groups, one plain line each, each card linking
+// to its own service page. Each group has a label column (number, name, count) beside its
 // cards; each card carries its service colour (sv-tone--*). Hover is CSS only: lift, tinted
 // border and shadow, sliding arrow, and an accent line along the bottom.
 export function ServiceStack() {
@@ -40,16 +38,7 @@ export function ServiceStack() {
               <ul className="ctk-svc">
                 {items.map((s) => (
                   <li key={s.id}>
-                    <Link href={`/services#${s.id}`} className={`ctk-svc__card sv-tone--${s.id}`}>
-                      <SvIcon name={s.id} />
-                      <span className="ctk-svc__text">
-                        <b>{s.title}</b>
-                        <small>{SERVICE_LINES[s.id]}</small>
-                      </span>
-                      <span className="ctk-svc__go" aria-hidden="true">
-                        <Icon name="ur" />
-                      </span>
-                    </Link>
+                    <ServiceCard service={s} />
                   </li>
                 ))}
               </ul>

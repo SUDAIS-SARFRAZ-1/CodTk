@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Btn, Chips, Icon } from "@/components/codtk/primitives";
+import { serviceHref } from "@/lib/service-seo";
 import { SvIcon } from "@/components/services/icons";
 import { Included } from "@/components/services/Included";
 import { TypedCommand } from "@/components/services/TypedCommand";
@@ -20,7 +22,7 @@ export function ServiceBlock({ service, index, total }: { service: ServiceOfferi
           </p>
         </div>
         <h2 className="sv-h3 rv" data-d={d++} id={`${service.id}-h`}>
-          {service.title}
+          <Link href={serviceHref(service.id)}>{service.title}</Link>
         </h2>
         <p className="sv-body rv" data-d={d++}>
           {service.description}

@@ -6,7 +6,7 @@ import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { ProcessTunnel } from "@/components/process/ProcessTunnel";
 import { PROCESS_STEPS } from "@/lib/process";
 
-export const metadata: Metadata = pageMetadata("/process", "Our Process", "How CodTK delivers custom software: discovery, design, development, deployment and support, with an NDA and milestone payments on every project.");
+export const metadata: Metadata = pageMetadata("/process", "Our Software Development Process | CodTK", "How CodTK delivers custom software: discovery, design, development, deployment and support, with an NDA and milestone payments on every project.");
 
 // prd.md §6.6 / FR-13. `icon` is a 24×24 line icon, `tone` one of the sv-tone colours.
 const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = [

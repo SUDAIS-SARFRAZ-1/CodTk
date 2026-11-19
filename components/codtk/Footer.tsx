@@ -12,6 +12,7 @@ import {
   WHATSAPP_NUMBER_E164,
 } from "@/lib/contact";
 import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
+import { serviceHref } from "@/lib/service-seo";
 
 type FootLink = { label: string; href: string; external?: boolean };
 
@@ -70,7 +71,7 @@ export function Footer() {
             <Col title="Company" items={COMPANY} />
             <Col
               title="Services"
-              items={SERVICE_OFFERINGS.map((s) => ({ label: s.title, href: `/services#${s.id}` }))}
+              items={SERVICE_OFFERINGS.map((s) => ({ label: s.title, href: serviceHref(s.id) }))}
             />
             <div>
               <Col title="Contact" items={contact} />

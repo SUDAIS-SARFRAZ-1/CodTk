@@ -20,7 +20,7 @@ import {
   WHATSAPP_NUMBER_E164,
 } from "@/lib/contact";
 
-export const metadata: Metadata = pageMetadata("/contact", "Contact", "Request a quote from CodTK, a software company in Lahore working with businesses across Pakistan and abroad. Tell us about your project and we reply within 24 hours, Monday to Saturday.");
+export const metadata: Metadata = pageMetadata("/contact", "Contact CodTK | Get a Fixed Quote", "Request a fixed quote from CodTK in Lahore. Tell us about your project by form, WhatsApp or email; we reply within 24 hours, Monday to Saturday.");
 
 // What working with CodTK looks like from Pakistan and from abroad. Every point restates a fact
 // already on the site (prd.md §3, §6.6), so nothing here is new or unconfirmed.

@@ -6,6 +6,7 @@ import { WHATSAPP_LINK } from "@/lib/contact";
 // The wording is the form's existing success message. Not indexed and not in the sitemap.
 export const metadata: Metadata = {
   title: "Message received",
+  description: "Your message reached CodTK. We reply within 24 hours, Monday to Saturday.",
   robots: { index: false, follow: true },
 };
 

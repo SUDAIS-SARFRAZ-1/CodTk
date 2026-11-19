@@ -6,7 +6,7 @@ import { PROJECTS } from "@/lib/projects";
 import { Btn, Chips, Icon, PageHero, WindowBar } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
-export const metadata: Metadata = pageMetadata("/portfolio", "Work", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
+export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio & Case Studies | CodTK", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
 
 // Design system PortfolioPage: the first project spans the full width, the next sits beside an
 // invitation card. Its service filters are left out until there is more than one project to filter.

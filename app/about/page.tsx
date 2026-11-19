@@ -7,7 +7,7 @@ import { LahoreCard } from "@/components/about/LahoreCard";
 import { TeamDiagram } from "@/components/about/TeamDiagram";
 import { TECH_STACK } from "@/lib/tech-stack";
 
-export const metadata: Metadata = pageMetadata("/about", "About", "About CodTK, a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. Founded in 2026; a remote team across web, mobile, AI and DevOps.");
+export const metadata: Metadata = pageMetadata("/about", "About CodTK | Software & Digital Growth Partner", "CodTK is a software and digital growth company in Lahore, Pakistan, founded in 2026: a remote team of engineers serving startups and businesses worldwide.");
 
 // `tone` picks a colour from the sv-tone set; `icon` is a 24×24 line icon.
 type Tile = { tone: string; icon: ReactNode };

@@ -161,12 +161,13 @@ export function SectionHead({
 }
 
 // Inner-page hero (design system pageHero): ~/codtk/<crumb> breadcrumb, the page's one h1, intro.
-// Options: `path` adds BreadcrumbList JSON-LD for Home > crumb; `plainCrumb` shows "Home / Crumb";
+// Options: `path` adds BreadcrumbList JSON-LD for Home > [parent >] crumb; `plainCrumb` shows "Home / Crumb";
 // `titleClassName` restyles the h1; `actions` sits under the intro. With `aside`, the intro and
 // actions move under the title and `aside` takes the right-hand column.
 export function PageHero({
   crumb,
   path,
+  parent,
   title,
   intro,
   plainCrumb,
@@ -176,6 +177,7 @@ export function PageHero({
 }: {
   crumb: string;
   path?: string;
+  parent?: { name: string; path: string };
   title: ReactNode;
   intro: ReactNode;
   plainCrumb?: boolean;
@@ -191,13 +193,19 @@ export function PageHero({
   );
   return (
     <section className="ctk-phero" data-section={crumb.toLowerCase()}>
-      {path && <JsonLd data={breadcrumbJsonLd([{ name: crumb, path }])} />}
+      {path && <JsonLd data={breadcrumbJsonLd([...(parent ? [parent] : []), { name: crumb, path }])} />}
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
             <nav className={`ctk-crumb${plainCrumb ? " ctk-crumb--plain" : ""} rv`} aria-label="Breadcrumb">
               <Link href="/">{plainCrumb ? "Home" : "~/codtk"}</Link>
               <span aria-hidden="true">/</span>
+              {parent && (
+                <>
+                  <Link href={parent.path}>{plainCrumb ? parent.name : parent.name.toLowerCase()}</Link>
+                  <span aria-hidden="true">/</span>
+                </>
+              )}
               <span aria-current="page">{plainCrumb ? crumb : crumb.toLowerCase()}</span>
             </nav>
             <h1 className={`${titleClassName} rv`} data-d={1}>

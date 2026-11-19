@@ -15,8 +15,8 @@ const OTHER = PROJECT_TYPES[PROJECT_TYPES.length - 1];
 
 export const metadata: Metadata = pageMetadata(
   "/services",
-  "Services",
-  "Custom software development and digital growth from CodTK in Lahore: web and mobile apps, SaaS, custom ERP, backend APIs, WordPress, SEO, performance marketing, digital transformation, AI automation, cloud and consulting.",
+  "Software Development Services | CodTK",
+  "Software development and digital growth from CodTK in Lahore: web, mobile, SaaS, custom ERP, APIs, WordPress, SEO, ads, AI automation and cloud.",
 );
 
 // Services page (founder's Services brief, 2026-10-22): hero, sticky service index, one block per

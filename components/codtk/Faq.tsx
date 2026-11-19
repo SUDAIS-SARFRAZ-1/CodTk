@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/codtk/JsonLd";
 import { BUSINESS_EMAIL } from "@/lib/contact";
 
 // Every answer reflects a policy confirmed by the founder (2026-10-03; payments per prd.md §6.6).
 // NDA, code ownership, after-launch support, fixed pricing and reply times are answered in Why and
 // the hero, so they aren't repeated here.
-const FAQS: { question: string; answer: ReactNode; plainText: string }[] = [
+const FAQS: FaqItem[] = [
   {
     question: "How much does a project cost?",
     answer: "Every project is priced on its scope. Tell us what you need and we'll send you a quote.",
@@ -45,26 +46,24 @@ const FAQS: { question: string; answer: ReactNode; plainText: string }[] = [
   },
 ];
 
-// JSON-LD schema for Google FAQ rich results.
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.plainText },
-  })),
-};
+export type FaqItem = { question: string; answer: ReactNode; plainText: string };
 
-// FAQ (design system FAQ): native details, first one open + FAQPage schema.
-export function Faq() {
+// FAQ (design system FAQ): native details, first one open, plus FAQPage JSON-LD built from the same
+// items, so the markup only ever names questions visible on the page. Home uses its five defaults;
+// service pages and /faq pass their own.
+export function Faq({ items = FAQS }: { items?: FaqItem[] }) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.plainText },
+    })),
+  };
   return (
     <section className="ctk-sec" data-section="faq" aria-labelledby="faq-t">
-      {/* FAQPage structured data — enables Google rich results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema} />
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-4">
@@ -80,7 +79,7 @@ export function Faq() {
             </p>
           </div>
           <div className="l-s6 ctk-faq rv">
-            {FAQS.map((f, i) => (
+            {items.map((f, i) => (
               <details key={f.question} open={i === 0}>
                 <summary>
                   {f.question}

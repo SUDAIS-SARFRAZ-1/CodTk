@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/codtk/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { TECH_STACK } from "@/lib/tech-stack";
 
-export const metadata: Metadata = pageMetadata("/tech-stack", "Tech Stack", "The frontend, mobile, backend, database, state management and DevOps technologies CodTK builds with, from React and Next.js to Docker and AWS.");
+export const metadata: Metadata = pageMetadata("/tech-stack", "Technologies We Use | CodTK", "The frontend, mobile, backend, database, state management and DevOps technologies CodTK builds with, from React and Next.js to Docker and AWS.");
 
 export default function TechStackPage() {
   return (
