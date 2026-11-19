@@ -8,6 +8,7 @@ import { Footer } from "@/components/codtk/Footer";
 import { Motion } from "@/components/codtk/Motion";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { ClickTracking } from "@/components/layout/ClickTracking";
 import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 import "./codtk.css";
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SpeedInsights />
         {/* GA4 — loaded only after cookie consent (CookieBanner handles the gtag script injection) */}
         <CookieBanner />
+        <ClickTracking />
       </body>
     </html>
   );
