@@ -53,6 +53,7 @@ export default function ProcessPage() {
     <div className="sv-page pr-page">
       <PageHero
         crumb="Process"
+        path="/process"
         plainCrumb
         titleClassName="sv-h1"
         title={

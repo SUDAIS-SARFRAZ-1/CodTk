@@ -7,12 +7,14 @@ export type LegalSection = { title: string; body: ReactNode };
 // blocks laid out like the case study's (heading left, text right), ending on a quiet next action.
 export function LegalPage({
   crumb,
+  path,
   title,
   intro,
   updated,
   sections,
 }: {
   crumb: string;
+  path: string;
   title: ReactNode;
   intro: string;
   updated: string;
@@ -20,7 +22,7 @@ export function LegalPage({
 }) {
   return (
     <>
-      <PageHero crumb={crumb} title={title} intro={`${intro} Last updated: ${updated}.`} />
+      <PageHero crumb={crumb} path={path} title={title} intro={`${intro} Last updated: ${updated}.`} />
       <section className="ctk-sec ctk-legal" data-section={crumb.toLowerCase()} style={{ paddingTop: 24 }}>
         <div className="ctk-wrap">
           {sections.map((s, i) => (

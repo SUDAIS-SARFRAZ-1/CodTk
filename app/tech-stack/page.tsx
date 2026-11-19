@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { Badge } from "@/components/ui/Badge";
 import { Section, SectionHeader } from "@/components/ui/Section";
+import { JsonLd } from "@/components/codtk/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { TECH_STACK } from "@/lib/tech-stack";
 
 export const metadata: Metadata = pageMetadata("/tech-stack", "Tech Stack", "The frontend, mobile, backend, database, state management and DevOps technologies CodTK builds with, from React and Next.js to Docker and AWS.");
@@ -9,6 +11,7 @@ export const metadata: Metadata = pageMetadata("/tech-stack", "Tech Stack", "The
 export default function TechStackPage() {
   return (
     <Section>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Tech Stack", path: "/tech-stack" }])} />
       <SectionHeader
         as="h1"
         title="Tech Stack"

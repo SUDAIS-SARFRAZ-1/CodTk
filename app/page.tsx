@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BUSINESS_EMAIL, SOCIAL_LINKS } from "@/lib/contact";
-import { SITE_DESCRIPTION } from "@/lib/seo";
+import { SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
+import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
+import { JsonLd } from "@/components/codtk/JsonLd";
 import { Hero } from "@/components/codtk/Hero";
 import { TechStrip } from "@/components/codtk/TechStrip";
 import { Marquee } from "@/components/codtk/Marquee";
@@ -14,25 +16,41 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// Organization entity (founder's brief, 2026-11-19; prd.md FR-16).
+// Organization + ProfessionalService entity (brief 2026-11-19; prd.md FR-16). URLs follow SITE_URL,
+// so they match the canonical host. Only facts stated on the site.
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
+  "@id": `${SITE_URL}/#organization`,
   name: "CodTK",
-  url: "https://codtk.com",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icons/icon-512.png`,
+  image: `${SITE_URL}/opengraph-image`,
   email: BUSINESS_EMAIL,
   telephone: "+92-314-6397321",
   foundingDate: "2026",
+  slogan: "Building Next Generation Software",
   description: SITE_DESCRIPTION,
   address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+  areaServed: "Worldwide",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: BUSINESS_EMAIL,
+    telephone: "+92-314-6397321",
+    areaServed: "Worldwide",
+  },
+  knowsAbout: SERVICE_OFFERINGS.map((s) => s.title),
   sameAs: SOCIAL_LINKS.filter((s) => s.url).map((s) => s.url),
 };
 
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: "CodTK",
-  url: "https://codtk.com",
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 // Home keeps only what a first-time visitor needs (founder, 2026-11-19): who we are, what we do,
@@ -40,15 +58,8 @@ const webSiteSchema = {
 export default function Home() {
   return (
     <>
-      {/* Structured data — Organization and WebSite entity */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
-      />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={webSiteSchema} />
       <Hero />
       <TechStrip />
       <ServiceStack />

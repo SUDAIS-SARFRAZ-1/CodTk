@@ -26,6 +26,7 @@ export default function ServicesPage() {
     <div className="sv-page">
       <PageHero
         crumb="Services"
+        path="/services"
         plainCrumb
         titleClassName="sv-h1"
         title={

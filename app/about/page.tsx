@@ -63,6 +63,7 @@ export default function AboutPage() {
     <div className="sv-page ab-page">
       <PageHero
         crumb="About"
+        path="/about"
         plainCrumb
         titleClassName="sv-h1"
         title={<>A focused team, engineering with <span className="sv-b">discipline.</span></>}

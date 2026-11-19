@@ -15,6 +15,7 @@ export default function PortfolioPage() {
     <>
       <PageHero
         crumb="Work"
+        path="/portfolio"
         title={
           <>
             Selected <span className="ctk-em">work</span>.

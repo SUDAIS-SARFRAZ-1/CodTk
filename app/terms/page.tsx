@@ -101,6 +101,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       crumb="Terms"
+      path="/terms"
       title={
         <>
           Terms of <span className="ctk-em">use</span>.

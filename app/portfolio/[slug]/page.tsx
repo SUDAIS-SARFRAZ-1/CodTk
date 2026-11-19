@@ -6,6 +6,8 @@ import { PROJECTS } from "@/lib/projects";
 import { Btn, Chips, Icon, WindowBar } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
+import { JsonLd } from "@/components/codtk/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 type PortfolioDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -54,15 +56,16 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Work", path: "/portfolio" }, { name: project.title, path: `/portfolio/${project.slug}` }])} />
       <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">
-          <p className="ctk-crumb rv">
+          <nav className="ctk-crumb rv" aria-label="Breadcrumb">
             <Link href="/">~/codtk</Link>
             <span aria-hidden="true">/</span>
             <Link href="/portfolio">work</Link>
             <span aria-hidden="true">/</span>
-            <span>{project.slug}</span>
-          </p>
+            <span aria-current="page">{project.slug}</span>
+          </nav>
           <h1 className="ctk-d1 ctk-d1--page rv" data-d={1} style={{ maxWidth: "16ch" }}>
             {project.title}
           </h1>

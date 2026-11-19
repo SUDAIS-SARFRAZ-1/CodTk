@@ -165,6 +165,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       crumb="Privacy"
+      path="/privacy"
       title={
         <>
           Privacy <span className="ctk-em">policy</span>.

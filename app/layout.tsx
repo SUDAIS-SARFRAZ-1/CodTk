@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_TITLE, template: "%s — CodTK" },
   description: SITE_DESCRIPTION,
+  // Search Console / Bing Webmaster verification: set the values in Vercel (TODO(owner)); unset = no tag.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,

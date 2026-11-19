@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/codtk/JsonLd";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { CopyButton } from "@/components/contact/CopyButton";
 import { WorldClocks } from "@/components/contact/WorldClocks";
@@ -55,6 +56,7 @@ function Way({ tone, icon, label, children, action }: { tone: string; icon: Reac
 export default function ContactPage() {
   return (
     <div className="sv-page cf-page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Contact", path: "/contact" }])} />
       <section className="cf-hero" data-section="contact" aria-labelledby="cf-h1">
         <div className="ctk-wrap cf-hero__g">
           <div className="cf-intro">

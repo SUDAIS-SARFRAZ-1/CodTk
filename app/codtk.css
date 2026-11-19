@@ -637,12 +637,14 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .ctk-faq details[open] .a{animation:ctk-rise var(--d-base) var(--eo)}
 
 /* ---------- motion ---------- */
-.ctk-js .rv{opacity:0;transform:translateY(24px);transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo)}
-.ctk-js .rv.in{opacity:1;transform:none}
+.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo)}
+/* only off-screen elements wait hidden (Motion.tsx); no transition while hiding, so it is instant */
+.ctk .rv.rv-wait{opacity:0;transform:translateY(24px);transition:none}
+
 
 @media (prefers-reduced-motion:reduce){
   .ctk *,.ctk *::before,.ctk *::after{animation:none!important;transition:none!important}
-  .ctk-js .rv{opacity:1;transform:none}
+  .ctk .rv.rv-wait{opacity:1;transform:none}
   
   .ctk-strip__track{overflow-x:auto}
   .ctk-panel.is-sent .ctk-done path,.ctk-panel.is-sent .ctk-done circle{stroke-dashoffset:0}.ctk-input[aria-invalid="true"],.ctk-spin{animation:none}
@@ -746,7 +748,7 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 @container page (min-width:960px){.sv-tiers{grid-template-columns:1fr 1.08fr 1fr;align-items:stretch}}
 .sv-tier{gap:14px;padding:var(--card-pad);border-radius:var(--radius-lg);background:var(--bg-100);border-color:var(--line-200)}
 .sv-tier:hover{translate:0 -6px;box-shadow:var(--shadow-lift)}
-.ctk-js .sv-tier.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo),border-color var(--d-fast),color var(--d-fast)}
+.sv-tier.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo),border-color var(--d-fast),color var(--d-fast)}
 .sv-tier h3{margin-top:12px;font-size:var(--sv-h3);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:-.025em;color:var(--ink-100)}
 .sv-tier__d{font-size:var(--sv-body);line-height:1.65;color:var(--ink-200)}
 .sv-tier__fit{margin-top:auto;padding-top:20px;border-top:1px solid var(--line-200);font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--ink-300)}
@@ -866,7 +868,7 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 @container page (min-width:768px){.ab-values{grid-template-columns:repeat(2,1fr)}}
 @container page (min-width:1100px){.ab-values{grid-template-columns:repeat(3,1fr)}}
 .ab-card{gap:12px;padding:var(--card-pad);border-radius:var(--radius-lg);background:var(--bg-100);border-color:var(--line-200);transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo)}
-.ctk-js .ab-card.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo)}
+.ab-card.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo)}
 .ab-card:hover{translate:0 -6px;box-shadow:var(--shadow-lift)}
 .ab-card:hover .sv-ic{transform:translateY(-3px) rotate(-4deg)}
 .ab-card__n{position:absolute;right:24px;top:22px;font-family:var(--font-mono);font-size:var(--sv-sm);color:var(--ink-300)}

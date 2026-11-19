@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { JsonLd } from "@/components/codtk/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { SERVICE_LOGOS, TECH_LOGOS } from "@/lib/tech-stack";
 
 const LOGOS = [...TECH_LOGOS, ...SERVICE_LOGOS];
@@ -159,10 +161,12 @@ export function SectionHead({
 }
 
 // Inner-page hero (design system pageHero): ~/codtk/<crumb> breadcrumb, the page's one h1, intro.
-// Options: `plainCrumb` shows "Home / Crumb"; `titleClassName` restyles the h1; `actions` sits under the intro. With `aside`, the intro and
+// Options: `path` adds BreadcrumbList JSON-LD for Home > crumb; `plainCrumb` shows "Home / Crumb";
+// `titleClassName` restyles the h1; `actions` sits under the intro. With `aside`, the intro and
 // actions move under the title and `aside` takes the right-hand column.
 export function PageHero({
   crumb,
+  path,
   title,
   intro,
   plainCrumb,
@@ -171,6 +175,7 @@ export function PageHero({
   aside,
 }: {
   crumb: string;
+  path?: string;
   title: ReactNode;
   intro: ReactNode;
   plainCrumb?: boolean;
@@ -186,6 +191,7 @@ export function PageHero({
   );
   return (
     <section className="ctk-phero" data-section={crumb.toLowerCase()}>
+      {path && <JsonLd data={breadcrumbJsonLd([{ name: crumb, path }])} />}
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
