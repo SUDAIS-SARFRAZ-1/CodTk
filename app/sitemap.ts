@@ -14,6 +14,7 @@ const PAGES: Record<string, string> = {
   "/about": "2026-11-19",
   "/process": "2026-11-19",
   "/contact": "2026-11-19",
+  "/faq": "2026-11-19",
   "/privacy": "2026-11-19",
   "/terms": "2026-11-19",
 };

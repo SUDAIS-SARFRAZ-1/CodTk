@@ -16,7 +16,7 @@ Where titles and descriptions live: `lib/seo.ts#pageMetadata` callers in each `a
 | `/portfolio/mindmesh` | MindMesh (project name) | Navigational | MindMesh — AI-powered SaaS platform for agile teams — CodTK (59) | MindMesh |
 | `/tech-stack` | MERN / Next.js development stack | Informational | Technologies We Use \| CodTK (27) | Tech Stack |
 | `/contact` | contact CodTK, get a quote | Transactional | Contact CodTK \| Get a Fixed Quote (33) | Let's talk about your project. |
-| `/faq` | software development questions (see Phase 7) | Informational | see `app/faq/page.tsx` | — |
+| `/faq` | questions about hiring a software company | Informational | FAQ: Working With a Software Company \| CodTK (44) | Frequently asked questions. |
 
 Home deliberately keeps the founder's title from the 19 Nov brief. The local terms ("software company Lahore", "software house Lahore") are carried by the Home description, the Organization/ProfessionalService JSON-LD (Lahore, PK) and the About page.
 

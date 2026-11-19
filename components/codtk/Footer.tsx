@@ -22,6 +22,7 @@ const COMPANY: FootLink[] = [
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
   { label: "Tech Stack", href: "/tech-stack" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 

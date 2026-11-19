@@ -6,7 +6,7 @@ import { BUSINESS_EMAIL } from "@/lib/contact";
 // Every answer reflects a policy confirmed by the founder (2026-10-03; payments per prd.md §6.6).
 // NDA, code ownership, after-launch support, fixed pricing and reply times are answered in Why and
 // the hero, so they aren't repeated here.
-const FAQS: FaqItem[] = [
+export const HOME_FAQS: FaqItem[] = [
   {
     question: "How much does a project cost?",
     answer: "Every project is priced on its scope. Tell us what you need and we'll send you a quote.",
@@ -51,7 +51,7 @@ export type FaqItem = { question: string; answer: ReactNode; plainText: string }
 // FAQ (design system FAQ): native details, first one open, plus FAQPage JSON-LD built from the same
 // items, so the markup only ever names questions visible on the page. Home uses its five defaults;
 // service pages and /faq pass their own.
-export function Faq({ items = FAQS }: { items?: FaqItem[] }) {
+export function Faq({ items = HOME_FAQS }: { items?: FaqItem[] }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
