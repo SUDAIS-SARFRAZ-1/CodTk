@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { ArrowLink, Btn, Chips, IconTile, PageHero, SectionHead } from "@/components/codtk/primitives";
@@ -54,21 +54,6 @@ const MISSION_VISION = [
   ["Vision", "To be the most trusted engineering partner from Pakistan for businesses building their next generation of software."],
 ];
 
-// Words that blur in one after another (ctk-blurin), for headings and statements.
-function Words({ text, blueFrom }: { text: string; blueFrom?: number }) {
-  return (
-    <span aria-hidden="true">
-      {text.split(" ").map((w, i) => (
-        <span key={i}>
-          <span className={blueFrom !== undefined && i >= blueFrom ? "w sv-b" : "w"} style={{ "--i": i } as CSSProperties}>
-            {w}
-          </span>{" "}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 // About page: hero with the live Lahore card, story, mission and vision, values, the team as a
@@ -79,14 +64,12 @@ export default function AboutPage() {
       <PageHero
         crumb="About"
         plainCrumb
-        seed={9}
-        titleClassName="sv-h1 ctk-blurin"
-        titleLabel="A focused team, engineering with discipline."
-        title={<Words text="A focused team, engineering with discipline." blueFrom={5} />}
+        titleClassName="sv-h1"
+        title={<>A focused team, engineering with <span className="sv-b">discipline.</span></>}
         intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We design and build scalable, secure software, and help businesses take their operations online and grow. Founded in 2026, we are a remote team of engineers across web, mobile, AI and DevOps."
         actions={
           <>
-            <Btn href="/contact" magnetic>
+            <Btn href="/contact">
               Start a Project
             </Btn>
             <a className="ctk-link" href="#team">
@@ -97,7 +80,7 @@ export default function AboutPage() {
         aside={<LahoreCard />}
       />
 
-      <section className="ctk-sec sv-sec" data-tone="quiet" data-section="story" aria-labelledby="ab-story-h">
+      <section className="ctk-sec sv-sec" data-section="story" aria-labelledby="ab-story-h">
         <div className="ctk-wrap ab-story">
           <div className="ab-story__head">
             <p className="ctk-kicker rv">Our story</p>
@@ -119,21 +102,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="ab-mv" data-theme="dark" data-tone="services" data-section="mission" aria-label="Mission and vision">
+      <section className="ab-mv" data-theme="dark" data-section="mission" aria-label="Mission and vision">
         <span className="ab-mv__glow" aria-hidden="true" />
         <div className="ctk-wrap ab-mv__g">
           {MISSION_VISION.map(([k, t], i) => (
             <article key={k} className="ab-mv__item">
               <p className="ctk-kicker rv">{k}</p>
-              <p className="ab-mv__s ctk-blurin rv" data-d={i + 1} aria-label={t}>
-                <Words text={t} />
+              <p className="ab-mv__s rv" data-d={i + 1}>
+                {t}
               </p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="ctk-sec sv-sec cf-where" data-tone="quiet" data-section="how we work" aria-labelledby="ab-how-h">
+      <section className="ctk-sec sv-sec cf-where" data-section="how we work" aria-labelledby="ab-how-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker
@@ -174,7 +157,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="ctk-sec sv-sec" data-tone="quiet" data-section="values" aria-labelledby="ab-values-h">
+      <section className="ctk-sec sv-sec" data-section="values" aria-labelledby="ab-values-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker
@@ -200,7 +183,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="ctk-sec sv-sec ab-team" id="team" data-tone="work" data-section="team" aria-labelledby="ab-team-h">
+      <section className="ctk-sec sv-sec ab-team" id="team" data-section="team" aria-labelledby="ab-team-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker
@@ -241,7 +224,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="ctk-sec sv-sec" data-tone="services" data-section="expertise" aria-labelledby="ab-ex-h">
+      <section className="ctk-sec sv-sec" data-section="expertise" aria-labelledby="ab-ex-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker

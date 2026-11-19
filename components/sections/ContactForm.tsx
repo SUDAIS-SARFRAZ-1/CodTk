@@ -256,12 +256,10 @@ export function ContactForm() {
             By sending this form you agree to our <Link href="/privacy">Privacy Policy</Link> and{" "}
             <Link href="/terms">Terms of Use</Link>.
           </p>
-          <span className="ctk-mag" data-magnetic>
-            <button className="ctk-btn ctk-btn--primary" type="submit" disabled={isPending}>
-              {isPending ? "Sending…" : "Send Message"}
-              {isPending ? <i className="ctk-spin" aria-hidden="true" /> : <Icon name="arrow" />}
-            </button>
-          </span>
+          <button className="ctk-btn ctk-btn--primary" type="submit" disabled={isPending}>
+            {isPending ? "Sending…" : "Send Message"}
+            {isPending ? <i className="ctk-spin" aria-hidden="true" /> : <Icon name="arrow" />}
+          </button>
         </div>
       </form>
     </div>

@@ -39,7 +39,7 @@ export function EngagementModels() {
               <p className="sv-tier__d">{m.text}</p>
               <p className="sv-tier__fit">{m.fit}</p>
               <div>
-                <Btn href="/contact" variant={m.featured ? "primary" : "secondary"} size="sm" magnetic={m.featured}>
+                <Btn href="/contact" variant={m.featured ? "primary" : "secondary"} size="sm">
                   {m.cta}
                 </Btn>
               </div>

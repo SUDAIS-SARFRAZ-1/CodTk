@@ -15,14 +15,14 @@ const ROWS = [
 
 export function Why() {
   return (
-    <section className="ctk-sec" data-tone="quiet" data-section="why codtk" aria-labelledby="why-t">
+    <section className="ctk-sec" data-section="why codtk" aria-labelledby="why-t">
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Why CodTK</p>
           <h2 id="why-t" className="ctk-h2 rv" data-d={1}>
             The rigour of a consultancy. The pace of a <span className="ctk-em">studio</span>.
           </h2>
-          <p className="ctk-p rv" data-d={2}>
+          <p className="ctk-p ctk-hide-phone rv" data-d={2}>
             How working with us compares with the two usual alternatives, point by point.
           </p>
         </div>
@@ -68,7 +68,7 @@ export function Why() {
             </div>
           ))}
         </div>
-        <p className="ctk-meta ctk-cx__note">The comparison describes common setups. Every freelancer and agency is different.</p>
+        <p className="ctk-meta ctk-cx__note ctk-hide-phone">The comparison describes common setups. Every freelancer and agency is different.</p>
       </div>
     </section>
   );

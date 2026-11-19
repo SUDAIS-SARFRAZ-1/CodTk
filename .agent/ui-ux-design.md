@@ -89,11 +89,20 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-The founder adopted the CodTK design system motion spec in full (2026-10-18), including its background system (dot matrix, tone-following haze, circuit traces, parallax code fragments). That covers section reveals, the word blur-in hero, the keyword rotor, the pinned cinematic stage and mesh, scrubbed marquee and word fill, stacked service cards, the pinned process pipeline, the horizontal case showcase, the scroll-scaled CTA, magnetic CTAs, the custom cursor and page transitions. It is implemented without an animation library, in `components/codtk/Motion.tsx` and `app/codtk.css`.
+**Light motion only** (founder, 2026-11-19). This replaces the full design-system motion spec adopted on 2026-10-18, which made pages stutter on ordinary phones.
 
-- Animate `transform` and `opacity` only (SVG stroke draws excepted).
-- `prefers-reduced-motion: reduce` turns everything static, and phones (under 1024px) skip pinning, magnetic pull and the custom cursor.
-- Nothing should cost the performance budget in `instructions.md` §5 (2.5s load target, NFR 8.1).
+What the site keeps:
+- Sections and blocks fade up once as they enter the viewport (`.rv` → `.in`, wired by `components/codtk/Motion.tsx` with one IntersectionObserver; no scroll loop).
+- Hover and focus feedback on buttons, cards and links (colour, border, shadow, a small lift).
+- The slow tech-logo strip (`TechStrip`) and the big scrolling text rows (`Marquee`), both CSS-only loops the founder chose to keep.
+- The home hero's three soft blue glows drifting behind the headline (`.ctk-hero__glows`): gradient circles moved by transform/opacity only, 22–30s loops, no blur filter.
+- Functional indicators only, such as the form's loading spinner.
+
+Not allowed without the founder's approval: pinned or sticky scroll scenes, scroll-scrubbed or parallax effects, stacked or sideways-scrolling showcases, word-by-word blur-in headlines, page-transition effects, a custom cursor, magnetic buttons, moving or tone-shifting backgrounds, circuit traces, infinite loops (pings, pulses, spinning globes, looping demos) and live `backdrop-filter` blur.
+
+- Animate `transform` and `opacity` only.
+- `prefers-reduced-motion: reduce` shows everything at once with no fade.
+- Nothing may cost the performance budget in `instructions.md` §5 (2.5s load target).
 
 ## 8. Accessibility
 
@@ -108,3 +117,5 @@ Checked at 360px, 768px, 1280px, and 1440px (FR-5, `rules.md` §23):
 - Header collapses to a hamburger menu below tablet width; the primary CTA and WhatsApp button remain reachable at every breakpoint.
 - Tech Stack pill grid and Portfolio/Team card grids reflow from multi-column to single-column on mobile without losing legibility.
 - Forms stack to full-width single-column on mobile.
+- Spacing comes from five tokens in `app/codtk.css` (founder, 2026-11-19), phone → desktop at 1024px: section `--sec-y` 56 → 96, heading-to-content `--head-gap` 24 → 40, grid `--grid-gap` 12 → 20, card padding `--card-pad` 16 → 24, side margin `--gutter` 16 → 32. Don't add one-off section, grid or card spacing.
+- Phones stay compact: no card fills the screen. Headings are smaller (hero 38px, page titles 32px, section titles 26px), decorative giant numbers and CLI lines are hidden, each service's deliverables and tech fold behind "What's included", and Why CodTK shows the CodTK column only.

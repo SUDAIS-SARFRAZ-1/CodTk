@@ -8,16 +8,6 @@ import { PROCESS_STEPS } from "@/lib/process";
 
 export const metadata: Metadata = pageMetadata("/process", "Our Process", "How CodTK delivers custom software: discovery, design, development, deployment and support, with an NDA and milestone payments on every project.");
 
-const WORDS: [string, boolean][] = [
-  ["A", false],
-  ["delivery", false],
-  ["process", false],
-  ["built", false],
-  ["for", false],
-  ["predictable", true],
-  ["outcomes.", true],
-];
-
 // prd.md §6.6 / FR-13. `icon` is a 24×24 line icon, `tone` one of the sv-tone colours.
 const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = [
   {
@@ -56,7 +46,7 @@ const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = 
   },
 ];
 
-// Process page: hero with the five stages at a glance, the stage-by-stage camera flight
+// Process page: hero with the five stages at a glance, the stage-by-stage cards
 // (ProcessTunnel), the engagement terms and the site's closing CTA.
 export default function ProcessPage() {
   return (
@@ -64,25 +54,14 @@ export default function ProcessPage() {
       <PageHero
         crumb="Process"
         plainCrumb
-        tone="process"
-        seed={12}
-        titleClassName="sv-h1 ctk-blurin"
-        titleLabel="A delivery process built for predictable outcomes."
+        titleClassName="sv-h1"
         title={
-          <span aria-hidden="true">
-            {WORDS.map(([w, blue], i) => (
-              <span key={w}>
-                <span className={blue ? "w sv-b" : "w"} style={{ "--i": i } as CSSProperties}>
-                  {w}
-                </span>{" "}
-              </span>
-            ))}
-          </span>
+          <>A delivery process built for <span className="sv-b">predictable outcomes.</span></>
         }
         intro="Five stages from the first conversation to launch and beyond, each with clear deliverables and your sign-off."
         actions={
           <>
-            <Btn href="/contact" magnetic>
+            <Btn href="/contact">
               Start a Project
             </Btn>
             <a className="ctk-link" href="#stages">
@@ -105,7 +84,7 @@ export default function ProcessPage() {
 
       <ProcessTunnel />
 
-      <section className="ctk-sec sv-sec" data-tone="quiet" data-section="engagement" aria-labelledby="pr-terms-h">
+      <section className="ctk-sec sv-sec" data-section="engagement" aria-labelledby="pr-terms-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker

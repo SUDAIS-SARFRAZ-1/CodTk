@@ -1,60 +1,61 @@
-import type { CSSProperties } from "react";
-import { ArrowLink, Btn } from "@/components/codtk/primitives";
-import { ServiceExample } from "@/components/codtk/ServiceExamples";
-import { quoteHref, SERVICE_OFFERINGS } from "@/lib/service-offerings";
-import { SERVICE_DETAILS } from "@/lib/services";
+import Link from "next/link";
+import { ArrowLink, Icon } from "@/components/codtk/primitives";
+import { SvIcon } from "@/components/services/icons";
+import { SERVICE_GROUPS, SERVICE_OFFERINGS } from "@/lib/service-offerings";
+import { SERVICE_LINES } from "@/lib/services";
 
-// Home services (design system ServiceStack): black cards that tilt in, stick, and shrink as the
-// next card covers them. Each pairs the service with an everyday example of what it produces.
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// Home services: the twelve services in their three groups, one plain line each, linking to the
+// matching block on /services. Each group has a label column (number, name, count) beside its
+// cards; each card carries its service colour (sv-tone--*). Hover is CSS only: lift, tinted
+// border and shadow, sliding arrow, and an accent line along the bottom.
 export function ServiceStack() {
-  const total = String(SERVICE_OFFERINGS.length).padStart(2, "0");
   return (
-    <section className="ctk-sec" data-tone="services" data-section="services" aria-labelledby="svc-t">
+    <section className="ctk-sec" data-section="services" aria-labelledby="svc-t">
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Services</p>
           <h2 id="svc-t" className="ctk-h2 rv" data-d={1}>
-            Twelve services, shown the way <span className="ctk-em">you would use them</span>.
+            What we can <span className="ctk-em">do for you</span>.
           </h2>
           <div className="rv" data-d={2}>
-            <p className="ctk-p">
-              Development, growth, and strategy and infrastructure: each card shows an everyday example of what we do. Start with one service or combine several.
-            </p>
+            <p className="ctk-p">Start with one service or combine several. Tap any service to see what it includes.</p>
             <div style={{ marginTop: 20 }}>
               <ArrowLink href="/services">All services</ArrowLink>
             </div>
           </div>
         </div>
-        <div className="ctk-stack">
-          {SERVICE_OFFERINGS.map((s, i) => {
-            const d = SERVICE_DETAILS[s.id];
-            return (
-              <article
-                key={s.id}
-                className="ctk-scard"
-                style={{ "--i": i } as CSSProperties}
-                data-stack
-                data-scrub
-                data-theme="dark"
-              >
-                <span className="ctk-scard__low" aria-hidden="true" />
-                <div className="ctk-scard__copy">
-                  <p className="ctk-scard__num">
-                    {String(i + 1).padStart(2, "0")} <i /> {total} · {s.group}
-                  </p>
-                  <h3>{s.title}</h3>
-                  <p className="ctk-p">{d.blurb}</p>
-                  <p className="ctk-scard__built">{d.built}</p>
-                  <Btn href={quoteHref(s.title)} className="ctk-scard__cta">
-                    {d.cta}
-                  </Btn>
-                </div>
-                <ServiceExample id={s.id} label={d.example} />
-                <div className="ctk-scard__shade" data-shade />
-              </article>
-            );
-          })}
-        </div>
+        {SERVICE_GROUPS.map((g, gi) => {
+          const items = SERVICE_OFFERINGS.filter((s) => s.group === g);
+          return (
+            <div key={g} className="ctk-svc-g rv">
+              <div className="ctk-svc-g__head">
+                <span className="ctk-svc-g__n">{pad(gi + 1)}</span>
+                <h3>{g}</h3>
+                <span className="ctk-svc-g__count">
+                  {items.length} {items.length === 1 ? "service" : "services"}
+                </span>
+              </div>
+              <ul className="ctk-svc">
+                {items.map((s) => (
+                  <li key={s.id}>
+                    <Link href={`/services#${s.id}`} className={`ctk-svc__card sv-tone--${s.id}`}>
+                      <SvIcon name={s.id} />
+                      <span className="ctk-svc__text">
+                        <b>{s.title}</b>
+                        <small>{SERVICE_LINES[s.id]}</small>
+                      </span>
+                      <span className="ctk-svc__go" aria-hidden="true">
+                        <Icon name="ur" />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

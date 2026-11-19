@@ -73,7 +73,7 @@ Blog/CMS, careers page, client portal or login, Urdu/multi-language, online paym
 ## 6. Pages and requirements
 
 ### 6.1 Home (built on the CodTK design system)
-Hero (logo monolith, the "Why CodTK" line, primary CTA "Get a Quote", secondary "Book a Call") → service stack → tech strip → process scrolly → Why CodTK → featured work (MindMesh only) → team line ("Built by the CodTK team in Lahore", no number) → trust strip (24-hour reply, Mon–Sat; client IP ownership; NDA on every project) → CTA banner → footer.
+Minimal, plain-language home (founder, Nov 19, 2026): Hero → tech logo strip → Services (compact, grouped) → big scrolling text rows → Why CodTK → featured work (MindMesh only) → FAQ → CTA banner → footer. Detail (architecture, delivery stages, audience statements) lives on the inner pages, not here. The time-zone note moved to Contact.
 Hidden until real: "Trusted by" logo strip, testimonials, stats.
 
 ### 6.2 Services

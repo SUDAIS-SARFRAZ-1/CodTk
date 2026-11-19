@@ -6,7 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navbar } from "@/components/codtk/Navbar";
 import { Footer } from "@/components/codtk/Footer";
 import { Motion } from "@/components/codtk/Motion";
-import { Background } from "@/components/codtk/Background";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/seo";
@@ -48,12 +47,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" data-theme="light" className={`${serif.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <div className="ctk">
-          <Background />
           <Navbar />
           <main className="ctk-main">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <div className="ctk-cursor" aria-hidden="true" />
         </div>
         <Motion />
         {/* Cookieless page views and real-visitor Core Web Vitals (prd.md FR-8, G4); both named as

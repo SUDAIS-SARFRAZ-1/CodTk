@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -21,14 +21,6 @@ import {
 
 export const metadata: Metadata = pageMetadata("/contact", "Contact", "Request a quote from CodTK, a software company in Lahore working with businesses across Pakistan and abroad. Tell us about your project and we reply within 24 hours, Monday to Saturday.");
 
-const WORDS: [string, boolean][] = [
-  ["Let’s", false],
-  ["talk", false],
-  ["about", false],
-  ["your", true],
-  ["project.", true],
-];
-
 // What working with CodTK looks like from Pakistan and from abroad. Every point restates a fact
 // already on the site (prd.md §3, §6.6), so nothing here is new or unconfirmed.
 const PAKISTAN: [string, string][] = [
@@ -40,6 +32,7 @@ const PAKISTAN: [string, string][] = [
 ];
 const ABROAD: [string, string][] = [
   ["Calls booked", "at a time that suits your time zone."],
+  ["Working hours", "Pakistan time overlaps the Gulf workday and Europe's mornings."],
   ["International payments", "through Payoneer."],
   ["Contract and NDA", "signed before any work begins."],
 ];
@@ -62,7 +55,7 @@ function Way({ tone, icon, label, children, action }: { tone: string; icon: Reac
 export default function ContactPage() {
   return (
     <div className="sv-page cf-page">
-      <section className="cf-hero" data-tone="contact" data-section="contact" aria-labelledby="cf-h1">
+      <section className="cf-hero" data-section="contact" aria-labelledby="cf-h1">
         <div className="ctk-wrap cf-hero__g">
           <div className="cf-intro">
             <nav className="ctk-crumb ctk-crumb--plain rv" aria-label="Breadcrumb">
@@ -74,16 +67,8 @@ export default function ContactPage() {
               <i aria-hidden="true" />
               Working with businesses across Pakistan and abroad
             </p>
-            <h1 id="cf-h1" className="sv-h1 ctk-blurin rv" data-d={1} aria-label="Let’s talk about your project.">
-              <span aria-hidden="true">
-                {WORDS.map(([w, blue], i) => (
-                  <span key={w}>
-                    <span className={blue ? "w sv-b" : "w"} style={{ "--i": i } as CSSProperties}>
-                      {w}
-                    </span>{" "}
-                  </span>
-                ))}
-              </span>
+            <h1 id="cf-h1" className="sv-h1 rv" data-d={1}>
+              <>Let’s talk about <span className="sv-b">your project.</span></>
             </h1>
             <p className="sv-lead cf-lead rv" data-d={2}>
               Tell us what you want to build. An engineer reads every message and replies with questions, an approach
@@ -146,7 +131,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="ctk-sec sv-sec cf-where" data-tone="quiet" data-section="where we work" aria-labelledby="cf-where-h">
+      <section className="ctk-sec sv-sec cf-where" data-section="where we work" aria-labelledby="cf-where-h">
         <div className="ctk-wrap">
           <SectionHead
             kicker
@@ -207,7 +192,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="cf-call" data-tone="quiet" aria-labelledby="cf-call-h">
+      <section className="cf-call" aria-labelledby="cf-call-h">
         <div className="ctk-wrap">
           <div className="cf-callcard sv-tone--web rv">
             <IconTile className="sv-ic sv-ic--lg">

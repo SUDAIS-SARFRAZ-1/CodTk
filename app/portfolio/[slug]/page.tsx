@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/projects";
-import { Btn, Chips, Icon, Net, WindowBar } from "@/components/codtk/primitives";
+import { Btn, Chips, Icon, WindowBar } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
@@ -54,8 +54,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
     <>
-      <section className="ctk-phero" data-tone="work" data-section="case study">
-        <Net seed={14} n={5} />
+      <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">
           <p className="ctk-crumb rv">
             <Link href="/">~/codtk</Link>
@@ -84,7 +83,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
         </div>
       </section>
 
-      <section className="ctk-sec" data-tone="quiet" data-section="the project" style={{ paddingTop: 56 }}>
+      <section className="ctk-sec" data-section="the project" style={{ paddingTop: 56 }}>
         <div className="ctk-wrap">
           <div className="rv">
             <div className="ctk-viz" data-theme="dark" style={{ aspectRatio: "21 / 9" }}>

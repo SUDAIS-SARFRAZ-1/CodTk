@@ -75,11 +75,10 @@ export function Navbar() {
         </button>
       </div>
       <div className="ctk-nav__panel" id="ctk-menu">
-        {NAV.map((n, i) => (
+        {NAV.map((n) => (
           <Link
             key={n.href}
             className="ctk-nav__big"
-            style={{ animationDelay: `${i * 40}ms` }}
             href={n.href}
             aria-current={isActive(n.href) ? "page" : undefined}
             onClick={close}

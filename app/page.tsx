@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { BUSINESS_EMAIL, SOCIAL_LINKS } from "@/lib/contact";
 import { SITE_DESCRIPTION } from "@/lib/seo";
 import { Hero } from "@/components/codtk/Hero";
-import { Architecture } from "@/components/codtk/Architecture";
-import { DeliveryStage } from "@/components/codtk/DeliveryStage";
-import { Marquee, Statement } from "@/components/codtk/ScrollType";
 import { TechStrip } from "@/components/codtk/TechStrip";
+import { Marquee } from "@/components/codtk/Marquee";
 import { ServiceStack } from "@/components/codtk/ServiceStack";
-import { StartingPoint } from "@/components/codtk/StartingPoint";
 import { Why } from "@/components/codtk/Why";
 import { CaseShowcase } from "@/components/codtk/CaseShowcase";
 import { Faq } from "@/components/codtk/Faq";
@@ -38,8 +35,8 @@ const webSiteSchema = {
   url: "https://codtk.com",
 };
 
-// Section order from the CodTK design system's Home page. Its Delivery Standard, Stats and
-// Testimonials sections are left out until the PRD supplies real figures and quotes (rules.md §1).
+// Home keeps only what a first-time visitor needs (founder, 2026-11-19): who we are, what we do,
+// why us, proof, answers and the next step. Detail lives on the inner pages.
 export default function Home() {
   return (
     <>
@@ -54,12 +51,8 @@ export default function Home() {
       />
       <Hero />
       <TechStrip />
-      <Architecture />
-      <DeliveryStage />
-      <Marquee />
-      <Statement />
       <ServiceStack />
-      <StartingPoint />
+      <Marquee />
       <Why />
       <CaseShowcase />
       <Faq />

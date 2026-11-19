@@ -1,5 +1,6 @@
 import { Btn, Chips, Icon } from "@/components/codtk/primitives";
 import { SvIcon } from "@/components/services/icons";
+import { Included } from "@/components/services/Included";
 import { TypedCommand } from "@/components/services/TypedCommand";
 import { quoteHref, type ServiceOffering } from "@/lib/service-offerings";
 
@@ -33,7 +34,7 @@ export function ServiceBlock({ service, index, total }: { service: ServiceOfferi
           </Btn>
         </div>
       </div>
-      <div>
+      <Included>
         <h3 className="sv-sub rv" data-d={d++}>
           Key deliverables
         </h3>
@@ -51,7 +52,7 @@ export function ServiceBlock({ service, index, total }: { service: ServiceOfferi
         <div className="sv-tech rv" data-d={Math.min(d++, 12)}>
           <Chips items={service.tech} brand />
         </div>
-      </div>
+      </Included>
     </article>
   );
 }

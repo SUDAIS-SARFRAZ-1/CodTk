@@ -1,29 +1,17 @@
-import type { CSSProperties } from "react";
 import { Btn } from "@/components/codtk/primitives";
 import { WHATSAPP_LINK } from "@/lib/contact";
 
-// Headline words blur in one after another (as the hero's), the em words in blue serif.
-const WORDS: [string, boolean][] = [
-  ["Let’s", false],
-  ["build", false],
-  ["what’s", true],
-  ["next.", true],
-];
-
-// Closing call to action above the footer: a black card whose headline scales up as it scrolls in
-// (--p), with a looping example of a first enquiry and CodTK's reply beside it. The example makes
+// Closing call to action above the footer: a black card with an example of a first enquiry and
+// CodTK's reply beside it (static). The example makes
 // no promise about reply times; those are stated once, in the hero.
 export function CtaBanner() {
   return (
     <section
       className="ctk-cta"
-      data-scrub
-      data-tone="contact"
       data-section="start a project"
       aria-labelledby="cta-t"
     >
       <div className="ctk-cta__card" data-theme="dark">
-        <span className="ctk-cta__glow" aria-hidden="true" />
         <span className="ctk-cta__low" aria-hidden="true" />
         <div className="ctk-cta__grid">
           <div className="ctk-cta__copy">
@@ -31,22 +19,10 @@ export function CtaBanner() {
             <div className="ctk-cta__big">
               <h2
                 id="cta-t"
-                className="ctk-blurin rv"
+                className="rv"
                 data-d={1}
-                aria-label="Let’s build what’s next."
               >
-                <span aria-hidden="true">
-                  {WORDS.map(([w, em], i) => (
-                    <span key={w}>
-                      <span
-                        className={em ? "w ctk-em" : "w"}
-                        style={{ "--i": i } as CSSProperties}
-                      >
-                        {w}
-                      </span>{" "}
-                    </span>
-                  ))}
-                </span>
+                <>Let’s build <span className="ctk-em">what’s next.</span></>
               </h2>
             </div>
             <p className="ctk-lead rv" data-d={3}>
@@ -54,7 +30,7 @@ export function CtaBanner() {
               approach and a quote.
             </p>
             <div className="ctk-actions rv" data-d={4}>
-              <Btn href="/contact" magnetic>
+              <Btn href="/contact">
                 Start a Project
               </Btn>
               <Btn href={WHATSAPP_LINK} variant="secondary" external>
@@ -81,11 +57,6 @@ export function CtaBanner() {
               </p>
               <span className="ctk-chat__msg ctk-chat__sent">Sent</span>
               <div className="ctk-chat__reply">
-                <span className="ctk-chat__msg ctk-chat__dots">
-                  <i />
-                  <i />
-                  <i />
-                </span>
                 <div className="ctk-chat__msg ctk-chat__them">
                   Thanks, sounds great. A few quick questions so we can suggest
                   an approach:

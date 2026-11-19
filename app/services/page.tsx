@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { BOOK_CALL_LINK } from "@/lib/contact";
@@ -20,14 +19,6 @@ export const metadata: Metadata = pageMetadata(
   "Custom software development and digital growth from CodTK in Lahore: web and mobile apps, SaaS, custom ERP, backend APIs, WordPress, SEO, performance marketing, digital transformation, AI automation, cloud and consulting.",
 );
 
-const WORDS: [string, boolean][] = [
-  ["Engineering", false],
-  ["capability,", false],
-  ["end", true],
-  ["to", true],
-  ["end.", true],
-];
-
 // Services page (founder's Services brief, 2026-10-22): hero, sticky service index, one block per
 // service, engagement models, delivery standard, tech strip and the site's closing CTA.
 export default function ServicesPage() {
@@ -36,25 +27,14 @@ export default function ServicesPage() {
       <PageHero
         crumb="Services"
         plainCrumb
-        tone="services"
-        seed={5}
-        titleClassName="sv-h1 ctk-blurin"
-        titleLabel="Engineering capability, end to end."
+        titleClassName="sv-h1"
         title={
-          <span aria-hidden="true">
-            {WORDS.map(([w, blue], i) => (
-              <span key={w}>
-                <span className={blue ? "w sv-b" : "w"} style={{ "--i": i } as CSSProperties}>
-                  {w}
-                </span>{" "}
-              </span>
-            ))}
-          </span>
+          <>Engineering capability, <span className="sv-b">end to end.</span></>
         }
         intro="Twelve services in three groups: development, growth, and strategy and infrastructure. Each is scoped to your objectives, documented in writing and delivered against agreed milestones. Timeline and cost depend on scope; we confirm both before work starts."
         actions={
           <>
-            <Btn href={BOOK_CALL_LINK} external magnetic>
+            <Btn href={BOOK_CALL_LINK} external>
               Book Your Discovery Call
             </Btn>
             <a className="ctk-link" href="#services">
@@ -64,7 +44,7 @@ export default function ServicesPage() {
         }
       />
 
-      <section className="sv-services" id="services" data-tone="services" data-section="disciplines" aria-label="Services">
+      <section className="sv-services" id="services" data-section="disciplines" aria-label="Services">
         <ServiceAnchors services={SERVICE_OFFERINGS.map(({ id, title }) => ({ id, title }))} />
         <div className="ctk-wrap">
           {SERVICE_GROUPS.map((g) => (

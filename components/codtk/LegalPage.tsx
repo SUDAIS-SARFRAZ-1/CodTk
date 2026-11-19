@@ -20,8 +20,8 @@ export function LegalPage({
 }) {
   return (
     <>
-      <PageHero crumb={crumb} title={title} intro={`${intro} Last updated: ${updated}.`} tone="quiet" seed={23} />
-      <section className="ctk-sec ctk-legal" data-tone="quiet" data-section={crumb.toLowerCase()} style={{ paddingTop: 24 }}>
+      <PageHero crumb={crumb} title={title} intro={`${intro} Last updated: ${updated}.`} />
+      <section className="ctk-sec ctk-legal" data-section={crumb.toLowerCase()} style={{ paddingTop: 24 }}>
         <div className="ctk-wrap">
           {sections.map((s, i) => (
             <div key={s.title} className="ctk-block">

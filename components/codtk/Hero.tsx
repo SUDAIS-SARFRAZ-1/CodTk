@@ -1,29 +1,19 @@
-import type { CSSProperties } from "react";
 import { Btn } from "@/components/codtk/primitives";
 import { BOOK_CALL_LINK as BOOK_CALL } from "@/lib/contact";
 
-// Pass 3 — hero rewritten so new visitors can answer in 5 seconds:
-// What? Custom software. Who? Founders/teams who want to work with the engineers directly.
-// Why? Clear scope, honest timelines, modern code. What next? Start a Project.
-const HEADLINE: [string, boolean][] = [
-  ["Building", false],
-  ["next", true],
-  ["generation", true],
-  ["software", false],
-];
-
-// Home hero: white dot field with rings of blue dots rippling out from behind the headline and a
-// breathing blue core; the headline words blur in one after another.
+// Home hero: white dot field with three soft blue light patches drifting slowly behind the headline
+// (CSS transform/opacity loops only; founder, 2026-11-19).
 export function Hero() {
   return (
-    <section className="ctk-hero ctk-hero--dots" data-tone="hero" data-section="intro" aria-labelledby="hero-t">
+    <section className="ctk-hero ctk-hero--dots" data-section="intro" aria-labelledby="hero-t">
       <div className="ctk-hero__field" aria-hidden="true">
         <i className="ctk-hero__dots" />
-        <i className="ctk-hero__wave" />
-        <i className="ctk-hero__wave" style={{ animationDelay: "2s" }} />
-        <i className="ctk-hero__wave" style={{ animationDelay: "4s" }} />
       </div>
-      <i className="ctk-hero__core" aria-hidden="true" />
+      <div className="ctk-hero__glows" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
       <div className="ctk-wrap ctk-hero__fg">
         {/* Pass 3: plain trust line replaces the decorative pill badge */}
         <p className="ctk-hero__trust rv">
@@ -32,25 +22,16 @@ export function Hero() {
         </p>
         <h1
           id="hero-t"
-          className="ctk-blurin rv"
-          aria-label="Building next generation software"
+          className="rv"
         >
-          <span aria-hidden="true">
-            {HEADLINE.map(([w, em], i) => (
-              <span key={`${w}-${i}`}>
-                <span className={em ? "w ctk-em" : "w"} style={{ "--i": i } as CSSProperties}>
-                  {w}
-                </span>{" "}
-              </span>
-            ))}
-          </span>
+          <>Building <span className="ctk-em">next generation</span> software</>
         </h1>
         <p className="ctk-lead rv" data-d={3}>
           Web, mobile, ERP, AI, cloud &amp; digital growth. Work directly with the engineers who build your product:
           clear scope, honest timelines and modern code.
         </p>
         <div className="ctk-actions rv" data-d={4}>
-          <Btn href="/contact" magnetic>
+          <Btn href="/contact">
             Start a Project
           </Btn>
           <Btn href={BOOK_CALL} external variant="secondary" icon={false}>

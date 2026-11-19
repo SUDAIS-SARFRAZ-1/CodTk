@@ -21,11 +21,9 @@ export default function PortfolioPage() {
           </>
         }
         intro="Real projects, each with public source code or a live demo you can check yourself. Client work is added only with the client's written permission."
-        tone="work"
-        seed={8}
       />
 
-      <section className="ctk-sec" data-tone="work" data-section="projects" style={{ paddingTop: 48 }}>
+      <section className="ctk-sec" data-section="projects" style={{ paddingTop: 48 }}>
         <div className="ctk-wrap">
           <div className="ctk-pgrid">
             {PROJECTS.map((p, i) => {

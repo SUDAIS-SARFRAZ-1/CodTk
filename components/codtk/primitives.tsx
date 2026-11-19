@@ -53,7 +53,6 @@ type BtnProps = {
   size?: "md" | "sm";
   icon?: boolean;
   block?: boolean;
-  magnetic?: boolean;
   external?: boolean;
   className?: string;
   onClick?: () => void;
@@ -66,7 +65,6 @@ export function Btn({
   size = "md",
   icon = true,
   block,
-  magnetic,
   external,
   className = "",
   onClick,
@@ -78,7 +76,7 @@ export function Btn({
       {icon && <Icon name="arrow" />}
     </>
   );
-  const btn = external ? (
+  return external ? (
     <a className={cls} href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>
       {inner}
     </a>
@@ -86,13 +84,6 @@ export function Btn({
     <Link className={cls} href={href} onClick={onClick}>
       {inner}
     </Link>
-  );
-  return magnetic ? (
-    <span className="ctk-mag" data-magnetic>
-      {btn}
-    </span>
-  ) : (
-    btn
   );
 }
 
@@ -167,65 +158,23 @@ export function SectionHead({
   );
 }
 
-// Circuit traces drawn in behind a section (design system net()): `n` seeded polylines that draw on
-// reveal, each ending in a node. Same seeded sequence as the system, so layouts match its previews.
-function netTraces(seed: number, n: number) {
-  let s = seed;
-  const rnd = () => {
-    s = (s * 9301 + 49297) % 233280;
-    return s / 233280;
-  };
-  return Array.from({ length: n }, () => {
-    let x = Math.round(rnd() * 100);
-    let y = Math.round(rnd() * 100);
-    let d = `M${x} ${y}`;
-    for (let j = 0; j < 3; j++) {
-      if (j % 2) y = Math.max(2, Math.min(98, y + Math.round((rnd() - 0.5) * 60)));
-      else x = Math.max(2, Math.min(98, x + Math.round((rnd() - 0.5) * 50)));
-      d += ` L${x} ${y}`;
-    }
-    return { d, end: `M${x} ${y}h0` };
-  });
-}
-
-export function Net({ seed, n = 4 }: { seed: number; n?: number }) {
-  const traces = netTraces(seed, n);
-  return (
-    <svg className="ctk-net rv" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      {traces.map((t) => (
-        <path key={t.d} d={t.d} pathLength={1} vectorEffect="non-scaling-stroke" />
-      ))}
-      {traces.map((t, k) => (
-        <path key={t.end + k} className={k % 2 ? "node c" : "node"} d={t.end} vectorEffect="non-scaling-stroke" />
-      ))}
-    </svg>
-  );
-}
-
 // Inner-page hero (design system pageHero): ~/codtk/<crumb> breadcrumb, the page's one h1, intro.
-// Options: `plainCrumb` shows "Home / Crumb"; `titleClassName` and `titleLabel` (for word-split,
-// aria-hidden titles) restyle the h1; `actions` sits under the intro. With `aside`, the intro and
+// Options: `plainCrumb` shows "Home / Crumb"; `titleClassName` restyles the h1; `actions` sits under the intro. With `aside`, the intro and
 // actions move under the title and `aside` takes the right-hand column.
 export function PageHero({
   crumb,
   title,
   intro,
-  tone = "hero",
-  seed = 3,
   plainCrumb,
   titleClassName = "ctk-d1 ctk-d1--page",
-  titleLabel,
   actions,
   aside,
 }: {
   crumb: string;
   title: ReactNode;
   intro: ReactNode;
-  tone?: string;
-  seed?: number;
   plainCrumb?: boolean;
   titleClassName?: string;
-  titleLabel?: string;
   actions?: ReactNode;
   aside?: ReactNode;
 }) {
@@ -236,8 +185,7 @@ export function PageHero({
     </>
   );
   return (
-    <section className="ctk-phero" data-tone={tone} data-section={crumb.toLowerCase()}>
-      <Net seed={seed} n={5} />
+    <section className="ctk-phero" data-section={crumb.toLowerCase()}>
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
@@ -246,7 +194,7 @@ export function PageHero({
               <span aria-hidden="true">/</span>
               <span aria-current="page">{plainCrumb ? crumb : crumb.toLowerCase()}</span>
             </nav>
-            <h1 className={`${titleClassName} rv`} data-d={1} aria-label={titleLabel}>
+            <h1 className={`${titleClassName} rv`} data-d={1}>
               {title}
             </h1>
             {aside && (

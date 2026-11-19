@@ -59,7 +59,7 @@ const faqSchema = {
 // FAQ (design system FAQ): native details, first one open + FAQPage schema.
 export function Faq() {
   return (
-    <section className="ctk-sec" data-tone="quiet" data-section="faq" aria-labelledby="faq-t">
+    <section className="ctk-sec" data-section="faq" aria-labelledby="faq-t">
       {/* FAQPage structured data — enables Google rich results */}
       <script
         type="application/ld+json"

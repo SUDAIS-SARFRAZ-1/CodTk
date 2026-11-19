@@ -46,8 +46,8 @@ function Col({ title, items }: { title: string; items: FootLink[] }) {
 }
 
 // Site footer (prd.md §6.9): navigation, every contact route once, social and WhatsApp icons,
-// legal links. Behind it, the CodTK logo sits faint and a spotlight follows the pointer
-// (FooterSpotlight, the only client part).
+// legal links. Behind it, the CodTK logo sits faint and static
+// (FooterSpotlight).
 export function Footer() {
   const contact: FootLink[] = [
     { label: BUSINESS_EMAIL, href: `mailto:${BUSINESS_EMAIL}` },
