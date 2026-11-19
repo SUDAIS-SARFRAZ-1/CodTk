@@ -110,6 +110,7 @@
 .ctk :focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 .ctk-i{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .ctk-ti{display:inline-block;width:20px;height:20px;flex:none;background:currentColor;-webkit-mask:var(--i) center / contain no-repeat;mask:var(--i) center / contain no-repeat}
+.ctk :is(h1,h2,h3){text-wrap:balance}
 .ctk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ctk-main{position:relative;z-index:1}
 .ctk [data-theme="dark"]{color:var(--ink-100)}
@@ -304,9 +305,9 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-hero--dots .ctk-hero__fg{display:flex;flex-direction:column;align-items:center}
 
 /* Pass 3: plain trust line — no pill, just dot + text */
-.ctk-hero__trust{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:var(--ink-300);letter-spacing:.01em}
+.ctk-hero__trust{display:inline-block;text-wrap:balance;font-size:13px;font-weight:500;color:var(--ink-300);letter-spacing:.01em}
 
-.ctk-hero__trust i{width:6px;height:6px;border-radius:50%;background:var(--blue-500);flex:none}
+.ctk-hero__trust i{display:inline-block;width:6px;height:6px;margin-right:10px;vertical-align:.15em;border-radius:50%;background:var(--blue-500)}
 .ctk-hero--dots h1{margin-top:28px;max-width:11ch;font-size:clamp(48px,7.6cqi,108px);line-height:.93;letter-spacing:-.055em}
 .ctk-hero--dots .ctk-lead{margin-top:28px;max-width:34em;color:var(--ink-100)}
 .ctk-hero--dots .ctk-actions{justify-content:center;margin-top:36px}
@@ -921,14 +922,14 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .cf-way__k{font-size:var(--sv-sm);line-height:1.4;font-weight:500;color:var(--ink-300)}
 .cf-way__v{display:block;margin-top:2px;font-size:clamp(.9375rem,.9rem + .25vw,1.125rem);line-height:1.4;font-weight:600;color:var(--ink-100);overflow-wrap:anywhere}
 a.cf-way__v:hover{color:var(--blue-400)}
-.cf-pill{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-100);font:600 .8125rem var(--font-body);color:var(--ink-100);cursor:pointer;transition:background-color var(--d-fast),color var(--d-fast),border-color var(--d-fast)}
+.cf-pill{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-100);font:600 .8125rem var(--font-body);color:var(--ink-100);cursor:pointer;transition:background-color var(--d-fast),color var(--d-fast),border-color var(--d-fast)}
 .cf-pill svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6}
 @container page (max-width:420px){.cf-pill span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.cf-way{gap:12px}}
 .cf-pill:hover{background:var(--ink-100);border-color:var(--ink-100);color:var(--bg-100)}
 .cf-pill.ok{background:var(--success);border-color:var(--success);color:var(--on-blue)}
 .cf-social{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:24px}
 .ctk-social{display:flex;flex-wrap:wrap;gap:10px}
-.ctk-social a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-200);color:var(--ink-200);transition:color var(--d-base) var(--eo),border-color var(--d-base) var(--eo)}
+.ctk-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-200);color:var(--ink-200);transition:color var(--d-base) var(--eo),border-color var(--d-base) var(--eo)}
 .ctk-social a:hover{border-color:var(--line-300)}
 .ctk-social i{width:20px;height:20px;background:var(--c,currentColor);-webkit-mask:var(--i) center / contain no-repeat;mask:var(--i) center / contain no-repeat}
 .ctk-foot .ctk-social{margin-top:var(--space-4)}
@@ -955,7 +956,7 @@ a.cf-way__v:hover{color:var(--blue-400)}
 .cf-card--intl .cf-list li::before{background:color-mix(in srgb,var(--cyan-400) 14%,transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 10.5 3.2 3.2L15 7' fill='none' stroke='%233ccbff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
 .cf-clocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:auto}
 @container page (min-width:640px){.cf-clocks{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.cf-clock{padding:14px;border-radius:var(--radius-md);border:1px solid var(--line-200);background:var(--bg-200)}
+.cf-clock{font-variant-numeric:tabular-nums;padding:14px;border-radius:var(--radius-md);border:1px solid var(--line-200);background:var(--bg-200)}
 .cf-clock.home{border-color:color-mix(in srgb,var(--cyan-400) 50%,transparent);background:linear-gradient(180deg,color-mix(in srgb,var(--blue-500) 18%,transparent),var(--bg-200))}
 .cf-clock p{font-size:.8125rem;line-height:1.4;font-weight:500;color:var(--ink-300)}
 .cf-clock b{display:block;margin-top:4px;font-size:1.5rem;line-height:1;font-weight:600;letter-spacing:-.02em;color:var(--ink-100);font-variant-numeric:tabular-nums}

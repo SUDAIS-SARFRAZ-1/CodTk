@@ -61,7 +61,8 @@ export function TypedCommand({ cmd }: { cmd: string }) {
   }, [cmd]);
 
   return (
-    <p className="sv-cmd" aria-label={`$ ${cmd}`}>
+    <p className="sv-cmd">
+      <span className="ctk-sr">$ {cmd}</span>
       <b aria-hidden="true">$</b>
       <span className="t" aria-hidden="true">
         <span ref={full}>{marked(cmd)}</span>
