@@ -64,7 +64,7 @@ It also serves as a live demo of the team's work, so it must be fast, accessible
 ## 5. Scope
 
 ### 5.1 In scope (v2)
-Pages: Home, Services, Tech Stack, Portfolio (with case-study detail pages), About, Process, Contact, Privacy Policy, Terms of Use, and a custom 404.
+Pages: Home, Services (plus one page per service at `/services/<slug>`, added Nov 20, 2026 for SEO), Tech Stack, Portfolio (with case-study detail pages), About, Process, Contact, FAQ, Privacy Policy, Terms of Use, a custom 404, and a `noindex` thank-you page after the form. Plus `/llms.txt` for AI assistants.
 Plus: hardened contact form with lead storage and notifications, WhatsApp CTA on every page, Calendly booking, SEO basics and structured data, Vercel Analytics, Google Search Console and Google Business Profile.
 
 ### 5.2 Out of scope (v2)
@@ -86,6 +86,7 @@ Twelve services in three groups (founder's briefs of Oct 22 and Nov 19, 2026). *
 - No prices. Every service ends in "Get a Quote".
 - No fixed timelines or minimum size: "Timeline and cost depend on scope; we confirm both before work starts."
 - Post-launch support and maintenance is offered and mentioned on this page and in Process.
+- **Service pages** (`app/services/[slug]`, data in `lib/service-seo.ts`): the service's existing copy plus Who it's for, How we work, FAQ (2 service-specific + cost + ownership), related services and the CTA; Service, FAQPage and BreadcrumbList JSON-LD. Keyword targets in `docs/KEYWORD_MAP.md`. Visible service copy stays in `lib/service-offerings.ts`.
 
 ### 6.3 Tech Stack
 Keep the current list as it is in the repo (v1.2 list plus TypeScript, Python, Kotlin, Expo, Firebase, AWS, PWA), grouped as a logo/pill grid.
@@ -151,12 +152,16 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-13 | Engagement model stated on Process | Must | Built (§6.6 wording) |
 | FR-14 | Cloudflare Turnstile on the form | Must | Built; needs Turnstile keys in Vercel env |
 | FR-15 | Auto-reply email to the visitor | Should | Not built; needs FR-1 domain |
-| FR-16 | Organization/LocalBusiness JSON-LD | Should | Built Nov 19: Organization with sameAs links on Home |
-| FR-17 | Custom 404 with CTAs | Should | Not built |
+| FR-16 | Organization/LocalBusiness JSON-LD | Should | Built: Organization + ProfessionalService on Home (Nov 20: logo, areaServed, contactPoint, knowsAbout); BreadcrumbList on every inner page |
+| FR-17 | Custom 404 with CTAs | Should | Built (`app/not-found.tsx`, real 404 status) |
 | FR-18 | Lead saved to Google Sheet | Should | Not built |
 | FR-19 | Slack notification per lead | Could | Not built; confirm |
 | FR-20 | Optional budget-range field | Should | Not built |
 | FR-21 | Remove every "AptiScript" reference (docs, `package.json`, comments) | Must | Done in code and docs (historical PRD/question files keep the old name) |
+| FR-22 | One page per service with its own title, description and JSON-LD | Should | Built Nov 20 (12 pages) |
+| FR-23 | `/faq` page with FAQPage JSON-LD | Should | Built Nov 20 (12 questions) |
+| FR-24 | `/llms.txt` generated from site data | Could | Built Nov 20 |
+| FR-25 | GA4 events behind consent (Consent Mode v2): generate_lead, whatsapp_click, email_click, phone_click, cta_click, outbound_social_click | Should | Built Nov 20; owner marks key events in GA4 (`docs/MEASUREMENT.md`) |
 
 ## 9. Non-functional requirements
 - **Performance:** LCP under 2.5s; Lighthouse 90+ (mobile) as in G4. Fonts loaded via `next/font` with subsetting; motion stays hand-written and lazy.
@@ -169,7 +174,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 Next.js 16 App Router + TypeScript, Tailwind v4 with design tokens, TanStack Query (contact form only), Zod, Resend, Vercel hosting (owned by the founder, connected to GitHub). No database; the Google Sheet is the lead store.
 - **Motion:** hand-written, no Framer Motion or GSAP.
 - **Spam:** Cloudflare Turnstile.
-- **Tests:** Vitest for form validation; one Playwright end-to-end test of the contact form.
+- **Tests:** Vitest for form validation (built Nov 20: 13 tests, `npm test`); one Playwright end-to-end test of the contact form (not built yet).
 - **CI/CD:** used. `instructions.md` is correct; update `rules.md` §44/§48 to match. Lint, typecheck, tests and build must pass before deploy.
 
 ## 11. Launch plan
@@ -220,3 +225,4 @@ Remaining page redesigns in this order: Services → Portfolio → About → Pro
 | 2.0 | Oct 18, 2026 | All 55 questions answered; positioning, lead flow, phased launch for Oct 20 |
 | 2.1 | Oct 22, 2026 | Services page redesigned from the founder's brief: seven services, Dedicated team model, delivery standard, tech marquee (§6.2) |
 | 2.2 | Nov 19, 2026 | Website update brief: new phone, contact@codtk.com, social links, 12 services in three groups (no Shopify), About copy, title/description, Organization JSON-LD |
+| 2.3 | Nov 20, 2026 | Launch-ready pass (branch `feat/launch-ready`): service pages, /faq, /thank-you, llms.txt, JSON-LD, GA4 events + Consent Mode v2, manifest, tests, security updates. See `docs/LAUNCH_REPORT.md` |
