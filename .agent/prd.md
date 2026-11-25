@@ -7,8 +7,8 @@
 | **Owner and approver** | Sudais Sarfraz, Founder (sole approver) |
 | **Version** | 2.0 |
 | **Date** | October 18, 2026 |
-| **Status** | Approved for build. Decisions come from `prd-questions.md` (all 55 answered) |
-| **Replaces** | `prd.md` v1.2 (AptiScript Technologies) and `prd-v2-draft.md` |
+| **Status** | Approved for build. Decisions come from the founder's answers to 55 questions |
+| **Replaces** | `prd.md` v1.2 (AptiScript Technologies) and the v2 draft |
 
 > Items marked **(pending input)** are decided but wait on something only the founder can supply, such as a URL. Items marked **(assumed)** are defaults Claude picked where an answer was ambiguous; change them by editing this file.
 
@@ -157,7 +157,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-18 | Lead saved to Google Sheet | Should | Not built |
 | FR-19 | Slack notification per lead | Could | Not built; confirm |
 | FR-20 | Optional budget-range field | Should | Not built |
-| FR-21 | Remove every "AptiScript" reference (docs, `package.json`, comments) | Must | Done in code and docs (historical PRD/question files keep the old name) |
+| FR-21 | Remove every "AptiScript" reference (docs, `package.json`, comments) | Must | Done in code and docs |
 | FR-22 | One page per service with its own title, description and JSON-LD | Should | Built Nov 20 (12 pages) |
 | FR-23 | `/faq` page with FAQPage JSON-LD | Should | Built Nov 20 (12 questions) |
 | FR-24 | `/llms.txt` generated from site data | Could | Built Nov 20 |
