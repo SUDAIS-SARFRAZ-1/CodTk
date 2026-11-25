@@ -23,7 +23,7 @@ All are sent with `track()` in `lib/analytics.ts`, which does nothing until GA4 
 | `whatsapp_click` | Any `wa.me` / WhatsApp link, including the floating button | `location` | **Yes** |
 | `email_click` | Any `mailto:` link | `location` | No |
 | `phone_click` | Any `tel:` link | `location` | No |
-| `cta_click` | Any link to `/contact` (incl. pre-filled `?service=` quote links) or any primary button | `location`, `label`, `href` | No |
+| `cta_click` | Any link to `/contact` (incl. pre-filled `#service=` quote links) or any primary button | `location`, `label`, `href` | No |
 | `outbound_social_click` | LinkedIn, Instagram or Facebook profile links | `network`, `location` | No |
 
 `location` is the nearest section's `data-section` (e.g. `intro`, `services`, `faq`, `contact`, `start a project`) or `nav` / `footer`.

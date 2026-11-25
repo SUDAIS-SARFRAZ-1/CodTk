@@ -64,13 +64,16 @@ function Field({
 // The quote form inside the design system's enquiry panel. Validates with the shared Zod schema
 // for instant feedback; the server re-validates everything (rules.md §5).
 export function ContactForm() {
-  // Pre-select the service from `?service=` (FR-3) after load instead of via useSearchParams, so the
+  // Pre-select the service from `#service=` (FR-3; older links use `?service=`) after load instead of via useSearchParams, so the
   // form is server-rendered (no Suspense fallback) and nothing below it shifts when it appears.
   const projectTypeRef = useRef<HTMLSelectElement>(null);
   useEffect(() => {
-    const service = new URLSearchParams(window.location.search).get("service") ?? "";
+    const { hash, search } = window.location;
+    const service = new URLSearchParams(hash.slice(1) || search).get("service") ?? "";
     const match = PROJECT_TYPES.find((type) => type === (PROJECT_TYPE_ALIASES[service] ?? service));
     if (match && projectTypeRef.current) projectTypeRef.current.value = match;
+    // No element has this fragment as its id, so Next would keep the previous page's scroll position.
+    if (hash.startsWith("#service=")) window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   const renderedAtRef = useRef(0);

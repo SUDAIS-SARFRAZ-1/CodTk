@@ -17,7 +17,7 @@ const NAV = [
 export function Logo() {
   return (
     <span className="ctk-logo">
-      <Image src="/brand/mark.png" alt="" width={57} height={30} priority />
+      <Image src="/brand/mark.png" alt="CodTK logo" width={57} height={30} priority />
       <Image src="/brand/wordmark.png" alt="CodTK" width={84} height={13} priority />
     </span>
   );

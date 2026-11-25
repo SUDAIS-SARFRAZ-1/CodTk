@@ -336,5 +336,6 @@ export const MARQUEE_TECH = [
   "Stripe",
 ];
 
-// Contact links: the quote form is pre-filled with the service title (prd.md FR-3).
-export const quoteHref = (title: string) => `/contact?service=${encodeURIComponent(title)}`;
+// Contact links: the quote form is pre-filled with the service title (prd.md FR-3). A fragment, not
+// a query, so each service doesn't create a duplicate crawlable /contact URL.
+export const quoteHref = (title: string) => `/contact#service=${encodeURIComponent(title)}`;
