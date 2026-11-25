@@ -1,7 +1,9 @@
 // Single source of truth for real business contact details (rules.md §1 —
 // no placeholder contact info anywhere; every usage reads from here).
-// Public address and lead inbox (founder, 2026-11-19); Cloudflare Email Routing forwards it to Gmail.
-export const BUSINESS_EMAIL = "contact@codtk.com";
+// Address shown to visitors, and the inbox contact-form leads go to (founder, 2026-11-26). Cloudflare
+// Email Routing forwards both to Gmail.
+export const BUSINESS_EMAIL = "info@codtk.com";
+export const LEAD_EMAIL = "contact@codtk.com";
 
 export const WHATSAPP_NUMBER_DISPLAY = "+92 314 6397321";
 export const WHATSAPP_NUMBER_E164 = "923146397321";

@@ -42,7 +42,7 @@ It also serves as a live demo of the team's work, so it must be fast, accessible
 |---|---|
 | Name | CodTK (plain "CodTK" everywhere; no "AptiScript" anywhere) |
 | Domain | codtk.com, bought from Hostinger; to be connected to Vercel |
-| Email | Public: contact@codtk.com (also info@, support@, hr@; admin@ is internal, never shown). All forward to codtk.official@gmail.com via Cloudflare Email Routing; form leads are sent to contact@codtk.com |
+| Email | Public: info@codtk.com, the only address shown on the site since Nov 26, 2026 (contact@ receives form leads; support@ and hr@ also exist; admin@ is internal, never shown). All forward to codtk.official@gmail.com via Cloudflare Email Routing; form leads are sent to contact@codtk.com |
 | Phone / WhatsApp | +92 314 6397321 (same number; tap-to-call and wa.me/923146397321). Replaced +92 301 9492010 on Nov 19, 2026 |
 | Location | "Lahore, Pakistan · Remote team, serving clients worldwide". No street address |
 | Registration | Not registered. No SECP/NTN shown |
@@ -111,13 +111,13 @@ Engagement model (FR-13):
 
 ### 6.7 Contact
 - Form fields: name, email, project type (services + Other), optional budget range, message. No file upload; visitors can paste links.
-- WhatsApp link and tap-to-call for +92 314 6397321, contact@codtk.com, LinkedIn/Instagram/Facebook/WhatsApp icons, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan · Remote team, serving clients worldwide", reply promise, Privacy/Terms links.
+- WhatsApp link and tap-to-call for +92 314 6397321, info@codtk.com, LinkedIn/Instagram/Facebook/WhatsApp icons, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan · Remote team, serving clients worldwide", reply promise, Privacy/Terms links.
 
 ### 6.8 Privacy Policy and Terms of Use
 Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics and Speed Insights (cookieless), Calendly (booking).
 
 ### 6.9 Footer
-Navigation, the one-line description, LinkedIn/Instagram/Facebook/WhatsApp icons (new tab), contact@codtk.com, phone, "Lahore, Pakistan · Remote team, serving clients worldwide", Privacy/Terms links, "© 2026 CodTK · Code. Design. Deliver. · contact@codtk.com · +92 314 6397321". No registration number.
+Navigation, the one-line description, LinkedIn/Instagram/Facebook/WhatsApp icons (new tab), info@codtk.com, phone, "Lahore, Pakistan · Remote team, serving clients worldwide", Privacy/Terms links, "© 2026 CodTK · Code. Design. Deliver. · info@codtk.com · +92 314 6397321". No registration number.
 
 ### 6.10 404
 Branded page with a short message and "Get a Quote" and "Go home" CTAs.
@@ -137,7 +137,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 
 | ID | Requirement | Priority | Status |
 |---|---|---|---|
-| FR-1 | Contact form → contact@codtk.com from a verified @codtk.com sender | Must | Sender read from `RESEND_FROM`; needs codtk.com verified in Resend, then set the env var |
+| FR-1 | Contact form → contact@codtk.com from a verified @codtk.com sender | Must | Sends from website@codtk.com; needs codtk.com verified in Resend and `RESEND_API_KEY` in Vercel |
 | FR-2 | WhatsApp CTA on all pages | Must | Built |
 | FR-3 | Service card → pre-filled quote form (incl. "Other") | Should | Verify |
 | FR-4 | Case-study detail pages | Should | Built; MindMesh only (Organic Store hidden via `hidden` flag) |
@@ -151,7 +151,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-12 | Founder links (portfolio, LinkedIn, GitHub) on About | Should | Pending URLs |
 | FR-13 | Engagement model stated on Process | Must | Built (§6.6 wording) |
 | FR-14 | Cloudflare Turnstile on the form | Must | Built; needs Turnstile keys in Vercel env |
-| FR-15 | Auto-reply email to the visitor | Should | Not built; needs FR-1 domain |
+| FR-15 | Auto-reply email to the visitor | Should | Built Nov 26; sent only when Turnstile keys are set |
 | FR-16 | Organization/LocalBusiness JSON-LD | Should | Built: Organization + ProfessionalService on Home (Nov 20: logo, areaServed, contactPoint, knowsAbout); BreadcrumbList on every inner page |
 | FR-17 | Custom 404 with CTAs | Should | Built (`app/not-found.tsx`, real 404 status) |
 | FR-18 | Lead saved to Google Sheet | Should | Not built |
@@ -226,3 +226,4 @@ Remaining page redesigns in this order: Services → Portfolio → About → Pro
 | 2.1 | Oct 22, 2026 | Services page redesigned from the founder's brief: seven services, Dedicated team model, delivery standard, tech marquee (§6.2) |
 | 2.2 | Nov 19, 2026 | Website update brief: new phone, contact@codtk.com, social links, 12 services in three groups (no Shopify), About copy, title/description, Organization JSON-LD |
 | 2.3 | Nov 20, 2026 | Launch-ready pass (branch `feat/launch-ready`): service pages, /faq, /thank-you, llms.txt, JSON-LD, GA4 events + Consent Mode v2, manifest, tests, security updates. See `docs/LAUNCH_REPORT.md` |
+| 2.4 | Nov 26, 2026 | Public email is info@codtk.com; form leads still go to contact@codtk.com. Security headers and `#service=` quote links |

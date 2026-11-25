@@ -6,7 +6,7 @@ Work that happens outside the codebase. In priority order; each item lists what 
 - Name: **CodTK**
 - One-liner: CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide.
 - Area: Lahore, Pakistan · Remote team, serving clients worldwide (no street address)
-- Phone / WhatsApp: +92 314 6397321 · Email: contact@codtk.com · Website: https://codtk.com
+- Phone / WhatsApp: +92 314 6397321 · Email: info@codtk.com · Website: https://codtk.com
 - Founded: 2026 · Category: Software company / Software development / Internet marketing service
 
 ## Priority 1 — this week

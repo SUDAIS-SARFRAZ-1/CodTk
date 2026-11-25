@@ -32,8 +32,7 @@ Set these in Vercel (Project → Settings → Environment Variables) for product
 
 | Variable | Purpose |
 |---|---|
-| `RESEND_API_KEY` | Sends contact-form leads by email (Resend). |
-| `RESEND_FROM` | Sender address, e.g. `CodTK Website <website@codtk.com>`. codtk.com must be verified in Resend first. Unset = Resend's sandbox sender. |
+| `RESEND_API_KEY` | Sends contact-form leads and the visitor confirmation from website@ and contact@codtk.com (Resend; codtk.com must be verified there). |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile spam check on the contact form. Once the secret is set, submissions without a valid token are rejected. |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URL. Defaults to `https://codtk.com`. |
 

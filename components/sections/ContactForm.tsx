@@ -147,7 +147,7 @@ export function ContactForm() {
             projectType: String(formData.get("projectType") ?? ""),
             budget: String(formData.get("budget") ?? BUDGETS[BUDGETS.length - 1]),
             message: String(formData.get("message") ?? ""),
-            company: String(formData.get("company") ?? ""),
+            website: String(formData.get("website") ?? ""),
             renderedAt: renderedAtRef.current,
             // Turnstile writes its token into this hidden input inside the widget.
             turnstileToken: String(formData.get("cf-turnstile-response") ?? ""),
@@ -177,8 +177,8 @@ export function ContactForm() {
       >
         {/* Honeypot — hidden from real visitors via CSS, not just visually offscreen */}
         <div hidden aria-hidden="true">
-          <label htmlFor="company">Company</label>
-          <input type="text" id="company" name="company" tabIndex={-1} autoComplete="off" />
+          <label htmlFor="website">Website</label>
+          <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
         </div>
 
         <Field id="name" label="Full name" required error={fieldErrors.name}>

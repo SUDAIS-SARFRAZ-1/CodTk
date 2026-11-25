@@ -18,7 +18,7 @@ describe("contactFormSchema", () => {
     expect(r.success).toBe(true);
     if (r.success) {
       expect(r.data.budget).toBe("Not sure yet");
-      expect(r.data.company).toBe("");
+      expect(r.data.website).toBe("");
       expect(r.data.turnstileToken).toBe("");
     }
   });
@@ -28,6 +28,7 @@ describe("contactFormSchema", () => {
     ["a one-letter name", { name: "A" }],
     ["an invalid email", { email: "not-an-email" }],
     ["a message under 10 characters", { message: "Hi there" }],
+    ["a message over 5,000 characters", { message: "x".repeat(5001) }],
     ["an unknown project type", { projectType: "Shopify Store" }],
     ["an unknown budget", { budget: "$1" }],
     ["a missing render time", { renderedAt: undefined }],
@@ -43,7 +44,7 @@ describe("contactFormSchema", () => {
   });
 
   it("accepts any honeypot value, so the server can discard bots silently", () => {
-    expect(contactFormSchema.safeParse({ ...valid, company: "Spam Co" }).success).toBe(true);
+    expect(contactFormSchema.safeParse({ ...valid, website: "spam.example" }).success).toBe(true);
   });
 });
 

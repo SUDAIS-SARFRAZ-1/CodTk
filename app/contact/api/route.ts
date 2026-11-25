@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { confirmationEmail, leadEmail } from "@/features/contact/emails";
 import { contactFormSchema } from "@/features/contact/schema";
-import { BUSINESS_EMAIL } from "@/lib/contact";
+import { BUSINESS_EMAIL, LEAD_EMAIL, WHATSAPP_NUMBER_DISPLAY } from "@/lib/contact";
 
 // Best-effort in-memory rate limit — resets on cold start and isn't shared
 // across serverless instances. Turnstile below is the main bot defence (rules.md §7).
@@ -35,6 +36,13 @@ async function isHuman(token: string, ip: string): Promise<boolean> {
   return result?.success === true;
 }
 
+// Gives the visitor another way through, so a delivery problem doesn't lose the lead.
+const SEND_FAILED = `We couldn't send your message. Please email ${BUSINESS_EMAIL} or WhatsApp ${WHATSAPP_NUMBER_DISPLAY}.`;
+
+// codtk.com must be verified in Resend for these senders to work.
+const LEAD_FROM = "CodTK Website <website@codtk.com>";
+const CONFIRM_FROM = `CodTK <${LEAD_EMAIL}>`;
+
 function errorResponse(status: number, code: string, message: string) {
   return NextResponse.json({ error: { code, message } }, { status });
 }
@@ -51,10 +59,10 @@ export async function POST(request: Request) {
     return errorResponse(400, "INVALID_INPUT", "Please check the form and try again.");
   }
 
-  const { name, email, projectType, budget, message, company, renderedAt, turnstileToken } = parsed.data;
+  const { name, email, website, renderedAt, turnstileToken } = parsed.data;
 
   // Honeypot: real visitors never fill this hidden field.
-  if (company) {
+  if (website) {
     return NextResponse.json({ ok: true }); // pretend success, don't tip off the bot
   }
 
@@ -71,23 +79,35 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set — contact form cannot send email.");
-    return errorResponse(500, "EMAIL_NOT_CONFIGURED", "Email delivery isn't set up yet.");
+    return errorResponse(500, "EMAIL_NOT_CONFIGURED", SEND_FAILED);
   }
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
-    // RESEND_FROM is an @codtk.com address once codtk.com is verified in Resend;
-    // until then, Resend's sandbox sender (which only delivers to the account owner).
-    from: process.env.RESEND_FROM ?? "CodTK Website <onboarding@resend.dev>",
-    to: BUSINESS_EMAIL,
+    from: LEAD_FROM,
+    to: LEAD_EMAIL,
     replyTo: email,
-    subject: `New quote request: ${projectType}`,
-    text: `From: ${name} <${email}>\nProject type: ${projectType}\nBudget: ${budget}\n\n${message}`,
+    ...leadEmail(parsed.data),
   });
 
   if (error) {
     console.error("Resend send failed:", error);
-    return errorResponse(502, "EMAIL_SEND_FAILED", "Couldn't send your message. Please try again.");
+    return errorResponse(502, "EMAIL_SEND_FAILED", SEND_FAILED);
+  }
+
+  // Runs after the response, so it can't delay or fail the lead. Only with Turnstile on: without it, a bot
+  // could use this form to send email from codtk.com to any address.
+  if (process.env.TURNSTILE_SECRET_KEY) {
+    after(async () => {
+      const { error: confirmError } = await resend.emails.send({
+        from: CONFIRM_FROM,
+        to: email,
+        replyTo: LEAD_EMAIL,
+        headers: { "Auto-Submitted": "auto-replied" },
+        ...confirmationEmail(name),
+      });
+      if (confirmError) console.error("Confirmation email failed:", confirmError.name);
+    });
   }
 
   return NextResponse.json({ ok: true });
