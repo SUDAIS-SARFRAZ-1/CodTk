@@ -7,19 +7,19 @@ import { SITE_URL } from "@/lib/seo";
 // Last real content change per page — update the date when a page changes, so lastmod stays truthful
 // (search engines ignore lastmod that changes on every build).
 const PAGES: Record<string, string> = {
-  "": "2026-11-19",
-  "/services": "2026-11-19",
+  "": "2026-11-27",
+  "/services": "2026-11-27",
   "/tech-stack": "2026-11-19",
   "/portfolio": "2026-11-19",
   "/about": "2026-11-19",
   "/process": "2026-11-19",
-  "/contact": "2026-11-19",
+  "/contact": "2026-11-26",
   "/faq": "2026-11-19",
-  "/privacy": "2026-11-19",
+  "/privacy": "2026-11-26",
   "/terms": "2026-11-19",
 };
 const PROJECTS_UPDATED = "2026-11-19";
-const SERVICES_UPDATED = "2026-11-19";
+const SERVICES_UPDATED = "2026-11-27";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = Object.entries(PAGES).map(([path, updated]) => ({
