@@ -4,7 +4,7 @@ import { SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
 import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
 import { JsonLd } from "@/components/codtk/JsonLd";
 import { Hero } from "@/components/codtk/Hero";
-import { NeedRows } from "@/components/codtk/NeedRows";
+import { Needs } from "@/components/codtk/Needs";
 import { TechStrip } from "@/components/codtk/TechStrip";
 import { TechReveal } from "@/components/codtk/TechReveal";
 import { Marquee } from "@/components/codtk/Marquee";
@@ -62,7 +62,7 @@ export default function Home() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={webSiteSchema} />
       <Hero />
-      <NeedRows />
+      <Needs />
       <div className="ctk-wrap">
         <TechReveal className="ctk-reveal--strip">
           <TechStrip />

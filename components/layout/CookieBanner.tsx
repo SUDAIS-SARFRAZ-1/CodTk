@@ -94,11 +94,11 @@ export function CookieBanner() {
   return (
     <div
       role="dialog"
+      className="ctk-cookie"
       aria-label="Cookie preferences"
       aria-live="polite"
       style={{
         position: "fixed",
-        bottom: 20,
         left: "50%",
         translate: "-50% 0",
         zIndex: 200,

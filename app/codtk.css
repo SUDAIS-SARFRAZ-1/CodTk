@@ -241,8 +241,7 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px var(--gutter) 0;pointer-events:none}
 .ctk-nav__pill{pointer-events:auto;max-width:1200px;margin:0 auto;border:1px solid color-mix(in srgb,var(--bg-100) 70%,transparent);border-radius:30px;background:color-mix(in srgb,var(--bg-100) 94%,transparent);box-shadow:0 8px 32px -12px rgba(10,10,11,.18),inset 0 1px 0 color-mix(in srgb,var(--bg-100) 80%,transparent);overflow:hidden;transition:background-color var(--d-fast),border-color var(--d-fast)}
 .ctk-nav.is-scrolled .ctk-nav__pill{background:color-mix(in srgb,var(--bg-100) 96%,transparent);border-color:var(--line-100)}
-.ctk-nav.is-open .ctk-nav__pill{background:var(--bg-100)}
-.ctk-nav__in{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);height:60px;padding:0 8px 0 18px}
+.ctk-nav__in{display:flex;align-items:center;justify-content:center;gap:var(--space-6);height:60px;padding:0 8px 0 18px}
 .ctk-nav__brand{display:inline-flex;transition:opacity var(--d-micro)}
 .ctk-nav__brand:hover{opacity:.75}
 /* Logo artwork is drawn for black; invert flips its white to near-black and hue-rotate keeps the blue. */
@@ -255,24 +254,13 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1.5px;background:var(--blue-500);transform:scaleX(0);transform-origin:right;transition:transform var(--d-fast) var(--eo)}
 .ctk-nav__links a:hover,.ctk-nav__links a[aria-current="page"]{color:var(--ink-100)}
 .ctk-nav__links a:hover::after,.ctk-nav__links a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
-.ctk-nav__menu{position:relative;width:42px;height:42px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-100);color:var(--ink-100);cursor:pointer}
-.ctk-nav__menu::before,.ctk-nav__menu::after{content:"";position:absolute;left:12px;right:12px;height:1.5px;background:currentColor;transition:transform var(--d-base) var(--eio)}
-.ctk-nav__menu::before{top:16px}.ctk-nav__menu::after{top:23px}
-.ctk-nav.is-open .ctk-nav__menu::before{transform:translateY(3.5px) rotate(45deg)}
-.ctk-nav.is-open .ctk-nav__menu::after{transform:translateY(-3.5px) rotate(-45deg)}
-.ctk-nav__panel{display:none;padding:0 18px 18px}
-.ctk-nav.is-open .ctk-nav__panel{display:block;animation:ctk-drop var(--d-fast) var(--eo)}
-.ctk-nav__panel a.ctk-nav__big{display:flex;justify-content:space-between;align-items:center;padding-block:14px;border-top:1px solid var(--line-100);font-size:24px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
-.ctk-nav__panel a.ctk-nav__big .ctk-ti{width:18px;height:18px;color:var(--ink-300)}
-.ctk-nav__panel a.ctk-nav__big[aria-current="page"]{color:var(--blue-400)}
-.ctk-nav__panel .ctk-btn{margin-top:var(--space-6)}
 @keyframes ctk-drop{from{opacity:0;transform:translateY(-8px)}}
 @keyframes ctk-rise{from{opacity:0;transform:translateY(10px)}}
 @container page (min-width:1024px){
 
   .ctk-nav__links{display:flex;gap:34px}
   .ctk-nav__cta{display:inline-flex}
-  .ctk-nav__menu,.ctk-nav.is-open .ctk-nav__panel{display:none}
+  .ctk-nav__in{justify-content:space-between}
 }
 @media (prefers-reduced-motion:reduce){.ctk-nav__links a::after{transition:none}}
 
@@ -985,14 +973,31 @@ html:not([data-intro="seen"]) .ctk-intro~.ctk .ctk-dive__line path{animation-del
 .ctk-dive__horizon{position:absolute;left:50%;top:100%;width:100vw;height:2px;translate:-50% 0;background:linear-gradient(90deg,transparent,#0067fc 22%,#3ccbff 50%,#0067fc 78%,transparent);box-shadow:0 0 28px 4px rgba(0,103,252,.55)}
 @media (prefers-reduced-motion:reduce){.ctk-intro{display:none}.ctk-dive__line path{animation:none;stroke-dashoffset:0}}
 
-/* ---------- label-left sections and the "What do you need?" rows (founder, 2026-11-26) ---------- */
-.ctk-split{display:grid;gap:var(--head-gap)}
-@container page (min-width:1024px){.ctk-split{grid-template-columns:3fr 9fr}}
-.ctk-split__label{font-size:15px;line-height:1.5;font-weight:500;color:var(--ink-300)}
-.ctk-needs{border-top:1px solid var(--line-200)}
-.ctk-needs a{display:grid;gap:6px 32px;padding-block:22px;border-bottom:1px solid var(--line-200)}
-.ctk-needs b{font-size:clamp(26px,3.6cqi,52px);line-height:1.08;font-weight:500;letter-spacing:-.035em;color:var(--ink-100);transition:color var(--d-fast) var(--eo),transform var(--d-base) var(--eo)}
-.ctk-needs span{font-size:16px;line-height:1.55;color:var(--ink-200)}
-.ctk-needs a:hover b,.ctk-needs a:focus-visible b{color:var(--blue-500);transform:translateX(8px)}
-@container page (min-width:768px){.ctk-needs a{grid-template-columns:1.3fr 1fr;align-items:center}}
-@media (prefers-reduced-motion:reduce){.ctk-needs b{transition:none}.ctk-needs a:hover b{transform:none}}
+/* ---------- "What do you need?" cards (founder, 2026-11-26): each card takes its service colour on hover ---------- */
+.ctk-needs__h{margin-bottom:var(--head-gap)}
+.ctk-needs{display:grid;gap:var(--grid-gap)}
+@container page (min-width:640px){.ctk-needs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container page (min-width:1024px){.ctk-needs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ctk-needs__other{grid-column:1 / -1}
+.ctk-svc__card .sv-ic{transition:background-color var(--d-fast) var(--eo),color var(--d-fast) var(--eo)}
+.ctk-svc__card b{transition:color var(--d-fast) var(--eo)}
+.ctk-svc__card:hover,.ctk-svc__card:focus-visible{background:color-mix(in srgb,var(--c) 9%,var(--bg-100));border-color:var(--c)}
+.ctk-svc__card:hover .sv-ic,.ctk-svc__card:focus-visible .sv-ic{background:var(--c);color:var(--on-blue)}
+.ctk-svc__card:hover b,.ctk-svc__card:focus-visible b{color:var(--c)}
+@media (prefers-reduced-motion:reduce){.ctk-svc__card .sv-ic,.ctk-svc__card b{transition:none}}
+
+/* ---------- bottom tab bar on phones and tablets (founder, 2026-11-26) ---------- */
+.ctk-tabs{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));width:min(480px,calc(100% - 24px));padding:6px;translate:-50% 0;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:color-mix(in srgb,var(--bg-100) 94%,transparent);box-shadow:0 16px 40px -18px rgba(10,10,11,.35)}
+.ctk-tabs a{display:grid;justify-items:center;gap:2px;min-height:52px;padding:7px 2px;border-radius:var(--radius-pill);font-size:11px;font-weight:600;line-height:1.2;color:var(--ink-300);transition:color var(--d-fast),background-color var(--d-fast)}
+.ctk-tabs .ctk-i{width:22px;height:22px}
+.ctk-tabs a[aria-current="page"]{background:color-mix(in srgb,var(--blue-500) 10%,var(--bg-100));color:var(--blue-400)}
+.ctk-tabs a:hover{color:var(--ink-100)}
+.ctk-wa{right:calc(1.25rem + env(safe-area-inset-right));bottom:calc(96px + env(safe-area-inset-bottom))}
+.ctk-foot{padding-bottom:calc(var(--space-8) + 88px)}
+@container page (min-width:1024px){
+  .ctk-tabs{display:none}
+  .ctk-wa{bottom:calc(1.25rem + env(safe-area-inset-bottom))}
+  .ctk-foot{padding-bottom:var(--space-8)}
+}
+.ctk-cookie{bottom:calc(96px + env(safe-area-inset-bottom))}
+@media (min-width:1024px){.ctk-cookie{bottom:20px}}

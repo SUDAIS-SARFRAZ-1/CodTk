@@ -7,8 +7,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom))", right: "calc(1.25rem + env(safe-area-inset-right))" }}
-      className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-card-hover transition-transform duration-150 ease-brand hover:scale-105"
+      className="ctk-wa fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-card-hover transition-transform duration-150 ease-brand hover:scale-105"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
