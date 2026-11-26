@@ -8,7 +8,7 @@ import { Btn, Chips, Icon, WindowBar } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { JsonLd } from "@/components/codtk/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata, SITE_URL } from "@/lib/seo";
 
 type PortfolioDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -22,19 +22,10 @@ export async function generateMetadata({ params }: PortfolioDetailPageProps): Pr
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) return { title: "Project" };
-  return {
-    title: `${project.title} — ${project.subtitle}`,
-    description: project.summary,
-    alternates: { canonical: `/portfolio/${project.slug}` },
-    openGraph: {
-      type: "article",
-      siteName: "CodTK",
-      url: `/portfolio/${project.slug}`,
-      title: `${project.title} — ${project.subtitle}`,
-      description: project.summary,
-      images: [project.images[0].src],
-    },
-  };
+  return pageMetadata(`/portfolio/${project.slug}`, `${project.title} — ${project.subtitle} — CodTK`, project.summary, {
+    type: "article",
+    image: project.images[0].src,
+  });
 }
 
 // Design system CaseStudyPage: meta row, wide visual, numbered blocks, next case. The result block
@@ -57,6 +48,17 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
     <div className="ctk-rise">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.title,
+          description: project.summary,
+          url: `${SITE_URL}/portfolio/${project.slug}`,
+          image: `${SITE_URL}${project.images[0].src}`,
+          creator: { "@id": `${SITE_URL}/#organization` },
+        }}
+      />
       <JsonLd data={breadcrumbJsonLd([{ name: "Work", path: "/portfolio" }, { name: project.title, path: `/portfolio/${project.slug}` }])} />
       <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">

@@ -16,7 +16,8 @@ export function Hero() {
         <div className="ctk-dive__foot">
           <div>
             <p className="ctk-lead">
-              We design and build websites, apps and custom systems for startups and growing businesses. Bring us
+              We&apos;re a software development company in Lahore that designs and builds websites, apps and custom
+              systems for startups and growing businesses. Bring us
               an idea and we&apos;ll turn it into a working first version, or improve the systems you already run.
             </p>
             <p className="ctk-avail">Fixed-price quotes, clear weekly updates and support after launch.</p>
@@ -35,8 +36,8 @@ export function Hero() {
       <div className="ctk-dive__fill" aria-hidden="true" />
       <div className="ctk-dive__scene" data-theme="dark" aria-hidden="true">
         <div className="ctk-dive__logo">
-          <Image src="/brand/lockup.png" alt="" width={720} height={486} sizes="(min-width: 768px) 520px, 70vw" />
-          <Image className="ctk-dive__mirror" src="/brand/lockup.png" alt="" width={720} height={486} sizes="(min-width: 768px) 520px, 70vw" />
+          <Image src="/brand/lockup.png" alt="" aria-hidden="true" width={720} height={486} sizes="(min-width: 768px) 520px, 70vw" />
+          <Image className="ctk-dive__mirror" src="/brand/lockup.png" alt="" aria-hidden="true" width={720} height={486} sizes="(min-width: 768px) 520px, 70vw" />
           <i className="ctk-dive__horizon" />
         </div>
       </div>

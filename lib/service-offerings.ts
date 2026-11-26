@@ -35,10 +35,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "web",
     group: "Build",
-    title: "Websites & Web Apps",
+    title: "Websites & Web Apps",
+
     cmd: "codtk init web --stack next --ssr",
     description:
-      "Custom web applications and business websites built for speed, SEO, and easy maintenance — from marketing sites to full internal tools. We build customer portals, internal tools, marketplaces and dashboards.",
+      "Custom web development for business websites and web apps, built for speed, SEO and easy maintenance, from marketing sites to full internal tools. We build customer portals, internal tools, marketplaces and dashboards.",
     deliverables: [
       "Responsive website or web app, built for speed and search",
       "Admin area so your team can update content",
@@ -53,10 +54,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "mobile",
     group: "Build",
-    title: "Mobile Apps (Android & iOS)",
+    title: "Mobile Apps (Android & iOS)",
+
     cmd: "codtk init mobile --targets android,ios",
     description:
-      "Apps for Android and iPhone, built the way your project needs: one app for both, an Android-only app, or a web app people install on any phone. Notifications, offline use, payments and app-store listing are handled for you.",
+      "Mobile app development for Android and iPhone, built the way your project needs: one cross-platform app for both, an Android-only app, or a web app people install on any phone. Notifications, offline use, payments and app-store listing are handled for you.",
     deliverables: [
       "One app for Android and iPhone, or a native Android app",
       "Designs of the key screens before the build",
@@ -71,10 +73,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "saas",
     group: "Build",
-    title: "Subscription Software (SaaS)",
+    title: "Subscription Software (SaaS)",
+
     cmd: "codtk init saas --tenants multi --billing stripe",
     description:
-      "Subscription software that serves many customers from one platform, with billing, team roles and analytics in place from the first release. We begin with discovery, so the first version solves one problem well.",
+      "SaaS development for subscription software that serves many customers from one platform, with billing, team roles and analytics in place from the first release. We begin with discovery, so your MVP solves one problem well.",
     deliverables: [
       "Product discovery and a first-release scope",
       "Each customer's data kept separate and private",
@@ -89,10 +92,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "erp",
     group: "Build",
-    title: "Business Management Software (ERP)",
+    title: "Business Management Software (ERP)",
+
     cmd: "codtk init erp --modules inventory,sales,hr,accounts",
     description:
-      "An ERP built from scratch around the way your business already works, instead of bending your workflow to fit off-the-shelf software. Inventory, sales, HR and accounts share one database, so every team works from the same numbers.",
+      "Custom ERP development built around the way your business already works, instead of bending your workflow to fit off-the-shelf software. Inventory, sales, HR and accounts share one database, so every team works from the same numbers.",
     deliverables: [
       "A map of your current workflow and the modules you need",
       "Inventory, sales, purchasing, HR and accounts modules",
@@ -107,10 +111,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "api",
     group: "Build",
-    title: "Backends & Integrations (APIs)",
+    title: "Backends & Integrations (APIs)",
+
     cmd: "codtk init api --auth rbac --realtime",
     description:
-      "The hidden part that makes apps work: secure logins, access levels, payments and live updates. Everything is documented and tested under heavy use before launch.",
+      "Backend and API development for the hidden part that makes apps work: secure logins, access levels, payments and live updates. Everything is documented and tested under heavy use before launch.",
     deliverables: [
       "Connections your website and app use to talk to each other, fully documented",
       "A well-organised database for your information",
@@ -125,10 +130,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "wordpress",
     group: "Build",
-    title: "WordPress Websites",
+    title: "WordPress Websites",
+
     cmd: "codtk init wordpress --theme custom --cache on",
     description:
-      "Fast WordPress websites your team can update without a developer: pages, posts, menus and forms from the familiar WordPress editor. Built on a lean custom theme with only the plugins you need, so the site stays quick and secure.",
+      "WordPress development for fast websites your team can update without a developer: pages, posts, menus and forms from the familiar WordPress editor. Built on a lean custom theme with only the plugins you need, so the site stays quick and secure.",
     deliverables: [
       "A custom theme designed around your brand",
       "Editable pages, posts, menus and contact forms",
@@ -142,10 +148,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "seo",
     group: "Grow",
-    title: "Get Found on Google (SEO)",
+    title: "Get Found on Google (SEO)",
+
     cmd: "codtk audit seo --site yourbusiness.com",
     description:
-      "Get found on Google by the clients you want. We fix the technical problems that hold a site back, improve pages for the searches your customers make, and set up your Google Business Profile for local search.",
+      "SEO services for small business that get you found on Google by the clients you want. We fix the technical problems that hold a site back, improve pages for the searches your customers make, and set up your Google Business Profile for local SEO.",
     deliverables: [
       "A check-up of your site: speed, errors and how Google sees it",
       "Keyword research for the searches your clients make",
@@ -160,10 +167,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "marketing",
     group: "Grow",
-    title: "Online Advertising",
+    title: "Online Advertising",
+
     cmd: "codtk launch campaign --goal leads --budget monthly",
     description:
-      "Paid campaigns on the platforms that fit your business, measured by the leads and sales they bring rather than clicks. Tracking is set up first, so every rupee or dollar spent can be traced to a result.",
+      "Performance marketing: paid campaigns on the platforms that fit your business, measured by the leads and sales they bring rather than clicks. Tracking is set up first, so every rupee or dollar spent can be traced to a result.",
     deliverables: [
       "A plan: which platforms, which audience, what budget",
       "Tracking set up first, so you see which ads bring enquiries",
@@ -178,7 +186,8 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "transform",
     group: "Plan & Run",
-    title: "Taking Your Business Online",
+    title: "Taking Your Business Online",
+
     cmd: "codtk migrate --from paper --to online",
     description:
       "Take your physical business online: orders, bookings, stock and payments move from phone calls, registers and spreadsheets into simple software your staff and customers can use. We change one part at a time, so the business keeps running throughout.",
@@ -196,10 +205,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "ai",
     group: "Plan & Run",
-    title: "AI & Business Automation",
+    title: "AI & Business Automation",
+
     cmd: "codtk automate --from orders --to invoices",
     description:
-      "Automation that connects the tools you already use and cuts out repetitive work. Where it helps, we add AI assistants that answer from your own documents and pull data from files, always with a person checking the result.",
+      "AI automation for business that connects the tools you already use and cuts out repetitive work. Where it helps, we add AI assistants that answer from your own documents and pull data from files, always with a person checking the result.",
     deliverables: [
       "A review of the manual work worth automating",
       "AI assistants and document extraction from your own files",
@@ -214,10 +224,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "cloud",
     group: "Plan & Run",
-    title: "Cloud Hosting & Updates",
+    title: "Cloud Hosting & Updates",
+
     cmd: "codtk deploy --ci github-actions --env production",
     description:
-      "Reliable hosting and safe updates, so your product stays online and every change goes live without mistakes. We watch it after launch and keep the monthly bill in check.",
+      "DevOps and cloud services for reliable hosting and safe updates, so your product stays online and every change goes live without mistakes. We watch it after launch and keep the monthly bill in check.",
     deliverables: [
       "A hosting plan, moving from your old host, and lower monthly costs",
       "Every update checked automatically before it goes live",
@@ -233,10 +244,11 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "consulting",
     group: "Plan & Run",
-    title: "Technical Advice & Planning",
+    title: "Technical Advice & Planning",
+
     cmd: "codtk plan --scope v1 --risks",
     description:
-      "An outside expert's plan before you spend money on building. You get a written plan to keep, whoever builds it.",
+      "Software consulting: an outside expert's plan before you spend money on building. You get a written plan to keep, whoever builds it.",
     deliverables: [
       "A review of your idea, product or existing code",
       "Which technology to use, and how to structure it",

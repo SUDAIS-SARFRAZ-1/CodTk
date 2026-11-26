@@ -34,7 +34,7 @@ export function CaseGallery({ images }: { images: Project["images"] }) {
               aria-label={`Show screenshot ${i + 1}: ${m.alt}`}
               onClick={() => setActive(i)}
             >
-              <Image src={m.src} alt="" width={m.width} height={m.height} sizes="120px" />
+              <Image src={m.src} alt="" aria-hidden="true" width={m.width} height={m.height} sizes="120px" />
             </button>
           ))}
         </div>

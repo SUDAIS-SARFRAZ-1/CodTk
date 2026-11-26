@@ -16,8 +16,8 @@ export function Intro() {
   return (
     <div className="ctk-intro" aria-hidden="true">
       <div className="ctk-intro__logo">
-        <Image className="ctk-intro__mark" src="/brand/mark.png" alt="" width={720} height={379} sizes="160px" priority />
-        <Image className="ctk-intro__word" src="/brand/wordmark.png" alt="" width={640} height={99} sizes="200px" priority />
+        <Image className="ctk-intro__mark" src="/brand/mark.png" alt="" aria-hidden="true" width={720} height={379} sizes="160px" priority />
+        <Image className="ctk-intro__word" src="/brand/wordmark.png" alt="" aria-hidden="true" width={640} height={99} sizes="200px" priority />
         <i className="ctk-intro__line" />
       </div>
     </div>

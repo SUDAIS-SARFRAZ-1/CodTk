@@ -72,7 +72,7 @@ export default async function ServicePage({ params }: Props) {
         path={path}
         parent={{ name: "Services", path: "/services" }}
         titleClassName="sv-h1"
-        title={<>{s.title}</>}
+        title={<>{seo.h1}</>}
         intro={s.description}
         actions={
           <>
