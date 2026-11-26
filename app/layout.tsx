@@ -7,6 +7,8 @@ import { Navbar } from "@/components/codtk/Navbar";
 import { Footer } from "@/components/codtk/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Intro, INTRO_SEEN_SCRIPT } from "@/components/codtk/Intro";
 import { ClickTracking } from "@/components/layout/ClickTracking";
 import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -44,8 +46,11 @@ export const viewport: Viewport = { themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" data-theme="light" className={`${body.variable} ${mono.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${body.variable} ${mono.variable}`}>
       <body>
+        {/* Before first paint: marks a repeat view so the Home intro plays once per visit. */}
+        <script dangerouslySetInnerHTML={{ __html: INTRO_SEEN_SCRIPT }} />
+        <Intro />
         <div className="ctk">
           <Navbar />
           <main className="ctk-main">{children}</main>
@@ -58,6 +63,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SpeedInsights />
         {/* GA4 — loaded only after cookie consent (CookieBanner handles the gtag script injection) */}
         <CookieBanner />
+        <SmoothScroll />
         <ClickTracking />
       </body>
     </html>

@@ -172,7 +172,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 
 ## 10. Technical implementation
 Next.js 16 App Router + TypeScript, Tailwind v4 with design tokens, TanStack Query (contact form only), Zod, Resend, Vercel hosting (owned by the founder, connected to GitHub). No database; the Google Sheet is the lead store.
-- **Motion:** hand-written, no Framer Motion or GSAP.
+- **Motion:** hand-written, no Framer Motion or GSAP. Smooth scrolling uses Lenis (founder, Nov 26, 2026). Home has a logo intro and a scroll-driven hero dive (see `ui-ux-design.md` §7).
 - **Spam:** Cloudflare Turnstile.
 - **Tests:** Vitest for form validation (built Nov 20: 13 tests, `npm test`); one Playwright end-to-end test of the contact form (not built yet).
 - **CI/CD:** used. `instructions.md` is correct; update `rules.md` §44/§48 to match. Lint, typecheck, tests and build must pass before deploy.

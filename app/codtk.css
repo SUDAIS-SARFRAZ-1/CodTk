@@ -277,38 +277,14 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 @media (prefers-reduced-motion:reduce){.ctk-nav__links a::after{transition:none}}
 
 /* ---------- hero (white) ---------- */
-.ctk-hero{position:relative;padding:calc(var(--nav) + 8px) 0 var(--space-12)}
-.ctk-hero h1{margin-top:var(--space-6);font-size:clamp(54px,11cqi,168px);line-height:.9;letter-spacing:-.055em}
-.ctk-hero .ctk-lead{max-width:30em}
-@container page (min-width:1024px){.ctk-hero{padding:calc(var(--nav) + 16px) 0 var(--space-8)}}
 /* plain-language section label (replaces the // code-comment eyebrow) */
 .ctk-kicker{display:inline-flex;align-items:center;gap:12px;font-size:14px;line-height:1.4;font-weight:600;letter-spacing:.01em;color:var(--blue-400)}
 .ctk-kicker::before{content:"";width:24px;height:2px;border-radius:2px;background:var(--blue-500)}
 /* dot-field hero (Hero.tsx): white page, a field of grey dots, rings of blue dots rippling out from
    behind the centred headline every 2s and a breathing blue core */
-.ctk-hero--dots{overflow:hidden;isolation:isolate;display:flex;align-items:center;padding:calc(var(--nav) + 8px) 0 var(--space-6);text-align:center}
-.ctk-hero__field{position:absolute;inset:0;z-index:-2;-webkit-mask-image:radial-gradient(75% 75% at 50% 46%,#000,transparent);mask-image:radial-gradient(75% 75% at 50% 46%,#000,transparent)}
-.ctk-hero__field i{position:absolute;inset:0;background-size:20px 20px}
-.ctk-hero__dots{background-image:radial-gradient(color-mix(in srgb,var(--ink-100) 14%,transparent) 1.2px,transparent 1.6px)}
 /* drifting glows: gradient circles moved by transform/opacity only (no blur filter), 22–30s loops */
-.ctk-hero--dots .ctk-hero__fg{display:flex;flex-direction:column;align-items:center}
 
 
-.ctk-hero__eyebrow{font-size:14px;font-weight:500;color:var(--ink-300)}
-.ctk-hero--dots h1{margin-top:20px;max-width:18ch;font-size:clamp(40px,6.4cqi,96px);line-height:1;letter-spacing:-.045em}
-.ctk-hero--dots .ctk-lead{margin-top:28px;max-width:34em;color:var(--ink-100)}
-.ctk-hero--dots .ctk-actions{justify-content:center;margin-top:36px}
-/* "What do you need?" choices in the home hero: service cards, stacked icon-over-label on phones */
-.ctk-need{width:100%;max-width:960px;margin-top:36px}
-.ctk-need__q{font-size:15px;font-weight:600;letter-spacing:.01em;color:var(--ink-200)}
-.ctk-need ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);margin-top:16px;text-align:left}
-.ctk-need__card{flex-direction:column;gap:12px}
-.ctk-need__card b{flex:1;font-size:15px;font-weight:600;line-height:1.3;color:var(--ink-100)}
-@container page (min-width:768px){
-  .ctk-need ul{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .ctk-need .ctk-need__card{flex-direction:row;align-items:center}
-}
-.ctk-avail{margin-top:var(--space-6);font-size:14px;line-height:1.5;color:var(--ink-300)}
 /* architecture: layer panel + illustration frame */
 
 /* the artwork has wide empty margins and sits right of centre: zoom in and pull it back to the middle */
@@ -953,7 +929,6 @@ a.cf-way__v:hover{color:var(--blue-400)}
 /* phones (founder, 2026-11-19): smaller headings, no decorative giant numbers or code lines */
 @container page (max-width:767px){
   .ctk-hide-phone{display:none}
-  .ctk-hero--dots h1{font-size:36px}
   .ctk-d1,.ctk-d1--page{font-size:32px}
   .ctk-h2{font-size:26px}
   .ctk-cta__big h2{font-size:36px}
@@ -966,3 +941,58 @@ a.cf-way__v:hover{color:var(--blue-400)}
   .sv-more[open]>summary{margin-bottom:var(--card-pad)}
   .sv-more[open]>summary::after{content:"−"}
 }
+
+/* ---------- Home intro (founder, 2026-11-26): logo for ~2.5s, once per visit, CSS only ---------- */
+.ctk-intro{position:fixed;inset:0;z-index:400;display:grid;place-items:center;background:#000;animation:ctk-intro-out .6s cubic-bezier(.22,1,.36,1) 2.2s forwards}
+[data-intro="seen"] .ctk-intro{display:none}
+.ctk-intro__logo{position:relative;display:grid;justify-items:center;gap:20px}
+.ctk-intro__mark{width:150px;height:auto;animation:ctk-intro-in .9s cubic-bezier(.22,1,.36,1) both}
+.ctk-intro__word{width:180px;height:auto;animation:ctk-intro-in .9s cubic-bezier(.22,1,.36,1) .3s both}
+.ctk-intro__line{position:absolute;left:50%;top:calc(100% + 28px);width:min(420px,70vw);height:1px;margin-left:max(-210px,-35vw);background:linear-gradient(90deg,transparent,#0067fc,#3ccbff,#0067fc,transparent);transform:scaleX(0);animation:ctk-intro-line 1.2s cubic-bezier(.22,1,.36,1) .6s forwards}
+@keyframes ctk-intro-in{from{opacity:0;transform:translateY(14px) scale(.96)}}
+@keyframes ctk-intro-line{to{transform:scaleX(1)}}
+@keyframes ctk-intro-out{to{opacity:0;visibility:hidden}}
+
+/* ---------- Home hero dive (founder, 2026-11-26). DiveStage sets --p (0 to 1) while the stage is
+   pinned: the text lifts away, the camera dives into the blue line until it fills the screen, the
+   screen goes black, and the CodTK logo rises above a lit horizon. Transform and opacity only. ---------- */
+.ctk-dive{position:relative;--p:0}
+.ctk-dive.is-live{height:280vh}
+@container page (max-width:767px){.ctk-dive.is-live{height:220vh}}
+.ctk-dive__stage{position:relative;min-height:100svh;overflow:hidden;
+  --a:clamp(0,calc(var(--p) / .16),1);
+  --b:clamp(0,calc((var(--p) - .08) / .47),1);
+  --c:clamp(0,calc((var(--p) - .46) / .14),1);
+  --d:clamp(0,calc((var(--p) - .58) / .3),1)}
+.ctk-dive.is-live .ctk-dive__stage{position:sticky;top:0;height:100svh}
+.ctk-dive__line{position:absolute;inset:0;z-index:1;width:100%;height:100%;transform-origin:50% 50%;transform:scale(calc(1 + var(--b) * var(--b) * 60));will-change:transform;pointer-events:none}
+.ctk-dive__line path{fill:none;stroke:url(#ctk-line);stroke-width:30;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:ctk-draw 1.8s cubic-bezier(.65,0,.35,1) .3s forwards}
+/* when the intro screen is showing, the line waits for it */
+html:not([data-intro="seen"]) .ctk-intro~.ctk .ctk-dive__line path{animation-delay:2.4s}
+@keyframes ctk-draw{to{stroke-dashoffset:0}}
+.ctk-dive__hero{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);min-height:100svh;padding-block:calc(var(--nav) + 24px) 40px;opacity:calc(1 - var(--a));transform:translateY(calc(var(--a) * -80px))}
+.ctk-dive__eyebrow{font-size:14px;font-weight:500;color:var(--ink-300)}
+.ctk-dive__hero h1{margin-top:16px;max-width:12ch;font-size:clamp(44px,8.6cqi,148px);line-height:.94;letter-spacing:-.05em;font-weight:500;color:var(--ink-100)}
+.ctk-dive__foot{display:grid;gap:var(--space-6);align-items:end}
+.ctk-dive__foot .ctk-lead{max-width:30em;color:var(--ink-100)}
+.ctk-avail{margin-top:var(--space-4);font-size:14px;line-height:1.5;color:var(--ink-300)}
+@container page (min-width:1024px){.ctk-dive__foot{grid-template-columns:1fr auto}}
+.ctk-dive__fill{position:absolute;inset:0;z-index:3;background:#000;opacity:var(--c);pointer-events:none}
+.ctk-dive__scene{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:radial-gradient(70% 45% at 50% 62%,rgba(0,103,252,.28),transparent 70%);opacity:var(--d);pointer-events:none}
+.ctk-dive__logo{position:relative;width:min(520px,70vw);transform:translateY(calc((1 - var(--d)) * 48px)) scale(calc(.86 + var(--d) * .14))}
+.ctk-dive__logo img{display:block;width:100%;height:auto}
+.ctk-dive__logo .ctk-dive__mirror{position:absolute;left:0;top:100%;transform:scaleY(-1);opacity:.22;-webkit-mask-image:linear-gradient(to top,#000,transparent 55%);mask-image:linear-gradient(to top,#000,transparent 55%)}
+.ctk-dive__horizon{position:absolute;left:50%;top:100%;width:100vw;height:2px;translate:-50% 0;background:linear-gradient(90deg,transparent,#0067fc 22%,#3ccbff 50%,#0067fc 78%,transparent);box-shadow:0 0 28px 4px rgba(0,103,252,.55)}
+@media (prefers-reduced-motion:reduce){.ctk-intro{display:none}.ctk-dive__line path{animation:none;stroke-dashoffset:0}}
+
+/* ---------- label-left sections and the "What do you need?" rows (founder, 2026-11-26) ---------- */
+.ctk-split{display:grid;gap:var(--head-gap)}
+@container page (min-width:1024px){.ctk-split{grid-template-columns:3fr 9fr}}
+.ctk-split__label{font-size:15px;line-height:1.5;font-weight:500;color:var(--ink-300)}
+.ctk-needs{border-top:1px solid var(--line-200)}
+.ctk-needs a{display:grid;gap:6px 32px;padding-block:22px;border-bottom:1px solid var(--line-200)}
+.ctk-needs b{font-size:clamp(26px,3.6cqi,52px);line-height:1.08;font-weight:500;letter-spacing:-.035em;color:var(--ink-100);transition:color var(--d-fast) var(--eo),transform var(--d-base) var(--eo)}
+.ctk-needs span{font-size:16px;line-height:1.55;color:var(--ink-200)}
+.ctk-needs a:hover b,.ctk-needs a:focus-visible b{color:var(--blue-500);transform:translateX(8px)}
+@container page (min-width:768px){.ctk-needs a{grid-template-columns:1.3fr 1fr;align-items:center}}
+@media (prefers-reduced-motion:reduce){.ctk-needs b{transition:none}.ctk-needs a:hover b{transform:none}}

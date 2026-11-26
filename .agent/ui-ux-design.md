@@ -90,9 +90,14 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-**Almost no motion** (founder, 2026-11-26, from `docs/premium.md`; replaces the 2026-11-19 light-motion rule). Content is simply there: no fade-up on scroll and no hero glows.
+**Motion on Home only, plus smooth scrolling** (founder, 2026-11-26, after reviewing notiune.xyz; this overrides the earlier bans on pinned/scroll-driven scenes and intro screens). Inner pages have no fade-up on scroll.
 
-What the site keeps:
+- **Intro:** the CodTK logo on black for about 2.5 seconds, only when a visit starts on Home, once per visit (`components/codtk/Intro.tsx`; CSS only, clears itself without JavaScript).
+- **Hero dive:** the hero is pinned for a few screens while scrolling dives into the blue growth line until it fills the screen, then the CodTK logo rises above a lit horizon (`DiveStage.tsx` sets `--p`; CSS does the rest with transform and opacity, no 3D library).
+- **Smooth scrolling:** Lenis (`components/layout/SmoothScroll.tsx`, pinned at 1.3.27). Phones keep native touch scrolling.
+- All three switch off under `prefers-reduced-motion`.
+
+What the site also keeps:
 - Hover and focus feedback on buttons, cards and links (colour, border, shadow, a small lift).
 - The big scrolling text rows on Home (`Marquee`) as the one moving moment, and the tech-logo strip (`TechStrip`), which only moves once a visitor opens it.
 - Functional indicators only, such as the form's loading spinner and the open/close of the technology buttons.
