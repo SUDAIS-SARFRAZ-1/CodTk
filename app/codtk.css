@@ -965,6 +965,9 @@ html:not([data-intro="seen"]) .ctk-intro~.ctk .ctk-dive__line path{animation-del
 .ctk-dive__foot .ctk-lead{max-width:30em;color:var(--ink-100)}
 .ctk-avail{margin-top:var(--space-4);font-size:14px;line-height:1.5;color:var(--ink-300)}
 @container page (min-width:1024px){.ctk-dive__foot{grid-template-columns:1fr auto}}
+/* phones and tablets: the text stacks under the headline, and the line runs lower so it never sits
+   behind the paragraph (the dive still zooms into its middle) */
+@container page (max-width:1023px){.ctk-dive__hero{justify-content:flex-start;gap:var(--space-6)}.ctk-dive__line{top:30%}.ctk-dive__hero .ctk-btn--secondary{background:var(--bg-100)}}
 .ctk-dive__fill{position:absolute;inset:0;z-index:3;background:#000;opacity:var(--c);pointer-events:none}
 .ctk-dive__scene{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:radial-gradient(70% 45% at 50% 62%,rgba(0,103,252,.28),transparent 70%);opacity:var(--d);pointer-events:none}
 .ctk-dive__logo{position:relative;width:min(520px,70vw);transform:translateY(calc((1 - var(--d)) * 48px)) scale(calc(.86 + var(--d) * .14))}
