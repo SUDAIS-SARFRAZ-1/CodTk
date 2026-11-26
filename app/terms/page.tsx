@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 import { BUSINESS_EMAIL } from "@/lib/contact";
 import { LegalPage, type LegalSection } from "@/components/codtk/LegalPage";
 
-export const metadata: Metadata = pageMetadata("/terms", "Terms of Use | CodTK", "The terms that govern use of the codtk.com website, operated by CodTK, a software and digital growth company in Lahore, Pakistan.");
+export const metadata: Metadata = pageMetadata("/terms", "Terms of Use for the codtk.com Website | CodTK", "The terms that govern use of the codtk.com website, operated by CodTK, a software and digital growth company in Lahore, Pakistan.");
 
 // Drafted for founder review (prd.md §6.8); not legal advice. Covers this website only. Client work
 // is governed by the signed contract and NDA described on the Process page.

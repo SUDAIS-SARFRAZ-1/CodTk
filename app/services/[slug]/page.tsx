@@ -85,13 +85,13 @@ export default async function ServicePage({ params }: Props) {
       {/* One line of copy: no bottom padding, so it reads as the lead-in to "What's included". */}
       <section className="ctk-sec sv-sec" data-section="who it's for" aria-labelledby="for-h" style={{ paddingBottom: 0 }}>
         <div className="ctk-wrap">
-          <SectionHead id="for-h" titleClassName="sv-h2" title="Who it's for" intro={seo.audience} />
+          <SectionHead id="for-h" titleClassName="sv-h2" title={`${s.title}: who it's for`} intro={seo.audience} />
         </div>
       </section>
 
       <section className="ctk-sec sv-sec" data-section="what's included" aria-labelledby="inc-h">
         <div className="ctk-wrap">
-          <SectionHead id="inc-h" titleClassName="sv-h2" title="What's included" />
+          <SectionHead id="inc-h" titleClassName="sv-h2" title={`What's included in ${s.title}`} />
           <ul className="ctk-ticks ctk-ticks--2 sv-ticks">
             {s.deliverables.map((d) => (
               <li key={d} >

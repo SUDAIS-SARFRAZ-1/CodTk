@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 // Where the contact form lands after a successful send: a clean conversion URL for analytics.
 // The wording is the form's existing success message. Not indexed and not in the sitemap.
 export const metadata: Metadata = {
-  ...pageMetadata("/thank-you", "Message received — CodTK", "Your message reached CodTK. We reply within 24 hours, Monday to Saturday."),
+  ...pageMetadata("/thank-you", "Message received, we reply within 24 hours — CodTK", "Your message reached CodTK. We reply within 24 hours, Monday to Saturday."),
   robots: { index: false, follow: true },
 };
 

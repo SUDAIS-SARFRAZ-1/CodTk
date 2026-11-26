@@ -57,7 +57,7 @@ export const SERVICE_SEO: Record<ServiceTone, ServiceSeo> = {
   erp: {
     slug: "custom-erp-development",
     title: "Custom ERP Development | CodTK",
-    description: "Custom ERP development around how you work: inventory, sales, HR and accounts in one system, your records imported, your team trained. Free consultation.",
+    description: "Custom ERP development around how you work: stock, sales, HR and accounts in one system, with your records imported. Free consultation.",
     keyword: "custom ERP development",
     h1: "Custom ERP development",
     audience: "Small and growing businesses running stock, sales, staff and accounts across spreadsheets or separate tools.",
@@ -93,7 +93,7 @@ export const SERVICE_SEO: Record<ServiceTone, ServiceSeo> = {
   seo: {
     slug: "seo",
     title: "SEO Services for Small Business | CodTK",
-    description: "SEO services for small business: technical fixes, local SEO, better pages and a Google Business Profile, so the right clients find you. Free consultation.",
+    description: "SEO services for small business: technical fixes, local SEO and a Google Business Profile, so the right clients find you. Free consultation.",
     keyword: "SEO services for small business",
     h1: "SEO services for small business",
     audience: "Businesses that want more of the right clients to find them on Google.",

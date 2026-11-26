@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { pageMetadata } from "@/lib/seo";
 import { TECH_STACK } from "@/lib/tech-stack";
 
-export const metadata: Metadata = pageMetadata("/tech-stack", "Technologies We Use | CodTK", "The frontend, mobile, backend, database, state management and DevOps technologies CodTK builds with, from React and Next.js to Docker and AWS.");
+export const metadata: Metadata = pageMetadata("/tech-stack", "Technologies We Use: React, Next.js and More | CodTK", "The frontend, mobile, backend, database, state management and DevOps technologies CodTK builds with, from React and Next.js to Docker and AWS.");
 
 // The one page that shows the full stack up front: it is where the "See the technologies" buttons lead.
 export default function TechStackPage() {

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { BUSINESS_EMAIL, LOCATION } from "@/lib/contact";
 import { LegalPage, type LegalSection } from "@/components/codtk/LegalPage";
 
-export const metadata: Metadata = pageMetadata("/privacy", "Privacy Policy | CodTK", "How CodTK collects, uses and protects the information you share through this website, and which services process it.");
+export const metadata: Metadata = pageMetadata("/privacy", "Privacy Policy: How CodTK Handles Your Data", "How CodTK collects, uses and protects the information you share through this website, and which services process it.");
 
 // Drafted for founder review (prd.md §6.8); not legal advice. Flip `active` when a service goes live
 // so the policy only ever names processors actually in use.

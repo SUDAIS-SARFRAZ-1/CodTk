@@ -9,14 +9,14 @@ import { SITE_URL } from "@/lib/seo";
 const PAGES: Record<string, string> = {
   "": "2026-11-27",
   "/services": "2026-11-27",
-  "/tech-stack": "2026-11-19",
+  "/tech-stack": "2026-11-27",
   "/portfolio": "2026-11-19",
   "/about": "2026-11-19",
   "/process": "2026-11-19",
   "/contact": "2026-11-26",
   "/faq": "2026-11-19",
-  "/privacy": "2026-11-26",
-  "/terms": "2026-11-19",
+  "/privacy": "2026-11-27",
+  "/terms": "2026-11-27",
 };
 const PROJECTS_UPDATED = "2026-11-19";
 const SERVICES_UPDATED = "2026-11-27";
