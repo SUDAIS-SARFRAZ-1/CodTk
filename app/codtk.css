@@ -294,7 +294,8 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-hero--dots .ctk-hero__fg{display:flex;flex-direction:column;align-items:center}
 
 
-.ctk-hero--dots h1{max-width:14ch;font-size:clamp(44px,9.6cqi,152px);line-height:.92;letter-spacing:-.055em}
+.ctk-hero__eyebrow{font-size:14px;font-weight:500;color:var(--ink-300)}
+.ctk-hero--dots h1{margin-top:20px;max-width:18ch;font-size:clamp(40px,6.4cqi,96px);line-height:1;letter-spacing:-.045em}
 .ctk-hero--dots .ctk-lead{margin-top:28px;max-width:34em;color:var(--ink-100)}
 .ctk-hero--dots .ctk-actions{justify-content:center;margin-top:36px}
 /* "What do you need?" choices in the home hero: service cards, stacked icon-over-label on phones */
@@ -952,7 +953,7 @@ a.cf-way__v:hover{color:var(--blue-400)}
 /* phones (founder, 2026-11-19): smaller headings, no decorative giant numbers or code lines */
 @container page (max-width:767px){
   .ctk-hide-phone{display:none}
-  .ctk-hero--dots h1{font-size:44px}
+  .ctk-hero--dots h1{font-size:36px}
   .ctk-d1,.ctk-d1--page{font-size:32px}
   .ctk-h2{font-size:26px}
   .ctk-cta__big h2{font-size:36px}

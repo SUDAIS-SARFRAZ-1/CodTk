@@ -19,10 +19,8 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     question: "How do payments work?",
-    answer:
-      "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee. We accept JazzCash, Easypaisa and Payoneer.",
-    plainText:
-      "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee. We accept JazzCash, Easypaisa and Payoneer.",
+    answer: "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee.",
+    plainText: "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee.",
   },
   {
     question: "How will we communicate during the project?",

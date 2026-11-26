@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Btn } from "@/components/codtk/primitives";
+import { BOOK_CALL_LINK } from "@/lib/contact";
 import { SvIcon } from "@/components/services/icons";
 import type { ServiceTone } from "@/lib/service-offerings";
 import { serviceHref } from "@/lib/service-seo";
@@ -14,7 +16,8 @@ const NEEDS: { label: string; tone: ServiceTone; href: string }[] = [
   { label: "Not sure yet? Talk to us", tone: "consulting", href: "/contact" },
 ];
 
-// Home hero: one large plain headline on a faint dot field, then the "What do you need?" choices.
+// Home hero (founder's Option A, 2026-11-26): outcome-led headline, one primary action, a trust line,
+// then the "What do you need?" choices.
 export function Hero() {
   return (
     <section className="ctk-hero ctk-hero--dots" data-section="intro" aria-labelledby="hero-t">
@@ -22,13 +25,21 @@ export function Hero() {
         <i className="ctk-hero__dots" />
       </div>
       <div className="ctk-wrap ctk-hero__fg">
-        <h1 id="hero-t">
-          Have an idea? We&apos;ll build it.
-        </h1>
+        <p className="ctk-hero__eyebrow">Software studio · Web · Mobile · ERP</p>
+        <h1 id="hero-t">Software that grows your business, not just your tech stack.</h1>
         <p className="ctk-lead">
-          Websites, apps and business software, built by a small Lahore team you talk to directly. Clear quotes and
-          honest timelines.
+          We design and build websites, apps and custom systems that bring in clients and cut the busywork. Built on
+          the platform you choose, or the one we recommend.
         </p>
+        <div className="ctk-actions">
+          <Btn href={BOOK_CALL_LINK} external>
+            Book a free consultation
+          </Btn>
+          <Btn href="/services" variant="secondary">
+            See our services
+          </Btn>
+        </div>
+        <p className="ctk-avail">Fixed-price quotes · Clear weekly updates · Support after launch</p>
         <nav className="ctk-need" aria-labelledby="need-t">
           <h2 id="need-t" className="ctk-need__q">
             What do you need?
@@ -44,9 +55,6 @@ export function Hero() {
             ))}
           </ul>
         </nav>
-        <p className="ctk-avail">
-          Fixed quotes, and the source code is yours. We reply within 24 hours, Monday to Saturday.
-        </p>
       </div>
     </section>
   );
