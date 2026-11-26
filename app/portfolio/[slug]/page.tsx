@@ -1,3 +1,4 @@
+import { TechReveal } from "@/components/codtk/TechReveal";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -134,7 +135,9 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           <div className="ctk-block">
             <h2 className="ctk-label">03 — stack</h2>
             <div className="rv">
-              <Chips items={project.tech} />
+              <TechReveal label="See the technologies">
+                <Chips items={project.tech} />
+              </TechReveal>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ import { BOOK_CALL_LINK } from "@/lib/contact";
 import { Btn, PageHero } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { TechStrip } from "@/components/codtk/TechStrip";
+import { TechReveal } from "@/components/codtk/TechReveal";
 import { ServiceAnchors } from "@/components/services/ServiceAnchors";
 import { ServiceBlock } from "@/components/services/ServiceBlock";
 import { EngagementModels } from "@/components/services/EngagementModels";
@@ -75,7 +76,11 @@ export default function ServicesPage() {
 
       <EngagementModels />
       <DeliveryStandard />
-      <TechStrip names={MARQUEE_TECH} />
+      <div className="ctk-wrap">
+        <TechReveal className="ctk-reveal--strip">
+          <TechStrip names={MARQUEE_TECH} />
+        </TechReveal>
+      </div>
       <CtaBanner />
     </div>
   );

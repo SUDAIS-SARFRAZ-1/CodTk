@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Btn, Icon } from "@/components/codtk/primitives";
 
+// No "Services" here: visitors choose what they need on Home (founder, 2026-11-26); the full list stays
+// in the footer.
 const NAV = [
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Work" },
-  { href: "/process", label: "Process" },
+  { href: "/portfolio", label: "Our Work" },
+  { href: "/process", label: "How We Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

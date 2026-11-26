@@ -5,8 +5,8 @@ import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
 import { JsonLd } from "@/components/codtk/JsonLd";
 import { Hero } from "@/components/codtk/Hero";
 import { TechStrip } from "@/components/codtk/TechStrip";
+import { TechReveal } from "@/components/codtk/TechReveal";
 import { Marquee } from "@/components/codtk/Marquee";
-import { ServiceStack } from "@/components/codtk/ServiceStack";
 import { Why } from "@/components/codtk/Why";
 import { CaseShowcase } from "@/components/codtk/CaseShowcase";
 import { Faq } from "@/components/codtk/Faq";
@@ -61,8 +61,11 @@ export default function Home() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={webSiteSchema} />
       <Hero />
-      <TechStrip />
-      <ServiceStack />
+      <div className="ctk-wrap">
+        <TechReveal className="ctk-reveal--strip">
+          <TechStrip />
+        </TechReveal>
+      </div>
       <Marquee />
       <Why />
       <CaseShowcase />

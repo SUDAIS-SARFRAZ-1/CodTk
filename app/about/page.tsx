@@ -1,3 +1,4 @@
+import { TechReveal } from "@/components/codtk/TechReveal";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
@@ -22,10 +23,10 @@ const VALUES: (Tile & { title: string; text: string })[] = [
 ];
 
 // prd.md §3: the team is presented by function, with no headcount, profiles or photos.
-const FUNCTIONS: (Tile & { name: string; text: string; tech: string[] })[] = [
-  { name: "Frontend", text: "Websites, web apps and mobile interfaces, built for speed and accessibility.", tech: ["Next.js", "React", "TypeScript", "React Native"], tone: "web", icon: <><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></> },
-  { name: "Backend", text: "APIs, databases, logins and permissions, payments and real-time features.", tech: ["Node.js", "Express", "Python", "PostgreSQL"], tone: "api", icon: <><rect x="4" y="4" width="16" height="7" rx="1.5" /><rect x="4" y="13" width="16" height="7" rx="1.5" /><path d="M8 7.5h.01M8 16.5h.01" /></> },
-  { name: "DevOps", text: "Pipelines, hosting and releases that go out without taking your product down.", tech: ["Docker", "GitHub Actions", "AWS", "Vercel"], tone: "cloud", icon: <path d="M7 19h10a4.2 4.2 0 0 0 .7-8.35A6 6 0 0 0 6 9.4 4.8 4.8 0 0 0 7 19Z" /> },
+const FUNCTIONS: (Tile & { name: string; text: string })[] = [
+  { name: "Frontend", text: "Websites, web apps and mobile interfaces, built for speed and accessibility.", tone: "web", icon: <><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></> },
+  { name: "Backend", text: "APIs, databases, logins and permissions, payments and real-time features.", tone: "api", icon: <><rect x="4" y="4" width="16" height="7" rx="1.5" /><rect x="4" y="13" width="16" height="7" rx="1.5" /><path d="M8 7.5h.01M8 16.5h.01" /></> },
+  { name: "DevOps", text: "Pipelines, hosting and releases that go out without taking your product down.", tone: "cloud", icon: <path d="M7 19h10a4.2 4.2 0 0 0 .7-8.35A6 6 0 0 0 6 9.4 4.8 4.8 0 0 0 7 19Z" /> },
 ];
 
 const STORY = [
@@ -204,9 +205,6 @@ export default function AboutPage() {
                 <IconTile className="sv-ic sv-ic--lg">{f.icon}</IconTile>
                 <h3>{f.name}</h3>
                 <p>{f.text}</p>
-                <div className="ab-card__chips">
-                  <Chips items={f.tech} brand />
-                </div>
               </article>
             ))}
           </TeamDiagram>
@@ -238,6 +236,7 @@ export default function AboutPage() {
               </>
             }
           />
+          <TechReveal>
           <div className="ab-stack">
             {TECH_STACK.map((g, i) => (
               <div key={g.category} className="ab-group rv" data-d={i % 3}>
@@ -249,6 +248,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+          </TechReveal>
         </div>
       </section>
 

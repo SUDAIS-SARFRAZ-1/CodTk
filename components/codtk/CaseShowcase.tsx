@@ -1,4 +1,4 @@
-import { Btn, Chips, Icon } from "@/components/codtk/primitives";
+import { Btn, Icon } from "@/components/codtk/primitives";
 import { CaseGallery } from "@/components/codtk/CaseGallery";
 import { PROJECTS, type Project } from "@/lib/projects";
 
@@ -33,7 +33,6 @@ function Featured({ p }: { p: Project }) {
             </dd>
           </div>
         </dl>
-        <Chips items={p.tech.slice(0, 6)} />
         <div className="ctk-feat__links">
           <Btn href={`/portfolio/${p.slug}`}>Read the case study</Btn>
           {p.repoUrl && (

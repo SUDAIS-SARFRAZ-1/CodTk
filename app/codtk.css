@@ -313,6 +313,18 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-hero--dots h1{margin-top:28px;max-width:11ch;font-size:clamp(48px,7.6cqi,108px);line-height:.93;letter-spacing:-.055em}
 .ctk-hero--dots .ctk-lead{margin-top:28px;max-width:34em;color:var(--ink-100)}
 .ctk-hero--dots .ctk-actions{justify-content:center;margin-top:36px}
+/* "What do you need?" choices in the home hero: service cards, stacked icon-over-label on phones */
+.ctk-need{width:100%;max-width:960px;margin-top:36px}
+.ctk-need__q{font-size:15px;font-weight:600;letter-spacing:.01em;color:var(--ink-200)}
+.ctk-need ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);margin-top:16px;text-align:left}
+.ctk-need__card{flex-direction:column;gap:12px}
+.ctk-need__card b{flex:1;font-size:15px;font-weight:600;line-height:1.3;color:var(--ink-100)}
+.ctk-need__card .ctk-svc__go{display:none}
+@container page (min-width:768px){
+  .ctk-need ul{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ctk-need .ctk-need__card{flex-direction:row;align-items:center}
+  .ctk-need__card .ctk-svc__go{display:grid}
+}
 .ctk-avail{display:inline-flex;align-items:center;gap:10px;margin-top:var(--space-6);padding:7px 14px 7px 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:color-mix(in srgb,var(--bg-100) 85%,transparent);font-size:13px;line-height:1.4;color:var(--ink-200)}
 .ctk-avail i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--blue-500)}
 /* architecture: layer panel + illustration frame */
@@ -341,6 +353,19 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 @container page (min-width:1024px){.ctk-phero{padding-top:calc(var(--nav) + 16px)}.ctk-phero__intro{margin-top:0;align-self:end}}
 
 /* ---------- tech strip ---------- */
+/* "See the technologies" button (TechReveal): a secondary pill that opens tech in place */
+.ctk-reveal>summary{list-style:none;width:fit-content}
+.ctk-reveal>summary::-webkit-details-marker{display:none}
+.ctk-reveal__caret{transition:transform var(--d-fast) var(--eo)}
+.ctk-reveal[open] .ctk-reveal__caret{transform:rotate(180deg)}
+.ctk-reveal__hide,.ctk-reveal[open] .ctk-reveal__show{display:none}
+.ctk-reveal[open] .ctk-reveal__hide{display:inline}
+.ctk-reveal__body{margin-top:var(--card-pad);animation:ctk-reveal-in var(--d-base) var(--eo)}
+@keyframes ctk-reveal-in{from{opacity:0;transform:translateY(-6px)}}
+.ctk-reveal--strip{display:grid;justify-items:center;padding-block:var(--card-pad)}
+.ctk-reveal--strip .ctk-reveal__body{width:100%}
+.ctk-reveal .sv-cmd{margin:0 0 14px}
+@media (prefers-reduced-motion:reduce){.ctk-reveal__caret,.ctk-reveal__body{transition:none;animation:none}}
 .ctk-strip{border-block:1px solid var(--line-100);padding-block:24px;display:grid;gap:16px;background:color-mix(in srgb,var(--bg-100) 50%,transparent)}
 .ctk-strip__track{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .ctk-strip__row{display:flex;gap:44px;width:max-content;animation:ctk-marq 70s linear infinite}

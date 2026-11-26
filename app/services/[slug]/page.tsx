@@ -1,3 +1,4 @@
+import { TechReveal } from "@/components/codtk/TechReveal";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLink, Btn, Chips, Icon, PageHero, SectionHead } from "@/components/codtk/primitives";
@@ -99,9 +100,12 @@ export default async function ServicePage({ params }: Props) {
               </li>
             ))}
           </ul>
-          <h3 className="sv-sub sv-sub--tech rv">Technologies</h3>
-          <div className="sv-tech rv">
-            <Chips items={s.tech} brand />
+          <div className="sv-sub--tech rv">
+            <TechReveal label="See the technologies">
+              <div className="sv-tech">
+                <Chips items={s.tech} brand />
+              </div>
+            </TechReveal>
           </div>
         </div>
       </section>

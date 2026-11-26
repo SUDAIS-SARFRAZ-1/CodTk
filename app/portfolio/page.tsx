@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/projects";
-import { Btn, Chips, Icon, PageHero, WindowBar } from "@/components/codtk/primitives";
+import { Btn, Icon, PageHero, WindowBar } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
 export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio & Case Studies | CodTK", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
@@ -54,9 +54,6 @@ export default function PortfolioPage() {
                     <p className="ctk-sm" style={{ maxWidth: "40em" }}>
                       {p.summary}
                     </p>
-                    <div style={{ marginTop: 20 }}>
-                      <Chips items={p.tech.slice(0, 4)} />
-                    </div>
                     <div style={{ marginTop: 20 }}>
                       <span className="ctk-link">
                         Read the case study

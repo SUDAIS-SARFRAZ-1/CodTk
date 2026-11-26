@@ -23,7 +23,6 @@ export type ServiceOffering = {
   id: ServiceTone;
   group: (typeof SERVICE_GROUPS)[number];
   title: string;
-  tag: string;
   cmd: string;
   description: string;
   deliverables: string[];
@@ -36,8 +35,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "web",
     group: "Development",
-    title: "Web Applications",
-    tag: "web · next.js",
+    title: "Web Applications",
     cmd: "codtk init web --stack next --ssr",
     description:
       "Custom web applications and business websites built for speed, SEO, and easy maintenance — from marketing sites to full internal tools. We build customer portals, internal tools, marketplaces and dashboards.",
@@ -55,8 +53,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "mobile",
     group: "Development",
-    title: "Mobile Apps (Android & iOS)",
-    tag: "android · ios",
+    title: "Mobile Apps (Android & iOS)",
     cmd: "codtk init mobile --targets android,ios",
     description:
       "Mobile apps built the way your project needs — cross-platform apps with React Native, native Android apps in Kotlin, or installable progressive web apps (PWAs) that run on any phone from a single codebase. Offline sync, push notifications, payments and store submission are handled for you.",
@@ -74,8 +71,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "saas",
     group: "Development",
-    title: "SaaS Products",
-    tag: "saas · multi-tenant",
+    title: "SaaS Products",
     cmd: "codtk init saas --tenants multi --billing stripe",
     description:
       "Subscription software that serves many customers from one platform, with billing, team roles and analytics in place from the first release. We begin with discovery, so the first version solves one problem well.",
@@ -92,8 +88,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "erp",
     group: "Development",
-    title: "Custom ERP Systems",
-    tag: "erp · operations",
+    title: "Custom ERP Systems",
     cmd: "codtk init erp --modules inventory,sales,hr,accounts",
     description:
       "An ERP built from scratch around the way your business already works, instead of bending your workflow to fit off-the-shelf software. Inventory, sales, HR and accounts share one database, so every team works from the same numbers.",
@@ -110,8 +105,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "api",
     group: "Development",
-    title: "Backend Systems & APIs",
-    tag: "rest · realtime",
+    title: "Backend Systems & APIs",
     cmd: "codtk init api --auth rbac --realtime",
     description:
       "Secure, well-structured backend systems and APIs — authentication, role-based access, webhooks, and real-time features included. Every API is documented with OpenAPI and load-tested before launch.",
@@ -129,8 +123,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "wordpress",
     group: "Development",
-    title: "WordPress Websites",
-    tag: "wordpress · cms",
+    title: "WordPress Websites",
     cmd: "codtk init wordpress --theme custom --cache on",
     description:
       "Fast WordPress websites your team can update without a developer: pages, posts, menus and forms from the familiar WordPress editor. Built on a lean custom theme with only the plugins you need, so the site stays quick and secure.",
@@ -147,8 +140,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "seo",
     group: "Growth",
-    title: "SEO",
-    tag: "search · google",
+    title: "SEO",
     cmd: "codtk audit seo --site yourbusiness.com",
     description:
       "Get found on Google by the clients you want. We fix the technical problems that hold a site back, improve pages for the searches your customers make, and set up your Google Business Profile for local search.",
@@ -165,8 +157,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "marketing",
     group: "Growth",
-    title: "Performance Marketing",
-    tag: "ads · campaigns",
+    title: "Performance Marketing",
     cmd: "codtk launch campaign --goal leads --budget monthly",
     description:
       "Paid campaigns on the platforms that fit your business, measured by the leads and sales they bring rather than clicks. Tracking is set up first, so every rupee or dollar spent can be traced to a result.",
@@ -183,8 +174,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "transform",
     group: "Strategy & Infrastructure",
-    title: "Digital Transformation",
-    tag: "offline → online",
+    title: "Digital Transformation",
     cmd: "codtk migrate --from paper --to online",
     description:
       "Take your physical business online: orders, bookings, stock and payments move from phone calls, registers and spreadsheets into simple software your staff and customers can use. We change one part at a time, so the business keeps running throughout.",
@@ -201,8 +191,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "ai",
     group: "Strategy & Infrastructure",
-    title: "AI & Business Automation",
-    tag: "ai · workflows",
+    title: "AI & Business Automation",
     cmd: "codtk automate --from orders --to invoices",
     description:
       "Custom automation that connects your existing tools and APIs, cutting out repetitive manual work across your business. Where it helps, we add AI assistants that answer from your own documents and extract data from files, always with a human review step.",
@@ -220,8 +209,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "cloud",
     group: "Strategy & Infrastructure",
-    title: "Cloud & DevOps",
-    tag: "ci/cd · cloud",
+    title: "Cloud & DevOps",
     cmd: "codtk deploy --ci github-actions --env production",
     description:
       "CI/CD pipelines and cloud deployment so your product ships reliably and scales without manual, error-prone releases. Infrastructure is defined as code, monitored after launch and reviewed for cost.",
@@ -240,8 +228,7 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "consulting",
     group: "Strategy & Infrastructure",
-    title: "Software Consulting",
-    tag: "architecture",
+    title: "Software Consulting",
     cmd: "codtk plan --scope v1 --risks",
     description:
       "Technical strategy and system design for teams that need an outside expert to plan architecture before committing to a build. You receive a written plan you keep, whoever builds it.",

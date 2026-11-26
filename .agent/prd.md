@@ -73,12 +73,12 @@ Blog/CMS, careers page, client portal or login, Urdu/multi-language, online paym
 ## 6. Pages and requirements
 
 ### 6.1 Home (built on the CodTK design system)
-Minimal, plain-language home (founder, Nov 19, 2026): Hero → tech logo strip → Services (compact, grouped) → big scrolling text rows → Why CodTK → featured work (MindMesh only) → FAQ → CTA banner → footer. Detail (architecture, delivery stages, audience statements) lives on the inner pages, not here. The time-zone note moved to Contact.
+Minimal, plain-language home (founder, Nov 19 and 26, 2026): Hero with "What do you need?" choices that open the matching page → "See the technologies we use" button (opens the tech logo strip) → big scrolling text rows → Why CodTK → featured work (MindMesh only) → FAQ → CTA banner → footer. Detail (architecture, delivery stages, audience statements) lives on the inner pages, not here. The time-zone note moved to Contact.
 Hidden until real: "Trusted by" logo strip, testimonials, stats.
 
 ### 6.2 Services
 Twelve services in three groups (founder's briefs of Oct 22 and Nov 19, 2026). **Development:** Web Applications, Mobile Apps (Android & iOS), SaaS Products, Custom ERP Systems, Backend Systems & APIs, WordPress Websites. **Growth:** SEO, Performance Marketing. **Strategy & Infrastructure:** Digital Transformation, AI & Business Automation, Cloud & DevOps, Software Consulting. Shopify is not offered and must not be listed. `lib/service-offerings.ts` is the one service list: the Services page, home service cards (short copy in `lib/services.ts`), footer and contact form all read it. UI/UX is part of every project, not a separate service (**assumed**).
-- Each block: number and tag, all-caps title, description, typed CLI line, key deliverables, brand-coloured tech chips, "Discuss This Service" CTA that opens the quote form with that service pre-filled (FR-3). The contact form's project types follow this list; older service titles still pre-fill via aliases.
+- Each block: number, all-caps title, description, key deliverables, the typed CLI line and brand-coloured tech chips behind a "See the technologies" button (Nov 26, 2026: technology stays out of first view across the site), "Discuss This Service" CTA that opens the quote form with that service pre-filled (FR-3). The contact form's project types follow this list; older service titles still pre-fill via aliases.
 - A final card, "Not on the list? Tell us", opens the form with "Something else" selected. CodTK takes any kind of development.
 - Engagement models on this page: Fixed-scope project, Dedicated team (featured), Support and retainer, plus Technical consulting.
 - Delivery standard: Lighthouse targets (Performance 95, Accessibility 100, Best practices 100, SEO 100, shown as targets), a build checklist (tests in CI, peer code review, monitoring and runbooks, documentation and handover, security audits, WCAG 2.1 AA) and the handover repository structure.

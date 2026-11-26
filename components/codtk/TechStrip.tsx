@@ -6,8 +6,7 @@ import { TECH_LOGOS } from "@/lib/tech-stack";
 // from assistive tech.
 export function TechStrip({ names = TECH_LOGOS.map((t) => t.name) }: { names?: string[] }) {
   return (
-    <div className="ctk-wrap" style={{ zIndex: 1 }}>
-      <div className="ctk-strip">
+    <div className="ctk-strip">
         <p className="ctk-sr">{names.join(", ")}</p>
         <div className="ctk-strip__track" aria-hidden="true">
           <div className="ctk-strip__row">
@@ -20,6 +19,5 @@ export function TechStrip({ names = TECH_LOGOS.map((t) => t.name) }: { names?: s
           </div>
         </div>
       </div>
-    </div>
   );
 }
