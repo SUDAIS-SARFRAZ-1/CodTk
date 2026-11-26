@@ -26,7 +26,7 @@ export function Hero() {
       </div>
       <div className="ctk-wrap ctk-hero__fg">
         <p className="ctk-hero__eyebrow">Software studio · Web · Mobile · ERP</p>
-        <h1 id="hero-t">Software that grows your business, not just your tech stack.</h1>
+        <h1 id="hero-t">Software that grows your business.</h1>
         <p className="ctk-lead">
           We design and build websites, apps and custom systems that bring in clients and cut the busywork. Built on
           the platform you choose, or the one we recommend.
