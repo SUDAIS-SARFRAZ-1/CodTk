@@ -90,13 +90,11 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-**Scroll motion on every page** (founder, 2026-11-26; this overrides the earlier bans on pinned/scroll-driven scenes, intro screens and fade-up on scroll). Home has the dives below; the other main pages (Services, Our Work, How We Work, About, Contact) have the curtain and stacking cards; deeper pages have a simple fade-and-rise.
+**Scroll motion on every page** (founder, 2026-11-26; this overrides the earlier bans on pinned/scroll-driven scenes, intro screens and fade-up on scroll). Home has the dives below; deeper pages have a simple fade-and-rise. A curtain header and stacking cards on the other main pages were tried and removed (founder, 2026-11-27: they broke).
 
 - **Intro:** the CodTK logo on black for about 2.5 seconds, only when a visit starts on Home, once per visit (`components/codtk/Intro.tsx`; CSS only, clears itself without JavaScript).
 - **Hero dive:** the hero is pinned for a few screens while scrolling fades the copy and dives into the blue full stop of the heading until it fills the screen, then the CodTK logo rises above a lit horizon (`DiveStage.tsx` sets `--p`; CSS does the rest with transform and opacity, no 3D library). The heading is blue and each letter squishes like rubber when pointed at or tapped (`RubberHeading.tsx`; founder, 2026-11-26).
 - **Closing dive:** on Home only, the black "Let's build what's next." card grows from a small card to the full screen, its copy rises in and the example chat plays as you scroll (`CtaBanner dive`, reusing `DiveStage`; founder, 2026-11-26). Only on screens at least 768px wide and 680px tall; phones see the static card. Other pages keep the static CTA.
-- **Curtain (main pages):** `components/codtk/Curtain.tsx` wraps the page header and the section(s) after it. The header pins (a header taller than the screen pins only once fully seen, so the Contact form is never hidden) and sinks back while the next section slides over it as a card with rounded top corners.
-- **Stacking cards:** the five stages on How We Work and each service block on /services pin under the navbar and the next one slides over them. Only on screens at least 1024px wide and 760px tall, so a whole card always fits; smaller screens scroll normally.
 - **Fade-and-rise (deeper pages):** service pages, case studies, FAQ, Tech Stack, Privacy and Terms (`ctk-rise`). CSS scroll timelines only, no JavaScript; browsers without them show the content as is.
 - **Smooth scrolling:** Lenis (`components/layout/SmoothScroll.tsx`, pinned at 1.3.27). Phones keep native touch scrolling.
 - All of these switch off under `prefers-reduced-motion`.

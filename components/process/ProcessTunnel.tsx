@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { Icon, TechIcon } from "@/components/codtk/primitives";
 import { TechReveal } from "@/components/codtk/TechReveal";
 import { PROCESS_STEPS } from "@/lib/process";
@@ -7,7 +6,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
 const TOTAL = pad(PROCESS_STEPS.length - 1);
 
 // The delivery process, stage by stage: one card per stage with what the client receives, and the
-// tools used behind a button. On large screens the cards stack as you scroll (founder, 2026-11-26).
+// tools used behind a button. Static.
 export function ProcessTunnel() {
   return (
     <section
@@ -20,7 +19,7 @@ export function ProcessTunnel() {
       <div className="tn__stage">
         <div className="tn__world">
           {PROCESS_STEPS.map((s, i) => (
-            <article key={s.title} className="gate" aria-labelledby={`stage-${i}`} style={{ "--i": i } as CSSProperties}>
+            <article key={s.title} className="gate" aria-labelledby={`stage-${i}`}>
               <div className="gate__card">
                 <span className="gate__num" aria-hidden="true">
                   {pad(i)}

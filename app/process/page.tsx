@@ -5,7 +5,6 @@ import { Btn, PageHero, SectionHead } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { ProcessTunnel } from "@/components/process/ProcessTunnel";
 import { PROCESS_STEPS } from "@/lib/process";
-import { Curtain } from "@/components/codtk/Curtain";
 
 export const metadata: Metadata = pageMetadata("/process", "Our Software Development Process | CodTK", "How CodTK delivers custom software: discovery, design, development, deployment and support, with an NDA and milestone payments on every project.");
 
@@ -52,7 +51,6 @@ const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = 
 export default function ProcessPage() {
   return (
     <div className="sv-page pr-page">
-      <Curtain>
       <PageHero
         crumb="Process"
         path="/process"
@@ -85,7 +83,6 @@ export default function ProcessPage() {
       </div>
 
       <ProcessTunnel />
-      </Curtain>
 
       <section className="ctk-sec sv-sec" data-section="engagement" aria-labelledby="pr-terms-h">
         <div className="ctk-wrap">

@@ -5,8 +5,7 @@ import { SvIcon } from "@/components/services/icons";
 import type { ServiceOffering } from "@/lib/service-offerings";
 
 // Sticky row of anchor chips; the active chip is the last service whose top has passed 40% of the
-// viewport (stacked blocks stay pinned on screen, so "intersecting" alone can't tell), scrolled into
-// view inside the row (it scrolls sideways on phones).
+// viewport, scrolled into view inside the row (it scrolls sideways on phones).
 export function ServiceAnchors({ services }: { services: Pick<ServiceOffering, "id" | "title">[] }) {
   const [active, setActive] = useState(-1);
   const row = useRef<HTMLElement>(null);

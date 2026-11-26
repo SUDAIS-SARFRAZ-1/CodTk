@@ -9,7 +9,6 @@ import { WorldClocks } from "@/components/contact/WorldClocks";
 import { Providers } from "@/app/providers";
 import { Btn, IconTile, SectionHead } from "@/components/codtk/primitives";
 import { SocialIcons } from "@/components/codtk/SocialIcons";
-import { Curtain } from "@/components/codtk/Curtain";
 import {
   BOOKING_URL,
   BUSINESS_EMAIL,
@@ -57,7 +56,6 @@ export default function ContactPage() {
   return (
     <div className="sv-page cf-page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Contact", path: "/contact" }])} />
-      <Curtain>
       <section className="cf-hero" data-section="contact" aria-labelledby="cf-h1">
         <div className="ctk-wrap cf-hero__g">
           <div className="cf-intro">
@@ -186,7 +184,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      </Curtain>
 
       <section className="cf-call" aria-labelledby="cf-call-h">
         <div className="ctk-wrap">

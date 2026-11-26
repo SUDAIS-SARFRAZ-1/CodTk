@@ -11,7 +11,6 @@ import { EngagementModels } from "@/components/services/EngagementModels";
 import { DeliveryStandard } from "@/components/services/DeliveryStandard";
 import { MARQUEE_TECH, quoteHref, SERVICE_GROUPS, SERVICE_OFFERINGS } from "@/lib/service-offerings";
 import { PROJECT_TYPES } from "@/features/contact/schema";
-import { Curtain } from "@/components/codtk/Curtain";
 
 const OTHER = PROJECT_TYPES[PROJECT_TYPES.length - 1];
 
@@ -26,7 +25,6 @@ export const metadata: Metadata = pageMetadata(
 export default function ServicesPage() {
   return (
     <div className="sv-page">
-      <Curtain>
       <PageHero
         crumb="Services"
         path="/services"
@@ -74,7 +72,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-      </Curtain>
 
       <EngagementModels />
       <DeliveryStandard />

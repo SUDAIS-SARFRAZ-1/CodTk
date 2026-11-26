@@ -473,11 +473,6 @@ a:hover .ctk-viz__win{transform:translateY(-8px)}
 
   .ctk-cta__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
 }
-/* Main-page curtain (Curtain.tsx; founder, 2026-11-26): the header pins (its top is set in JS so a
-   tall header pins only once fully seen) and sinks back as the next section slides over it as a card. */
-.ctk-curtain.is-live>:first-child{position:sticky;z-index:0;transform-origin:50% 0;transform:scale(calc(1 - var(--c,0) * .05));opacity:calc(1 - var(--c,0) * .65)}
-.ctk-curtain.is-live>:not(:first-child){position:relative;z-index:1;background:var(--bg-100)}
-.ctk-curtain.is-live>:nth-child(2){border-radius:var(--radius-lg) var(--radius-lg) 0 0;box-shadow:0 -30px 60px -36px color-mix(in srgb,var(--cobalt-900) 45%,transparent)}
 /* Home closing dive (founder, 2026-11-26): the black card grows from a small card to the full
    screen, the copy rises in, then the chat plays as you scroll. --p comes from DiveStage. Only on
    screens wide and tall enough to hold the whole card; phones and reduced motion keep the card static. */
@@ -797,14 +792,6 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
   .ctk-rise section:not(.ctk-phero) .ctk-wrap>*{animation:ctk-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
 }}
 @keyframes ctk-rise{from{opacity:0;transform:translateY(36px)}}
-
-/* Stacking cards (founder, 2026-11-26): each process stage, and each service on /services, pins and
-   the next slides over it. Only where a whole card fits under the navbar, so nothing is hidden. */
-@media (min-height:760px) and (prefers-reduced-motion:no-preference){@container page (min-width:1024px){
-  .tn__stage{overflow:clip}
-  .gate{position:sticky;top:calc(var(--nav) + 24px + var(--i,0) * 14px)}
-  .sv-block{position:sticky;top:calc(var(--nav-height) + 72px);background:var(--bg-100);box-shadow:0 -30px 50px -44px color-mix(in srgb,var(--cobalt-900) 45%,transparent)}
-}}
 
 /* ---------- About page: hero side card (components/about/LahoreCard.tsx), story, mission and
    vision band, values, the team diagram (components/about/TeamDiagram.tsx), expertise. */
