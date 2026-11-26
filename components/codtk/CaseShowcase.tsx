@@ -61,7 +61,7 @@ export function CaseShowcase() {
             Real work you can <span className="ctk-em">check yourself</span>.
           </h2>
           <p className="ctk-p rv" data-d={2}>
-            Built by our founder. Its code is public, so anyone can see how it's made.
+            Built by our founder. Its code is public, so anyone can see how it&apos;s made.
           </p>
         </div>
         <Featured p={p} />
