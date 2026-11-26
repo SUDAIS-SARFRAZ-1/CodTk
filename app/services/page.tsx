@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import { BOOK_CALL_LINK } from "@/lib/contact";
+import { BOOKING_URL, WHATSAPP_LINK } from "@/lib/contact";
 import { Btn, PageHero } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { TechStrip } from "@/components/codtk/TechStrip";
@@ -35,8 +35,11 @@ export default function ServicesPage() {
         intro="Twelve services in three groups. Start with one or combine several. We agree the price and timeline with you before any work starts."
         actions={
           <>
-            <Btn href={BOOK_CALL_LINK} external>
-              Book a Call
+            <Btn href={BOOKING_URL} external>
+              Book a free consultation
+            </Btn>
+            <Btn href={WHATSAPP_LINK} variant="secondary" external>
+              Chat on WhatsApp
             </Btn>
             <a className="ctk-link" href="#services">
               Browse the services

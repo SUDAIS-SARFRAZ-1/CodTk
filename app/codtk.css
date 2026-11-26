@@ -219,6 +219,7 @@
 .ctk-btn[disabled]::before{display:none}
 
 .ctk-actions{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+@container page (max-width:479px){.ctk-actions>.ctk-btn{flex:1 1 100%}}
 .ctk-link{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink-100);padding-block:6px;background:linear-gradient(var(--blue-400),var(--blue-400)) 0 100% / 0 1px no-repeat;transition:background-size var(--d-base) var(--eo),color var(--d-micro)}
 .ctk-link:hover{background-size:100% 1px;color:var(--blue-300)}
 .ctk-link .ctk-i{transition:transform var(--d-fast) var(--eo)}
@@ -905,6 +906,7 @@ a.cf-way__v:hover{color:var(--blue-400)}
 @container page (min-width:768px){.cf-callcard{grid-template-columns:auto 1fr auto;gap:28px}}
 .cf-callcard .ctk-panel__h{margin:0}
 .cf-call__t{margin-top:6px}
+.cf-call__when{margin-top:var(--space-3)}
 @media (prefers-reduced-motion:reduce){.cf-badge i,.cf-globe svg{animation:none}.cf-way:hover,.cf-card:hover{translate:none}}
 
 .sv-more>summary{display:none}

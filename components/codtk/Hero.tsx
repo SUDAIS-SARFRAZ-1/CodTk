@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Btn } from "@/components/codtk/primitives";
 import { DiveStage } from "@/components/codtk/DiveStage";
-import { BOOK_CALL_LINK } from "@/lib/contact";
+import { BOOKING_URL, WHATSAPP_LINK } from "@/lib/contact";
 
 // Home hero (founder's Option A, 2026-11-26). A blue growth line draws in once; scrolling then dives
 // into the line until it fills the screen and opens on the CodTK logo above a lit horizon. All
@@ -35,11 +35,11 @@ export function Hero() {
             <p className="ctk-avail">Fixed-price quotes, clear weekly updates and support after launch.</p>
           </div>
           <div className="ctk-actions">
-            <Btn href={BOOK_CALL_LINK} external>
+            <Btn href={BOOKING_URL} external>
               Book a free consultation
             </Btn>
-            <Btn href="/services" variant="secondary">
-              See our services
+            <Btn href={WHATSAPP_LINK} variant="secondary" external>
+              Chat on WhatsApp
             </Btn>
           </div>
         </div>

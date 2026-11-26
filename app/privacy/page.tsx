@@ -14,6 +14,7 @@ const PROCESSORS = [
   { name: "Cloudflare", purpose: "Routes and protects traffic to this website, counts page visits without cookies (Cloudflare Web Analytics), and forwards email sent to our @codtk.com addresses to our inbox.", active: true },
   { name: "Cloudflare Turnstile", purpose: "Checks that a form submission comes from a person, not a bot.", active: true },
   { name: "Resend", purpose: "Delivers your contact-form message to our inbox and sends you a confirmation by email.", active: true },
+  { name: "Google Calendar", purpose: "If you book a free consultation, collects your name and email to schedule the call and send the Google Meet invite.", policy: "https://policies.google.com/privacy", active: true },
   { name: "Google (Gmail)", purpose: "Our business inbox, where your message and our replies are stored.", active: true },
   { name: "Google Sheets", purpose: "Keeps a record of enquiries (name, email, project type, message, time).", active: false },
   { name: "Slack", purpose: "Notifies our team that a new enquiry has arrived.", active: false },
@@ -85,6 +86,14 @@ const SECTIONS: LegalSection[] = [
           {PROCESSORS.map((p) => (
             <li key={p.name}>
               <b>{p.name}:</b> {p.purpose}
+              {"policy" in p && (
+                <>
+                  {" "}
+                  <a href={p.policy} target="_blank" rel="noopener noreferrer">
+                    Google&apos;s privacy policy
+                  </a>
+                </>
+              )}
             </li>
           ))}
         </ul>

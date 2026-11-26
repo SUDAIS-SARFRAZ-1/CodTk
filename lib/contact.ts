@@ -9,8 +9,9 @@ export const WHATSAPP_NUMBER_DISPLAY = "+92 314 6397321";
 export const WHATSAPP_NUMBER_E164 = "923146397321";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
-// "Book a Call" opens WhatsApp; no Calendly (founder, 2026-11-26; prd.md FR-10).
-export const BOOK_CALL_LINK = `${WHATSAPP_LINK}?text=${encodeURIComponent("Hi CodTK, I'd like to book a call.")}`;
+// Free consultation booking page: a Google Calendar appointment schedule (founder, 2026-11-26; prd.md FR-10).
+export const BOOKING_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0w9YR3PwNBTcY2NJRd2-Y7-pHjOfKtKNBdwCPBMdrVCUyIwr9LB3xcVe3rX81CqXTq9onuKg_f";
 
 export const LOCATION = "Lahore, Pakistan";
 export const REACH = "Remote team, serving clients worldwide";

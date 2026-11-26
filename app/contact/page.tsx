@@ -10,7 +10,7 @@ import { Providers } from "@/app/providers";
 import { Btn, IconTile, SectionHead } from "@/components/codtk/primitives";
 import { SocialIcons } from "@/components/codtk/SocialIcons";
 import {
-  BOOK_CALL_LINK,
+  BOOKING_URL,
   BUSINESS_EMAIL,
   LOCATION,
   REACH,
@@ -196,11 +196,19 @@ export default function ContactPage() {
               <h2 id="cf-call-h" className="ctk-panel__h">
                 Prefer to talk it through?
               </h2>
-              <p className="sv-body cf-call__t">Message us on WhatsApp to book a call at a time that suits your time zone.</p>
+              <p className="sv-body cf-call__t">Pick a time that suits your time zone, or message us on WhatsApp.</p>
             </div>
-            <Btn href={BOOK_CALL_LINK} external variant="secondary">
-              Book a Call
-            </Btn>
+            <div>
+              <div className="ctk-actions">
+                <Btn href={BOOKING_URL} external>
+                  Book a free consultation
+                </Btn>
+                <Btn href={WHATSAPP_LINK} external variant="secondary">
+                  Chat on WhatsApp
+                </Btn>
+              </div>
+              <p className="ctk-hint cf-call__when">30-minute Google Meet call, Monday to Saturday, 9am to 5pm PKT.</p>
+            </div>
           </div>
         </div>
       </section>
