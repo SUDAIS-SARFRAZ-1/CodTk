@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { LahoreCard } from "@/components/about/LahoreCard";
 import { TeamDiagram } from "@/components/about/TeamDiagram";
 import { TECH_STACK } from "@/lib/tech-stack";
+import { Curtain } from "@/components/codtk/Curtain";
 
 export const metadata: Metadata = pageMetadata("/about", "About CodTK | Software & Digital Growth Partner", "CodTK is a software and digital growth company in Lahore, Pakistan, founded in 2026: a remote team of engineers serving startups and businesses worldwide.");
 
@@ -61,6 +62,7 @@ const MISSION_VISION = [
 export default function AboutPage() {
   return (
     <div className="sv-page ab-page">
+      <Curtain>
       <PageHero
         crumb="About"
         path="/about"
@@ -100,6 +102,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </Curtain>
 
       <section className="ab-mv" data-theme="dark" data-section="mission" aria-label="Mission and vision">
         <span className="ab-mv__glow" aria-hidden="true" />

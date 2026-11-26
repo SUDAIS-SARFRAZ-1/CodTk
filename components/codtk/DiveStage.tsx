@@ -3,8 +3,21 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
 // Pins its children for a few screens and publishes scroll progress as --p (0 to 1), so CSS can
-// drive the hero's dive (founder, 2026-11-26). Off for reduced motion: the hero then stays static.
-export function DiveStage({ children }: { children: ReactNode }) {
+// drive a dive (founder, 2026-11-26): the Home hero and the closing CTA on Home. Off for reduced
+// motion: the section then stays static.
+export function DiveStage({
+  children,
+  className = "ctk-dive",
+  stageClassName = "ctk-dive__stage",
+  section = "intro",
+  labelledBy,
+}: {
+  children: ReactNode;
+  className?: string;
+  stageClassName?: string;
+  section?: string;
+  labelledBy: string;
+}) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -16,7 +29,7 @@ export function DiveStage({ children }: { children: ReactNode }) {
       frame = 0;
       const r = el.getBoundingClientRect();
       const travel = r.height - window.innerHeight;
-      const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
+      const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
       el.style.setProperty("--p", p.toFixed(4));
     };
     const request = () => {
@@ -33,8 +46,8 @@ export function DiveStage({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <section ref={ref} className="ctk-dive" data-section="intro" aria-labelledby="hero-t">
-      <div className="ctk-dive__stage">{children}</div>
+    <section ref={ref} className={className} data-section={section} aria-labelledby={labelledBy}>
+      <div className={stageClassName}>{children}</div>
     </section>
   );
 }

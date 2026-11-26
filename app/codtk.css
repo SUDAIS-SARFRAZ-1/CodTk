@@ -473,6 +473,31 @@ a:hover .ctk-viz__win{transform:translateY(-8px)}
 
   .ctk-cta__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
 }
+/* Main-page curtain (Curtain.tsx; founder, 2026-11-26): the header pins (its top is set in JS so a
+   tall header pins only once fully seen) and sinks back as the next section slides over it as a card. */
+.ctk-curtain.is-live>:first-child{position:sticky;z-index:0;transform-origin:50% 0;transform:scale(calc(1 - var(--c,0) * .05));opacity:calc(1 - var(--c,0) * .65)}
+.ctk-curtain.is-live>:not(:first-child){position:relative;z-index:1;background:var(--bg-100)}
+.ctk-curtain.is-live>:nth-child(2){border-radius:var(--radius-lg) var(--radius-lg) 0 0;box-shadow:0 -30px 60px -36px color-mix(in srgb,var(--cobalt-900) 45%,transparent)}
+/* Home closing dive (founder, 2026-11-26): the black card grows from a small card to the full
+   screen, the copy rises in, then the chat plays as you scroll. --p comes from DiveStage. Only on
+   screens wide and tall enough to hold the whole card; phones and reduced motion keep the card static. */
+.ctk-cdive__stage{
+  --g:clamp(0,calc(var(--p) / .42),1);
+  --h:clamp(0,calc((var(--p) - .3) / .2),1);
+  --m1:clamp(0,calc((var(--p) - .5) / .1),1);
+  --m2:clamp(0,calc((var(--p) - .6) / .08),1);
+  --m3:clamp(0,calc((var(--p) - .7) / .12),1)}
+@media (min-height:680px){@container page (min-width:768px){
+  .ctk-cdive.is-live{height:260vh;padding:0}
+  .ctk-cdive.is-live .ctk-cdive__stage{position:sticky;top:0;height:100svh;overflow:hidden}
+  .ctk-cdive.is-live .ctk-cta__card{position:absolute;inset:0;display:grid;align-items:center;max-width:none;transform:scale(calc(.5 + var(--g) * .5));will-change:transform}
+  .ctk-cdive.is-live .ctk-cta__grid{width:100%;max-width:1392px;margin-inline:auto}
+  .ctk-cdive.is-live .ctk-cta__copy{opacity:var(--h);transform:translateY(calc((1 - var(--h)) * 48px))}
+  .ctk-cdive.is-live .ctk-cta__copy:focus-within{opacity:1;transform:none}
+  .ctk-cdive.is-live .ctk-chat__me{opacity:var(--m1);transform:translateY(calc((1 - var(--m1)) * 16px))}
+  .ctk-cdive.is-live .ctk-chat__sent{opacity:var(--m2)}
+  .ctk-cdive.is-live .ctk-chat__them{opacity:var(--m3);transform:translateY(calc((1 - var(--m3)) * 16px))}
+}}
 @media (prefers-reduced-motion:reduce){
   .ctk-chat *,.ctk-chat *::after{animation:none!important}
   .ctk-chat__msg{opacity:1}
@@ -765,6 +790,22 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .gate__tools .ctk-ti{width:15px;height:15px;color:var(--ink-100)}
 
 
+/* Deeper pages (service, case study, FAQ, tech stack, legal): blocks fade and rise in as they enter
+   the screen (founder, 2026-11-26). CSS scroll timelines only, no JavaScript; browsers without them,
+   and reduced motion, show everything as is. */
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  .ctk-rise section:not(.ctk-phero) .ctk-wrap>*{animation:ctk-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+}}
+@keyframes ctk-rise{from{opacity:0;transform:translateY(36px)}}
+
+/* Stacking cards (founder, 2026-11-26): each process stage, and each service on /services, pins and
+   the next slides over it. Only where a whole card fits under the navbar, so nothing is hidden. */
+@media (min-height:760px) and (prefers-reduced-motion:no-preference){@container page (min-width:1024px){
+  .tn__stage{overflow:clip}
+  .gate{position:sticky;top:calc(var(--nav) + 24px + var(--i,0) * 14px)}
+  .sv-block{position:sticky;top:calc(var(--nav-height) + 72px);background:var(--bg-100);box-shadow:0 -30px 50px -44px color-mix(in srgb,var(--cobalt-900) 45%,transparent)}
+}}
+
 /* ---------- About page: hero side card (components/about/LahoreCard.tsx), story, mission and
    vision band, values, the team diagram (components/about/TeamDiagram.tsx), expertise. */
 .ctk-phero__intro--under{margin-top:var(--space-4)}
@@ -949,27 +990,28 @@ a.cf-way__v:hover{color:var(--blue-400)}
   --c:clamp(0,calc((var(--p) - .46) / .14),1);
   --d:clamp(0,calc((var(--p) - .58) / .3),1)}
 .ctk-dive.is-live .ctk-dive__stage{position:sticky;top:0;height:100svh}
-.ctk-dive__line{position:absolute;inset:0;z-index:1;width:100%;height:100%;transform-origin:50% 50%;transform:scale(calc(1 + var(--b) * var(--b) * 60));will-change:transform;pointer-events:none}
-.ctk-dive__line path{fill:none;stroke:url(#ctk-line);stroke-width:30;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:ctk-draw 1.8s cubic-bezier(.65,0,.35,1) .3s forwards}
-/* when the intro screen is showing, the line waits for it */
-html:not([data-intro="seen"]) .ctk-intro~.ctk .ctk-dive__line path{animation-delay:2.4s}
-@keyframes ctk-draw{to{stroke-dashoffset:0}}
-.ctk-dive__hero{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);min-height:100svh;padding-block:calc(var(--nav) + 24px) 40px;opacity:calc(1 - var(--a));transform:translateY(calc(var(--a) * -80px))}
-.ctk-dive__hero h1{margin-top:16px;max-width:12ch;font-size:clamp(44px,8.6cqi,148px);line-height:.94;letter-spacing:-.05em;font-weight:500;color:var(--ink-100)}
-.ctk-dive__foot{display:grid;gap:var(--space-6);align-items:end}
+.ctk-dive__hero{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);min-height:100svh;padding-block:calc(var(--nav) + 24px) 40px;transform:translateY(calc(var(--a) * -80px))}
+.ctk-dive__hero h1{margin-top:16px;max-width:12ch;font-size:clamp(44px,8.6cqi,148px);line-height:.94;letter-spacing:-.05em;font-weight:500;color:var(--blue-500)}
+.ctk-dive__foot{display:grid;gap:var(--space-6);align-items:end;opacity:calc(1 - var(--a))}
+/* RubberHeading: letters fade with the copy; a pointed-at letter squishes and springs back */
+.ctk-rub__w{display:inline-block;white-space:nowrap}
+.ctk-rub__l{display:inline-block;opacity:calc(1 - var(--a));transform-origin:50% 90%}
+.ctk-rub__l.is-on{animation:ctk-rubber .8s var(--eo)}
+@keyframes ctk-rubber{0%{transform:scale(1,1)}25%{transform:scale(1.28,.72)}40%{transform:scale(.8,1.22)}55%{transform:scale(1.12,.9)}70%{transform:scale(.96,1.05)}85%{transform:scale(1.02,.98)}100%{transform:scale(1,1)}}
+/* the full stop the dive flies into: grows until it fills the screen blue, then the black fill takes over */
+.ctk-dive__dot{display:inline-block;width:.17em;height:.17em;margin-left:.03em;border-radius:50%;background:currentColor;transform:scale(calc(1 + var(--b) * var(--b) * 320))}
 .ctk-dive__foot .ctk-lead{max-width:30em;color:var(--ink-100)}
 .ctk-avail{margin-top:var(--space-4);font-size:14px;line-height:1.5;color:var(--ink-300)}
 @container page (min-width:1024px){.ctk-dive__foot{grid-template-columns:1fr auto}}
-/* phones and tablets: the text stacks under the headline, and the line runs lower so it never sits
-   behind the paragraph (the dive still zooms into its middle) */
-@container page (max-width:1023px){.ctk-dive__hero{justify-content:flex-start;gap:var(--space-6)}.ctk-dive__line{top:30%}.ctk-dive__hero .ctk-btn--secondary{background:var(--bg-100)}}
+/* phones and tablets: the text stacks under the headline */
+@container page (max-width:1023px){.ctk-dive__hero{justify-content:flex-start;gap:var(--space-6)}.ctk-dive__hero .ctk-btn--secondary{background:var(--bg-100)}}
 .ctk-dive__fill{position:absolute;inset:0;z-index:3;background:#000;opacity:var(--c);pointer-events:none}
 .ctk-dive__scene{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:radial-gradient(70% 45% at 50% 62%,rgba(0,103,252,.28),transparent 70%);opacity:var(--d);pointer-events:none}
 .ctk-dive__logo{position:relative;width:min(520px,70vw);transform:translateY(calc((1 - var(--d)) * 48px)) scale(calc(.86 + var(--d) * .14))}
 .ctk-dive__logo img{display:block;width:100%;height:auto}
 .ctk-dive__logo .ctk-dive__mirror{position:absolute;left:0;top:100%;transform:scaleY(-1);opacity:.22;-webkit-mask-image:linear-gradient(to top,#000,transparent 55%);mask-image:linear-gradient(to top,#000,transparent 55%)}
 .ctk-dive__horizon{position:absolute;left:50%;top:100%;width:100vw;height:2px;translate:-50% 0;background:linear-gradient(90deg,transparent,#0067fc 22%,#3ccbff 50%,#0067fc 78%,transparent);box-shadow:0 0 28px 4px rgba(0,103,252,.55)}
-@media (prefers-reduced-motion:reduce){.ctk-intro{display:none}.ctk-dive__line path{animation:none;stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.ctk-intro{display:none}.ctk-rub__l.is-on{animation:none}}
 
 /* ---------- "What do you need?" cards (founder, 2026-11-26): each card takes its service colour on hover ---------- */
 .ctk-needs__h{margin-bottom:var(--head-gap)}

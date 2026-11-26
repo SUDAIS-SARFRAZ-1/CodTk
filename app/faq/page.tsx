@@ -58,7 +58,7 @@ const FAQS: FaqItem[] = [
 
 export default function FaqPage() {
   return (
-    <div className="sv-page">
+    <div className="sv-page ctk-rise">
       <PageHero
         crumb="FAQ"
         path="/faq"

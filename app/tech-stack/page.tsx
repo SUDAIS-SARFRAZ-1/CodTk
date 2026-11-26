@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata("/tech-stack", "Technologies We U
 // The one page that shows the full stack up front: it is where the "See the technologies" buttons lead.
 export default function TechStackPage() {
   return (
-    <div className="sv-page">
+    <div className="sv-page ctk-rise">
       <PageHero
         crumb="Tech Stack"
         path="/tech-stack"

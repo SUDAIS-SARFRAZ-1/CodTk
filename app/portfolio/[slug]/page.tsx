@@ -56,7 +56,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   ];
 
   return (
-    <>
+    <div className="ctk-rise">
       <JsonLd data={breadcrumbJsonLd([{ name: "Work", path: "/portfolio" }, { name: project.title, path: `/portfolio/${project.slug}` }])} />
       <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">
@@ -194,6 +194,6 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
       </section>
 
       <CtaBanner />
-    </>
+    </div>
   );
 }

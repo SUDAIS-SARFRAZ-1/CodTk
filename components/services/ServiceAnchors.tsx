@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { SvIcon } from "@/components/services/icons";
 import type { ServiceOffering } from "@/lib/service-offerings";
 
-// Sticky row of anchor chips; the chip for the service crossing 40% of the viewport is active and
-// scrolled into view inside the row (it scrolls sideways on phones).
+// Sticky row of anchor chips; the active chip is the last service whose top has passed 40% of the
+// viewport (stacked blocks stay pinned on screen, so "intersecting" alone can't tell), scrolled into
+// view inside the row (it scrolls sideways on phones).
 export function ServiceAnchors({ services }: { services: Pick<ServiceOffering, "id" | "title">[] }) {
   const [active, setActive] = useState(-1);
   const row = useRef<HTMLElement>(null);
@@ -13,10 +14,10 @@ export function ServiceAnchors({ services }: { services: Pick<ServiceOffering, "
   useEffect(() => {
     const blocks = services.map((s) => document.getElementById(s.id)).filter((b): b is HTMLElement => !!b);
     const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(blocks.indexOf(e.target as HTMLElement));
-        }),
+      () => {
+        const line = window.innerHeight * 0.4;
+        setActive(blocks.findLastIndex((b) => b.getBoundingClientRect().top <= line));
+      },
       { rootMargin: "-40% 0px -59% 0px" },
     );
     blocks.forEach((b) => io.observe(b));

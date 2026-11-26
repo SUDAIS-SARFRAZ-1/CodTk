@@ -72,7 +72,7 @@ export default function Home() {
       <Why />
       <CaseShowcase />
       <Faq />
-      <CtaBanner />
+      <CtaBanner dive />
     </>
   );
 }

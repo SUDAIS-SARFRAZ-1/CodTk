@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/projects";
 import { Btn, PageHero, WindowBar } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
+import { Curtain } from "@/components/codtk/Curtain";
 
 export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio & Case Studies | CodTK", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio & Case S
 export default function PortfolioPage() {
   return (
     <>
+      <Curtain>
       <PageHero
         crumb="Work"
         path="/portfolio"
@@ -83,6 +85,7 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+      </Curtain>
 
       <CtaBanner />
     </>
