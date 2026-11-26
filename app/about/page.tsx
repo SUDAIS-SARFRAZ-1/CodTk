@@ -14,45 +14,45 @@ export const metadata: Metadata = pageMetadata("/about", "About CodTK | Software
 type Tile = { tone: string; icon: ReactNode };
 
 const VALUES: (Tile & { title: string; text: string })[] = [
-  { title: "Precision", text: "We specify before we build and test before we claim. Detail is where reliability is made.", tone: "web", icon: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.3" /></> },
-  { title: "Ownership", text: "One team is accountable for the outcome, not only for the tasks it was handed.", tone: "mobile", icon: <path d="M5 21V4M5 4h11l-2 4 2 4H5" /> },
-  { title: "Candour", text: "Estimates, risks and trade-offs are shared plainly and early, including when the news is unwelcome.", tone: "saas", icon: <path d="M4 5h16v11H9l-5 4zM8 10h8M8 13h5" /> },
-  { title: "Craft", text: "Readable code, considered interfaces and documentation the next engineer will thank us for.", tone: "ai", icon: <path d="m4 20 4-1 11-11-3-3L5 16zM14 6l3 3" /> },
-  { title: "Continuity", text: "We build for the years after launch: easy to maintain, easy to monitor and cleanly handed over.", tone: "api", icon: <path d="M17 7a6 6 0 1 0 1.5 6M17 3v4h-4" /> },
+  { title: "Care", text: "We plan before we build and test before we promise.", tone: "web", icon: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.3" /></> },
+  { title: "Ownership", text: "We take responsibility for the result, not just our own tasks.", tone: "mobile", icon: <path d="M5 21V4M5 4h11l-2 4 2 4H5" /> },
+  { title: "Honesty", text: "We tell you about costs, risks and problems early and plainly, even when the news isn't good.", tone: "saas", icon: <path d="M4 5h16v11H9l-5 4zM8 10h8M8 13h5" /> },
+  { title: "Quality", text: "Well-made work that's easy to use, with clear notes for whoever works on it next.", tone: "ai", icon: <path d="m4 20 4-1 11-11-3-3L5 16zM14 6l3 3" /> },
+  { title: "Built to last", text: "We build for the years after launch: easy to look after and properly handed over.", tone: "api", icon: <path d="M17 7a6 6 0 1 0 1.5 6M17 3v4h-4" /> },
   { title: "Respect", text: "For our clients' time, budgets and users, and for each other's work.", tone: "consulting", icon: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /> },
 ];
 
 // prd.md §3: the team is presented by function, with no headcount, profiles or photos.
 const FUNCTIONS: (Tile & { name: string; text: string })[] = [
-  { name: "Frontend", text: "Websites, web apps and mobile interfaces, built for speed and accessibility.", tone: "web", icon: <><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></> },
-  { name: "Backend", text: "APIs, databases, logins and permissions, payments and real-time features.", tone: "api", icon: <><rect x="4" y="4" width="16" height="7" rx="1.5" /><rect x="4" y="13" width="16" height="7" rx="1.5" /><path d="M8 7.5h.01M8 16.5h.01" /></> },
-  { name: "DevOps", text: "Pipelines, hosting and releases that go out without taking your product down.", tone: "cloud", icon: <path d="M7 19h10a4.2 4.2 0 0 0 .7-8.35A6 6 0 0 0 6 9.4 4.8 4.8 0 0 0 7 19Z" /> },
+  { name: "Design & screens", text: "Websites, apps and everything people see and tap, fast and easy for everyone to use.", tone: "web", icon: <><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></> },
+  { name: "Behind the scenes", text: "Logins, payments, stored information and live updates: the parts that make it work.", tone: "api", icon: <><rect x="4" y="4" width="16" height="7" rx="1.5" /><rect x="4" y="13" width="16" height="7" rx="1.5" /><path d="M8 7.5h.01M8 16.5h.01" /></> },
+  { name: "Hosting & launch", text: "Hosting and updates that go live without taking your product down.", tone: "cloud", icon: <path d="M7 19h10a4.2 4.2 0 0 0 .7-8.35A6 6 0 0 0 6 9.4 4.8 4.8 0 0 0 7 19Z" /> },
 ];
 
 const STORY = [
-  "So we keep it direct. You work with the engineers who build your product, scope and cost are agreed in writing before work starts, and we take on any kind of software, from a first website to a full platform with its own app.",
-  "We are built for startup founders and small businesses in Pakistan first, and for clients abroad who want a direct line to the people writing their code.",
+  "So we keep it direct. You work with the engineers who build your product, the price and plan are agreed in writing before work starts, and we take on any kind of software, from a first website to a full platform with its own app.",
+  "We are built for startup founders and small businesses in Pakistan first, and for clients abroad who want to talk directly to the people building their product.",
 ];
 
 // Same copy as the LinkedIn page (founder's brief, 2026-11-19), so every channel tells one story.
 const HOW_WE_WORK: [string, string][] = [
   ["Discovery", "we understand your goals and requirements."],
-  ["Design", "user-centred UI/UX and system architecture."],
-  ["Development", "clean, maintainable, well-tested code."],
-  ["Testing & Deployment", "testing, deployment, monitoring and optimisation."],
+  ["Design", "screens that are easy to use, and a solid plan for how it's built."],
+  ["Building", "careful, tested work that's easy to update later."],
+  ["Testing & Launch", "we test it, put it live, and keep an eye on it."],
   ["Support", "ongoing maintenance and improvements."],
 ];
 const WHY: [string, string][] = [
   ["One team", "to build and grow your product."],
-  ["Transparent communication", "and milestone-based delivery."],
-  ["Strict confidentiality:", "we never share client data or project details without permission."],
-  ["Built to scale", "as your business grows."],
-  ["Direct and fixed:", "you work with the engineers, get fixed quotes and own your source code."],
+  ["Clear updates,", "and work delivered in agreed stages."],
+  ["Your privacy:", "we never share your data or project details without permission."],
+  ["Built to grow", "as your business grows."],
+  ["Direct and fixed:", "you talk to the people building it, get a fixed price and own what we build."],
 ];
 
 const MISSION_VISION = [
-  ["Mission", "To build dependable software that measurably improves how our clients work and grow."],
-  ["Vision", "To be the most trusted engineering partner from Pakistan for businesses building their next generation of software."],
+  ["Mission", "To build reliable software that makes our clients' work easier and helps them grow."],
+  ["Vision", "To be the software team from Pakistan that businesses trust most."],
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
@@ -67,8 +67,8 @@ export default function AboutPage() {
         path="/about"
         plainCrumb
         titleClassName="sv-h1"
-        title={<>A focused team, engineering with <span className="sv-b">discipline.</span></>}
-        intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We design and build scalable, secure software, and help businesses take their operations online and grow. Founded in 2026, we are a remote team of engineers across web, mobile, AI and DevOps."
+        title={<>A small team that <span className="sv-b">does it properly.</span></>}
+        intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We build websites, apps and business software, and help businesses move online and grow. Founded in 2026, we're a remote team covering design, building, AI and hosting."
         actions={
           <>
             <Btn href="/contact">
@@ -87,7 +87,7 @@ export default function AboutPage() {
           <div className="ab-story__head">
             <p className="ctk-kicker rv">Our story</p>
             <h2 id="ab-story-h" className="sv-h2 rv" data-d={1}>
-              Founded to close the gap between <span className="sv-b">ambition and execution.</span>
+              Started because good ideas <span className="sv-b">deserve good builders.</span>
             </h2>
           </div>
           <div className="ab-story__body">
@@ -168,7 +168,7 @@ export default function AboutPage() {
             titleClassName="sv-h2"
             title={
               <>
-                Principles we are <span className="sv-b">held to.</span>
+                What we <span className="sv-b">stand for.</span>
               </>
             }
           />
@@ -227,12 +227,12 @@ export default function AboutPage() {
         <div className="ctk-wrap">
           <SectionHead
             kicker
-            eyebrow="Technical expertise"
+            eyebrow="Technology"
             id="ab-ex-h"
             titleClassName="sv-h2"
             title={
               <>
-                A modern, <span className="sv-b">focused stack.</span>
+                The tools <span className="sv-b">we use.</span>
               </>
             }
           />
