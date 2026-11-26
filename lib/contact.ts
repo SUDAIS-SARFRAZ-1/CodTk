@@ -9,7 +9,7 @@ export const WHATSAPP_NUMBER_DISPLAY = "+92 314 6397321";
 export const WHATSAPP_NUMBER_E164 = "923146397321";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
-// "Book a Call" opens WhatsApp until the Calendly link exists (prd.md FR-10).
+// "Book a Call" opens WhatsApp; no Calendly (founder, 2026-11-26; prd.md FR-10).
 export const BOOK_CALL_LINK = `${WHATSAPP_LINK}?text=${encodeURIComponent("Hi CodTK, I'd like to book a call.")}`;
 
 export const LOCATION = "Lahore, Pakistan";

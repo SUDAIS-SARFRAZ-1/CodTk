@@ -7,13 +7,18 @@ describe("contact emails", () => {
       name: "<b>A\n& B</b>",
       email: "a@example.com",
       projectType: "SEO",
-      budget: "Not sure yet",
       message: `<img src=x onerror="alert(1)">`,
     });
     expect(html).toContain("&lt;b&gt;A\n&amp; B&lt;/b&gt;");
     expect(html).not.toContain("<img");
     expect(text).toContain(`<img src=x onerror="alert(1)">`);
     expect(subject).toBe("New quote request: <b>A & B</b>");
+  });
+
+  it("names the attached document only when there is one", () => {
+    const lead = { name: "A", email: "a@example.com", projectType: "SEO", message: "Hello there" };
+    expect(leadEmail(lead).text).not.toContain("Attachment");
+    expect(leadEmail({ ...lead, attachment: "PRD.pdf" }).text).toContain("Attachment: PRD.pdf");
   });
 
   it("confirms with the site's reply promise", () => {

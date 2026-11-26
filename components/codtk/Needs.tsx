@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ServiceCard } from "@/components/codtk/ServiceCard";
 import { SvIcon } from "@/components/services/icons";
-import { SERVICE_OFFERINGS, type ServiceTone } from "@/lib/service-offerings";
+import { SERVICE_OFFERINGS, quoteHref, type ServiceTone } from "@/lib/service-offerings";
 
 // The six services most visitors come for (founder, 2026-11-26); the full list of twelve lives on
 // /services, one card away.
@@ -17,6 +17,16 @@ export function Needs() {
           What do you need?
         </h2>
         <ul className="ctk-needs">
+          {/* Startup founders are the first audience (prd.md §2); MVPs span several services, so this goes straight to the quote form. */}
+          <li className="ctk-needs__other">
+            <Link href={quoteHref("Something else")} className="ctk-svc__card sv-tone--web">
+              <SvIcon name="saas" />
+              <span className="ctk-svc__text">
+                <b>Have a startup idea?</b>
+                <small>We build the first version of your product (an MVP) so you can launch and test it with real users.</small>
+              </span>
+            </Link>
+          </li>
           {services.map((s) => (
             <li key={s.id}>
               <ServiceCard service={s} />

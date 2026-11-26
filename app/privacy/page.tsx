@@ -20,7 +20,6 @@ const PROCESSORS = [
   { name: "Vercel Analytics", purpose: "Counts page visits without cookies or personal profiles.", active: true },
   { name: "Vercel Speed Insights", purpose: "Measures how fast pages load for visitors, without cookies or personal profiles.", active: true },
   { name: "Google Analytics 4", purpose: "Measures site traffic and visitor behaviour using cookies. Only activated after you accept cookies via the consent banner.", active: true },
-  { name: "Calendly", purpose: "Books a call with us, if you choose to use the booking link.", active: false },
 ].filter((p) => p.active);
 
 const email = <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a>;
@@ -41,8 +40,8 @@ const SECTIONS: LegalSection[] = [
       <>
         <ul>
           <li>
-            <b>What you send us:</b> the name, email address, project type, budget range and message you enter in the
-            contact form, plus anything you include in it.
+            <b>What you send us:</b> the name, email address, project type and message you enter in the
+            contact form, plus anything you include in it and any document you attach (such as a PRD or SRS).
           </li>
           <li>
             <b>Direct contact:</b> if you email, call or message us on WhatsApp, we receive your contact details and

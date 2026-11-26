@@ -7,8 +7,6 @@ const PROJECT_TYPES = [...SERVICE_OFFERINGS.map((s) => s.title), "Something else
 const PROJECT_TYPE_ALIASES: Record<string, string> = Object.fromEntries(
   SERVICE_OFFERINGS.flatMap((s) => (s.legacyTitles ?? []).map((old) => [old, s.title])),
 );
-// Optional budget range (prd.md FR-20); the last is the default when the visitor doesn't pick one.
-const BUDGETS = ["Under $5k", "$5k – 15k", "$15k – 40k", "$40k +", "Not sure yet"] as const;
 
 // contactFormSchema is what the client sends and validates for instant
 // feedback. The server (app/contact/api/route.ts) re-validates the same
@@ -17,7 +15,6 @@ export const contactFormSchema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(120, "Use a shorter name"),
   email: z.string().trim().max(200, "Enter a valid email address").email("Enter a valid email address"),
   projectType: z.enum(PROJECT_TYPES),
-  budget: z.enum(BUDGETS).default("Not sure yet"),
   message: z.string().trim().min(10, "Tell us a bit more about your project").max(5000, "Keep it under 5,000 characters"),
   // Honeypot: real visitors never see or fill this field. Must accept any
   // string (including bot-filled garbage) — the route checks non-emptiness,
@@ -33,4 +30,4 @@ export const contactFormSchema = z.object({
 
 export type ContactFormInput = z.infer<typeof contactFormSchema>;
 
-export { BUDGETS, PROJECT_TYPE_ALIASES, PROJECT_TYPES };
+export { PROJECT_TYPE_ALIASES, PROJECT_TYPES };

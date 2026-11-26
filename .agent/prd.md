@@ -57,7 +57,7 @@ It also serves as a live demo of the team's work, so it must be fast, accessible
 | # | Goal | Measured by | Target |
 |---|---|---|---|
 | G1 | Credibility | Bounce rate, time on About/Portfolio (Vercel Analytics) | Baseline in first 30 days |
-| G2 | Lead generation | Form submissions + WhatsApp clicks + Calendly bookings per month | 5 qualified leads/month within 90 days of launch; 10/month by month 6 (starting targets, revisit quarterly) |
+| G2 | Lead generation | Form submissions + WhatsApp clicks per month | 5 qualified leads/month within 90 days of launch; 10/month by month 6 (starting targets, revisit quarterly) |
 | G3 | Findability | Search Console impressions and rankings for the target keywords; Google Business Profile views | Indexed on all pages within 2 weeks of launch |
 | G4 | Proof of quality | Lighthouse (mobile profile) Performance, Accessibility, Best Practices and SEO each 90+; LCP under 2.5s | Home and Services at launch, all pages by Phase 2 |
 
@@ -65,7 +65,7 @@ It also serves as a live demo of the team's work, so it must be fast, accessible
 
 ### 5.1 In scope (v2)
 Pages: Home, Services (plus one page per service at `/services/<slug>`, added Nov 20, 2026 for SEO), Tech Stack, Portfolio (with case-study detail pages), About, Process, Contact, FAQ, Privacy Policy, Terms of Use, a custom 404, and a `noindex` thank-you page after the form. Plus `/llms.txt` for AI assistants.
-Plus: hardened contact form with lead storage and notifications, WhatsApp CTA on every page, Calendly booking, SEO basics and structured data, Vercel Analytics, Google Search Console and Google Business Profile.
+Plus: hardened contact form with lead storage and notifications, WhatsApp CTA on every page, a WhatsApp "book a call" link, SEO basics and structured data, Vercel Analytics, Google Search Console and Google Business Profile.
 
 ### 5.2 Out of scope (v2)
 Blog/CMS, careers page, client portal or login, Urdu/multi-language, online payments or invoicing.
@@ -94,7 +94,7 @@ Keep the current list as it is in the repo (v1.2 list plus TypeScript, Python, K
 ### 6.4 Portfolio
 - Case-study format: problem, solution, features, tech, outcome, links.
 - **MindMesh** (BSSE capstone, labelled "founder project"): repo link; no live demo yet.
-- **Organic Store:** hidden for now (**assumed** from "just MindMesh for now"). It has a live site and can be re-enabled as a founder project with its URL.
+- **Organic Store and other early projects:** not shown (founder, Nov 26, 2026: too simple to represent CodTK). Portfolio shows MindMesh until new work ships.
 - Client work is shown only with the client's written permission. Otherwise it is left out.
 - More projects will be added later by the founder.
 
@@ -110,11 +110,11 @@ Engagement model (FR-13):
 - The client owns the code and IP after full payment.
 
 ### 6.7 Contact
-- Form fields: name, email, project type (services + Other), optional budget range, message. No file upload; visitors can paste links.
-- WhatsApp link and tap-to-call for +92 314 6397321, info@codtk.com, LinkedIn/Instagram/Facebook/WhatsApp icons, Calendly booking link **(pending input: URL)**, "Lahore, Pakistan · Remote team, serving clients worldwide", reply promise, Privacy/Terms links.
+- Form fields: name, email, project type (services + Other), message, and an optional PRD/SRS upload (one PDF or Word file, up to 4 MB, checked on the server and sent as an email attachment; never stored). No budget field (founder, Nov 26, 2026).
+- WhatsApp link and tap-to-call for +92 314 6397321, info@codtk.com, LinkedIn/Instagram/Facebook/WhatsApp icons, a WhatsApp "book a call" link, "Lahore, Pakistan · Remote team, serving clients worldwide", reply promise, Privacy/Terms links.
 
 ### 6.8 Privacy Policy and Terms of Use
-Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics and Speed Insights (cookieless), Calendly (booking).
+Claude drafts both from a template for founder review. They cover Pakistani law and international clients (GDPR). The Privacy Policy must name every processor of visitor data: Resend (email), Google Sheets (lead storage), Slack (notifications, if enabled), Cloudflare Turnstile (spam check), Vercel Analytics and Speed Insights (cookieless).
 
 ### 6.9 Footer
 Navigation, the one-line description, LinkedIn/Instagram/Facebook/WhatsApp icons (new tab), info@codtk.com, phone, "Lahore, Pakistan · Remote team, serving clients worldwide", Privacy/Terms links, "© 2026 CodTK · Code. Design. Deliver. · info@codtk.com · +92 314 6397321". No registration number.
@@ -128,7 +128,7 @@ Branded page with a short message and "Get a Quote" and "Go home" CTAs.
 2. Zod validates and sanitises input; honeypot and time-trap stay.
 3. Resend sends the lead to contact@codtk.com from an @codtk.com sender.
 4. Resend sends the visitor an auto-reply ("we got your message; we reply within 24 hours, Mon–Sat").
-5. The lead is appended to a Google Sheet (name, email, type, budget, message, timestamp).
+5. The lead is appended to a Google Sheet (name, email, type, message, timestamp).
 6. Optional: a Slack message to a CodTK channel for each new lead (**assumed** meaning of "Slack"; Could priority).
 
 Steps 5 and 6 must never block or fail the submission: if they error, the email in step 3 is still the record. No personal data is written to logs.
@@ -146,7 +146,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-7 | Social links, hidden until URLs exist | Could | Built Nov 19: LinkedIn, Instagram, Facebook and WhatsApp icons in footer and on Contact |
 | FR-8 | Vercel Analytics, plus Search Console and Google Business Profile | Should | Vercel Analytics and Speed Insights added Oct 21 (enable both in the Vercel dashboard); Search Console and Business Profile not set up |
 | FR-9 | Privacy and Terms pages with final content | Must | Drafted Oct 20; founder review pending |
-| FR-10 | Calendly link on Home and Contact | Should | Pending URL |
+| FR-10 | Booking link on Home and Contact | Should | Built as a WhatsApp "book a call" link; no Calendly (founder, Nov 26, 2026: paid plan not wanted) |
 | FR-11 | SECP/NTN in footer | Won't (v2) | Not registered |
 | FR-12 | Founder links (portfolio, LinkedIn, GitHub) on About | Should | Pending URLs |
 | FR-13 | Engagement model stated on Process | Must | Built (§6.6 wording) |
@@ -156,7 +156,8 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-17 | Custom 404 with CTAs | Should | Built (`app/not-found.tsx`, real 404 status) |
 | FR-18 | Lead saved to Google Sheet | Should | Not built |
 | FR-19 | Slack notification per lead | Could | Not built; confirm |
-| FR-20 | Optional budget-range field | Should | Not built |
+| FR-20 | Optional budget-range field | Won't | Removed Nov 26, 2026 (founder) |
+| FR-26 | Optional PRD/SRS upload on the form | Should | Built Nov 26, 2026: PDF/DOC/DOCX, 4 MB, type checked by file contents, attached to the lead email |
 | FR-21 | Remove every "AptiScript" reference (docs, `package.json`, comments) | Must | Done in code and docs |
 | FR-22 | One page per service with its own title, description and JSON-LD | Should | Built Nov 20 (12 pages) |
 | FR-23 | `/faq` page with FAQPage JSON-LD | Should | Built Nov 20 (12 questions) |
@@ -194,14 +195,12 @@ Launch date: **October 20, 2026**. That is two days after this PRD, so launch is
 | Meta, sitemap, robots, canonical (FR-6) | Claude |
 
 ### Phase 2: after launch
-Remaining page redesigns in this order: Services → Portfolio → About → Process → Tech Stack → Contact → Legal. Plus auto-reply, Google Sheet, budget field, Calendly, JSON-LD, 404, analytics, Search Console, Google Business Profile, tests, Slack (if confirmed), QA at 360/768/1280/1440/1920 and Lighthouse.
+Remaining page redesigns in this order: Services → Portfolio → About → Process → Tech Stack → Contact → Legal. Plus auto-reply, Google Sheet, JSON-LD, 404, analytics, Search Console, Google Business Profile, tests, Slack (if confirmed), QA at 360/768/1280/1440/1920 and Lighthouse.
 
 ## 12. Inputs still needed from the founder
 - Social URLs (LinkedIn, Instagram, Facebook, X).
 - Founder portfolio, LinkedIn and GitHub URLs.
-- Calendly link.
 - Confirm Slack lead notifications (yes/no) and the channel.
-- Confirm whether Organic Store goes back on the Portfolio, with its URL.
 - NDA/contract template (Claude can draft one on request).
 - GitHub repo renamed, and the repo attached to the Claude project for code work.
 
@@ -226,4 +225,4 @@ Remaining page redesigns in this order: Services → Portfolio → About → Pro
 | 2.1 | Oct 22, 2026 | Services page redesigned from the founder's brief: seven services, Dedicated team model, delivery standard, tech marquee (§6.2) |
 | 2.2 | Nov 19, 2026 | Website update brief: new phone, contact@codtk.com, social links, 12 services in three groups (no Shopify), About copy, title/description, Organization JSON-LD |
 | 2.3 | Nov 20, 2026 | Launch-ready pass (branch `feat/launch-ready`): service pages, /faq, /thank-you, llms.txt, JSON-LD, GA4 events + Consent Mode v2, manifest, tests, security updates. See `docs/LAUNCH_REPORT.md` |
-| 2.4 | Nov 26, 2026 | Public email is info@codtk.com; form leads still go to contact@codtk.com. Security headers and `#service=` quote links |
+| 2.4 | Nov 26, 2026 | Public email is info@codtk.com; form leads still go to contact@codtk.com. Security headers and `#service=` quote links. Startup/MVP card and FAQ on Home; no Calendly; no early projects in Portfolio; budget field removed, PRD/SRS upload added |

@@ -4,15 +4,15 @@ import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/contact";
 const ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ESCAPES[c]);
 
-type Lead = Pick<ContactFormInput, "name" | "email" | "projectType" | "budget" | "message">;
+type Lead = Pick<ContactFormInput, "name" | "email" | "projectType" | "message"> & { attachment?: string };
 
 // Email clients need inline styles and can't read the site's tokens.
-export function leadEmail({ name, email, projectType, budget, message }: Lead) {
+export function leadEmail({ name, email, projectType, message, attachment }: Lead) {
   const rows = [
     ["Name", name],
     ["Email", email],
     ["Project type", projectType],
-    ["Budget (USD)", budget],
+    ...(attachment ? [["Attachment", attachment]] : []),
   ];
   return {
     // A line break in a subject is rejected, which would lose the lead.

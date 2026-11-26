@@ -17,7 +17,6 @@ describe("contactFormSchema", () => {
     const r = contactFormSchema.safeParse(valid);
     expect(r.success).toBe(true);
     if (r.success) {
-      expect(r.data.budget).toBe("Not sure yet");
       expect(r.data.website).toBe("");
       expect(r.data.turnstileToken).toBe("");
     }
@@ -30,7 +29,6 @@ describe("contactFormSchema", () => {
     ["a message under 10 characters", { message: "Hi there" }],
     ["a message over 5,000 characters", { message: "x".repeat(5001) }],
     ["an unknown project type", { projectType: "Shopify Store" }],
-    ["an unknown budget", { budget: "$1" }],
     ["a missing render time", { renderedAt: undefined }],
     ["an oversized Turnstile token", { turnstileToken: "x".repeat(2049) }],
   ])("rejects %s", (_, patch) => {

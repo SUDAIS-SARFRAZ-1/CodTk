@@ -18,6 +18,13 @@ export const HOME_FAQS: FaqItem[] = [
     plainText: "It depends on scope. After our first call, we agree the timeline in writing before any work starts.",
   },
   {
+    question: "Can you build an MVP for my startup?",
+    answer:
+      "Yes. We help you pick the few features your first version needs, then build it so you can launch and learn from real users. Price and launch date are agreed in writing before work starts.",
+    plainText:
+      "Yes. We help you pick the few features your first version needs, then build it so you can launch and learn from real users. Price and launch date are agreed in writing before work starts.",
+  },
+  {
     question: "How do payments work?",
     answer: "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee.",
     plainText: "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee.",
@@ -45,7 +52,7 @@ export const HOME_FAQS: FaqItem[] = [
 export type FaqItem = { question: string; answer: ReactNode; plainText: string };
 
 // FAQ (design system FAQ): native details, first one open, plus FAQPage JSON-LD built from the same
-// items, so the markup only ever names questions visible on the page. Home uses its five defaults;
+// items, so the markup only ever names questions visible on the page. Home uses its six defaults;
 // service pages and /faq pass their own.
 export function Faq({ items = HOME_FAQS }: { items?: FaqItem[] }) {
   const faqSchema = {

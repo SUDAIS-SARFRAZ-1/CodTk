@@ -25,15 +25,14 @@ export function Hero() {
       </svg>
 
       <div className="ctk-wrap ctk-dive__hero">
-        <p className="ctk-dive__eyebrow">Software studio · Web · Mobile · ERP</p>
         <h1 id="hero-t">Software that grows your business.</h1>
         <div className="ctk-dive__foot">
           <div>
             <p className="ctk-lead">
-              We design and build websites, apps and custom systems that bring in clients and cut the busywork.
-              Built on the platform you choose, or the one we recommend.
+              We design and build websites, apps and custom systems for startups and growing businesses. Bring us
+              an idea and we&apos;ll turn it into a working first version, or improve the systems you already run.
             </p>
-            <p className="ctk-avail">Fixed-price quotes · Clear weekly updates · Support after launch</p>
+            <p className="ctk-avail">Fixed-price quotes, clear weekly updates and support after launch.</p>
           </div>
           <div className="ctk-actions">
             <Btn href={BOOK_CALL_LINK} external>

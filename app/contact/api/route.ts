@@ -1,5 +1,6 @@
 import { after, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { attachmentError, matchesSignature, safeFilename } from "@/features/contact/attachment";
 import { confirmationEmail, leadEmail } from "@/features/contact/emails";
 import { contactFormSchema } from "@/features/contact/schema";
 import { BUSINESS_EMAIL, LEAD_EMAIL, WHATSAPP_NUMBER_DISPLAY } from "@/lib/contact";
@@ -53,10 +54,27 @@ export async function POST(request: Request) {
     return errorResponse(429, "RATE_LIMITED", "Too many submissions. Please try again later.");
   }
 
-  const body = await request.json().catch(() => null);
+  // Multipart: the fields as one JSON part, plus an optional PRD/SRS file.
+  const form = await request.formData().catch(() => null);
+  let body: unknown = null;
+  try {
+    body = JSON.parse(String(form?.get("data") ?? ""));
+  } catch {}
   const parsed = contactFormSchema.safeParse(body);
   if (!parsed.success) {
     return errorResponse(400, "INVALID_INPUT", "Please check the form and try again.");
+  }
+
+  const upload = form?.get("file");
+  const file = upload instanceof File && upload.size > 0 ? upload : undefined;
+  let attachment: { filename: string; content: Buffer } | undefined;
+  if (file) {
+    const fileError = attachmentError(file.name, file.size);
+    const content = fileError ? undefined : Buffer.from(await file.arrayBuffer());
+    if (!content || !matchesSignature(file.name, content)) {
+      return errorResponse(400, "INVALID_FILE", fileError ?? "Attach a PDF or Word document (.pdf, .doc, .docx)");
+    }
+    attachment = { filename: safeFilename(file.name), content };
   }
 
   const { name, email, website, renderedAt, turnstileToken } = parsed.data;
@@ -87,7 +105,8 @@ export async function POST(request: Request) {
     from: LEAD_FROM,
     to: LEAD_EMAIL,
     replyTo: email,
-    ...leadEmail(parsed.data),
+    ...leadEmail({ ...parsed.data, attachment: attachment?.filename }),
+    attachments: attachment ? [attachment] : undefined,
   });
 
   if (error) {

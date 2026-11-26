@@ -5,8 +5,8 @@ import Link from "next/link";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
+import { ATTACHMENT_ACCEPT, attachmentError } from "@/features/contact/attachment";
 import {
-  BUDGETS,
   contactFormSchema,
   PROJECT_TYPE_ALIASES,
   PROJECT_TYPES,
@@ -27,7 +27,7 @@ declare global {
   }
 }
 
-type Errors = Partial<Record<keyof ContactFormInput, string>>;
+type Errors = Partial<Record<keyof ContactFormInput | "file", string>>;
 
 // Form field: label, input, and an error line that CSS reveals next to an aria-invalid control.
 function Field({
@@ -98,7 +98,7 @@ export function ContactForm() {
   const { mutate, isPending, isSuccess, error } = useSubmitContactForm();
   const [fieldErrors, setFieldErrors] = useState<Errors>({});
 
-  const invalid = (k: keyof ContactFormInput, id: string) =>
+  const invalid = (k: keyof Errors, id: string) =>
     fieldErrors[k] ? { "aria-invalid": true, "aria-describedby": `${id}-e` } : {};
 
   // Check one field against the shared schema when the visitor leaves it, and clear its error as
@@ -144,17 +144,19 @@ export function ContactForm() {
             name: String(formData.get("name") ?? ""),
             email: String(formData.get("email") ?? ""),
             projectType: String(formData.get("projectType") ?? ""),
-            budget: String(formData.get("budget") ?? BUDGETS[BUDGETS.length - 1]),
             message: String(formData.get("message") ?? ""),
             website: String(formData.get("website") ?? ""),
             renderedAt: renderedAtRef.current,
             // Turnstile writes its token into this hidden input inside the widget.
             turnstileToken: String(formData.get("cf-turnstile-response") ?? ""),
           };
+          const picked = formData.get("file");
+          const file = picked instanceof File && picked.size > 0 ? picked : undefined;
+          const fileError = file && attachmentError(file.name, file.size);
           const parsed = contactFormSchema.safeParse(input);
-          if (!parsed.success) {
-            const errors: Errors = {};
-            for (const issue of parsed.error.issues) {
+          if (!parsed.success || fileError) {
+            const errors: Errors = { file: fileError };
+            for (const issue of parsed.error?.issues ?? []) {
               const key = issue.path[0] as keyof ContactFormInput;
               errors[key] = issue.message;
             }
@@ -162,7 +164,7 @@ export function ContactForm() {
             return;
           }
           setFieldErrors({});
-          mutate(parsed.data, {
+          mutate({ data: parsed.data, file }, {
             onSuccess: () => {
               track("generate_lead", { project_type: parsed.data.projectType });
               router.push("/thank-you");
@@ -217,19 +219,6 @@ export function ContactForm() {
           </div>
         </Field>
 
-        <fieldset className="ctk-field ctk-full">
-          <legend>Budget (USD)</legend>
-          <div className="ctk-opts" style={{ marginTop: 8 }}>
-            {BUDGETS.map((b) => (
-              <label key={b} className="ctk-opt">
-                <input type="radio" name="budget" value={b} defaultChecked={b === BUDGETS[BUDGETS.length - 1]} />
-                <span>{b}</span>
-              </label>
-            ))}
-          </div>
-          <p className="ctk-hint">Optional. Prefer to talk in PKR? Mention it in your message.</p>
-        </fieldset>
-
         <Field id="message" label="Project details" required error={fieldErrors.message} full>
           <textarea
             className="ctk-input"
@@ -240,6 +229,25 @@ export function ContactForm() {
             {...invalid("message", "message")}
             {...live("message")}
           />
+        </Field>
+
+        <Field id="file" label="Attach your PRD or SRS (optional)" error={fieldErrors.file} full>
+          <input
+            className="ctk-input ctk-file"
+            id="file"
+            name="file"
+            type="file"
+            accept={ATTACHMENT_ACCEPT}
+            aria-describedby={fieldErrors.file ? "file-e file-h" : "file-h"}
+            aria-invalid={fieldErrors.file ? true : undefined}
+            onChange={(e) => {
+              const f = e.currentTarget.files?.[0];
+              setFieldErrors((prev) => ({ ...prev, file: f ? attachmentError(f.name, f.size) : undefined }));
+            }}
+          />
+          <p className="ctk-hint" id="file-h">
+            PDF or Word, up to 4 MB.
+          </p>
         </Field>
 
         {TURNSTILE_SITE_KEY && (
