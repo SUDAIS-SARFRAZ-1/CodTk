@@ -7,7 +7,7 @@ import { SERVICE_OFFERINGS } from "@/lib/service-offerings";
 const valid = {
   name: "Ayesha Khan",
   email: "ayesha@example.com",
-  projectType: "Custom ERP Systems",
+  projectType: "Business Management Software (ERP)",
   message: "We need stock and sales in one system for two shops.",
   renderedAt: Date.now(),
 };
@@ -61,6 +61,7 @@ describe("project types", () => {
       expect(PROJECT_TYPES).toContain(current);
     }
     expect(PROJECT_TYPE_ALIASES["Mobile Applications"]).toBe("Mobile Apps (Android & iOS)");
-    expect(PROJECT_TYPE_ALIASES["DevOps and Cloud"]).toBe("Cloud & DevOps");
+    expect(PROJECT_TYPE_ALIASES["DevOps and Cloud"]).toBe("Cloud Hosting & Updates");
+    expect(PROJECT_TYPE_ALIASES["Custom ERP Systems"]).toBe("Business Management Software (ERP)");
   });
 });

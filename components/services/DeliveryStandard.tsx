@@ -1,3 +1,4 @@
+import { TechReveal } from "@/components/codtk/TechReveal";
 import { SectionHead, WindowBar } from "@/components/codtk/primitives";
 import { SvIcon } from "@/components/services/icons";
 import { ScoreRings } from "@/components/services/ScoreRings";
@@ -29,15 +30,15 @@ export function DeliveryStandard() {
           titleClassName="sv-h2"
           title={
             <>
-              What every build <span className="sv-b">ships with.</span>
+              Quality checks on <span className="sv-b">every project.</span>
             </>
           }
         />
         <div className="sv-std">
           <div className="sv-panel rv">
-            <h3 className="sv-sub">Lighthouse targets we build to</h3>
+            <h3 className="sv-sub">Google speed and quality scores we aim for</h3>
             <ScoreRings targets={LIGHTHOUSE_TARGETS} />
-            <p className="ctk-meta">Targets set for every launch, measured on the mobile profile.</p>
+            <p className="ctk-meta">Measured on phones, for every launch.</p>
           </div>
           <div className="sv-panel rv" data-d={1}>
             <h3 className="sv-sub">Every build ships with</h3>
@@ -50,7 +51,9 @@ export function DeliveryStandard() {
               ))}
             </ul>
           </div>
-          <div className="sv-repo rv" data-d={2} data-theme="dark">
+        </div>
+        <TechReveal className="sv-repo-reveal rv" label="See the technologies">
+          <div className="sv-repo" data-theme="dark">
             <WindowBar className="sv-repo__bar" title="Handover repository" />
             <pre aria-label="Example handover repository structure">
               {REPO.map(([path, note]) => (
@@ -62,7 +65,7 @@ export function DeliveryStandard() {
               ))}
             </pre>
           </div>
-        </div>
+        </TechReveal>
       </div>
     </section>
   );

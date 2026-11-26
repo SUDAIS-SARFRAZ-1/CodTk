@@ -17,7 +17,7 @@ export type ServiceTone =
   | "cloud"
   | "consulting";
 
-export const SERVICE_GROUPS = ["Development", "Growth", "Strategy & Infrastructure"] as const;
+export const SERVICE_GROUPS = ["Build", "Grow", "Plan & Run"] as const;
 
 export type ServiceOffering = {
   id: ServiceTone;
@@ -34,8 +34,8 @@ export type ServiceOffering = {
 export const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "web",
-    group: "Development",
-    title: "Web Applications",
+    group: "Build",
+    title: "Websites & Web Apps",
     cmd: "codtk init web --stack next --ssr",
     description:
       "Custom web applications and business websites built for speed, SEO, and easy maintenance — from marketing sites to full internal tools. We build customer portals, internal tools, marketplaces and dashboards.",
@@ -43,20 +43,20 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Responsive website or web app, built for speed and search",
       "Admin area so your team can update content",
       "Logins, roles and permissions where you need them",
-      "Hosting, domain and HTTPS set up",
-      "Search basics: titles, sitemap and page speed",
+      "Hosting, domain and a secure connection set up",
+      "Set up so Google can find and list it",
       "Source code and every account handed to you",
     ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    legacyTitles: ["Web Application Development"],
+    legacyTitles: ["Web Application Development", "Web Applications"],
   },
   {
     id: "mobile",
-    group: "Development",
+    group: "Build",
     title: "Mobile Apps (Android & iOS)",
     cmd: "codtk init mobile --targets android,ios",
     description:
-      "Mobile apps built the way your project needs — cross-platform apps with React Native, native Android apps in Kotlin, or installable progressive web apps (PWAs) that run on any phone from a single codebase. Offline sync, push notifications, payments and store submission are handled for you.",
+      "Apps for Android and iPhone, built the way your project needs: one app for both, an Android-only app, or a web app people install on any phone. Notifications, offline use, payments and app-store listing are handled for you.",
     deliverables: [
       "One app for Android and iPhone, or a native Android app",
       "Designs of the key screens before the build",
@@ -70,25 +70,26 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   },
   {
     id: "saas",
-    group: "Development",
-    title: "SaaS Products",
+    group: "Build",
+    title: "Subscription Software (SaaS)",
     cmd: "codtk init saas --tenants multi --billing stripe",
     description:
       "Subscription software that serves many customers from one platform, with billing, team roles and analytics in place from the first release. We begin with discovery, so the first version solves one problem well.",
     deliverables: [
       "Product discovery and a first-release scope",
-      "Multi-tenant architecture that keeps each customer's data separate",
-      "Subscription billing and invoices through Stripe",
-      "Role-based access for teams and administrators",
+      "Each customer's data kept separate and private",
+      "Monthly billing and invoices, handled automatically",
+      "Different access levels for staff and admins",
       "Usage analytics and an admin dashboard",
       "Source code and every account handed to you",
     ],
     tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Redis", "AWS"],
+    legacyTitles: ["SaaS Products"],
   },
   {
     id: "erp",
-    group: "Development",
-    title: "Custom ERP Systems",
+    group: "Build",
+    title: "Business Management Software (ERP)",
     cmd: "codtk init erp --modules inventory,sales,hr,accounts",
     description:
       "An ERP built from scratch around the way your business already works, instead of bending your workflow to fit off-the-shelf software. Inventory, sales, HR and accounts share one database, so every team works from the same numbers.",
@@ -101,28 +102,29 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Training for your team and source code handed to you",
     ],
     tech: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Redis", "Docker"],
+    legacyTitles: ["Custom ERP Systems"],
   },
   {
     id: "api",
-    group: "Development",
-    title: "Backend Systems & APIs",
+    group: "Build",
+    title: "Backends & Integrations (APIs)",
     cmd: "codtk init api --auth rbac --realtime",
     description:
-      "Secure, well-structured backend systems and APIs — authentication, role-based access, webhooks, and real-time features included. Every API is documented with OpenAPI and load-tested before launch.",
+      "The hidden part that makes apps work: secure logins, access levels, payments and live updates. Everything is documented and tested under heavy use before launch.",
     deliverables: [
-      "REST and GraphQL API design, documented with OpenAPI",
-      "Database design in PostgreSQL or MongoDB",
-      "Authentication, role-based access and audit trails",
-      "Payments, ERP, webhooks and third-party integrations",
-      "Real-time updates over WebSockets, and background queues",
-      "Automated and load tests for the core logic",
+      "Connections your website and app use to talk to each other, fully documented",
+      "A well-organised database for your information",
+      "Secure logins, access levels and a record of who changed what",
+      "Links to payment providers and the other tools you use",
+      "Live updates, and heavy jobs handled in the background",
+      "Tested to work, even under heavy use",
     ],
     tech: ["Node.js", "Express", "NestJS", "GraphQL", "PostgreSQL", "MongoDB", "Redis", "WebSockets"],
-    legacyTitles: ["Backend & API Development", "Backend Systems and APIs"],
+    legacyTitles: ["Backend & API Development", "Backend Systems and APIs", "Backend Systems & APIs"],
   },
   {
     id: "wordpress",
-    group: "Development",
+    group: "Build",
     title: "WordPress Websites",
     cmd: "codtk init wordpress --theme custom --cache on",
     description:
@@ -130,51 +132,53 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
     deliverables: [
       "A custom theme designed around your brand",
       "Editable pages, posts, menus and contact forms",
-      "Speed set-up: caching, compressed images and a light theme",
+      "Set up to load quickly",
       "Security hardening, backups and updates",
-      "Search basics: titles, sitemap and page speed",
+      "Set up so Google can find and list it",
       "A short guide so your team can edit the site",
     ],
     tech: ["WordPress", "PHP", "MySQL", "JavaScript"],
   },
   {
     id: "seo",
-    group: "Growth",
-    title: "SEO",
+    group: "Grow",
+    title: "Get Found on Google (SEO)",
     cmd: "codtk audit seo --site yourbusiness.com",
     description:
       "Get found on Google by the clients you want. We fix the technical problems that hold a site back, improve pages for the searches your customers make, and set up your Google Business Profile for local search.",
     deliverables: [
-      "A technical audit: speed, indexing, structure and errors",
+      "A check-up of your site: speed, errors and how Google sees it",
       "Keyword research for the searches your clients make",
       "Page titles, descriptions and content improvements",
       "Google Business Profile set-up for local search",
-      "Search Console and analytics set up",
+      "Google's free tracking tools set up",
       "A monthly report of rankings, traffic and next steps",
     ],
     tech: ["Google Search Console", "Google Analytics", "Google Business Profile", "Schema.org"],
+    legacyTitles: ["SEO"],
   },
   {
     id: "marketing",
-    group: "Growth",
-    title: "Performance Marketing",
+    group: "Grow",
+    title: "Online Advertising",
     cmd: "codtk launch campaign --goal leads --budget monthly",
     description:
       "Paid campaigns on the platforms that fit your business, measured by the leads and sales they bring rather than clicks. Tracking is set up first, so every rupee or dollar spent can be traced to a result.",
     deliverables: [
       "A plan: which platforms, which audience, what budget",
-      "Conversion tracking on your website before any spend",
+      "Tracking set up first, so you see which ads bring enquiries",
       "Ad campaigns on Google, Meta (Facebook and Instagram) or TikTok",
       "Landing pages built to turn clicks into enquiries",
       "Ongoing testing of ads, audiences and budgets",
       "A monthly report of spend, leads and cost per lead",
     ],
     tech: ["Google Ads", "Meta Ads", "TikTok Ads", "Google Analytics", "Google Tag Manager"],
+    legacyTitles: ["Performance Marketing"],
   },
   {
     id: "transform",
-    group: "Strategy & Infrastructure",
-    title: "Digital Transformation",
+    group: "Plan & Run",
+    title: "Taking Your Business Online",
     cmd: "codtk migrate --from paper --to online",
     description:
       "Take your physical business online: orders, bookings, stock and payments move from phone calls, registers and spreadsheets into simple software your staff and customers can use. We change one part at a time, so the business keeps running throughout.",
@@ -187,19 +191,20 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Staff training and support while the change settles in",
     ],
     tech: ["Next.js", "React Native", "Node.js", "PostgreSQL", "WordPress"],
+    legacyTitles: ["Digital Transformation"],
   },
   {
     id: "ai",
-    group: "Strategy & Infrastructure",
+    group: "Plan & Run",
     title: "AI & Business Automation",
     cmd: "codtk automate --from orders --to invoices",
     description:
-      "Custom automation that connects your existing tools and APIs, cutting out repetitive manual work across your business. Where it helps, we add AI assistants that answer from your own documents and extract data from files, always with a human review step.",
+      "Automation that connects the tools you already use and cuts out repetitive work. Where it helps, we add AI assistants that answer from your own documents and pull data from files, always with a person checking the result.",
     deliverables: [
       "A review of the manual work worth automating",
       "AI assistants and document extraction from your own files",
       "Connections between the tools you already use",
-      "Scheduled jobs, webhooks, reports and notifications",
+      "Automatic tasks, reports and alerts on a schedule",
       "Alerts when something fails, with human review where it matters",
       "A written guide to how it all works",
     ],
@@ -208,40 +213,40 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
   },
   {
     id: "cloud",
-    group: "Strategy & Infrastructure",
-    title: "Cloud & DevOps",
+    group: "Plan & Run",
+    title: "Cloud Hosting & Updates",
     cmd: "codtk deploy --ci github-actions --env production",
     description:
-      "CI/CD pipelines and cloud deployment so your product ships reliably and scales without manual, error-prone releases. Infrastructure is defined as code, monitored after launch and reviewed for cost.",
+      "Reliable hosting and safe updates, so your product stays online and every change goes live without mistakes. We watch it after launch and keep the monthly bill in check.",
     deliverables: [
-      "Cloud architecture, migration and cost optimisation",
-      "A pipeline that tests and deploys every change",
-      "Hosting on AWS, Azure, Google Cloud, Vercel or Render, defined as code",
-      "Docker containers and Kubernetes for consistent environments",
-      "Separate staging and production, with monitoring",
+      "A hosting plan, moving from your old host, and lower monthly costs",
+      "Every update checked automatically before it goes live",
+      "Hosting with a trusted provider such as Amazon, Microsoft or Google",
+      "The same setup everywhere, so what works in testing works live",
+      "A test copy of your product, plus alerts if anything goes down",
       "Backups, HTTPS and safely stored secrets",
       "Handover notes so your team can run it",
     ],
     tech: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Vercel", "Render"],
-    legacyTitles: ["Cloud & DevOps Solutions", "DevOps and Cloud"],
+    legacyTitles: ["Cloud & DevOps Solutions", "DevOps and Cloud", "Cloud & DevOps"],
   },
   {
     id: "consulting",
-    group: "Strategy & Infrastructure",
-    title: "Software Consulting",
+    group: "Plan & Run",
+    title: "Technical Advice & Planning",
     cmd: "codtk plan --scope v1 --risks",
     description:
-      "Technical strategy and system design for teams that need an outside expert to plan architecture before committing to a build. You receive a written plan you keep, whoever builds it.",
+      "An outside expert's plan before you spend money on building. You get a written plan to keep, whoever builds it.",
     deliverables: [
       "A review of your idea, product or existing code",
-      "Recommended architecture and tech stack",
+      "Which technology to use, and how to structure it",
       "A first-version scope: what to build first",
       "Risks, estimates and open questions",
       "A written technical plan you keep",
       "The option to have us build it afterwards",
     ],
     tech: ["System Design"],
-    legacyTitles: ["Custom Software Consulting"],
+    legacyTitles: ["Custom Software Consulting", "Software Consulting"],
   },
 ];
 
@@ -257,31 +262,31 @@ export const ENGAGEMENT_MODELS: {
   featured?: boolean;
 }[] = [
   {
-    title: "Fixed-scope project",
-    text: "A defined outcome at a fixed price, with scope, timeline and cost agreed in writing before work starts, paid in milestones such as 30% / 40% / 30%.",
-    fit: "Best for new builds and MVPs",
+    title: "Fixed-price project",
+    text: "One agreed result at one fixed price, agreed in writing first. You pay in stages, for example 30% / 40% / 30%.",
+    fit: "Best for a new website or app",
     cta: "Scope a Project",
     icon: "fixed",
   },
   {
     title: "Dedicated team",
-    text: "A cross-functional CodTK team working on your roadmap, with a weekly demo and a shared channel for day-to-day decisions.",
-    fit: "Best for ongoing product development",
+    text: "Your own CodTK team working on your plans month by month, with a weekly demo and a shared chat for quick decisions.",
+    fit: "Best for products that keep growing",
     cta: "Discuss a Team",
     icon: "team",
     featured: true,
   },
   {
-    title: "Support and retainer",
-    text: "Monitoring, fixes, security updates and planned improvements on a monthly retainer. The first month of bug fixes after launch is free.",
-    fit: "Best for live, business-critical systems",
+    title: "Monthly support",
+    text: "We watch your product, fix problems, keep it secure and keep improving it, for a monthly fee. The first month of fixes after launch is free.",
+    fit: "Best once your product is live",
     cta: "Arrange Support",
     icon: "support",
   },
 ];
 
 export const CONSULTING_MODEL = {
-  title: "Technical consulting",
+  title: "Advice before you build",
   text: "An outside engineer's view before you commit: what to build first, how to build it and what could go wrong, as a written plan.",
   fit: "Best before a big build",
 };
@@ -297,12 +302,12 @@ export const LIGHTHOUSE_TARGETS: { label: string; value: number; tone: ServiceTo
 ];
 
 export const BUILD_CHECKLIST: { label: string; icon: StandardIcon }[] = [
-  { label: "Tests in CI", icon: "tests" },
-  { label: "Peer code review", icon: "review" },
-  { label: "Monitoring and runbooks", icon: "monitor" },
-  { label: "Documentation and handover", icon: "docs" },
-  { label: "Security audits", icon: "shield" },
-  { label: "WCAG 2.1 AA accessibility", icon: "a11y" },
+  { label: "Automatic testing", icon: "tests" },
+  { label: "Every change checked by a second engineer", icon: "review" },
+  { label: "Alerts and a plan if something breaks", icon: "monitor" },
+  { label: "Clear instructions handed over", icon: "docs" },
+  { label: "Security checks", icon: "shield" },
+  { label: "Usable by people with disabilities", icon: "a11y" },
 ];
 
 export const MARQUEE_TECH = [

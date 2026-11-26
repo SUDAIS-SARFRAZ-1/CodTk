@@ -31,13 +31,13 @@ export default function ServicesPage() {
         plainCrumb
         titleClassName="sv-h1"
         title={
-          <>Engineering capability, <span className="sv-b">end to end.</span></>
+          <>Everything you need, <span className="sv-b">from idea to launch.</span></>
         }
-        intro="Twelve services in three groups: development, growth, and strategy and infrastructure. Each is scoped to your objectives, documented in writing and delivered against agreed milestones. Timeline and cost depend on scope; we confirm both before work starts."
+        intro="Twelve services in three groups. Start with one or combine several. We agree the price and timeline with you before any work starts."
         actions={
           <>
             <Btn href={BOOK_CALL_LINK} external>
-              Book Your Discovery Call
+              Book a Call
             </Btn>
             <a className="ctk-link" href="#services">
               Browse the services

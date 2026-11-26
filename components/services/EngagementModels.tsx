@@ -16,7 +16,7 @@ export function EngagementModels() {
           titleClassName="sv-h2"
           title={
             <>
-              Structured to suit <span className="sv-b">how you work.</span>
+              Choose how we <span className="sv-b">work together.</span>
             </>
           }
         />
