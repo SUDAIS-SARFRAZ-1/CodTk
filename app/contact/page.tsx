@@ -199,15 +199,12 @@ export default function ContactPage() {
               <h2 id="cf-call-h" className="ctk-panel__h">
                 Prefer to talk it through?
               </h2>
-              <p className="sv-body cf-call__t">Pick a time that suits your time zone, or message us on WhatsApp.</p>
+              <p className="sv-body cf-call__t">Pick a time that suits your time zone.</p>
             </div>
             <div>
               <div className="ctk-actions">
                 <Btn href={BOOKING_URL} external>
                   Book a free consultation
-                </Btn>
-                <Btn href={WHATSAPP_LINK} external variant="secondary">
-                  Chat on WhatsApp
                 </Btn>
               </div>
               <p className="ctk-hint cf-call__when">30-minute Google Meet call, Monday to Saturday, 9am to 5pm PKT.</p>

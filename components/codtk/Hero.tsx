@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Btn } from "@/components/codtk/primitives";
 import { DiveStage } from "@/components/codtk/DiveStage";
 import { RubberHeading } from "@/components/codtk/RubberHeading";
-import { BOOKING_URL, WHATSAPP_LINK } from "@/lib/contact";
+import { BOOKING_URL } from "@/lib/contact";
 
 // Home hero (founder, 2026-11-26). Scrolling fades the copy and dives into the heading's blue full
 // stop until it fills the screen, then opens on the CodTK logo above a lit horizon. All motion is
@@ -25,8 +25,8 @@ export function Hero() {
             <Btn href={BOOKING_URL} external>
               Book a free consultation
             </Btn>
-            <Btn href={WHATSAPP_LINK} variant="secondary" external>
-              Chat on WhatsApp
+            <Btn href="/services" variant="secondary">
+              See our services
             </Btn>
           </div>
         </div>

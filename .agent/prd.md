@@ -146,7 +146,7 @@ Steps 5 and 6 must never block or fail the submission: if they error, the email 
 | FR-7 | Social links, hidden until URLs exist | Could | Built Nov 19: LinkedIn, Instagram, Facebook and WhatsApp icons in footer and on Contact |
 | FR-8 | Vercel Analytics, plus Search Console and Google Business Profile | Should | Vercel Analytics and Speed Insights added Oct 21 (enable both in the Vercel dashboard); Search Console and Business Profile not set up |
 | FR-9 | Privacy and Terms pages with final content | Must | Drafted Oct 20; founder review pending |
-| FR-10 | Booking link on Home and Contact | Should | Built Nov 26, 2026: Google Calendar appointment page (free 30-min Google Meet call), with WhatsApp beside it on Home, Services and Contact; no Calendly (paid) |
+| FR-10 | Booking link on Home and Contact | Should | Built Nov 26, 2026: Google Calendar appointment page (free 30-min Google Meet call) on Home, Services and Contact; WhatsApp is reached through the floating button, not a second button beside it; no Calendly (paid) |
 | FR-11 | SECP/NTN in footer | Won't (v2) | Not registered |
 | FR-12 | Founder links (portfolio, LinkedIn, GitHub) on About | Should | Pending URLs |
 | FR-13 | Engagement model stated on Process | Must | Built (§6.6 wording) |

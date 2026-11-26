@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import { BOOKING_URL, WHATSAPP_LINK } from "@/lib/contact";
+import { BOOKING_URL } from "@/lib/contact";
 import { Btn, PageHero } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { TechStrip } from "@/components/codtk/TechStrip";
@@ -39,9 +39,6 @@ export default function ServicesPage() {
           <>
             <Btn href={BOOKING_URL} external>
               Book a free consultation
-            </Btn>
-            <Btn href={WHATSAPP_LINK} variant="secondary" external>
-              Chat on WhatsApp
             </Btn>
             <a className="ctk-link" href="#services">
               Browse the services
