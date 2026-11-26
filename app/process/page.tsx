@@ -54,7 +54,6 @@ export default function ProcessPage() {
       <PageHero
         crumb="Process"
         path="/process"
-        plainCrumb
         titleClassName="sv-h1"
         title={
           <>Five clear steps, with no surprises.</>

@@ -28,7 +28,6 @@ export default function ServicesPage() {
       <PageHero
         crumb="Services"
         path="/services"
-        plainCrumb
         titleClassName="sv-h1"
         title={
           <>Everything you need, from idea to launch.</>

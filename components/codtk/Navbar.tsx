@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Btn } from "@/components/codtk/primitives";
 
-// No "Services" here: visitors choose what they need on Home (founder, 2026-11-26); the full list stays
-// in the footer.
+// Desktop links (Services added back, founder 2026-11-26). Phones and tablets use TabBar.tsx.
 const NAV = [
+  { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Our Work" },
   { href: "/process", label: "How We Work" },
   { href: "/about", label: "About" },

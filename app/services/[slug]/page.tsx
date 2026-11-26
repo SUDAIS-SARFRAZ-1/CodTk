@@ -70,7 +70,6 @@ export default async function ServicePage({ params }: Props) {
         crumb={s.title}
         path={path}
         parent={{ name: "Services", path: "/services" }}
-        plainCrumb
         titleClassName="sv-h1"
         title={<>{s.title}</>}
         intro={s.description}

@@ -144,8 +144,8 @@ export function SectionHead({
   );
 }
 
-// Inner-page hero (design system pageHero): ~/codtk/<crumb> breadcrumb, the page's one h1, intro.
-// Options: `path` adds BreadcrumbList JSON-LD for Home > [parent >] crumb; `plainCrumb` shows "Home / Crumb";
+// Inner-page hero: "Home / Page" breadcrumb, the page's one h1, intro.
+// Options: `path` adds BreadcrumbList JSON-LD for Home > [parent >] crumb;
 // `titleClassName` restyles the h1; `actions` sits under the intro. With `aside`, the intro and
 // actions move under the title and `aside` takes the right-hand column.
 export function PageHero({
@@ -154,7 +154,6 @@ export function PageHero({
   parent,
   title,
   intro,
-  plainCrumb,
   titleClassName = "ctk-d1 ctk-d1--page",
   actions,
   aside,
@@ -164,7 +163,6 @@ export function PageHero({
   parent?: { name: string; path: string };
   title: ReactNode;
   intro: ReactNode;
-  plainCrumb?: boolean;
   titleClassName?: string;
   actions?: ReactNode;
   aside?: ReactNode;
@@ -181,16 +179,16 @@ export function PageHero({
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
-            <nav className={`ctk-crumb${plainCrumb ? " ctk-crumb--plain" : ""}`} aria-label="Breadcrumb">
-              <Link href="/">{plainCrumb ? "Home" : "~/codtk"}</Link>
+            <nav className="ctk-crumb" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
               <span aria-hidden="true">/</span>
               {parent && (
                 <>
-                  <Link href={parent.path}>{plainCrumb ? parent.name : parent.name.toLowerCase()}</Link>
+                  <Link href={parent.path}>{parent.name}</Link>
                   <span aria-hidden="true">/</span>
                 </>
               )}
-              <span aria-current="page">{plainCrumb ? crumb : crumb.toLowerCase()}</span>
+              <span aria-current="page">{crumb}</span>
             </nav>
             <h1 className={`${titleClassName}`}>
               {title}

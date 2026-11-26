@@ -59,7 +59,7 @@ export default function ContactPage() {
       <section className="cf-hero" data-section="contact" aria-labelledby="cf-h1">
         <div className="ctk-wrap cf-hero__g">
           <div className="cf-intro">
-            <nav className="ctk-crumb ctk-crumb--plain" aria-label="Breadcrumb">
+            <nav className="ctk-crumb" aria-label="Breadcrumb">
               <Link href="/">Home</Link>
               <span aria-hidden="true">/</span>
               <span aria-current="page">Contact</span>

@@ -15,7 +15,6 @@ export default function ThankYouPage() {
     <div className="sv-page">
       <PageHero
         crumb="Message received"
-        plainCrumb
         titleClassName="sv-h1"
         title={<>Message received.</>}
         intro="Thank you. We will reply within 24 hours, Monday to Saturday."

@@ -62,7 +62,6 @@ export default function FaqPage() {
       <PageHero
         crumb="FAQ"
         path="/faq"
-        plainCrumb
         titleClassName="sv-h1"
         title={
           <>

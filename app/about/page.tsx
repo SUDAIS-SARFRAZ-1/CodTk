@@ -64,7 +64,6 @@ export default function AboutPage() {
       <PageHero
         crumb="About"
         path="/about"
-        plainCrumb
         titleClassName="sv-h1"
         title={<>A small team that does it properly.</>}
         intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We build websites, apps and business software, and help businesses move online and grow. Founded in 2026, we're a remote team covering design, building, AI and hosting."

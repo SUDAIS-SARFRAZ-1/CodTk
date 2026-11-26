@@ -61,11 +61,11 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
       <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">
           <nav className="ctk-crumb" aria-label="Breadcrumb">
-            <Link href="/">~/codtk</Link>
+            <Link href="/">Home</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/portfolio">work</Link>
+            <Link href="/portfolio">Work</Link>
             <span aria-hidden="true">/</span>
-            <span aria-current="page">{project.slug}</span>
+            <span aria-current="page">{project.title}</span>
           </nav>
           <h1 className="ctk-d1 ctk-d1--page" style={{ maxWidth: "16ch" }}>
             {project.title}
