@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 // Phone and tablet navigation (founder, 2026-11-26): a rounded bar fixed to the bottom of the screen,
 // in thumb reach. Hidden from 1024px, where the top navbar shows the links. The logo at the top goes home.
@@ -44,21 +44,25 @@ const TABS: { href: string; label: string; icon: ReactNode }[] = [
   { href: "/contact", label: "Contact", icon: <path d="M4 5.5h16v11H9.5L5 20v-3.5H4z" /> },
 ];
 
+// A blue pill slides to the active tab; it hides on pages without a tab (Home, legal pages).
 export function TabBar() {
   const pathname = usePathname();
+  const active = TABS.findIndex((t) => pathname.startsWith(t.href));
   return (
-    <nav className="ctk-tabs" aria-label="Primary">
-      {TABS.map((t) => {
-        const active = pathname.startsWith(t.href);
-        return (
-          <Link key={t.href} href={t.href} aria-current={active ? "page" : undefined}>
-            <svg className="ctk-i" viewBox="0 0 24 24" aria-hidden="true">
-              {t.icon}
-            </svg>
-            <span>{t.label}</span>
-          </Link>
-        );
-      })}
+    <nav
+      className={`ctk-tabs${active < 0 ? " is-idle" : ""}`}
+      data-theme="dark"
+      aria-label="Primary"
+      style={{ "--i": Math.max(active, 0) } as CSSProperties}
+    >
+      {TABS.map((t, i) => (
+        <Link key={t.href} href={t.href} aria-current={i === active ? "page" : undefined}>
+          <svg className="ctk-i" viewBox="0 0 24 24" aria-hidden="true">
+            {t.icon}
+          </svg>
+          <span>{t.label}</span>
+        </Link>
+      ))}
     </nav>
   );
 }
