@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@/components/codtk/primitives";
 import { SvIcon } from "@/components/services/icons";
 import type { ServiceTone } from "@/lib/service-offerings";
 import { serviceHref } from "@/lib/service-seo";
@@ -15,32 +14,22 @@ const NEEDS: { label: string; tone: ServiceTone; href: string }[] = [
   { label: "Not sure yet? Talk to us", tone: "consulting", href: "/contact" },
 ];
 
-// Home hero: white dot field with three soft blue light patches drifting slowly behind the headline
-// (CSS transform/opacity loops only; founder, 2026-11-19).
+// Home hero: one large plain headline on a faint dot field, then the "What do you need?" choices.
 export function Hero() {
   return (
     <section className="ctk-hero ctk-hero--dots" data-section="intro" aria-labelledby="hero-t">
       <div className="ctk-hero__field" aria-hidden="true">
         <i className="ctk-hero__dots" />
       </div>
-      <div className="ctk-hero__glows" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-      </div>
       <div className="ctk-wrap ctk-hero__fg">
-        <p className="ctk-hero__trust rv">
-          <i aria-hidden="true" />
-          Fixed quotes · Source code yours · Lahore, Pakistan
-        </p>
-        <h1 id="hero-t" className="rv">
-          Got an idea? We&apos;ll <span className="ctk-em">make it real</span>.
+        <h1 id="hero-t">
+          Have an idea? We&apos;ll build it.
         </h1>
-        <p className="ctk-lead rv" data-d={3}>
+        <p className="ctk-lead">
           Websites, apps and business software, built by a small Lahore team you talk to directly. Clear quotes and
           honest timelines.
         </p>
-        <nav className="ctk-need rv" data-d={4} aria-labelledby="need-t">
+        <nav className="ctk-need" aria-labelledby="need-t">
           <h2 id="need-t" className="ctk-need__q">
             What do you need?
           </h2>
@@ -50,17 +39,13 @@ export function Hero() {
                 <Link href={n.href} className={`ctk-svc__card ctk-need__card sv-tone--${n.tone}`}>
                   <SvIcon name={n.tone} />
                   <b>{n.label}</b>
-                  <span className="ctk-svc__go" aria-hidden="true">
-                    <Icon name="ur" />
-                  </span>
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
-        <p className="ctk-avail rv" data-d={5}>
-          <i aria-hidden="true" />
-          Replies within 24 hours, Monday to Saturday
+        <p className="ctk-avail">
+          Fixed quotes, and the source code is yours. We reply within 24 hours, Monday to Saturday.
         </p>
       </div>
     </section>

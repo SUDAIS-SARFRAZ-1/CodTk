@@ -104,7 +104,7 @@ export default function TermsPage() {
       path="/terms"
       title={
         <>
-          Terms of <span className="ctk-em">use</span>.
+          Terms of use.
         </>
       }
       intro="The terms that apply when you use this website."

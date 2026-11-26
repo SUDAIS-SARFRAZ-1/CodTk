@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Btn, Icon } from "@/components/codtk/primitives";
+import { Btn } from "@/components/codtk/primitives";
 
 // No "Services" here: visitors choose what they need on Home (founder, 2026-11-26); the full list stays
 // in the footer.
@@ -92,7 +92,6 @@ export function Navbar() {
             onClick={close}
           >
             {n.label}
-            <Icon name="arrow" />
           </Link>
         ))}
         <Btn href="/contact" block onClick={close}>

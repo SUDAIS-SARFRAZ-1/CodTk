@@ -19,7 +19,7 @@ export function ProcessTunnel() {
       <div className="tn__stage">
         <div className="tn__world">
           {PROCESS_STEPS.map((s, i) => (
-            <article key={s.title} className="gate rv" aria-labelledby={`stage-${i}`}>
+            <article key={s.title} className="gate" aria-labelledby={`stage-${i}`}>
               <div className="gate__card">
                 <span className="gate__num" aria-hidden="true">
                   {pad(i)}

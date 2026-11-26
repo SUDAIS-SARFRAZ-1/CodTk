@@ -53,7 +53,6 @@ type BtnProps = {
   children: ReactNode;
   variant?: "primary" | "secondary";
   size?: "md" | "sm";
-  icon?: boolean;
   block?: boolean;
   external?: boolean;
   className?: string;
@@ -65,7 +64,6 @@ export function Btn({
   children,
   variant = "primary",
   size = "md",
-  icon = true,
   block,
   external,
   className = "",
@@ -75,7 +73,6 @@ export function Btn({
   const inner = (
     <>
       {children}
-      {icon && <Icon name="arrow" />}
     </>
   );
   return external ? (
@@ -93,7 +90,6 @@ export function ArrowLink({ href, children }: { href: string; children: ReactNod
   return (
     <Link className="ctk-link" href={href}>
       {children}
-      <Icon name="ur" />
     </Link>
   );
 }
@@ -119,39 +115,27 @@ export function IconTile({ className, children }: { className: string; children:
   );
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="ctk-eyebrow">{children}</p>;
-}
-
-// Reveal wrapper delay index: 80ms per step (MotionSpec `stagger`).
-export const rv = (d = 0) => ({ className: "rv", "data-d": d });
-
-// `kicker` swaps the `//` mono eyebrow for the blue-rule kicker; `titleClassName` swaps the heading style.
+// Section heading with an optional intro; `titleClassName` swaps the heading style.
 export function SectionHead({
-  eyebrow,
   title,
   intro,
   extra,
-  kicker,
   id,
   titleClassName = "ctk-h2",
 }: {
-  eyebrow: string;
   title: ReactNode;
   intro?: string;
   extra?: ReactNode;
-  kicker?: boolean;
   id?: string;
   titleClassName?: string;
 }) {
   return (
     <div className={`ctk-head${intro ? " ctk-head--split" : ""}`}>
-      <div {...rv(0)}>{kicker ? <p className="ctk-kicker">{eyebrow}</p> : <Eyebrow>{eyebrow}</Eyebrow>}</div>
-      <h2 id={id} className={`${titleClassName} rv`} data-d={1}>
+      <h2 id={id} className={`${titleClassName}`}>
         {title}
       </h2>
       {intro && (
-        <div className="rv" data-d={2}>
+        <div>
           <p className="ctk-p">{intro}</p>
           {extra}
         </div>
@@ -197,7 +181,7 @@ export function PageHero({
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-7">
-            <nav className={`ctk-crumb${plainCrumb ? " ctk-crumb--plain" : ""} rv`} aria-label="Breadcrumb">
+            <nav className={`ctk-crumb${plainCrumb ? " ctk-crumb--plain" : ""}`} aria-label="Breadcrumb">
               <Link href="/">{plainCrumb ? "Home" : "~/codtk"}</Link>
               <span aria-hidden="true">/</span>
               {parent && (
@@ -208,21 +192,21 @@ export function PageHero({
               )}
               <span aria-current="page">{plainCrumb ? crumb : crumb.toLowerCase()}</span>
             </nav>
-            <h1 className={`${titleClassName} rv`} data-d={1}>
+            <h1 className={`${titleClassName}`}>
               {title}
             </h1>
             {aside && (
-              <div className="ctk-phero__intro ctk-phero__intro--under rv" data-d={2}>
+              <div className="ctk-phero__intro ctk-phero__intro--under">
                 {introBlock}
               </div>
             )}
           </div>
           {aside ? (
-            <div className="l-s8 ctk-phero__aside rv" data-d={3}>
+            <div className="l-s8 ctk-phero__aside">
               {aside}
             </div>
           ) : (
-            <div className="l-s8 ctk-phero__intro rv" data-d={2}>
+            <div className="l-s8 ctk-phero__intro">
               {introBlock}
             </div>
           )}

@@ -145,8 +145,6 @@
    links and buttons (fine pointers, motion allowed; Motion.tsx) */
 /* circuit lines that draw on reveal */
 /* ---------- type ---------- */
-.ctk-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;line-height:1.4;font-weight:500;letter-spacing:.08em;text-transform:lowercase;color:var(--blue-400)}
-.ctk-eyebrow::before{content:"//";color:var(--ink-300)}
 /* ── Type scale — updated to match spec (2026-10-22) ────────────────────────
    Role           Mobile start  Desktop range   Line height
    small/support  14–16px       14–16px         1.4–1.6
@@ -170,8 +168,6 @@
 .ctk-h3{font-size:20px;line-height:1.25;letter-spacing:-.02em}
 /* H4: 16px mobile → 20px desktop */
 .ctk-h4{font-size:16px;line-height:1.35;font-weight:600}
-.ctk-em{font-family:var(--font-serif);font-weight:400;font-style:italic;letter-spacing:-.01em;color:var(--blue-500)}
-[data-theme="dark"] .ctk-em{color:var(--blue-300)}
 /* Lead paragraph: 18px mobile → 24px desktop */
 .ctk-lead{font-size:18px;line-height:1.5;color:var(--ink-200);max-width:36em}
 /* Body text: 16px base with 1.6 line-height */
@@ -295,22 +291,10 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-hero__field i{position:absolute;inset:0;background-size:20px 20px}
 .ctk-hero__dots{background-image:radial-gradient(color-mix(in srgb,var(--ink-100) 14%,transparent) 1.2px,transparent 1.6px)}
 /* drifting glows: gradient circles moved by transform/opacity only (no blur filter), 22–30s loops */
-.ctk-hero__glows{position:absolute;inset:0;z-index:-3;pointer-events:none}
-.ctk-hero__glows i{position:absolute;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--blue-500) 20%,transparent),transparent);will-change:transform,opacity;animation:ctk-glow-a 24s var(--eio) infinite alternate}
-.ctk-hero__glows i:nth-child(1){left:2%;top:4%;width:min(640px,85vw)}
-.ctk-hero__glows i:nth-child(2){right:0;top:22%;width:min(560px,75vw);background:radial-gradient(closest-side,color-mix(in srgb,var(--cyan-400) 18%,transparent),transparent);animation-name:ctk-glow-b;animation-duration:30s}
-.ctk-hero__glows i:nth-child(3){left:30%;bottom:-18%;width:min(600px,80vw);background:radial-gradient(closest-side,color-mix(in srgb,var(--blue-500) 14%,transparent),transparent);animation-name:ctk-glow-c;animation-duration:22s}
-@keyframes ctk-glow-a{from{transform:translate3d(0,0,0) scale(1);opacity:.75}to{transform:translate3d(28%,14%,0) scale(1.15);opacity:1}}
-@keyframes ctk-glow-b{from{transform:translate3d(0,0,0) scale(1.1);opacity:1}to{transform:translate3d(-32%,10%,0) scale(.9);opacity:.7}}
-@keyframes ctk-glow-c{from{transform:translate3d(0,0,0) scale(.95);opacity:.8}to{transform:translate3d(-18%,-22%,0) scale(1.1);opacity:1}}
-@media (prefers-reduced-motion:reduce){.ctk-hero__glows i{animation:none}}
 .ctk-hero--dots .ctk-hero__fg{display:flex;flex-direction:column;align-items:center}
 
-/* Pass 3: plain trust line — no pill, just dot + text */
-.ctk-hero__trust{display:inline-block;text-wrap:balance;font-size:13px;font-weight:500;color:var(--ink-300);letter-spacing:.01em}
 
-.ctk-hero__trust i{display:inline-block;width:6px;height:6px;margin-right:10px;vertical-align:.15em;border-radius:50%;background:var(--blue-500)}
-.ctk-hero--dots h1{margin-top:28px;max-width:11ch;font-size:clamp(48px,7.6cqi,108px);line-height:.93;letter-spacing:-.055em}
+.ctk-hero--dots h1{max-width:14ch;font-size:clamp(44px,9.6cqi,152px);line-height:.92;letter-spacing:-.055em}
 .ctk-hero--dots .ctk-lead{margin-top:28px;max-width:34em;color:var(--ink-100)}
 .ctk-hero--dots .ctk-actions{justify-content:center;margin-top:36px}
 /* "What do you need?" choices in the home hero: service cards, stacked icon-over-label on phones */
@@ -319,14 +303,11 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-need ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);margin-top:16px;text-align:left}
 .ctk-need__card{flex-direction:column;gap:12px}
 .ctk-need__card b{flex:1;font-size:15px;font-weight:600;line-height:1.3;color:var(--ink-100)}
-.ctk-need__card .ctk-svc__go{display:none}
 @container page (min-width:768px){
   .ctk-need ul{grid-template-columns:repeat(3,minmax(0,1fr))}
   .ctk-need .ctk-need__card{flex-direction:row;align-items:center}
-  .ctk-need__card .ctk-svc__go{display:grid}
 }
-.ctk-avail{display:inline-flex;align-items:center;gap:10px;margin-top:var(--space-6);padding:7px 14px 7px 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:color-mix(in srgb,var(--bg-100) 85%,transparent);font-size:13px;line-height:1.4;color:var(--ink-200)}
-.ctk-avail i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--blue-500)}
+.ctk-avail{margin-top:var(--space-6);font-size:14px;line-height:1.5;color:var(--ink-300)}
 /* architecture: layer panel + illustration frame */
 
 /* the artwork has wide empty margins and sits right of centre: zoom in and pull it back to the middle */
@@ -380,7 +361,6 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-marq__row:nth-child(2){animation-direction:reverse;margin-top:.12em}
 .ctk-marq__row .o{color:transparent;-webkit-text-stroke:1.5px var(--ink-100)}
 .ctk-marq__row .b{color:var(--blue-500)}
-.ctk-marq__row .s{font-family:var(--font-serif);font-weight:400;font-style:italic;letter-spacing:-.02em}
 @media (prefers-reduced-motion:reduce){.ctk-marq__row{animation:none}}
 
 /* ---------- cards ---------- */
@@ -404,10 +384,6 @@ button.ctk-chip[aria-pressed="true"]{border-color:var(--blue-500);color:var(--in
 .ctk-svc__text{flex:1;min-width:0}
 .ctk-svc__text b{display:block;font-weight:600;line-height:1.35;color:var(--ink-100)}
 .ctk-svc__text small{display:block;margin-top:4px;font-size:14px;line-height:1.5;color:var(--ink-300)}
-.ctk-svc__go{flex:none;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line-200);border-radius:50%;color:var(--ink-300);transition:color var(--d-fast),border-color var(--d-fast),background-color var(--d-fast)}
-.ctk-svc__go .ctk-i{width:14px;height:14px;transition:transform var(--d-fast) var(--eo)}
-.ctk-svc__card:hover .ctk-svc__go{color:var(--on-blue);border-color:var(--c);background:var(--c)}
-.ctk-svc__card:hover .ctk-svc__go .ctk-i{transform:translate(2px,-2px)}
 @media (prefers-reduced-motion:reduce){.ctk-svc__card,.ctk-svc__card::after,.ctk-svc__go .ctk-i{transition:none}.ctk-svc__card:hover{transform:none}}
 a.ctk-card:hover{transform:translateY(-4px)}
 
@@ -421,7 +397,6 @@ a.ctk-card:hover{transform:translateY(-4px)}
 /* why codtk: comparison table, CodTK column as a black band (Why.tsx) */
 .ctk-cx{border:1px solid var(--line-200);border-radius:var(--radius-lg);background:var(--bg-100);overflow:hidden;box-shadow:0 30px 70px -40px color-mix(in srgb,var(--cobalt-900) 30%,transparent)}
 .ctk-cx__row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)}
-.ctk-cx.in .ctk-cx__row,.ctk:not(.ctk-js) .ctk-cx__row{animation:ctk-tour-in .6s var(--eo) both;animation-delay:calc(var(--i, -1) * 70ms + 120ms)}
 .ctk-cx__cell{padding:var(--card-pad);font-size:15px;line-height:1.55;color:var(--ink-200);border-top:1px solid var(--line-200);transition:background-color var(--d-fast)}
 .ctk-cx__head .ctk-cx__cell{border-top:0;padding-top:28px}
 .ctk-cx__corner{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-300)}
@@ -433,10 +408,7 @@ a.ctk-card:hover{transform:translateY(-4px)}
 .ctk-cx__head .ctk-cx__us b{position:relative;font-size:20px;letter-spacing:-.02em}
 .ctk-cx__row:last-child .ctk-cx__us{border-radius:0 0 20px 20px;margin-bottom:12px}
 /* Pass 2: comparison glow static */
-.ctk-cx__glow{position:absolute;inset:0;background:radial-gradient(120% 140% at 50% 0%,color-mix(in srgb,var(--blue-500) 30%,transparent),transparent 60%)}
-.ctk-cx__ping{position:relative;width:8px;height:8px;border-radius:50%;background:var(--cyan-400)}
 /* Pass 2: cx ping is a static dot — only hero + avail get the pulse */
-.ctk-cx__ping::after{display:none}
 .ctk-cx__them{display:flex;gap:10px}
 .ctk-cx__them::before{content:"";flex:none;width:12px;height:2px;margin-top:11px;border-radius:2px;background:var(--line-300)}
 .ctk-cx__who{display:none}
@@ -453,7 +425,6 @@ a.ctk-card:hover{transform:translateY(-4px)}
   .ctk-cx__us,.ctk-cx__row:last-child .ctk-cx__us{margin:0 12px 12px;border-radius:12px}
   .ctk-cx__them{display:none}
 }
-@media (prefers-reduced-motion:reduce){.ctk-cx__row,.ctk-cx__glow,.ctk-cx__ping::after{animation:none!important}}
 
 /* ---------- horizontal case showcase ---------- */
 /* featured case study: one project laid out flat (CaseShowcase Featured + CaseGallery) */
@@ -512,16 +483,13 @@ a:hover .ctk-viz__win{transform:translateY(-8px)}
 .ctk-cta__copy{display:grid;gap:28px;align-content:center;min-width:0}
 
 .ctk-cta__big h2{font-size:clamp(44px,5.8cqi,90px);line-height:.94;letter-spacing:-.05em;font-weight:500}
-.ctk-cta__big .ctk-em{color:var(--blue-400)}
 .ctk-cta .ctk-lead{max-width:30em;color:var(--ink-200)}
 /* chat: the enquiry appears, is sent, CodTK types and replies; loops every 10s */
 .ctk-chat{width:100%;max-width:440px;justify-self:center;overflow:hidden;border:1px solid var(--line-200);border-radius:24px;background:linear-gradient(180deg,var(--bg-300),var(--bg-200));box-shadow:0 30px 60px -30px var(--bg-000),0 0 80px -30px color-mix(in srgb,var(--blue-500) 50%,transparent)}
 .ctk-chat__head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line-100)}
 .ctk-chat__head b{display:block;font-size:14px;font-weight:600}
 .ctk-chat__head small{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-300)}
-.ctk-chat__head small i{position:relative;width:6px;height:6px;border-radius:50%;background:var(--cyan-400)}
 /* Pass 2: static online dot in chat header */
-.ctk-chat__head small i::after{display:none}
 .ctk-chat__avatar{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--blue-500);color:var(--on-blue);font:700 12px var(--font-mono)}
 .ctk-chat__body{display:flex;flex-direction:column;gap:12px;min-height:290px;padding:20px 18px 22px}
 .ctk-chat__me{align-self:flex-end;max-width:86%;padding:12px 14px;border-radius:16px 16px 4px 16px;background:var(--blue-500);color:var(--on-blue);font-size:14px;line-height:1.5}
@@ -605,7 +573,7 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .ctk-next{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-6);padding-block:var(--sec-y);border-top:1px solid var(--line-100)}
 .ctk-next h2{transition:color var(--d-micro)}
 .ctk-next:hover h2{color:var(--blue-300)}
-.ctk-statement{font-family:var(--font-serif);font-size:clamp(26px,3cqi,36px);line-height:1.25;color:var(--ink-100);margin-top:var(--space-6)}
+.ctk-statement{font-weight:500;font-size:clamp(26px,3cqi,36px);line-height:1.25;color:var(--ink-100);margin-top:var(--space-6)}
 
 /* ---------- footer ---------- */
 /* footer: black, dot grid, the CodTK logo faint behind the content and a spotlight that follows the
@@ -664,14 +632,10 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .ctk-faq details[open] .a{animation:ctk-rise var(--d-base) var(--eo)}
 
 /* ---------- motion ---------- */
-.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo)}
-/* only off-screen elements wait hidden (Motion.tsx); no transition while hiding, so it is instant */
-.ctk .rv.rv-wait{opacity:0;transform:translateY(24px);transition:none}
 
 
 @media (prefers-reduced-motion:reduce){
   .ctk *,.ctk *::before,.ctk *::after{animation:none!important;transition:none!important}
-  .ctk .rv.rv-wait{opacity:1;transform:none}
   
   .ctk-strip__track{overflow-x:auto}
   .ctk-panel.is-sent .ctk-done path,.ctk-panel.is-sent .ctk-done circle{stroke-dashoffset:0}.ctk-input[aria-invalid="true"],.ctk-spin{animation:none}
@@ -714,8 +678,6 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .sv-h1{font-size:var(--sv-h1);line-height:1.05;margin-top:var(--space-8)}
 .sv-h2{font-size:var(--sv-h2);line-height:1.1;margin-top:var(--space-4)}
 .sv-h3{font-size:var(--sv-h2);line-height:1.1}
-.sv-b{color:var(--blue-500)}
-[data-theme="dark"] .sv-b{color:var(--blue-400)}
 .sv-sub{font-size:var(--sv-h4);line-height:1.3;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-100)}
 .sv-lead{font-size:var(--sv-lead);line-height:1.5;color:var(--ink-200);max-width:40em}
 .sv-body{margin-top:var(--space-6);font-size:var(--sv-body);line-height:1.65;color:var(--ink-200);max-width:38em}
@@ -775,13 +737,11 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 @container page (min-width:960px){.sv-tiers{grid-template-columns:1fr 1.08fr 1fr;align-items:stretch}}
 .sv-tier{gap:14px;padding:var(--card-pad);border-radius:var(--radius-lg);background:var(--bg-100);border-color:var(--line-200)}
 .sv-tier:hover{translate:0 -6px;box-shadow:var(--shadow-lift)}
-.sv-tier.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo),border-color var(--d-fast),color var(--d-fast)}
 .sv-tier h3{margin-top:12px;font-size:var(--sv-h3);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:-.025em;color:var(--ink-100)}
 .sv-tier__d{font-size:var(--sv-body);line-height:1.65;color:var(--ink-200)}
 .sv-tier__fit{margin-top:auto;padding-top:20px;border-top:1px solid var(--line-200);font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--ink-300)}
 @container page (min-width:960px){.sv-tier--f{translate:0 -12px}.sv-tier--f:hover{translate:0 -18px}}
 .sv-badge{position:absolute;top:24px;right:24px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:var(--sv-sm);color:var(--ink-100)}
-.sv-badge i{width:6px;height:6px;border-radius:50%;background:var(--cyan-400)}
 .sv-consult{display:grid;gap:16px 40px;align-items:center;margin-top:var(--grid-gap);padding:var(--card-pad);border:1px dashed var(--line-300);border-radius:var(--radius-md)}
 @container page (min-width:960px){.sv-consult{grid-template-columns:auto 1fr auto auto}}
 .sv-consult h3{font-size:var(--sv-h3);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink-100)}
@@ -820,8 +780,7 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .pr-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 8px;margin:0 0 var(--head-gap)}
 @container page (min-width:768px){.pr-overview{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .pr-overview li{position:relative;padding-top:16px;border-top:2px solid var(--line-200);font-size:var(--sv-sm);line-height:1.4;font-weight:500;color:var(--ink-100)}
-.pr-overview li::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--blue-500);transform-origin:0 50%;transform:scaleX(0);transition:transform 1s var(--eo);transition-delay:calc(var(--k) * 140ms + 300ms)}
-.pr-overview.in li::before,.ctk:not(.ctk-js) .pr-overview li::before{transform:none}
+.pr-overview li::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--blue-500)}
 .pr-overview b{display:block;margin-bottom:4px;font-family:var(--font-mono);font-size:var(--sv-sm);font-weight:500;color:var(--blue-400)}
 
 .tn{position:relative;background:var(--bg-100)}
@@ -846,15 +805,6 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .gate__tools li{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--line-200);border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--ink-100)}
 .gate__tools .ctk-ti{width:15px;height:15px;color:var(--ink-100)}
 
-.pr-terms{display:grid;gap:var(--grid-gap);margin-top:var(--head-gap)}
-@container page (min-width:768px){.pr-terms{grid-template-columns:repeat(2,1fr)}}
-@container page (min-width:1200px){.pr-terms{grid-template-columns:repeat(4,1fr)}}
-.pr-term{gap:14px;padding:var(--card-pad);border-radius:var(--radius-lg);background:var(--bg-100);border-color:var(--line-200)}
-.pr-term__n{position:absolute;right:24px;top:20px;font-family:var(--font-mono);font-size:var(--sv-sm);color:var(--ink-300)}
-.pr-term h3{margin-top:12px;font-size:var(--sv-h3);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:-.025em;color:var(--ink-100)}
-.pr-term p{font-size:var(--sv-body);line-height:1.65;color:var(--ink-200)}
-.pr-term:hover .sv-ic{transform:translateY(-3px) rotate(-4deg)}
-@media (prefers-reduced-motion:reduce){.pr-overview li::before{transform:none;transition:none}.pr-term:hover .sv-ic{transform:none}}
 
 /* ---------- About page: hero side card (components/about/LahoreCard.tsx), story, mission and
    vision band, values, the team diagram (components/about/TeamDiagram.tsx), expertise. */
@@ -892,14 +842,15 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .ab-mv .ctk-kicker{color:var(--cyan-400)}.ab-mv .ctk-kicker::before{background:var(--cyan-400)}
 .ab-mv__s{margin-top:24px;font-size:clamp(1.5rem,1.2rem + 1.3vw,2.375rem);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--ink-100);text-wrap:balance}
 
-.ab-values{display:grid;gap:var(--grid-gap)}
-@container page (min-width:768px){.ab-values{grid-template-columns:repeat(2,1fr)}}
-@container page (min-width:1100px){.ab-values{grid-template-columns:repeat(3,1fr)}}
+.ctk-rules{display:grid;gap:var(--space-8) var(--space-12);margin-top:var(--head-gap)}
+@container page (min-width:768px){.ctk-rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container page (min-width:1100px){.ctk-rules{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ctk-rule{padding-top:var(--space-4);border-top:1px solid var(--line-200)}
+.ctk-rule h3{font-size:var(--sv-h4,18px);line-height:1.3;font-weight:600;color:var(--ink-100)}
+.ctk-rule p{margin-top:8px;font-size:var(--sv-body,16px);line-height:1.65;color:var(--ink-200)}
 .ab-card{gap:12px;padding:var(--card-pad);border-radius:var(--radius-lg);background:var(--bg-100);border-color:var(--line-200);transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo)}
-.ab-card.rv{transition:opacity var(--d-rev) var(--eo),transform var(--d-rev) var(--eo),translate var(--d-base) var(--eo),box-shadow var(--d-base) var(--eo)}
 .ab-card:hover{translate:0 -6px;box-shadow:var(--shadow-lift)}
 .ab-card:hover .sv-ic{transform:translateY(-3px) rotate(-4deg)}
-.ab-card__n{position:absolute;right:24px;top:22px;font-family:var(--font-mono);font-size:var(--sv-sm);color:var(--ink-300)}
 .ab-card h3{margin-top:12px;font-size:var(--sv-h3);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:-.025em;color:var(--ink-100)}
 .ab-card p{font-size:var(--sv-body);line-height:1.65;color:var(--ink-200)}
 .ab-card__chips{margin-top:auto;padding-top:24px}
@@ -943,8 +894,6 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .cf-intro{min-width:0}
 .cf-intro .sv-h1{margin-top:20px}
 .cf-lead{margin-top:24px}
-.cf-badge{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 14px 8px 12px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-100);font-size:.8125rem;line-height:1.4;font-weight:600;color:#01411c}
-.cf-badge i{width:8px;height:8px;border-radius:50%;background:#0a8f3c}
 .cf-ways{display:grid;gap:var(--grid-gap);margin-top:var(--head-gap)}
 .cf-way{display:flex;align-items:center;gap:16px;padding:var(--card-pad);border:1px solid var(--line-200);border-radius:var(--radius-md);background:var(--bg-100);transition:border-color var(--d-fast),box-shadow var(--d-base) var(--eo),translate var(--d-base) var(--eo)}
 .cf-way:hover{translate:4px 0;border-color:var(--line-300);box-shadow:0 16px 32px -24px rgba(10,10,11,.3)}
@@ -1003,7 +952,7 @@ a.cf-way__v:hover{color:var(--blue-400)}
 /* phones (founder, 2026-11-19): smaller headings, no decorative giant numbers or code lines */
 @container page (max-width:767px){
   .ctk-hide-phone{display:none}
-  .ctk-hero--dots h1{font-size:38px}
+  .ctk-hero--dots h1{font-size:44px}
   .ctk-d1,.ctk-d1--page{font-size:32px}
   .ctk-h2{font-size:26px}
   .ctk-cta__big h2{font-size:36px}

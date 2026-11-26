@@ -168,7 +168,7 @@ export default function PrivacyPage() {
       path="/privacy"
       title={
         <>
-          Privacy <span className="ctk-em">policy</span>.
+          Privacy policy.
         </>
       }
       intro="How CodTK collects, uses and protects what you share through this website, and which services process it."

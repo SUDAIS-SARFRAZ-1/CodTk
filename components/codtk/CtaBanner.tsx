@@ -15,21 +15,18 @@ export function CtaBanner() {
         <span className="ctk-cta__low" aria-hidden="true" />
         <div className="ctk-cta__grid">
           <div className="ctk-cta__copy">
-            <p className="ctk-kicker rv">Start a project</p>
             <div className="ctk-cta__big">
               <h2
                 id="cta-t"
-                className="rv"
-                data-d={1}
               >
-                <>Let’s build <span className="ctk-em">what’s next.</span></>
+                <>Let’s build what’s next.</>
               </h2>
             </div>
-            <p className="ctk-lead rv" data-d={3}>
+            <p className="ctk-lead">
               Tell us what you’re building. We’ll come back with questions, an
               approach and a quote.
             </p>
-            <div className="ctk-actions rv" data-d={4}>
+            <div className="ctk-actions">
               <Btn href="/contact">
                 Start a Project
               </Btn>
@@ -39,15 +36,12 @@ export function CtaBanner() {
             </div>
           </div>
 
-          <div className="ctk-chat rv" data-d={3} aria-hidden="true">
+          <div className="ctk-chat" aria-hidden="true">
             <div className="ctk-chat__head">
               <span className="ctk-chat__avatar">CK</span>
               <span>
                 <b>CodTK</b>
-                <small>
-                  <i />
-                  New project enquiry
-                </small>
+                <small>New project enquiry</small>
               </span>
             </div>
             <div className="ctk-chat__body">

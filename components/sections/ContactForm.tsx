@@ -116,7 +116,6 @@ export function ContactForm() {
 
   return (
     <div className={`ctk-panel ctk-glow${isSuccess ? " is-sent" : ""}`}>
-      <p className="ctk-kicker">Project enquiry</p>
       <h2 className="ctk-panel__h">Get a quote</h2>
 
       {/* Always mounted, so the success message is announced when it appears (rules.md §34). */}
@@ -267,7 +266,7 @@ export function ContactForm() {
           </p>
           <button className="ctk-btn ctk-btn--primary" type="submit" disabled={isPending}>
             {isPending ? "Sending…" : "Send Message"}
-            {isPending ? <i className="ctk-spin" aria-hidden="true" /> : <Icon name="arrow" />}
+            {isPending && <i className="ctk-spin" aria-hidden="true" />}
           </button>
         </div>
       </form>

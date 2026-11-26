@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navbar } from "@/components/codtk/Navbar";
 import { Footer } from "@/components/codtk/Footer";
-import { Motion } from "@/components/codtk/Motion";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { ClickTracking } from "@/components/layout/ClickTracking";
@@ -13,14 +12,7 @@ import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/
 import "./globals.css";
 import "./codtk.css";
 
-// CodTK design system type: Instrument Sans (headlines and body), Instrument Serif italic (the one
-// emphasised phrase per headline), JetBrains Mono (labels, code).
-const serif = Instrument_Serif({
-  variable: "--font-serif",
-  weight: "400",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
+// One type family (Instrument Sans) for headlines and body; JetBrains Mono for labels and code.
 const body = Instrument_Sans({ variable: "--font-body", subsets: ["latin"] });
 const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
@@ -52,7 +44,7 @@ export const viewport: Viewport = { themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" data-theme="light" className={`${serif.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="en" data-theme="light" className={`${body.variable} ${mono.variable}`}>
       <body>
         <div className="ctk">
           <Navbar />
@@ -60,7 +52,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Footer />
           <WhatsAppButton />
         </div>
-        <Motion />
         {/* Cookieless page views and real-visitor Core Web Vitals (prd.md FR-8, G4); both named as
             processors in the Privacy Policy. */}
         <Analytics />

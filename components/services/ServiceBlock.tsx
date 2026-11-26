@@ -9,44 +9,38 @@ import { quoteHref, type ServiceOffering } from "@/lib/service-offerings";
 
 // One service: number, title, description and CTA on the left; deliverables on the right, with the
 // command line and tech behind a button. Parts reveal in order.
-export function ServiceBlock({ service, index, total }: { service: ServiceOffering; index: number; total: number }) {
-  const n = (i: number) => String(i + 1).padStart(2, "0");
-  let d = 0;
-  const rv = () => ({ className: "rv", "data-d": Math.min(d++, 12) });
+export function ServiceBlock({ service }: { service: ServiceOffering }) {
   return (
     <article className={`sv-block sv-tone--${service.id}`} id={service.id} aria-labelledby={`${service.id}-h`}>
       <div>
-        <div className="sv-block__top rv" data-d={d++}>
+        <div className="sv-block__top">
           <SvIcon name={service.id} size="lg" />
-          <p className="sv-block__n">
-            {n(index)} / {String(total).padStart(2, "0")}
-          </p>
         </div>
-        <h2 className="sv-h3 rv" data-d={d++} id={`${service.id}-h`}>
+        <h2 className="sv-h3" id={`${service.id}-h`}>
           <Link href={serviceHref(service.id)}>{service.title}</Link>
         </h2>
-        <p className="sv-body rv" data-d={d++}>
+        <p className="sv-body">
           {service.description}
         </p>
-        <div className="sv-block__cta rv" data-d={d++}>
+        <div className="sv-block__cta">
           <Btn href={quoteHref(service.title)} variant="secondary" size="sm">
             Discuss This Service<span className="ctk-sr"> ({service.title})</span>
           </Btn>
         </div>
       </div>
       <Included>
-        <h3 className="sv-sub rv" data-d={d++}>
+        <h3 className="sv-sub">
           Key deliverables
         </h3>
         <ul className="ctk-ticks ctk-ticks--2 sv-ticks">
           {service.deliverables.map((item) => (
-            <li key={item} {...rv()}>
+            <li key={item}>
               <Icon name="check" />
               {item}
             </li>
           ))}
         </ul>
-        <div className="sv-sub--tech rv" data-d={Math.min(d++, 12)}>
+        <div className="sv-sub--tech">
           <TechReveal label="See the technologies">
             <TypedCommand cmd={service.cmd} />
             <div className="sv-tech">

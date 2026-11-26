@@ -42,7 +42,6 @@ export function ServiceAnchors({ services }: { services: Pick<ServiceOffering, "
               aria-current={i === active ? "true" : undefined}
             >
               <SvIcon name={s.id} size="xs" />
-              <b>{String(i + 1).padStart(2, "0")}</b>
               {s.title}
             </a>
           ))}

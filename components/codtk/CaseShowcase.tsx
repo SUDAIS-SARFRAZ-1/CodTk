@@ -5,7 +5,7 @@ import { PROJECTS, type Project } from "@/lib/projects";
 // One project: a full case study laid out flat (problem, solution, features, links).
 function Featured({ p }: { p: Project }) {
   return (
-    <article className="ctk-feat rv">
+    <article className="ctk-feat">
       <CaseGallery images={p.images} />
       <div className="ctk-feat__copy">
         <div className="ctk-tags">
@@ -38,7 +38,6 @@ function Featured({ p }: { p: Project }) {
           {p.repoUrl && (
             <a className="ctk-link" href={p.repoUrl} target="_blank" rel="noopener noreferrer">
               View the source on GitHub
-              <Icon name="ur" />
             </a>
           )}
         </div>
@@ -56,11 +55,10 @@ export function CaseShowcase() {
     <section className="ctk-sec" data-section="selected work" aria-labelledby="work-t">
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
-          <p className="ctk-kicker rv">Selected work</p>
-          <h2 id="work-t" className="ctk-h2 rv" data-d={1}>
-            Real work you can <span className="ctk-em">check yourself</span>.
+          <h2 id="work-t" className="ctk-h2">
+            Work you can check for yourself.
           </h2>
-          <p className="ctk-p rv" data-d={2}>
+          <p className="ctk-p">
             Built by our founder. Its code is public, so anyone can see how it&apos;s made.
           </p>
         </div>

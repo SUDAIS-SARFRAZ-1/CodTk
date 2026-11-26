@@ -65,9 +65,8 @@ export function Faq({ items = HOME_FAQS }: { items?: FaqItem[] }) {
       <div className="ctk-wrap">
         <div className="ctk-g">
           <div className="l-4">
-            <p className="ctk-kicker">Questions</p>
             <h2 id="faq-t" className="ctk-h2" style={{ marginTop: 24 }}>
-              Answers before you <span className="ctk-em">ask</span>.
+              Answers before you ask.
             </h2>
             <p className="ctk-p" style={{ marginTop: 20 }}>
               Anything else, write to us at{" "}
@@ -76,7 +75,7 @@ export function Faq({ items = HOME_FAQS }: { items?: FaqItem[] }) {
               </a>
             </p>
           </div>
-          <div className="l-s6 ctk-faq rv">
+          <div className="l-s6 ctk-faq">
             {items.map((f, i) => (
               <details key={f.question} open={i === 0}>
                 <summary>

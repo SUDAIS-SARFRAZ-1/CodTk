@@ -66,7 +66,7 @@ export default function FaqPage() {
         titleClassName="sv-h1"
         title={
           <>
-            Frequently asked <span className="sv-b">questions.</span>
+            Frequently asked questions.
           </>
         }
         intro="Straight answers about working with CodTK, before you get in touch."

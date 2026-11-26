@@ -85,22 +85,22 @@ export default async function ServicePage({ params }: Props) {
       {/* One line of copy: no bottom padding, so it reads as the lead-in to "What's included". */}
       <section className="ctk-sec sv-sec" data-section="who it's for" aria-labelledby="for-h" style={{ paddingBottom: 0 }}>
         <div className="ctk-wrap">
-          <SectionHead kicker eyebrow={s.group} id="for-h" titleClassName="sv-h2" title="Who it's for" intro={seo.audience} />
+          <SectionHead id="for-h" titleClassName="sv-h2" title="Who it's for" intro={seo.audience} />
         </div>
       </section>
 
       <section className="ctk-sec sv-sec" data-section="what's included" aria-labelledby="inc-h">
         <div className="ctk-wrap">
-          <SectionHead kicker eyebrow="Deliverables" id="inc-h" titleClassName="sv-h2" title="What's included" />
+          <SectionHead id="inc-h" titleClassName="sv-h2" title="What's included" />
           <ul className="ctk-ticks ctk-ticks--2 sv-ticks">
             {s.deliverables.map((d) => (
-              <li key={d} className="rv">
+              <li key={d} >
                 <Icon name="check" />
                 {d}
               </li>
             ))}
           </ul>
-          <div className="sv-sub--tech rv">
+          <div className="sv-sub--tech">
             <TechReveal label="See the technologies">
               <div className="sv-tech">
                 <Chips items={s.tech} brand />
@@ -112,8 +112,8 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="ctk-sec sv-sec cf-where" data-section="how we work" aria-labelledby="how-h">
         <div className="ctk-wrap">
-          <SectionHead kicker eyebrow="Process" id="how-h" titleClassName="sv-h2" title="How we work" />
-          <ol className="cf-list rv">
+          <SectionHead id="how-h" titleClassName="sv-h2" title="How we work" />
+          <ol className="cf-list">
             {PROCESS_STEPS.map((p) => (
               <li key={p.title}>
                 <b>{p.title}</b>
@@ -121,7 +121,7 @@ export default async function ServicePage({ params }: Props) {
               </li>
             ))}
           </ol>
-          <div className="rv" style={{ marginTop: 24 }}>
+          <div style={{ marginTop: 24 }}>
             <ArrowLink href="/process">The process in detail</ArrowLink>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default async function ServicePage({ params }: Props) {
       {related.length > 0 && (
         <section className="ctk-sec sv-sec" data-section="related services" aria-labelledby="rel-h">
           <div className="ctk-wrap">
-            <SectionHead kicker eyebrow={s.group} id="rel-h" titleClassName="sv-h2" title="Related services" />
+            <SectionHead id="rel-h" titleClassName="sv-h2" title="Related services" />
             <ul className="ctk-svc">
               {related.map((r) => (
                 <li key={r.id}>

@@ -7,7 +7,6 @@ import {
   LOCATION,
   ONE_LINER,
   REACH,
-  SIGN_OFF,
   WHATSAPP_NUMBER_DISPLAY,
   WHATSAPP_NUMBER_E164,
 } from "@/lib/contact";
@@ -77,7 +76,7 @@ export function Footer() {
             <div>
               <Col title="Contact" items={contact} />
               <p className="ctk-foot__where">
-                {LOCATION} · PKT (UTC+5)
+                {LOCATION}, PKT (UTC+5)
                 <br />
                 {REACH}
               </p>
@@ -86,7 +85,7 @@ export function Footer() {
         </div>
         <div className="ctk-foot__legal">
           <p>
-            © {new Date().getFullYear()} CodTK · {SIGN_OFF} · {BUSINESS_EMAIL} · {WHATSAPP_NUMBER_DISPLAY}
+            © {new Date().getFullYear()} CodTK, Lahore, Pakistan.
           </p>
           <nav aria-label="Legal">
             <Link href="/privacy">Privacy Policy</Link>

@@ -95,7 +95,7 @@ export function LahoreCard() {
       <p className="ab-local__k">Local time in Lahore</p>
       <p className="ab-local__time">
         <span ref={clock}>--:--</span>
-        <small>PKT · UTC+5</small>
+        <small>PKT (UTC+5)</small>
       </p>
       <ul className="ab-local__facts">
         <li>

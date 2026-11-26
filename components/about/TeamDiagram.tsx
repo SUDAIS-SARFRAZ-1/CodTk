@@ -61,7 +61,7 @@ export function TeamDiagram({ children }: { children: ReactNode }) {
   return (
     <div className="ab-org" ref={root}>
       <svg className="ab-org__lines" ref={svg} aria-hidden="true" />
-      <div className="ab-org__hub rv" data-theme="dark">
+      <div className="ab-org__hub" data-theme="dark">
         <b>CodTK team</b>
         <small>{LOCATION}</small>
       </div>

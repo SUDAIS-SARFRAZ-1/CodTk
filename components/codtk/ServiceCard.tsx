@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@/components/codtk/primitives";
 import { SvIcon } from "@/components/services/icons";
 import type { ServiceOffering } from "@/lib/service-offerings";
 import { SERVICE_LINES } from "@/lib/services";
@@ -14,9 +13,6 @@ export function ServiceCard({ service: s }: { service: Pick<ServiceOffering, "id
       <span className="ctk-svc__text">
         <b>{s.title}</b>
         <small>{SERVICE_LINES[s.id]}</small>
-      </span>
-      <span className="ctk-svc__go" aria-hidden="true">
-        <Icon name="ur" />
       </span>
     </Link>
   );

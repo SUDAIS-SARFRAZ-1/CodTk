@@ -28,7 +28,7 @@ export default function Image() {
         {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> only */}
         <img src={`data:image/png;base64,${logo}`} width={480} height={324} alt="" />
         <div style={{ fontSize: 40, letterSpacing: -1 }}>Building Next Generation Software</div>
-        <div style={{ fontSize: 26, color: "#0067FC" }}>Software company · Lahore, Pakistan</div>
+        <div style={{ fontSize: 26, color: "#0067FC" }}>Software company in Lahore, Pakistan</div>
       </div>
     ),
     size,

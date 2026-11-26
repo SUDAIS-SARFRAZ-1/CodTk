@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import { Btn, IconTile, PageHero, SectionHead } from "@/components/codtk/primitives";
+import { Btn, PageHero, SectionHead } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 import { ProcessTunnel } from "@/components/process/ProcessTunnel";
 import { PROCESS_STEPS } from "@/lib/process";
@@ -57,7 +57,7 @@ export default function ProcessPage() {
         plainCrumb
         titleClassName="sv-h1"
         title={
-          <>Five clear steps. <span className="sv-b">No surprises.</span></>
+          <>Five clear steps, with no surprises.</>
         }
         intro="From our first chat to launch and beyond. You see and approve each step before we move on."
         actions={
@@ -73,7 +73,7 @@ export default function ProcessPage() {
       />
 
       <div className="ctk-wrap">
-        <ol className="pr-overview rv" aria-label="The five stages">
+        <ol className="pr-overview" aria-label="The five stages">
           {PROCESS_STEPS.map((s, i) => (
             <li key={s.title} style={{ "--k": i } as CSSProperties}>
               <b>{String(i + 1).padStart(2, "0")}</b>
@@ -88,21 +88,17 @@ export default function ProcessPage() {
       <section className="ctk-sec sv-sec" data-section="engagement" aria-labelledby="pr-terms-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="Working together"
             id="pr-terms-h"
             titleClassName="sv-h2"
             title={
               <>
-                Clear terms <span className="sv-b">before we start.</span>
+                Clear terms before we start.
               </>
             }
           />
-          <ul className="pr-terms">
-            {TERMS.map((t, i) => (
-              <li key={t.title} className={`ctk-card ctk-glow pr-term sv-tone--${t.tone} rv`} data-d={i}>
-                <span className="pr-term__n">{String(i + 1).padStart(2, "0")}</span>
-                <IconTile className="sv-ic sv-ic--lg">{t.icon}</IconTile>
+          <ul className="ctk-rules">
+            {TERMS.map((t) => (
+              <li key={t.title} className="ctk-rule">
                 <h3>{t.title}</h3>
                 <p>{t.text}</p>
               </li>

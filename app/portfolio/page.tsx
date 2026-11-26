@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/projects";
-import { Btn, Icon, PageHero, WindowBar } from "@/components/codtk/primitives";
+import { Btn, PageHero, WindowBar } from "@/components/codtk/primitives";
 import { CtaBanner } from "@/components/codtk/CtaBanner";
 
 export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio & Case Studies | CodTK", "Case studies from CodTK, a software company in Lahore. MindMesh, an AI project-planning system, with its full source code public on GitHub.");
@@ -18,10 +18,10 @@ export default function PortfolioPage() {
         path="/portfolio"
         title={
           <>
-            Selected <span className="ctk-em">work</span>.
+            Selected work.
           </>
         }
-        intro="Real projects, each with public source code or a live demo you can check yourself. Client work is added only with the client's written permission."
+        intro="Projects with public source code or a live demo, so you can check the work yourself. Client work is added only with the client's written permission."
       />
 
       <section className="ctk-sec" data-section="projects" style={{ paddingTop: 48 }}>
@@ -30,7 +30,7 @@ export default function PortfolioPage() {
             {PROJECTS.map((p, i) => {
               const img = p.images[0];
               return (
-                <Link key={p.slug} className={`ctk-pcard${i === 0 ? " ctk-pcard--wide" : ""} rv`} href={`/portfolio/${p.slug}`}>
+                <Link key={p.slug} className={`ctk-pcard${i === 0 ? " ctk-pcard--wide" : ""}`} href={`/portfolio/${p.slug}`}>
                   <div className="ctk-viz" data-theme="dark">
                     <div className="ctk-viz__win">
                       <WindowBar className="ctk-viz__bar" />
@@ -57,7 +57,6 @@ export default function PortfolioPage() {
                     <div style={{ marginTop: 20 }}>
                       <span className="ctk-link">
                         Read the case study
-                        <Icon name="ur" />
                       </span>
                     </div>
                   </div>
@@ -65,13 +64,13 @@ export default function PortfolioPage() {
               );
             })}
 
-            <div className="ctk-invite rv" data-d={1}>
+            <div className="ctk-invite">
               <div>
                 <p className="ctk-label" style={{ color: "var(--blue-400)" }}>
                   {"// next project"}
                 </p>
                 <h2 className="ctk-h2" style={{ marginTop: 20 }}>
-                  Your product, <span className="ctk-em">built next</span>.
+                  Your product, built next.
                 </h2>
                 <p className="ctk-sm" style={{ marginTop: 16 }}>
                   We both sign a privacy agreement (NDA) before every project, and everything we built is yours once it&apos;s paid in full.

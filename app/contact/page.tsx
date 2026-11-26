@@ -59,23 +59,19 @@ export default function ContactPage() {
       <section className="cf-hero" data-section="contact" aria-labelledby="cf-h1">
         <div className="ctk-wrap cf-hero__g">
           <div className="cf-intro">
-            <nav className="ctk-crumb ctk-crumb--plain rv" aria-label="Breadcrumb">
+            <nav className="ctk-crumb ctk-crumb--plain" aria-label="Breadcrumb">
               <Link href="/">Home</Link>
               <span aria-hidden="true">/</span>
               <span aria-current="page">Contact</span>
             </nav>
-            <p className="cf-badge rv" data-d={1}>
-              <i aria-hidden="true" />
-              Working with businesses across Pakistan and abroad
-            </p>
-            <h1 id="cf-h1" className="sv-h1 rv" data-d={1}>
-              <>Let’s talk about <span className="sv-b">your project.</span></>
+            <h1 id="cf-h1" className="sv-h1">
+              <>Let’s talk about your project.</>
             </h1>
-            <p className="sv-lead cf-lead rv" data-d={2}>
+            <p className="sv-lead cf-lead">
               Tell us what you want to build. An engineer reads every message and replies with questions, an approach
               and a quote.
             </p>
-            <ul className="cf-ways rv" data-d={3}>
+            <ul className="cf-ways">
               <Way
                 tone="web"
                 label="Email"
@@ -118,10 +114,10 @@ export default function ContactPage() {
                 <p className="cf-way__v">Within 24 hours, Monday to Saturday (PKT)</p>
               </Way>
             </ul>
-            <SocialIcons className="cf-social rv" />
+            <SocialIcons className="cf-social" />
           </div>
 
-          <div className="rv" data-d={2}>
+          <div>
             {/* React Query is only used by this form, so its provider lives here, not in the root layout. */}
             <Providers>
               <ContactForm />
@@ -133,18 +129,16 @@ export default function ContactPage() {
       <section className="ctk-sec sv-sec cf-where" data-section="where we work" aria-labelledby="cf-where-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="Where we work"
             id="cf-where-h"
             titleClassName="sv-h2"
             title={
               <>
-                Based in Lahore. <span className="sv-b">Working across Pakistan</span> and abroad.
+                Based in Lahore. Working across Pakistan and abroad.
               </>
             }
           />
           <div className="cf-where__g">
-            <article className="cf-card rv">
+            <article className="cf-card">
               <div className="cf-card__top">
                 <span className="cf-flag" aria-hidden="true">
                   <i />
@@ -166,7 +160,7 @@ export default function ContactPage() {
                 Based in {LOCATION}. {REACH}.
               </p>
             </article>
-            <article className="cf-card cf-card--intl rv" data-d={1} data-theme="dark">
+            <article className="cf-card cf-card--intl" data-theme="dark">
               <div className="cf-card__top">
                 <IconTile className="cf-globe">
                   <circle cx="12" cy="12" r="9" />
@@ -193,7 +187,7 @@ export default function ContactPage() {
 
       <section className="cf-call" aria-labelledby="cf-call-h">
         <div className="ctk-wrap">
-          <div className="cf-callcard sv-tone--web rv">
+          <div className="cf-callcard sv-tone--web">
             <IconTile className="sv-ic sv-ic--lg">
               <rect x="3.5" y="4.5" width="17" height="16" rx="2" />
               <path d="M3.5 9.5h17M8 3v3M16 3v3M8 14h3" />

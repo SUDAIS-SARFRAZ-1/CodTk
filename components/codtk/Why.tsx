@@ -18,23 +18,20 @@ export function Why() {
     <section className="ctk-sec" data-section="why codtk" aria-labelledby="why-t">
       <div className="ctk-wrap">
         <div className="ctk-head ctk-head--split">
-          <p className="ctk-kicker rv">Why CodTK</p>
-          <h2 id="why-t" className="ctk-h2 rv" data-d={1}>
-            Big-company care. <span className="ctk-em">Small-team speed.</span>
+          <h2 id="why-t" className="ctk-h2">
+            The care of a big company, at the speed of a small team.
           </h2>
-          <p className="ctk-p ctk-hide-phone rv" data-d={2}>
+          <p className="ctk-p ctk-hide-phone">
             How we compare with hiring a freelancer or a big agency.
           </p>
         </div>
 
-        <div className="ctk-cx rv" role="table" aria-label="CodTK compared with a typical freelancer and a typical large agency">
+        <div className="ctk-cx" role="table" aria-label="CodTK compared with a typical freelancer and a typical large agency">
           <div className="ctk-cx__row ctk-cx__head" role="row">
             <span className="ctk-cx__cell ctk-cx__corner" role="columnheader">
               Compare
             </span>
             <span className="ctk-cx__cell ctk-cx__us" role="columnheader" data-theme="dark">
-              <i className="ctk-cx__glow" aria-hidden="true" />
-              <i className="ctk-cx__ping" aria-hidden="true" />
               <b>CodTK</b>
             </span>
             <span className="ctk-cx__cell ctk-cx__th" role="columnheader">

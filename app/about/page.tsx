@@ -55,7 +55,6 @@ const MISSION_VISION = [
   ["Vision", "To be the software team from Pakistan that businesses trust most."],
 ];
 
-const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 // About page: hero with the live Lahore card, story, mission and vision, values, the team as a
 // connected diagram, technical expertise and the site's closing CTA.
@@ -67,7 +66,7 @@ export default function AboutPage() {
         path="/about"
         plainCrumb
         titleClassName="sv-h1"
-        title={<>A small team that <span className="sv-b">does it properly.</span></>}
+        title={<>A small team that does it properly.</>}
         intro="CodTK is a software and digital growth company based in Lahore, Pakistan, working with startups and businesses worldwide. We build websites, apps and business software, and help businesses move online and grow. Founded in 2026, we're a remote team covering design, building, AI and hosting."
         actions={
           <>
@@ -85,18 +84,17 @@ export default function AboutPage() {
       <section className="ctk-sec sv-sec" data-section="story" aria-labelledby="ab-story-h">
         <div className="ctk-wrap ab-story">
           <div className="ab-story__head">
-            <p className="ctk-kicker rv">Our story</p>
-            <h2 id="ab-story-h" className="sv-h2 rv" data-d={1}>
-              Started because good ideas <span className="sv-b">deserve good builders.</span>
+            <h2 id="ab-story-h" className="sv-h2">
+              Started because good ideas deserve good builders.
             </h2>
           </div>
           <div className="ab-story__body">
-            <p className="ab-story__lead rv" data-d={1}>
+            <p className="ab-story__lead">
               CodTK started from a simple observation: many businesses know exactly what they need their software to
               do, yet struggle to find a partner who will build it properly and stay accountable once it is live.
             </p>
-            {STORY.map((t, i) => (
-              <p key={t} className="sv-body rv" data-d={i + 2}>
+            {STORY.map((t) => (
+              <p key={t} className="sv-body">
                 {t}
               </p>
             ))}
@@ -107,10 +105,10 @@ export default function AboutPage() {
       <section className="ab-mv" data-theme="dark" data-section="mission" aria-label="Mission and vision">
         <span className="ab-mv__glow" aria-hidden="true" />
         <div className="ctk-wrap ab-mv__g">
-          {MISSION_VISION.map(([k, t], i) => (
+          {MISSION_VISION.map(([k, t]) => (
             <article key={k} className="ab-mv__item">
-              <p className="ctk-kicker rv">{k}</p>
-              <p className="ab-mv__s rv" data-d={i + 1}>
+              <p className="ctk-kicker">{k}</p>
+              <p className="ab-mv__s">
                 {t}
               </p>
             </article>
@@ -121,18 +119,16 @@ export default function AboutPage() {
       <section className="ctk-sec sv-sec cf-where" data-section="how we work" aria-labelledby="ab-how-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="How we work"
             id="ab-how-h"
             titleClassName="sv-h2"
             title={
               <>
-                Five steps, and <span className="sv-b">one team</span> through all of them.
+                Five steps, and one team through all of them.
               </>
             }
           />
           <div className="cf-where__g">
-            <article className="cf-card rv">
+            <article className="cf-card">
               <h3>How we work</h3>
               <ol className="cf-list">
                 {HOW_WE_WORK.map(([b, t]) => (
@@ -144,7 +140,7 @@ export default function AboutPage() {
               </ol>
               <ArrowLink href="/process">The process in detail</ArrowLink>
             </article>
-            <article className="cf-card rv" data-d={1}>
+            <article className="cf-card">
               <h3>Why CodTK</h3>
               <ul className="cf-list">
                 {WHY.map(([b, t]) => (
@@ -162,21 +158,17 @@ export default function AboutPage() {
       <section className="ctk-sec sv-sec" data-section="values" aria-labelledby="ab-values-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="Values"
             id="ab-values-h"
             titleClassName="sv-h2"
             title={
               <>
-                What we <span className="sv-b">stand for.</span>
+                What we stand for.
               </>
             }
           />
-          <ul className="ab-values">
-            {VALUES.map((v, i) => (
-              <li key={v.title} className={`ctk-card ctk-glow ab-card sv-tone--${v.tone} rv`} data-d={i % 3}>
-                <span className="ab-card__n">{pad(i)}</span>
-                <IconTile className="sv-ic sv-ic--lg">{v.icon}</IconTile>
+          <ul className="ctk-rules">
+            {VALUES.map((v) => (
+              <li key={v.title} className="ctk-rule">
                 <h3>{v.title}</h3>
                 <p>{v.text}</p>
               </li>
@@ -188,27 +180,25 @@ export default function AboutPage() {
       <section className="ctk-sec sv-sec ab-team" id="team" data-section="team" aria-labelledby="ab-team-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="Team"
             id="ab-team-h"
             titleClassName="sv-h2"
             title={
               <>
-                The people behind <span className="sv-b">your product.</span>
+                The people behind your product.
               </>
             }
             intro="The CodTK team in Lahore covers the whole build. You talk directly to the engineers working on your product, from the first call to launch and after."
           />
           <TeamDiagram>
-            {FUNCTIONS.map((f, i) => (
-              <article key={f.name} data-fn className={`ctk-card ctk-glow ab-card sv-tone--${f.tone} rv`} data-d={i}>
+            {FUNCTIONS.map((f) => (
+              <article key={f.name} data-fn className={`ctk-card ctk-glow ab-card sv-tone--${f.tone}`}>
                 <IconTile className="sv-ic sv-ic--lg">{f.icon}</IconTile>
                 <h3>{f.name}</h3>
                 <p>{f.text}</p>
               </article>
             ))}
           </TeamDiagram>
-          <div className="ab-founder rv">
+          <div className="ab-founder">
             <span className="ab-founder__mark" aria-hidden="true">
               SS
             </span>
@@ -226,20 +216,18 @@ export default function AboutPage() {
       <section className="ctk-sec sv-sec" data-section="expertise" aria-labelledby="ab-ex-h">
         <div className="ctk-wrap">
           <SectionHead
-            kicker
-            eyebrow="Technology"
             id="ab-ex-h"
             titleClassName="sv-h2"
             title={
               <>
-                The tools <span className="sv-b">we use.</span>
+                The tools we use.
               </>
             }
           />
           <TechReveal>
           <div className="ab-stack">
-            {TECH_STACK.map((g, i) => (
-              <div key={g.category} className="ab-group rv" data-d={i % 3}>
+            {TECH_STACK.map((g) => (
+              <div key={g.category} className="ab-group">
                 <h3>
                   {g.category}
                   <span>{g.items.length}</span>

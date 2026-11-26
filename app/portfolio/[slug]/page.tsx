@@ -60,23 +60,23 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
       <JsonLd data={breadcrumbJsonLd([{ name: "Work", path: "/portfolio" }, { name: project.title, path: `/portfolio/${project.slug}` }])} />
       <section className="ctk-phero" data-section="case study">
         <div className="ctk-wrap">
-          <nav className="ctk-crumb rv" aria-label="Breadcrumb">
+          <nav className="ctk-crumb" aria-label="Breadcrumb">
             <Link href="/">~/codtk</Link>
             <span aria-hidden="true">/</span>
             <Link href="/portfolio">work</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page">{project.slug}</span>
           </nav>
-          <h1 className="ctk-d1 ctk-d1--page rv" data-d={1} style={{ maxWidth: "16ch" }}>
+          <h1 className="ctk-d1 ctk-d1--page" style={{ maxWidth: "16ch" }}>
             {project.title}
           </h1>
-          <p className="ctk-lead rv" data-d={2} style={{ marginTop: 24 }}>
+          <p className="ctk-lead" style={{ marginTop: 24 }}>
             {project.summary}
           </p>
-          <p className="ctk-meta rv" data-d={2} style={{ marginTop: 12 }}>
+          <p className="ctk-meta" style={{ marginTop: 12 }}>
             {project.labelNote}
           </p>
-          <dl className="ctk-dl rv" data-d={3} style={{ marginTop: 48 }}>
+          <dl className="ctk-dl" style={{ marginTop: 48 }}>
             {meta.map(([k, v]) => (
               <div key={k}>
                 <dt className="ctk-label">{k}</dt>
@@ -89,7 +89,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
       <section className="ctk-sec" data-section="the project" style={{ paddingTop: 56 }}>
         <div className="ctk-wrap">
-          <div className="rv">
+          <div>
             <div className="ctk-viz" data-theme="dark" style={{ aspectRatio: "21 / 9" }}>
               <div className="ctk-viz__win">
                 <WindowBar className="ctk-viz__bar" />
@@ -108,7 +108,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
           <div className="ctk-block" style={{ marginTop: 72 }}>
             <h2 className="ctk-label">01 — the challenge</h2>
-            <div className="ctk-prose rv">
+            <div className="ctk-prose">
               <p className="ctk-statement" style={{ marginTop: 0 }}>
                 {project.problem}
               </p>
@@ -117,7 +117,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
           <div className="ctk-block">
             <h2 className="ctk-label">02 — the solution</h2>
-            <div className="ctk-prose rv">
+            <div className="ctk-prose">
               <p className="ctk-lead" style={{ maxWidth: "none" }}>
                 {project.solution}
               </p>
@@ -134,7 +134,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
           <div className="ctk-block">
             <h2 className="ctk-label">03 — stack</h2>
-            <div className="rv">
+            <div>
               <TechReveal label="See the technologies">
                 <Chips items={project.tech} />
               </TechReveal>
@@ -144,7 +144,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           {project.images.length > 1 && (
             <div className="ctk-block">
               <h2 className="ctk-label">04 — screens</h2>
-              <div className="rv">
+              <div>
                 <CaseGallery images={project.images} />
               </div>
             </div>
@@ -152,7 +152,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
           <div className="ctk-block">
             <h2 className="ctk-label">{project.images.length > 1 ? "05" : "04"} — the result</h2>
-            <div className="ctk-prose rv">
+            <div className="ctk-prose">
               <p className="ctk-lead" style={{ maxWidth: "none" }}>
                 {project.outcome}
               </p>
@@ -179,9 +179,6 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                   {next.title}
                 </h2>
               </div>
-              <span className="ctk-btn ctk-btn--secondary" aria-hidden="true">
-                <Icon name="arrow" />
-              </span>
             </Link>
           ) : (
             <Link className="ctk-next" href="/portfolio">
@@ -191,9 +188,6 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                   All work
                 </h2>
               </div>
-              <span className="ctk-btn ctk-btn--secondary" aria-hidden="true">
-                <Icon name="arrow" />
-              </span>
             </Link>
           )}
         </div>

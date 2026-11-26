@@ -26,7 +26,8 @@ If a visual choice fights any of these three, it loses — including anything th
 - **Palette:** white, black and the CodTK logo blue `#0067FC` (`blue-500`), plus shades of those three — tokens in `app/codtk.css`, copied from the design system (https://claude.ai/artifact/Ht29CAMG8XhsfyLWVHpcf5, adopted in full 2026-10-18). **White pages with black type.** Black is a *scope*, not a theme: `data-theme="dark"` on an element (navbar pill, cinematic stage, service cards, code windows, CTA, footer) resolves the same token names to black values. Small blue text on white uses `blue-400` (`#0052CC`); white on `blue-500` is 4.8:1.
 - **Depth:** on white, hairlines and the soft `shadow-lift`; glows only at full strength inside black scopes. No neon or multi-hue gradients.
 - **Logo:** the founder-supplied raster artwork in `public/brand/` (black background converted to transparency). Don't redraw it. It sits inside black scopes as drawn; on white (the navbar, since 2026-10-20) it uses the CSS `invert(1) hue-rotate(180deg)` filter so the white strokes turn near-black and the blue stays blue.
-- **Typography:** Instrument Sans (weight 500, tight tracking) for headlines and body, Instrument Serif italic in blue for the one emphasised phrase per headline, JetBrains Mono for eyebrows (`//` prefix), labels and code. Use the type classes in `app/codtk.css`; no ad hoc font sizes.
+- **Typography:** one family, Instrument Sans (weight 500, tight tracking), for headlines and body; JetBrains Mono only for labels and code. No italic or coloured emphasis inside headlines: emphasis comes from size (founder, 2026-11-26, from `docs/premium.md`).
+- **Premium checklist (2026-11-26):** follow `docs/premium.md`. No arrows inside buttons, no `·` separators in visible copy, no eyebrow labels above section headings (group names and Mission/Vision labels stay), no status dots or pills, no numbering unless it is a real sequence, no "real"/"quiet" filler, no two-word sentence pairs, and cards only for things you can click. Use the type classes in `app/codtk.css`; no ad hoc font sizes.
 - **Imagery:** real team photos, real portfolio screenshots/demos, and simple iconography for services and process steps. No stock "business handshake" photography — it undercuts the credibility goal this whole site exists for.
 - **Tone:** confident and plain-spoken copy. Technical credibility comes from specifics (named technologies, concrete process steps, real project outcomes), not buzzwords.
 
@@ -89,19 +90,17 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-**Light motion only** (founder, 2026-11-19). This replaces the full design-system motion spec adopted on 2026-10-18, which made pages stutter on ordinary phones.
+**Almost no motion** (founder, 2026-11-26, from `docs/premium.md`; replaces the 2026-11-19 light-motion rule). Content is simply there: no fade-up on scroll and no hero glows.
 
 What the site keeps:
-- Sections and blocks fade up once as they enter the viewport (`.rv` → `.in`, wired by `components/codtk/Motion.tsx` with one IntersectionObserver; no scroll loop).
 - Hover and focus feedback on buttons, cards and links (colour, border, shadow, a small lift).
-- The slow tech-logo strip (`TechStrip`) and the big scrolling text rows (`Marquee`), both CSS-only loops the founder chose to keep.
-- The home hero's three soft blue glows drifting behind the headline (`.ctk-hero__glows`): gradient circles moved by transform/opacity only, 22–30s loops, no blur filter.
-- Functional indicators only, such as the form's loading spinner.
+- The big scrolling text rows on Home (`Marquee`) as the one moving moment, and the tech-logo strip (`TechStrip`), which only moves once a visitor opens it.
+- Functional indicators only, such as the form's loading spinner and the open/close of the technology buttons.
 
 Not allowed without the founder's approval: pinned or sticky scroll scenes, scroll-scrubbed or parallax effects, stacked or sideways-scrolling showcases, word-by-word blur-in headlines, page-transition effects, a custom cursor, magnetic buttons, moving or tone-shifting backgrounds, circuit traces, infinite loops (pings, pulses, spinning globes, looping demos) and live `backdrop-filter` blur.
 
 - Animate `transform` and `opacity` only.
-- `prefers-reduced-motion: reduce` shows everything at once with no fade.
+- `prefers-reduced-motion: reduce` stops the remaining loops.
 - Nothing may cost the performance budget in `instructions.md` §5 (2.5s load target).
 
 ## 8. Accessibility

@@ -31,7 +31,7 @@ export default function ServicesPage() {
         plainCrumb
         titleClassName="sv-h1"
         title={
-          <>Everything you need, <span className="sv-b">from idea to launch.</span></>
+          <>Everything you need, from idea to launch.</>
         }
         intro="Twelve services in three groups. Start with one or combine several. We agree the price and timeline with you before any work starts."
         actions={
@@ -51,18 +51,18 @@ export default function ServicesPage() {
         <div className="ctk-wrap">
           {SERVICE_GROUPS.map((g) => (
             <div key={g} className="sv-group" role="group" aria-label={g}>
-              <p className="ctk-kicker rv">{g}</p>
-              {SERVICE_OFFERINGS.map((s, i) =>
+              <p className="ctk-kicker">{g}</p>
+              {SERVICE_OFFERINGS.map((s) =>
                 s.group === g ? (
-                  <ServiceBlock key={s.id} service={s} index={i} total={SERVICE_OFFERINGS.length} />
+                  <ServiceBlock key={s.id} service={s} />
                 ) : null,
               )}
             </div>
           ))}
-          <div className="sv-other rv">
+          <div className="sv-other">
             <div>
               <h2 className="sv-h3">
-                Not on the list? <span className="sv-b">Tell us.</span>
+                Not on the list? Tell us.
               </h2>
               <p className="sv-body">
                 We take on any kind of software development. Describe what you need and we will tell you how we would

@@ -24,23 +24,21 @@ export function DeliveryStandard() {
     <section className="ctk-sec sv-sec sv-std-sec" id="standard" aria-labelledby="sv-std-h">
       <div className="ctk-wrap">
         <SectionHead
-          kicker
-          eyebrow="Delivery standard"
           id="sv-std-h"
           titleClassName="sv-h2"
           title={
             <>
-              Quality checks on <span className="sv-b">every project.</span>
+              Quality checks on every project.
             </>
           }
         />
         <div className="sv-std">
-          <div className="sv-panel rv">
+          <div className="sv-panel">
             <h3 className="sv-sub">Google speed and quality scores we aim for</h3>
             <ScoreRings targets={LIGHTHOUSE_TARGETS} />
             <p className="ctk-meta">Measured on phones, for every launch.</p>
           </div>
-          <div className="sv-panel rv" data-d={1}>
+          <div className="sv-panel">
             <h3 className="sv-sub">Every build ships with</h3>
             <ul className="sv-checks">
               {BUILD_CHECKLIST.map((c) => (
@@ -52,7 +50,7 @@ export function DeliveryStandard() {
             </ul>
           </div>
         </div>
-        <TechReveal className="sv-repo-reveal rv" label="See the technologies">
+        <TechReveal className="sv-repo-reveal" label="See the technologies">
           <div className="sv-repo" data-theme="dark">
             <WindowBar className="sv-repo__bar" title="Handover repository" />
             <pre aria-label="Example handover repository structure">

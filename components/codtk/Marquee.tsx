@@ -1,6 +1,6 @@
-// Row styles: "" solid, "o" outline, "s b" blue serif italic.
-const ROW_A: [string, string][] = [["Websites", ""], ["Mobile apps", "o"], ["Business software", "s b"], ["Automation", "o"], ["Online growth", ""], ["Support", "o"], ["Websites", "s b"], ["Mobile apps", "o"]];
-const ROW_B: [string, string][] = [["Discover", "o"], ["Design", ""], ["Build", "s b"], ["Launch", "o"], ["Support", ""], ["Discover", "o"], ["Design", ""], ["Build", "s b"]];
+// Row styles: "" solid, "o" outline, "b" blue.
+const ROW_A: [string, string][] = [["Websites", ""], ["Mobile apps", "o"], ["Business software", "b"], ["Automation", "o"], ["Online growth", ""], ["Support", "o"], ["Websites", "b"], ["Mobile apps", "o"]];
+const ROW_B: [string, string][] = [["Discover", "o"], ["Design", ""], ["Build", "b"], ["Launch", "o"], ["Support", ""], ["Discover", "o"], ["Design", ""], ["Build", "b"]];
 
 // Two big type rows looping continuously in opposite directions (CSS transform only, like the tech
 // strip; restored by the founder, 2026-11-19). Each row is doubled so the loop is seamless.
