@@ -58,10 +58,10 @@ export function CaseShowcase() {
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Selected work</p>
           <h2 id="work-t" className="ctk-h2 rv" data-d={1}>
-            Working software, <span className="ctk-em">open to inspect</span>.
+            Real work you can <span className="ctk-em">check yourself</span>.
           </h2>
           <p className="ctk-p rv" data-d={2}>
-            Built by our founder, with the full source code public so you can check the work yourself.
+            Built by our founder. Its code is public, so anyone can see how it's made.
           </p>
         </div>
         <Featured p={p} />

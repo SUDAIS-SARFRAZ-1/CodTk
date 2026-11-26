@@ -5,11 +5,11 @@ import { Icon } from "@/components/codtk/primitives";
 // founder (rules.md §1, §4); don't add to it without checking. The other two columns describe
 // common setups, not named companies, and the note under the table says so.
 const ROWS = [
-  ["Who you talk to", "The engineers who are building your product", "One person, who may be juggling other clients", "An account manager who passes messages on"],
-  ["Skills covered", "Design, frontend, backend and DevOps, working together", "Usually one or two of these", "All of them, split across separate departments"],
-  ["Contract and NDA", "Signed before any work begins. We never share client data or project details without permission", "Often an informal agreement", "Yes, usually after a longer sales process"],
-  ["Who owns the code", "You do: full source code and IP after payment", "Depends on what was agreed", "Sometimes licensed to you rather than handed over"],
-  ["How pricing works", "A fixed quote for clearly scoped work, so no surprise bills", "Often hourly, so totals can drift", "Fixed quotes, often with high minimum budgets"],
+  ["Who you talk to", "The people actually building your product", "One person, who may be juggling other clients", "An account manager who passes messages on"],
+  ["What we handle", "Design, building, hosting and launch, all under one roof", "Usually one or two of these", "All of them, split across separate departments"],
+  ["Contract and privacy", "Signed before work starts. Your idea and your data stay private.", "Often an informal agreement", "Yes, usually after a longer sales process"],
+  ["Who owns the result", "You do. Once it's paid for, everything we built is yours.", "Depends on what was agreed", "Sometimes licensed to you rather than handed over"],
+  ["How pricing works", "One fixed price, agreed before we start. No surprise bills.", "Often hourly, so totals can drift", "Fixed quotes, often with high minimum budgets"],
   ["After launch", "One month of free bug fixes, then optional maintenance", "Depends on their availability", "A separate paid support contract"],
 ];
 
@@ -20,10 +20,10 @@ export function Why() {
         <div className="ctk-head ctk-head--split">
           <p className="ctk-kicker rv">Why CodTK</p>
           <h2 id="why-t" className="ctk-h2 rv" data-d={1}>
-            The rigour of a consultancy. The pace of a <span className="ctk-em">studio</span>.
+            Big-company care. <span className="ctk-em">Small-team speed.</span>
           </h2>
           <p className="ctk-p ctk-hide-phone rv" data-d={2}>
-            How working with us compares with the two usual alternatives, point by point.
+            How we compare with hiring a freelancer or a big agency.
           </p>
         </div>
 

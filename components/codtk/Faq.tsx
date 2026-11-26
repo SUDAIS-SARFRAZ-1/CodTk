@@ -14,22 +14,20 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     question: "How long does a project take?",
-    answer: "It depends on scope. After discovery, we agree the timeline in the proposal before any work starts.",
-    plainText: "It depends on scope. After discovery, we agree the timeline in the proposal before any work starts.",
+    answer: "It depends on scope. After our first call, we agree the timeline in writing before any work starts.",
+    plainText: "It depends on scope. After our first call, we agree the timeline in writing before any work starts.",
   },
   {
     question: "How do payments work?",
     answer:
-      "Fixed-scope projects are paid in milestones, for example 30% to start, 40% midway and 30% on delivery. Ongoing support and maintenance is a monthly retainer. We accept JazzCash, Easypaisa and Payoneer.",
+      "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee. We accept JazzCash, Easypaisa and Payoneer.",
     plainText:
-      "Fixed-scope projects are paid in milestones, for example 30% to start, 40% midway and 30% on delivery. Ongoing support and maintenance is a monthly retainer. We accept JazzCash, Easypaisa and Payoneer.",
+      "You pay in stages, for example 30% to start, 40% halfway and 30% on delivery. Ongoing support is a monthly fee. We accept JazzCash, Easypaisa and Payoneer.",
   },
   {
     question: "How will we communicate during the project?",
-    answer:
-      "Through a shared channel on WhatsApp or Slack, with tasks tracked in Jira, Trello, ClickUp, or GitHub Projects.",
-    plainText:
-      "Through a shared channel on WhatsApp or Slack, with tasks tracked in Jira, Trello, ClickUp, or GitHub Projects.",
+    answer: "Through a shared WhatsApp or Slack group, with every task tracked on an online task board.",
+    plainText: "Through a shared WhatsApp or Slack group, with every task tracked on an online task board.",
   },
   {
     question: "Which technologies do you use?",

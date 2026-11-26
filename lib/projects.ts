@@ -27,23 +27,23 @@ const ALL_PROJECTS: Project[] = [
     title: "MindMesh",
     // SaaS describes what the platform is (accounts, roles, multi-project); it is not a live paid
     // service, so the capstone label and repo link stay (founder confirmed 2026-10-21).
-    subtitle: "AI-powered SaaS platform for agile teams",
+    subtitle: "An AI assistant for project teams",
     label: "Founder's capstone project",
     labelNote:
       "Built by our founder as a BSSE capstone at the University of Central Punjab — led backend development and AI integration.",
     role: "Backend and AI integration",
     summary:
-      "A SaaS platform where teams sign in, run several projects, and let AI turn raw requirements and recorded meetings into epics, sprint tasks, and stakeholder updates.",
+      "Teams add their meeting recordings and notes, and the AI turns them into task lists, plans and progress updates.",
     problem:
-      "Engineering teams lose critical time deciphering unstructured meeting notes, coordinating action items across disconnected tools, and manually drafting sprint backlogs.",
+      "Teams lose hours turning messy meeting notes into tasks and keeping everyone updated across different tools.",
     solution:
       "A backend of REST APIs with JWT authentication, role-based access, multi-project management, and real-time WebSocket notifications — plus 4 AI agents that automate requirement extraction and meeting intelligence: transcribing voice with Whisper, extracting decisions with an LLM, and turning them into structured sprint deliverables in Jira and GitHub.",
     features: [
-      "4 AI agents for project management, outreach, meeting intelligence, and analytics",
-      "Meeting recordings converted into transcripts, summaries, tasks, and sprint plans",
-      "REST APIs, JWT authentication, RBAC, and multi-project management",
-      "Hybrid persistence: MongoDB for AI memory, PostgreSQL for sprint data integrity",
-      "Real-time updates over WebSockets (Socket.io)",
+      "Four AI helpers: planning, updates, meetings and reports",
+      "Meeting recordings turned into notes, summaries and task lists",
+      "Secure sign-in, team roles, and many projects in one account",
+      "Live updates the moment something changes",
+      "Two databases: one for the AI's memory, one for project records",
     ],
     tech: [
       "React / Next.js",
