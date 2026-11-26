@@ -1,4 +1,5 @@
 import { TechReveal } from "@/components/codtk/TechReveal";
+import { TypedCommand } from "@/components/services/TypedCommand";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLink, Btn, Chips, Icon, PageHero, SectionHead } from "@/components/codtk/primitives";
@@ -101,6 +102,7 @@ export default async function ServicePage({ params }: Props) {
           </ul>
           <div className="sv-sub--tech">
             <TechReveal label="See the technologies">
+              <TypedCommand cmd={s.cmd} />
               <div className="sv-tech">
                 <Chips items={s.tech} brand />
               </div>

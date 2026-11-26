@@ -672,34 +672,30 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .sv-page .ctk-phero .ctk-lead{font-size:var(--sv-lead);line-height:1.5}
 .sv-page .ctk-phero .sv-h1{margin-top:var(--space-6)}
 
-/* sticky service index */
-.sv-index{position:sticky;top:calc(var(--nav-height) - 4px);z-index:30;padding:12px 0;background:var(--bg-100);border-block:1px solid var(--line-100)}
-.sv-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
-.sv-chips::-webkit-scrollbar{display:none}
-@container page (min-width:1280px){.sv-chips{justify-content:space-between;-webkit-mask-image:none;mask-image:none}}
-.sv-chip{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-100);font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--ink-200);transition:color var(--d-fast),border-color var(--d-fast),background-color var(--d-fast)}
-.sv-chip b{font-weight:500;color:var(--ink-300)}
-.sv-chip:hover{border-color:var(--line-300);color:var(--ink-100)}
-.sv-chip.on{background:var(--ink-100);border-color:var(--ink-100);color:var(--bg-100)}
-.sv-chip.on b{color:var(--blue-300)}
-.sv-chip.on .sv-ic{background:color-mix(in srgb,var(--bg-100) 14%,transparent);color:var(--bg-100)}
 
-/* service blocks */
-.sv-services{padding-bottom:var(--sec-y)}
-.sv-block{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--head-gap);padding-block:var(--head-gap);border-bottom:1px solid var(--line-100);scroll-margin-top:calc(var(--nav-height) + 84px)}
-.sv-group{padding-top:var(--head-gap)}.sv-group>.ctk-kicker+.sv-block{padding-top:var(--card-pad)}
-.sv-block>*{min-width:0}
-@container page (min-width:1024px){.sv-block{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
-.sv-block__top{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-3)}
-.sv-block__n{font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--blue-400)}
-.sv-block__n span{color:var(--ink-300)}
-.sv-block:hover .sv-ic--lg{transform:translateY(-3px) rotate(-4deg)}
+/* Tab buttons (components/codtk/Tabs.tsx, class ctk-seg; founder, 2026-11-27): a pill bar of buttons that swap
+   content in place. The selected one turns black with a blue glow; the bar scrolls sideways on phones. */
+.ctk-seg__list{display:flex;gap:6px;width:max-content;max-width:100%;margin-bottom:var(--head-gap);padding:6px;overflow-x:auto;scrollbar-width:none;border:1px solid var(--line-200);border-radius:var(--radius-pill);background:var(--bg-200)}
+.ctk-seg__list::-webkit-scrollbar{display:none}
+.ctk-seg__tab{flex:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 14px;border:0;border-radius:var(--radius-pill);background:transparent;color:var(--ink-200);font:500 15px/1 var(--font-body);cursor:pointer;transition:background-color var(--d-fast) var(--eo),color var(--d-fast) var(--eo),box-shadow var(--d-base) var(--eo),transform var(--d-fast) var(--eo)}
+.ctk-seg__tab:hover{background:var(--bg-100);color:var(--ink-100)}
+.ctk-seg__tab:active{transform:scale(.96)}
+.ctk-seg__tab:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.ctk-seg__tab[aria-selected="true"]{background:var(--ink-100);color:var(--bg-100);box-shadow:0 14px 30px -14px color-mix(in srgb,var(--blue-500) 75%,transparent)}
+.ctk-seg__tab .sv-ic--xs{margin-left:0}
+.ctk-seg__tab[aria-selected="true"] .sv-ic{background:color-mix(in srgb,var(--bg-100) 16%,transparent);color:var(--bg-100)}
+.ctk-seg__tab b{display:grid;place-items:center;min-width:24px;height:24px;padding:0 7px;border-radius:var(--radius-pill);background:var(--bg-300);color:var(--ink-200);font:600 12px/1 var(--font-mono)}
+.ctk-seg__tab[aria-selected="true"] b{background:var(--blue-500);color:var(--on-blue)}
+/* phones: drop the icons and tighten so the buttons fit across the screen without sideways scrolling */
+@container page (max-width:479px){.ctk-seg__list{width:100%}.ctk-seg__tab{flex:1 1 auto;justify-content:center;gap:6px;min-height:44px;padding:0 10px;font-size:14px}.ctk-seg__tab .sv-ic{display:none}}
+.ctk-seg__panel{animation:ctk-tab-in var(--d-base) var(--eo)}
+@keyframes ctk-tab-in{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){.ctk-seg__tab,.ctk-seg__panel{animation:none;transition:none}}
 .sv-cmd{display:flex;align-items:center;gap:8px;margin-top:28px;padding:14px 18px;border-radius:var(--radius-md);background:var(--ink-100);color:var(--bg-200);font-family:var(--font-mono);font-size:var(--sv-sm);white-space:nowrap;overflow:hidden}
 .sv-cmd b{font-weight:500;color:var(--blue-100)}
 .sv-cmd .t{overflow:hidden;text-overflow:ellipsis}
 .sv-cmd em{font-style:normal;color:var(--blue-100)}
 .sv-caret{flex:none;width:8px;height:16px;background:var(--blue-300)}
-.sv-block__cta{margin-top:var(--space-8)}
 .sv-ticks{row-gap:0;margin-top:18px}
 .sv-ticks li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-100);font-size:var(--sv-body);line-height:1.55;color:var(--ink-100)}
 .sv-ticks .ctk-i{width:22px;height:22px;padding:3px;border-radius:50%;background:color-mix(in srgb,var(--c) 11%,var(--bg-100));color:var(--c);stroke-width:2.2}
@@ -751,7 +747,7 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .sv-repo pre{margin:0;padding:20px 22px 24px;font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.85;color:var(--ink-100);overflow-x:auto}
 .sv-repo em{font-style:normal;color:var(--steel-200)}
 
-@media (prefers-reduced-motion:reduce){.sv-caret{animation:none}.sv-block:hover .sv-ic--lg{transform:none}.sv-tech .ctk-chip:hover,.sv-tier:hover{translate:none}}
+@media (prefers-reduced-motion:reduce){.sv-caret{animation:none}.sv-tech .ctk-chip:hover,.sv-tier:hover{translate:none}}
 
 /* ---------- Process page: stage overview, the stage-by-stage camera flight (components/process/
    ProcessTunnel.tsx) and the engagement terms. Default is a stacked list; `.tn--live` (wide screens,
@@ -937,7 +933,6 @@ a.cf-way__v:hover{color:var(--blue-400)}
 .cf-call__when{margin-top:var(--space-3)}
 @media (prefers-reduced-motion:reduce){.cf-badge i,.cf-globe svg{animation:none}.cf-way:hover,.cf-card:hover{translate:none}}
 
-.sv-more>summary{display:none}
 /* phones (founder, 2026-11-19): smaller headings, no decorative giant numbers or code lines */
 @container page (max-width:767px){
   .ctk-hide-phone{display:none}
@@ -947,11 +942,6 @@ a.cf-way__v:hover{color:var(--blue-400)}
   .ab-mv__s{font-size:1.375rem}
   .sv-page{--sv-h1:2rem;--sv-h2:1.625rem;--sv-h3:1.25rem}
   .gate__num,.sv-cmd{display:none}
-  .sv-more>summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 var(--card-pad);border:1px solid var(--line-200);border-radius:var(--radius-md);font-weight:600;color:var(--ink-100);cursor:pointer;list-style:none}
-  .sv-more>summary::-webkit-details-marker{display:none}
-  .sv-more>summary::after{content:"+";font-size:22px;font-weight:400;color:var(--blue-400)}
-  .sv-more[open]>summary{margin-bottom:var(--card-pad)}
-  .sv-more[open]>summary::after{content:"−"}
 }
 
 /* ---------- Home intro (founder, 2026-11-26): logo for ~2.5s, once per visit, CSS only ---------- */

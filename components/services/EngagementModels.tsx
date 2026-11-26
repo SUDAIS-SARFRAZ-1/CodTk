@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { Btn, SectionHead } from "@/components/codtk/primitives";
 import { SvIcon } from "@/components/services/icons";
+import { serviceHref } from "@/lib/service-seo";
 import { CONSULTING_MODEL, ENGAGEMENT_MODELS } from "@/lib/service-offerings";
 
 // Three engagement tiers (the featured one in a black scope) plus the consulting option as a row.
 // Card borders glow under the cursor via `.ctk-glow` (Motion.tsx sets --mx/--my).
 export function EngagementModels() {
   return (
-    <section className="ctk-sec sv-sec" id="engagement" aria-labelledby="sv-models-h">
-      <div className="ctk-wrap">
+    <div id="engagement">
         <SectionHead
           id="sv-models-h"
           titleClassName="sv-h2"
@@ -47,11 +47,10 @@ export function EngagementModels() {
             <p>{CONSULTING_MODEL.text}</p>
           </div>
           <p className="sv-tier__fit">{CONSULTING_MODEL.fit}</p>
-          <Link className="ctk-link" href="#consulting">
+          <Link className="ctk-link" href={serviceHref("consulting")}>
             See consulting
           </Link>
         </div>
-      </div>
-    </section>
+    </div>
   );
 }

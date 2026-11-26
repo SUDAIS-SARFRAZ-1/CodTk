@@ -21,8 +21,7 @@ const REPO: [string, string?][] = [
 // build ships with, and the shape of the repository we hand over.
 export function DeliveryStandard() {
   return (
-    <section className="ctk-sec sv-sec sv-std-sec" id="standard" aria-labelledby="sv-std-h">
-      <div className="ctk-wrap">
+    <div id="standard">
         <SectionHead
           id="sv-std-h"
           titleClassName="sv-h2"
@@ -64,7 +63,6 @@ export function DeliveryStandard() {
             </pre>
           </div>
         </TechReveal>
-      </div>
-    </section>
+    </div>
   );
 }
