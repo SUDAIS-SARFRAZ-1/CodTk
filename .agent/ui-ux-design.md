@@ -121,5 +121,5 @@ Checked at 360px, 768px, 1280px, and 1440px (FR-5, `rules.md` §23):
 - Header collapses to a hamburger menu below tablet width; the primary CTA and WhatsApp button remain reachable at every breakpoint.
 - Tech Stack pill grid and Portfolio/Team card grids reflow from multi-column to single-column on mobile without losing legibility.
 - Forms stack to full-width single-column on mobile.
-- Spacing comes from five tokens in `app/codtk.css` (founder, 2026-11-19), phone → desktop at 1024px: section `--sec-y` 56 → 96, heading-to-content `--head-gap` 24 → 40, grid `--grid-gap` 12 → 20, card padding `--card-pad` 16 → 24, side margin `--gutter` 16 → 32. Don't add one-off section, grid or card spacing.
+- Spacing comes from five tokens in `app/codtk.css` (founder, 2026-11-19), phone → desktop at 1024px: section `--sec-y` 56 → 96, heading-to-content `--head-gap` 16 → 24 (tightened 2026-11-26: headings sit close to their content), grid `--grid-gap` 12 → 20, card padding `--card-pad` 16 → 24, side margin `--gutter` 16 → 32. Don't add one-off section, grid or card spacing.
 - Phones stay compact: no card fills the screen. Headings are smaller (hero 38px, page titles 32px, section titles 26px), decorative giant numbers and CLI lines are hidden, each service's deliverables and tech fold behind "What's included", and Why CodTK shows the CodTK column only.
