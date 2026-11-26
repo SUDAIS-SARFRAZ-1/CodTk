@@ -20,7 +20,7 @@ const SHARED_FAQS: FaqItem[] = [
   },
   {
     question: "Do I own the source code?",
-    answer: "Yes. You get the full source code and IP after payment.",
+    answer: "Yes. Once it's paid for, the code and everything we built are yours.",
     plainText: "Yes. You get the full source code and IP after payment.",
   },
 ];
