@@ -74,7 +74,7 @@ export default function PortfolioPage() {
                   Your product, <span className="ctk-em">built next</span>.
                 </h2>
                 <p className="ctk-sm" style={{ marginTop: 16 }}>
-                  We sign an NDA before every project, and you own the code once it is paid in full.
+                  We both sign a privacy agreement (NDA) before every project, and everything we built is yours once it&apos;s paid in full.
                 </p>
               </div>
               <div className="ctk-actions">

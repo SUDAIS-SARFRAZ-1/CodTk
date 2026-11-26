@@ -10,29 +10,29 @@ export const PROCESS_STEPS: {
   {
     title: "Discovery",
     description:
-      "We scope the problem, gather requirements, and define what \"done\" looks like before any code is written.",
-    gets: ["A written scope and definition of done", "Timeline and cost confirmed before work begins"],
+      "We learn what you need and agree, in writing, exactly what we'll build before any work starts.",
+    gets: ["A written plan of exactly what we'll build", "Timeline and cost confirmed before work begins"],
     tools: ["Google Meet / Zoom", "Notion / Google Docs"],
   },
   {
     title: "Design",
     description:
-      "UI/UX design and technical architecture are planned together, so the product looks right and is built on a solid foundation.",
-    gets: ["Designs of the key screens for your approval", "A technical plan for how it will be built"],
+      "We design the screens and plan how it will be built, so it looks right and stands on solid foundations.",
+    gets: ["Designs of the key screens for your approval", "A plan for how it will be built"],
     tools: ["Figma", "Miro / FigJam"],
   },
   {
-    title: "Development",
+    title: "Building",
     description:
-      "Iterative development with a weekly update and demo of the latest build. Every change is code-reviewed by a second developer.",
-    gets: ["A weekly update and a demo of the latest build", "Every change reviewed by a second developer"],
+      "We build it in small steps, with a weekly update and a demo of the latest version. A second developer checks every change.",
+    gets: ["A weekly update and a demo of the latest version", "Every change reviewed by a second developer"],
     tools: ["GitHub", "Jira / Trello / ClickUp", "WhatsApp / Slack"],
   },
   {
-    title: "Testing & Deployment",
+    title: "Testing & Launch",
     description:
-      "Automated tests, manual QA, and a staging link for you to try before go-live — then releases ship through a CI/CD pipeline, not by hand.",
-    gets: ["A staging link to try before go-live", "Releases through a CI/CD pipeline, not by hand", "Your product live on your domain"],
+      "We test everything and give you a private link to try it yourself, then put it live safely.",
+    gets: ["A private link to try it before it goes live", "Updates go live automatically and safely", "Your product live on your domain"],
     tools: ["GitHub Actions", "Vercel", "Render", "AWS"],
   },
   {

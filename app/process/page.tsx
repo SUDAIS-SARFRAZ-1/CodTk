@@ -11,14 +11,14 @@ export const metadata: Metadata = pageMetadata("/process", "Our Software Develop
 // prd.md §6.6 / FR-13. `icon` is a 24×24 line icon, `tone` one of the sv-tone colours.
 const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = [
   {
-    title: "Contract and NDA",
-    text: "A contract and NDA are signed before every project starts.",
+    title: "Contract and privacy",
+    text: "We both sign a contract and a privacy agreement (NDA) before every project starts.",
     tone: "web",
     icon: <path d="M6 3h9l3 3v15H6zM9 11h6M9 15h6" />,
   },
   {
-    title: "Milestone payments",
-    text: "Fixed-scope work is paid in milestones, for example 30% / 40% / 30%, as set out in the contract. Support and maintenance is a monthly retainer.",
+    title: "Pay in stages",
+    text: "Fixed-price projects are paid in stages, for example 30% / 40% / 30%, as set out in the contract. Ongoing support is a monthly fee.",
     tone: "mobile",
     icon: <path d="M3 18h5v-4h5v-4h5V6h3" />,
   },
@@ -35,7 +35,7 @@ const TERMS: { title: string; text: string; tone: string; icon: ReactNode }[] = 
   },
   {
     title: "You own it",
-    text: "You own the code and IP once the project is paid in full.",
+    text: "Once the project is paid in full, everything we built is yours.",
     tone: "ai",
     icon: (
       <>
@@ -57,9 +57,9 @@ export default function ProcessPage() {
         plainCrumb
         titleClassName="sv-h1"
         title={
-          <>A delivery process built for <span className="sv-b">predictable outcomes.</span></>
+          <>Five clear steps. <span className="sv-b">No surprises.</span></>
         }
-        intro="Five stages from the first conversation to launch and beyond, each with clear deliverables and your sign-off."
+        intro="From our first chat to launch and beyond. You see and approve each step before we move on."
         actions={
           <>
             <Btn href="/contact">
@@ -89,7 +89,7 @@ export default function ProcessPage() {
         <div className="ctk-wrap">
           <SectionHead
             kicker
-            eyebrow="Engagement model"
+            eyebrow="Working together"
             id="pr-terms-h"
             titleClassName="sv-h2"
             title={

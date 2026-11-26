@@ -22,7 +22,7 @@ const home = (question: string) => HOME_FAQS.find((f) => f.question === question
 const FAQS: FaqItem[] = [
   plain(
     "What does CodTK do?",
-    `${ONE_LINER} We design and build scalable, secure software, and help businesses take their operations online and grow: web and mobile apps, SaaS, custom ERP, backend APIs, WordPress, SEO, performance marketing, digital transformation, AI automation, cloud and consulting.`,
+    `${ONE_LINER} We build websites, apps and business software, and help businesses move online and grow: websites, mobile apps, subscription software, business management software (ERP), app backends, WordPress, Google search (SEO), online ads, taking businesses online, AI automation, hosting and technical advice.`,
   ),
   plain(
     "Where is CodTK based, and do you work with international clients?",
@@ -30,10 +30,10 @@ const FAQS: FaqItem[] = [
   ),
   home("How much does a project cost?"),
   home("How long does a project take?"),
-  plain("Do I own the source code?", "Yes. You get the full source code and IP after payment."),
+  plain("Do I own the source code?", "Yes. Once it's paid for, the code and everything we built are yours."),
   plain(
     "How do you keep my project confidential?",
-    "A contract and NDA are signed before any work begins, and we never share client data or project details without permission.",
+    "We both sign a contract and a privacy agreement (NDA) before any work begins, and we never share your data or project details without permission.",
   ),
   plain("What is a custom ERP?", SERVICE_SEO.erp.faqs[0].answer),
   plain("What is digital transformation for a small business?", SERVICE_SEO.transform.faqs[0].answer),

@@ -1,11 +1,12 @@
 import { Icon, TechIcon } from "@/components/codtk/primitives";
+import { TechReveal } from "@/components/codtk/TechReveal";
 import { PROCESS_STEPS } from "@/lib/process";
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 const TOTAL = pad(PROCESS_STEPS.length - 1);
 
-// The delivery process, stage by stage: one card per stage with what the client receives and the
-// tools used. Static (founder, 2026-11-19: no pinned or scroll-driven sections).
+// The delivery process, stage by stage: one card per stage with what the client receives, and the
+// tools used behind a button. Static (founder, 2026-11-19: no pinned or scroll-driven sections).
 export function ProcessTunnel() {
   return (
     <section
@@ -44,21 +45,18 @@ export function ProcessTunnel() {
                       ))}
                     </ul>
                   </div>
-                  <div>
-                    <h3 className="gate__h">Tools we use</h3>
-                    <ul className="gate__tools">
-                      {s.tools.length ? (
-                        s.tools.map((t) => (
+                  {s.tools.length > 0 && (
+                    <TechReveal label="See the tools we use" hideLabel="Hide tools">
+                      <ul className="gate__tools">
+                        {s.tools.map((t) => (
                           <li key={t}>
                             <TechIcon name={t} />
                             {t}
                           </li>
-                        ))
-                      ) : (
-                        <li className="none">Ongoing support after launch</li>
-                      )}
-                    </ul>
-                  </div>
+                        ))}
+                      </ul>
+                    </TechReveal>
+                  )}
                 </div>
               </div>
             </article>

@@ -841,10 +841,10 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .gate__gets{display:grid;gap:10px;margin-top:14px}
 .gate__gets li{display:flex;gap:12px;font-size:var(--sv-body);line-height:1.5;color:var(--ink-100)}
 .gate__gets .ctk-i{width:22px;height:22px;padding:4px;border-radius:50%;background:color-mix(in srgb,var(--cyan-400) 14%,transparent);color:var(--cyan-400);stroke-width:2.2}
-.gate__tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.gate .ctk-reveal{margin-top:var(--space-4)}
+.gate__tools{display:flex;flex-wrap:wrap;gap:8px}
 .gate__tools li{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--line-200);border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:var(--sv-sm);line-height:1.5;color:var(--ink-100)}
 .gate__tools .ctk-ti{width:15px;height:15px;color:var(--ink-100)}
-.gate__tools li.none{border-style:dashed;color:var(--ink-300)}
 
 .pr-terms{display:grid;gap:var(--grid-gap);margin-top:var(--head-gap)}
 @container page (min-width:768px){.pr-terms{grid-template-columns:repeat(2,1fr)}}

@@ -27,14 +27,14 @@ const PAKISTAN: [string, string][] = [
   ["Lahore-based team", `working with businesses anywhere in Pakistan.`],
   ["Pakistan time", "Monday to Saturday, with replies within 24 hours."],
   ["WhatsApp and calls", `on a Pakistani number, ${WHATSAPP_NUMBER_DISPLAY}.`],
-  ["Pay locally", "by JazzCash or Easypaisa, in milestones such as 30% / 40% / 30%."],
+  ["Pay locally", "by JazzCash or Easypaisa, in stages such as 30% / 40% / 30%."],
   ["Quotes in PKR", "on request. Mention it in your message."],
 ];
 const ABROAD: [string, string][] = [
   ["Calls booked", "at a time that suits your time zone."],
   ["Working hours", "Pakistan time overlaps the Gulf workday and Europe's mornings."],
   ["International payments", "through Payoneer."],
-  ["Contract and NDA", "signed before any work begins."],
+  ["Contract and privacy agreement", "signed before any work begins."],
 ];
 
 function Way({ tone, icon, label, children, action }: { tone: string; icon: ReactNode; label: string; children: ReactNode; action?: ReactNode }) {
