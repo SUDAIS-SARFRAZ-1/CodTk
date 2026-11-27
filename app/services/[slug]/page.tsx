@@ -54,7 +54,7 @@ export default async function ServicePage({ params }: Props) {
   const faqs: FaqItem[] = [...seo.faqs.map((f) => ({ ...f, plainText: f.answer })), ...SHARED_FAQS];
 
   return (
-    <div className="sv-page ctk-rise">
+    <div className="sv-page">
       <JsonLd
         data={{
           "@context": "https://schema.org",

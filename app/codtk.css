@@ -25,6 +25,9 @@
   --blue-100: #86bbff;
   --cyan-400: #006f96;
   --cobalt-900: #011e68;
+  --blue-700: #0039b3;
+  --shadow-btn: 0 14px 34px -12px rgba(0, 103, 252, 0.75);
+  --shadow-sheet: 0 -30px 60px -20px rgba(1, 10, 42, 0.55);
   --steel-200: #8fa6c2;
   --glow-blue: rgba(0, 103, 252, 0.1);
   --glow-cyan: rgba(1, 191, 253, 0.1);
@@ -63,6 +66,7 @@
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --spring: cubic-bezier(0.34, 1.45, 0.5, 1);
   --ease-linear: linear;
   --dur-micro: 160ms;
   --dur-fast: 260ms;
@@ -202,17 +206,19 @@
 /* line mask reveal */
 /* rotating keyword */
 /* ---------- buttons & links ---------- */
-.ctk-btn{--h:54px;position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-3);height:var(--h);padding:0 28px;border-radius:var(--radius-pill);font-size:15px;font-weight:600;letter-spacing:.01em;line-height:1;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:color var(--d-fast) var(--eo),border-color var(--d-fast) var(--eo),box-shadow var(--d-base) var(--eo)}
-.ctk-btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform var(--d-base) var(--eo)}
-.ctk-btn:hover::before{transform:scaleX(1)}
+/* buttons from the hero prototype (founder, 2026-11-27): they lean toward the pointer (--tx/--ty from
+   MagneticButtons); the primary fills dark blue from the pointer (--mx/--my), the secondary fills from below */
+.ctk-btn{--h:56px;position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-3);height:var(--h);padding:0 28px;border-radius:var(--radius-pill);font-size:16px;font-weight:500;line-height:1;border:1px solid transparent;cursor:pointer;white-space:nowrap;translate:var(--tx,0) var(--ty,0);transition:translate var(--d-rev) var(--eo),color var(--d-fast) var(--eo),border-color var(--d-fast) var(--eo),box-shadow var(--d-base) var(--eo)}
+.ctk-btn::before{content:"";position:absolute;z-index:-1;transition:transform var(--d-rev) var(--eo)}
 .ctk-btn .ctk-i{transition:transform var(--d-fast) var(--eo)}
 .ctk-btn:hover .ctk-i{transform:translateX(4px)}
-.ctk-btn--primary{background:var(--blue-500);color:var(--on-blue)}
-.ctk-btn--primary::before{background:var(--blue-600)}
-.ctk-btn--primary:hover{box-shadow:var(--shadow-glow)}
-.ctk-btn--secondary{background:color-mix(in srgb,var(--bg-200) 60%,transparent);color:var(--ink-100);border-color:var(--line-300)}
-.ctk-btn--secondary::before{background:color-mix(in srgb,var(--ink-100) 6%,transparent)}
-.ctk-btn--secondary:hover{color:var(--ink-100);border-color:var(--line-300);box-shadow:0 0 0 1px var(--line-300) inset}
+.ctk-btn--primary{background:var(--blue-500);color:var(--on-blue);box-shadow:var(--shadow-btn)}
+.ctk-btn--primary::before{left:var(--mx,50%);top:var(--my,50%);width:max(260px,220%);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,var(--cobalt-900),var(--blue-700) 55%,transparent 72%);transform:scale(0)}
+.ctk-btn--primary:hover::before{transform:scale(1)}
+.ctk-btn--secondary{background:var(--bg-100);color:var(--ink-100);border-color:var(--line-200)}
+.ctk-btn--secondary::before{inset:0;border-radius:inherit;background:var(--bg-200);transform:scaleY(0);transform-origin:bottom}
+.ctk-btn--secondary:hover::before{transform:scaleY(1)}
+@media (prefers-reduced-motion:reduce){.ctk-btn,.ctk-btn::before{transition:none}}
 .ctk-btn--sm{--h:40px;padding:0 18px;font-size:13px}
 .ctk-btn--block{width:100%}
 .ctk-btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
@@ -415,6 +421,15 @@ a.ctk-card:hover{transform:translateY(-4px)}
 .ctk-feat__links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:8px}
 @container page (min-width:1024px){.ctk-feat{grid-template-columns:7fr 5fr;padding:var(--card-pad)}.ctk-feat__copy{padding:8px 12px 8px 0}}
 @media (prefers-reduced-motion:reduce){.ctk-feat__shot{animation:none}}
+/* the screenshot drifts slowly inside its frame while the section scrolls past (founder, 2026-11-27) */
+.ctk-feat__view{overflow:hidden;aspect-ratio:16 / 10;border-radius:8px}
+.ctk-feat__view .ctk-feat__shot{height:100%;aspect-ratio:auto;border-radius:0}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  /* timed on the gallery: the frames hide overflow, which would make the image track a box that never scrolls */
+  .ctk-feat__gallery{view-timeline:--ctk-shot}
+  .ctk-feat__view .ctk-feat__shot{height:116%;animation:ctk-tour-in .45s var(--eo) both,ctk-drift linear both;animation-timeline:auto,--ctk-shot}
+}}
+@keyframes ctk-drift{to{translate:0 -13.8%}}
 
 /* case visual */
 .ctk-viz{position:relative;overflow:hidden;aspect-ratio:4 / 3;border-radius:var(--radius-md);border:1px solid var(--line-100);background:radial-gradient(70% 70% at 70% 20%,color-mix(in srgb,var(--blue-500) 22%,transparent),transparent 70%),linear-gradient(160deg,var(--bg-300),var(--bg-000))}
@@ -781,13 +796,13 @@ textarea.ctk-input{height:auto;min-height:150px;padding:14px 16px;resize:vertica
 .gate__tools .ctk-ti{width:15px;height:15px;color:var(--ink-100)}
 
 
-/* Deeper pages (service, case study, FAQ, tech stack, legal): blocks fade and rise in as they enter
-   the screen (founder, 2026-11-26). CSS scroll timelines only, no JavaScript; browsers without them,
-   and reduced motion, show everything as is. */
-@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
-  .ctk-rise section:not(.ctk-phero) .ctk-wrap>*{animation:ctk-rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
-}}
-@keyframes ctk-rise{from{opacity:0;transform:translateY(36px)}}
+/* Scroll reveal on every page (components/layout/ScrollReveal.tsx; founder, 2026-11-27, from the home
+   motion prototype): headings rise out of a mask, other blocks rise in with a slight spring overshoot.
+   The marks are added by JavaScript only, so without it everything simply shows. */
+[data-rv]{transition:opacity .8s var(--eo),translate 1s var(--spring),scale 1s var(--spring),clip-path 1.05s var(--eo);transition-delay:var(--rv-d,0ms)}
+[data-rv="rise"]:not([data-in]){opacity:0;translate:0 28px;scale:.98}
+[data-rv="mask"]{clip-path:inset(-.25em -.1em -.25em -.1em);transition-timing-function:var(--eo)}
+[data-rv="mask"]:not([data-in]){clip-path:inset(-.25em -.1em 100% -.1em);translate:0 100%}
 
 /* ---------- About page: hero side card (components/about/LahoreCard.tsx), story, mission and
    vision band, values, the team diagram (components/about/TeamDiagram.tsx), expertise. */
@@ -958,32 +973,32 @@ a.cf-way__v:hover{color:var(--blue-400)}
 /* ---------- Home hero dive (founder, 2026-11-26). DiveStage sets --p (0 to 1) while the stage is
    pinned: the text lifts away, the camera dives into the blue line until it fills the screen, the
    screen goes black, and the CodTK logo rises above a lit horizon. Transform and opacity only. ---------- */
-.ctk-dive{position:relative;--p:0}
-.ctk-dive.is-live{height:280vh}
-@container page (max-width:767px){.ctk-dive.is-live{height:220vh}}
+.ctk-dive{position:relative;--p:0;--q:0}
+.ctk-dive.is-live{height:380vh}
+@container page (max-width:767px){.ctk-dive.is-live{height:320vh}}
 .ctk-dive__stage{position:relative;min-height:100svh;overflow:hidden;
   --a:clamp(0,calc(var(--p) / .16),1);
   --b:clamp(0,calc((var(--p) - .08) / .47),1);
   --c:clamp(0,calc((var(--p) - .46) / .14),1);
   --d:clamp(0,calc((var(--p) - .58) / .3),1)}
 .ctk-dive.is-live .ctk-dive__stage{position:sticky;top:0;height:100svh}
-.ctk-dive__hero{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);min-height:100svh;padding-block:calc(var(--nav) + 24px) 40px;transform:translateY(calc(var(--a) * -80px))}
-.ctk-dive__hero h1{margin-top:16px;max-width:12ch;font-size:clamp(44px,8.6cqi,148px);line-height:.94;letter-spacing:-.05em;font-weight:500;color:var(--blue-500)}
-.ctk-dive__foot{display:grid;gap:var(--space-6);align-items:end;opacity:calc(1 - var(--a))}
+.ctk-dive__hero{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:var(--space-8);min-height:100svh;padding-block:calc(var(--nav) + 24px) 40px;transform:translateY(calc(var(--a) * -80px))}
+.ctk-dive__hero h1{max-width:12ch;font-size:clamp(44px,8.6cqi,148px);line-height:.94;letter-spacing:-.05em;font-weight:500;color:var(--ink-100)}
+.ctk-dive__foot{display:grid;gap:var(--space-6);justify-items:center;opacity:calc(1 - var(--a))}
 /* RubberHeading: letters fade with the copy; a pointed-at letter squishes and springs back */
 .ctk-rub__w{display:inline-block;white-space:nowrap}
 .ctk-rub__l{display:inline-block;opacity:calc(1 - var(--a));transform-origin:50% 90%}
 .ctk-rub__l.is-on{animation:ctk-rubber .8s var(--eo)}
 @keyframes ctk-rubber{0%{transform:scale(1,1)}25%{transform:scale(1.28,.72)}40%{transform:scale(.8,1.22)}55%{transform:scale(1.12,.9)}70%{transform:scale(.96,1.05)}85%{transform:scale(1.02,.98)}100%{transform:scale(1,1)}}
-/* the full stop the dive flies into: grows until it fills the screen blue, then the black fill takes over */
-.ctk-dive__dot{display:inline-block;width:.17em;height:.17em;margin-left:.03em;border-radius:50%;background:currentColor;transform:scale(calc(1 + var(--b) * var(--b) * 320))}
-.ctk-dive__foot .ctk-lead{max-width:30em;color:var(--ink-100)}
+/* the full stop is a glossy blue bubble (from the hero prototype); the dive grows it until the screen is
+   inside it, then the black fill takes over */
+.ctk-dive__dot{display:inline-block;width:.17em;height:.17em;margin-left:.03em;border-radius:50%;background:radial-gradient(circle at 34% 30%,#d6e7ff 0%,#5aa2ff 16%,var(--blue-500) 42%,var(--blue-700) 72%,var(--cobalt-900) 100%);box-shadow:inset -.02em -.025em .045em rgba(1,30,104,.55),inset .012em .014em .03em rgba(255,255,255,.28);transform:scale(calc(1 + var(--b) * var(--b) * 320))}
+.ctk-dive__hero .ctk-actions{justify-content:center}
+.ctk-dive__foot .ctk-lead{max-width:30em;margin-inline:auto;color:var(--ink-100)}
 .ctk-avail{margin-top:var(--space-4);font-size:14px;line-height:1.5;color:var(--ink-300)}
-@container page (min-width:1024px){.ctk-dive__foot{grid-template-columns:1fr auto}}
-/* phones and tablets: the text stacks under the headline */
-@container page (max-width:1023px){.ctk-dive__hero{justify-content:flex-start;gap:var(--space-6)}.ctk-dive__hero .ctk-btn--secondary{background:var(--bg-100)}}
+@container page (max-width:1023px){.ctk-dive__hero{gap:var(--space-6)}.ctk-dive__hero .ctk-btn--secondary{background:var(--bg-100)}}
 .ctk-dive__fill{position:absolute;inset:0;z-index:3;background:#000;opacity:var(--c);pointer-events:none}
-.ctk-dive__scene{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:radial-gradient(70% 45% at 50% 62%,rgba(0,103,252,.28),transparent 70%);opacity:var(--d);pointer-events:none}
+.ctk-dive__scene{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:radial-gradient(70% 45% at 50% 62%,rgba(0,103,252,.28),transparent 70%);opacity:calc(var(--d) * (1 - var(--q) * .7));translate:0 calc(var(--q) * -60px);scale:calc(1 - var(--q) * .06);pointer-events:none}
 .ctk-dive__logo{position:relative;width:min(520px,70vw);transform:translateY(calc((1 - var(--d)) * 48px)) scale(calc(.86 + var(--d) * .14))}
 .ctk-dive__logo img{display:block;width:100%;height:auto}
 .ctk-dive__logo .ctk-dive__mirror{position:absolute;left:0;top:100%;transform:scaleY(-1);opacity:.22;-webkit-mask-image:linear-gradient(to top,#000,transparent 55%);mask-image:linear-gradient(to top,#000,transparent 55%)}
@@ -1026,3 +1041,27 @@ a.cf-way__v:hover{color:var(--blue-400)}
 }
 .ctk-cookie{bottom:calc(96px + env(safe-area-inset-bottom))}
 @media (min-width:1024px){.ctk-cookie{bottom:20px}}
+
+/* Home curtain (founder, 2026-11-27): once the hero dive ends, the rest of the page slides up over it
+   as a white sheet with rounded top corners. Only while the dive runs; otherwise the page flows as usual. */
+.ctk-sheet{position:relative;z-index:5;background:var(--bg-100)}
+.ctk-dive.is-live+.ctk-sheet{margin-top:-100svh;overflow:clip;border-radius:28px 28px 0 0;box-shadow:var(--shadow-sheet)}
+
+/* Travelling drop (components/layout/TravelOrb.tsx; founder, 2026-11-27): a glossy bubble that lands on
+   each heading's full stop. Same bubble as the hero full stop. */
+.ctk-orb{position:fixed;left:0;top:0;z-index:30;width:200px;height:200px;border-radius:50%;pointer-events:none;opacity:0;will-change:transform;transition:opacity .6s,box-shadow .6s;
+  background:radial-gradient(circle at 34% 30%,#d6e7ff 0%,#5aa2ff 16%,var(--blue-500) 42%,var(--blue-700) 72%,var(--cobalt-900) 100%);
+  box-shadow:inset -18px -22px 40px rgba(1,30,104,.55),inset 10px 12px 26px rgba(255,255,255,.3)}
+.ctk-orb::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 72% 80%,rgba(1,191,253,.75),rgba(1,191,253,0) 42%);mix-blend-mode:screen}
+.ctk-orb.is-on{opacity:1}
+.ctk-orb.is-dark{box-shadow:inset -18px -22px 40px rgba(1,30,104,.45),inset 10px 12px 26px rgba(255,255,255,.35),0 0 60px 10px rgba(1,191,253,.55)}
+.ctk-orb-splash{position:fixed;left:0;top:0;z-index:29;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;border:1.5px solid var(--blue-500);pointer-events:none;opacity:0}
+@media (prefers-reduced-motion:reduce){.ctk-orb,.ctk-orb-splash{display:none}}
+
+/* Inner-page curtain (components/layout/Curtain.tsx; founder, 2026-11-27): the page hero holds while
+   the rest of the page slides up over it. The sheet rules use :where() so any section's own
+   background, position or overflow still wins. */
+[data-curtain]{position:sticky;top:0;z-index:0;transform-origin:50% 0;scale:calc(1 - var(--c,0) * .05);opacity:calc(1 - var(--c,0) * .65)}
+/* flow-root keeps child margins inside each section, so no gap lets the hero show through */
+:where([data-curtain]~*){display:flow-root;position:relative;z-index:1;background:var(--bg-100)}
+:where([data-curtain]+*){overflow:clip;border-radius:28px 28px 0 0;box-shadow:var(--shadow-sheet)}

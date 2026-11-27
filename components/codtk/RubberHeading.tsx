@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 
-// Home hero heading (founder, 2026-11-26): blue, each letter squishes and bounces like rubber when
+// Home hero heading (founder, 2026-11-26; black since 2026-11-27): each letter squishes and bounces like rubber when
 // pointed at or tapped, and the closing full stop is the point the hero dive zooms into (its scale
 // comes from --b in the dive CSS). The letters are the heading's only text, so search engines read the
 // sentence once; screen readers get it whole from aria-label instead of letter by letter.

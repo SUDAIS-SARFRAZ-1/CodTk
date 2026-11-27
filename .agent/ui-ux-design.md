@@ -26,7 +26,7 @@ If a visual choice fights any of these three, it loses — including anything th
 - **Palette:** white, black and the CodTK logo blue `#0067FC` (`blue-500`), plus shades of those three — tokens in `app/codtk.css`, copied from the design system (https://claude.ai/artifact/Ht29CAMG8XhsfyLWVHpcf5, adopted in full 2026-10-18). **White pages with black type.** Black is a *scope*, not a theme: `data-theme="dark"` on an element (navbar pill, cinematic stage, service cards, code windows, CTA, footer) resolves the same token names to black values. Small blue text on white uses `blue-400` (`#0052CC`); white on `blue-500` is 4.8:1.
 - **Depth:** on white, hairlines and the soft `shadow-lift`; glows only at full strength inside black scopes. No neon or multi-hue gradients.
 - **Logo:** the founder-supplied raster artwork in `public/brand/` (black background converted to transparency). Don't redraw it. It sits inside black scopes as drawn; on white (the navbar, since 2026-10-20) it uses the CSS `invert(1) hue-rotate(180deg)` filter so the white strokes turn near-black and the blue stays blue.
-- **Typography:** one family, Instrument Sans (weight 500, tight tracking), for headlines and body; JetBrains Mono only for labels and code. No italic or coloured emphasis inside headlines: emphasis comes from size (founder, 2026-11-26, from `docs/premium.md`). One exception: the Home hero heading is all blue (founder, 2026-11-26).
+- **Typography:** one family, Instrument Sans (weight 500, tight tracking), for headlines and body; JetBrains Mono only for labels and code. No italic or coloured emphasis inside headlines: emphasis comes from size (founder, 2026-11-26, from `docs/premium.md`). The Home hero heading is black like the rest, with its full stop as the blue bubble (founder, 2026-11-27; it was all blue from 2026-11-26).
 - **Premium checklist (2026-11-26):** follow `docs/premium.md`. No arrows inside buttons, no `·` separators in visible copy, no eyebrow labels above section headings (group names and Mission/Vision labels stay), no status dots or pills, no numbering unless it is a real sequence, no "real"/"quiet" filler, no two-word sentence pairs, and cards only for things you can click. Use the type classes in `app/codtk.css`; no ad hoc font sizes.
 - **Imagery:** real team photos, real portfolio screenshots/demos, and simple iconography for services and process steps. No stock "business handshake" photography — it undercuts the credibility goal this whole site exists for.
 - **Tone:** confident and plain-spoken copy. Technical credibility comes from specifics (named technologies, concrete process steps, real project outcomes), not buzzwords.
@@ -90,21 +90,28 @@ Form (name, email, project type, message — FR-1), WhatsApp/direct contact info
 
 ## 7. Motion
 
-**Scroll motion on every page** (founder, 2026-11-26; this overrides the earlier bans on pinned/scroll-driven scenes, intro screens and fade-up on scroll). Home has the dives below; deeper pages have a simple fade-and-rise. A curtain header and stacking cards on the other main pages were tried and removed (founder, 2026-11-27: they broke).
+**Scroll motion on every page** (founder, 2026-11-26; this overrides the earlier bans on pinned/scroll-driven scenes, intro screens and fade-up on scroll). Home has the dives below; every page has the scroll reveal below. A curtain header and stacking cards on the other main pages were tried and removed (founder, 2026-11-27: they broke); the curtain came back the same day, rebuilt (below).
 
 - **Intro:** the CodTK logo on black for about 2.5 seconds, only when a visit starts on Home, once per visit (`components/codtk/Intro.tsx`; CSS only, clears itself without JavaScript).
 - **Hero dive:** the hero is pinned for a few screens while scrolling fades the copy and dives into the blue full stop of the heading until it fills the screen, then the CodTK logo rises above a lit horizon (`DiveStage.tsx` sets `--p`; CSS does the rest with transform and opacity, no 3D library). The heading is blue and each letter squishes like rubber when pointed at or tapped (`RubberHeading.tsx`; founder, 2026-11-26).
 - **Closing dive:** on Home only, the black "Let's build what's next." card grows from a small card to the full screen, its copy rises in and the example chat plays as you scroll (`CtaBanner dive`, reusing `DiveStage`; founder, 2026-11-26). Only on screens at least 768px wide and 680px tall; phones see the static card. Other pages keep the static CTA.
-- **Fade-and-rise (deeper pages):** service pages, case studies, FAQ, Tech Stack, Privacy and Terms (`ctk-rise`). CSS scroll timelines only, no JavaScript; browsers without them show the content as is.
+- **Scroll reveal (every page):** from the home motion prototype artifact (founder, 2026-11-27). Headings rise out of a mask; other blocks rise in one after another with a slight spring (`components/layout/ScrollReveal.tsx`). On a first visit, what is already on screen is not hidden (no flash, no LCP cost); after moving between pages, the new page animates in. The home hero, closing CTA dive, Process tunnel and Marquee keep their own motion. Without JavaScript everything shows as is.
+- **Curtain (Home):** once the hero dive has fully played, the rest of Home slides up over the logo scene as a white sheet with rounded top corners (`DiveStage tail`, `.ctk-sheet`; founder, 2026-11-27). The dive itself is unchanged.
+- **Curtain (inner pages, rebuilt 2026-11-27):** the `PageHero` holds and sinks back while the rest of the page slides over it as a white sheet (`components/layout/Curtain.tsx`). Only when the whole hero fits on screen, so a tall hero (About on phones) scrolls normally; Contact and case studies have their own heroes and scroll normally.
+- **Travelling bubble (every page):** a glossy blue bubble lands on the full stop of the heading nearest the upper third of the screen, with a ring splash; between headings it waits on the right edge as a scroll marker (`TravelOrb.tsx`; founder, 2026-11-27). Hidden during the Home dive.
+- **Scroll-speed text rows:** the Home `Marquee` runs faster while the page scrolls and eases back (`MarqueeBoost.tsx`).
+- **Screenshot parallax:** the MindMesh screenshot drifts slowly inside its frame (CSS view timeline only).
 - **Smooth scrolling:** Lenis (`components/layout/SmoothScroll.tsx`, pinned at 1.3.27). Phones keep native touch scrolling.
 - All of these switch off under `prefers-reduced-motion`.
 
 What the site also keeps:
 - Hover and focus feedback on buttons, cards and links (colour, border, shadow, a small lift).
+- Buttons follow the hero prototype artifact (founder, 2026-11-27): pill, 56px tall, they lean toward the pointer (`MagneticButtons.tsx`, mouse only), the primary fills dark blue from the pointer and the secondary fills from below.
+- The Home hero copy is centred, and its full stop is a glossy blue bubble that the dive flies into (founder, 2026-11-27).
 - The big scrolling text rows on Home (`Marquee`) as the one moving moment, and the tech-logo strip (`TechStrip`), which only moves once a visitor opens it.
 - Functional indicators only, such as the form's loading spinner and the open/close of the technology buttons.
 
-Not allowed without the founder's approval (beyond the scenes listed above): new pinned or sticky scroll scenes, scroll-scrubbed or parallax effects, sideways-scrolling showcases, word-by-word blur-in headlines, page-transition effects, a custom cursor, magnetic buttons, moving or tone-shifting backgrounds, circuit traces, infinite loops (pings, pulses, spinning globes, looping demos) and live `backdrop-filter` blur.
+Not allowed without the founder's approval (beyond the scenes listed above): new pinned or sticky scroll scenes, scroll-scrubbed or parallax effects, sideways-scrolling showcases, word-by-word blur-in headlines, page-transition effects, a custom cursor, moving or tone-shifting backgrounds, circuit traces, infinite loops (pings, pulses, spinning globes, looping demos) and live `backdrop-filter` blur.
 
 - Animate `transform` and `opacity` only.
 - `prefers-reduced-motion: reduce` stops the remaining loops.

@@ -1,3 +1,5 @@
+import { MarqueeBoost } from "@/components/codtk/MarqueeBoost";
+
 // Row styles: "" solid, "o" outline, "b" blue.
 const ROW_A: [string, string][] = [["Websites", ""], ["Mobile apps", "o"], ["Business software", "b"], ["Automation", "o"], ["Online growth", ""], ["Support", "o"], ["Websites", "b"], ["Mobile apps", "o"]];
 const ROW_B: [string, string][] = [["Discover", "o"], ["Design", ""], ["Build", "b"], ["Launch", "o"], ["Support", ""], ["Discover", "o"], ["Design", ""], ["Build", "b"]];
@@ -16,6 +18,7 @@ export function Marquee() {
           ))}
         </div>
       ))}
+      <MarqueeBoost />
     </section>
   );
 }

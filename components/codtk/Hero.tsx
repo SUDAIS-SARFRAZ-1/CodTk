@@ -9,7 +9,7 @@ import { BOOKING_URL } from "@/lib/contact";
 // transform and opacity driven by --p from DiveStage.
 export function Hero() {
   return (
-    <DiveStage labelledBy="hero-t">
+    <DiveStage labelledBy="hero-t" tail={1}>
 
       <div className="ctk-wrap ctk-dive__hero">
         <RubberHeading id="hero-t" text="Software that grows your business" />

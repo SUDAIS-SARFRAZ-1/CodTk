@@ -14,15 +14,17 @@ export function CaseGallery({ images }: { images: Project["images"] }) {
     <div className="ctk-feat__gallery">
       <div className="ctk-feat__frame" data-theme="dark">
         <WindowBar className="ctk-viz__bar" />
-        <Image
-          key={img.src}
-          className="ctk-feat__shot"
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          sizes="(min-width: 1024px) 720px, 92vw"
-        />
+        <div className="ctk-feat__view">
+          <Image
+            key={img.src}
+            className="ctk-feat__shot"
+            src={img.src}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            sizes="(min-width: 1024px) 720px, 92vw"
+          />
+        </div>
       </div>
       {images.length > 1 && (
         <div className="ctk-feat__thumbs">

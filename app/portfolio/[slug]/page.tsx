@@ -47,7 +47,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   ];
 
   return (
-    <div className="ctk-rise">
+    <div>
       <JsonLd
         data={{
           "@context": "https://schema.org",

@@ -76,6 +76,8 @@ export default function Home() {
     <>
       <JsonLd data={homeSchema} />
       <Hero />
+      {/* the rest of Home slides up over the end of the hero dive like a sheet (founder, 2026-11-27) */}
+      <div className="ctk-sheet">
       <Needs />
       <div className="ctk-wrap">
         <TechReveal className="ctk-reveal--strip">
@@ -87,6 +89,7 @@ export default function Home() {
       <CaseShowcase />
       <Faq />
       <CtaBanner dive />
+      </div>
     </>
   );
 }

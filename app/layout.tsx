@@ -11,6 +11,10 @@ import { CookieBanner } from "@/components/layout/CookieBanner";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Intro, INTRO_SEEN_SCRIPT } from "@/components/codtk/Intro";
 import { ClickTracking } from "@/components/layout/ClickTracking";
+import { MagneticButtons } from "@/components/layout/MagneticButtons";
+import { ScrollReveal } from "@/components/layout/ScrollReveal";
+import { TravelOrb } from "@/components/layout/TravelOrb";
+import { Curtain } from "@/components/layout/Curtain";
 import { EXTENDED_TAGLINE, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 import "./codtk.css";
@@ -67,6 +71,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <CookieBanner />
         <SmoothScroll />
         <ClickTracking />
+        <MagneticButtons />
+        <ScrollReveal />
+        <TravelOrb />
+        <Curtain />
       </body>
     </html>
   );

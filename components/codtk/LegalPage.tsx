@@ -21,7 +21,7 @@ export function LegalPage({
   sections: LegalSection[];
 }) {
   return (
-    <div className="ctk-rise">
+    <div>
       <PageHero crumb={crumb} path={path} title={title} intro={`${intro} Last updated: ${updated}.`} />
       <section className="ctk-sec ctk-legal" data-section={crumb.toLowerCase()} style={{ paddingTop: 24 }}>
         <div className="ctk-wrap">
