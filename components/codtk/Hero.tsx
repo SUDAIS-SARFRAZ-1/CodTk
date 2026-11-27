@@ -1,17 +1,22 @@
 import Image from "next/image";
 import { Btn } from "@/components/codtk/primitives";
 import { DiveStage } from "@/components/codtk/DiveStage";
+import { HeroVideo } from "@/components/codtk/HeroVideo";
 import { RubberHeading } from "@/components/codtk/RubberHeading";
 import { BOOKING_URL } from "@/lib/contact";
 
 // Home hero (founder, 2026-11-26). Scrolling fades the copy and dives into the heading's blue full
 // stop until it fills the screen, then opens on the CodTK logo above a lit horizon. All motion is
-// transform and opacity driven by --p from DiveStage.
+// transform and opacity driven by --p from DiveStage. Since 2026-11-27 the hero is dark, over a looping
+// network video tinted toward the logo blue (HeroVideo).
 export function Hero() {
   return (
     <DiveStage labelledBy="hero-t" tail={1}>
+      <HeroVideo />
+      <div className="ctk-dive__tint" aria-hidden="true" />
+      <div className="ctk-dive__shade" aria-hidden="true" />
 
-      <div className="ctk-wrap ctk-dive__hero">
+      <div className="ctk-wrap ctk-dive__hero" data-theme="dark">
         <RubberHeading id="hero-t" text="Software that grows your business" />
         <div className="ctk-dive__foot">
           <div>

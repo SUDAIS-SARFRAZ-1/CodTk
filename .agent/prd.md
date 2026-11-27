@@ -73,7 +73,7 @@ Blog/CMS, careers page, client portal or login, Urdu/multi-language, online paym
 ## 6. Pages and requirements
 
 ### 6.1 Home (built on the CodTK design system)
-Minimal, plain-language home (founder, Nov 19 and 26, 2026): Hero with "What do you need?" choices that open the matching page → "See the technologies we use" button (opens the tech logo strip) → big scrolling text rows → Why CodTK → featured work (MindMesh only) → FAQ → CTA banner → footer. Detail (architecture, delivery stages, audience statements) lives on the inner pages, not here. The time-zone note moved to Contact.
+Minimal, plain-language home (founder, Nov 19 and 26, 2026): Hero (dark, over a looping network video since Nov 27) with "What do you need?" choices that open the matching page → "See the technologies we use" button (opens the tech logo strip) → big scrolling text rows → Why CodTK → featured work (MindMesh only) → FAQ → CTA banner → footer. Detail (architecture, delivery stages, audience statements) lives on the inner pages, not here. The time-zone note moved to Contact.
 Hidden until real: "Trusted by" logo strip, testimonials, stats.
 
 ### 6.2 Services
